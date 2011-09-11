@@ -1,0 +1,127 @@
+% This is a template for use with the MSU Thesis class
+%
+% Class options: 
+% PhD for dissertations;
+% MA for Master of Arts 
+% MS for Master of Science
+% MAT for Master of Arts for Teachers  
+% MBA for Master of Business Administration  
+% MFA for Master of Fine Arts  
+% MIPS for Master of International Planning Studies  
+% MHRL for Master of Human Resources and Labor Relations  
+% MMus for Master of Music  
+% MSN for Master of Science in Nursing  
+% MPP for Master of Public Policy  
+% MSW for Master of Social Work  
+% MURP for Master in Urban and Regional Planning  
+%
+% Default is PhD
+%
+%
+% This template has everything in the right order.
+% Just add real content and you're done!
+%
+\documentclass[]{msu-thesis}
+\usepackage{lipsum}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+%
+% If the thesis office requires Times, we'll give them Times
+% You can experiment with other font packages here if you like.
+\usepackage{mathptmx} 
+%
+% Load any extra packages here
+%
+% You must specify the title of your thesis, your name, the field of study (not department), and the year
+\title{The syntax and semantics of phonology}
+\author{Joe Linguist}
+\fieldofstudy{Linguistics}
+\date{2010}
+\renewcommand*{\afterchapternum}{}
+
+% If you want a dedication page, specify the text of the dedication here and uncomment the next command.
+%
+%\dedication{This thesis is dedicated to someone.}
+%
+\begin{document}
+
+% All the stuff before your actual chapters is called the front matter
+\frontmatter
+% First make the title page
+\maketitlepage
+% Next make the abstract
+\begin{abstract}
+% Your abstract goes here.  Master's 1 page max. PhD 2 page max.
+\end{abstract}
+
+% Force a newpage
+\clearpage
+% Make the copyright page. The Graduate School ridiculously prohibits you
+% from having a copyright page unless you pay ProQuest to register the copyright.
+% This should be illegal, but I didn't make up the rule.
+
+%\makecopyrightpage
+
+% If you have a dedication page, uncomment the next command to print the dedication page
+%
+%\makededicationpage
+%
+\clearpage
+% Your Acknowledgements are formatted like a chapter, but with no number
+\chapter*{Acknowledgements}
+\DoubleSpacing % Acknowledgements should be double spaced
+Your acknowledgements here.
+%
+\clearpage
+% We need to turn single spacing back on for the contents/figures/tables lists
+\SingleSpacing
+\tableofcontents* % table of contents will not be listed in the TOC
+\clearpage
+\listoftables % comment this out if you have no tables
+\clearpage
+\listoffigures % comment this out if you have no figures
+%
+% If you have a list of abbreviations/symbols it would go here preceded by a \clearpage
+%
+\mainmatter
+%
+% The next line removes the dots in chapter headings in the TOC
+% May violate thesis office rules
+%\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep} {\cftnodots}}
+
+\chapter{Your first chapter}
+%
+% If you have pages that must appear in landscape mode, use the [lscape] option
+% and enclose the pages in a {landscape} environment.
+%\clearpage\pagestyle{lscape} % first clear the page and change the pagestyle
+%\begin{landscape}
+%
+% your landscape table(s) or figure(s) here
+%
+%\end{landscape}
+%\pagestyle{plain} % remember to change the pagestyle back to plain
+%
+%
+% If you have appendices, they would go here.  
+% Comment these lines out if you don't
+% If you have more than one appendix, uncomment the next line
+%\appendicestrue
+\makeappendixcover % make the appendix cover page
+\appendix
+\chapter{Your first appendix}
+%
+\backmatter
+% The next lines add the dots back into the References/Bibliography heading
+% of the TOC.  Only uncomment this if you need to put the dots back in having
+% removed them for Chapter headings.
+%
+%\addtocontents{toc}{%
+%   \protect\renewcommand{\protect\cftchapterdotsep} {\cftdotsep}}
+%
+\makebibliographycover % make the bibliography cover page
+% Bibliography can be single spaced
+%
+\SingleSpacing
+% Your bibliography command here (e.g. \bibliography{your-bib-file}) if using natbib
+\end{document}
+

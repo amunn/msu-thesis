@@ -1,0 +1,209 @@
+%\listfiles
+
+\documentclass[lscape]{msu-thesis}
+% lscape option is needed for this sample file to show correct placement
+% of page numbers on landscape pages. If you don't have any landscape pages
+% in your document, you don't need to load this option.
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{amsmath}
+\title{The syntax and semantics of phonology}
+\author{Joe Linguist}
+\fieldofstudy{Linguistics}
+\dedication{This thesis is dedicated to someone.}
+\date{2010}
+
+\usepackage{lipsum}
+\usepackage[T1]{fontenc}
+\usepackage{xcolor}
+\usepackage{gb4e}
+\usepackage{cgloss}
+\usepackage{natbib}
+
+
+\counterwithin{exx}{chapter}
+\bibliographystyle{unified}
+\singlegloss
+% Uncomment the next two lines for single spaced examples with gb4e
+%\let\oldexe\exe
+%\renewcommand{\exe}{\SingleSpacing\oldexe}
+\begin{document}
+\frontmatter
+\maketitlepage
+\begin{abstract}
+\lipsum
+\end{abstract}
+\clearpage
+\makecopyrightpage
+\makededicationpage
+\clearpage
+\chapter*{Acknowledgements}
+\DoubleSpacing
+\lipsum[1]
+\clearpage
+\SingleSpacing
+\tableofcontents* % ToC will not appear in the table of contents
+\clearpage
+\listoftables
+\clearpage
+\listoffigures
+\mainmatter
+% The next command changes chapters in the TOC to have no dotted leader
+%\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep}{\cftnodots}}
+\chapter{Introduction}
+\section{Some section}
+\lipsum[2]
+
+\subsection{Subsection}
+\lipsum
+\subsubsection{Subsubsection}
+\begin{exe}
+\ex\label{1}
+\begin{xlist}
+\ex[]{This is a linguistic example that is very long to see how it wraps around onto the next line of the text.}
+\ex[]{This_{i} is an example_{i} with subscripts.}
+\ex[*]{This is another example.}
+\ex[]{This is a third example}
+\ex[]{\gll Une example francaise\\
+ an example french\\
+\trans A French example.}
+\end{xlist}
+\end{exe}
+
+\lipsum[1]
+\lipsum[2]\cite{munn1999} says the following.\footnote{A footnote. This is a footnote with a subscript$_{\text{i}_{\text{j}}}$.  \lipsum[9]} \lipsum[2]
+\begin{table}
+\centering
+\begin{tabular}{ccc}
+\toprule
+Men & Women & Monsters\\
+\midrule
+29 & 33 & 51\\
+\bottomrule
+\end{tabular}
+\caption{A sample table}
+\end{table}
+
+\lipsum[3]
+\section{More stuff}
+\lipsum[4]\cite{munn2005}
+\begin{figure}
+\centering
+{\color{gray!40}\rule{2in}{3in}}
+\caption[A sample figure]{A sample figure with a figure caption that is extremely long to show single spacing in the long caption.}
+\end{figure}
+\lipsum[5]
+\lipsum[10]
+\chapter{A chapter with a really long title to see whether the chapter titles wrap correctly}
+\lipsum
+\begin{figure}
+\centering
+{\color{gray!40}\rule{4in}{2in}}
+\caption{Another sample figure}
+\end{figure}
+\lipsum[6]
+\section{A section with a really long title to check that sections wrap in the right way}
+\subsection{A subsection with a really long title to check that sections wrap in the right way}
+\subsubsection{A subsubsection with a really long title to check that sections wrap in the right way}
+\begin{table}
+\centering
+\begin{tabular}{ccc}
+\toprule
+Men & Women & Monsters\\
+\midrule
+29 & 33 & 51\\
+\bottomrule
+\end{tabular}
+\caption{Another sample table.}
+\end{table}
+\lipsum[7]
+\begin{exe}
+\ex\label{2}
+\begin{xlist}
+\ex[]{This^{i^{j^{k}}} contains three superscripts of the right size.}
+\ex[]{This_{i_{j_{k}}} contains three subscripts of the right size.}
+\end{xlist}
+\end{exe}
+\begin{figure}
+\centering
+{\color{gray!40}\rule{4in}{2in}}
+\caption{Another sample figure}
+\end{figure}
+\lipsum[2]
+\begin{quote}
+\SingleSpacing
+This is a sample long quotation. \lipsum[2]
+
+\hfill{\citep{munn1999}}
+\end{quote}
+\begin{table}
+\centering
+\begin{tabular}{ccc}
+\toprule
+Men & Women & Monsters\\
+\midrule
+29 & 33 & 51\\
+\bottomrule
+\end{tabular}
+\caption{Another sample table.}
+\end{table}
+\lipsum[8]
+% Now sample page in landscape (need to use [lscape] option for this)
+% First clear the page. Then make the page style {lscape}
+\clearpage\pagestyle{lscape}
+% Enclose landscape pages in the {landscape} environment. Every page within
+% this environment will be landscape. There is no need to enclose each individual
+% figures/tables in the environment if they appear on a set of adjacent landscape
+% pages.
+\begin{landscape}
+\begin{table}
+\centering
+\begin{tabular}{lllllll}
+
+\toprule
+A & B & C & D & E & F & G \\
+\midrule
+821.3827119 & 661.0913922 & 106.3008156 & 474.009513 & 190.8146776 & 788.4459729 & 784.7964852 \\
+863.5891052 & 308.5023091 & 15.97055732 & 319.4531424 & 932.4330525 & 313.8826277 & 574.5100815 \\
+867.7203343 & 343.6538027 & 34.35605188 & 680.5890553 & 538.4341728 & 510.3271094 & 987.7874714 \\
+144.6465988 & 86.30176472 & 145.0166526 & 26.00087715 & 694.0117063 & 556.0943379 & 650.0605751 \\
+269.5656447 & 979.9087235 & 150.7698724 & 715.0255442 & 312.5203237 & 608.58149 & 737.0459961 \\
+361.7660545 & 38.81968682 & 7.788463243 & 789.031736 & 599.306695 & 407.9588464 & 420.3577306 \\
+22.45176377 & 631.7249181 & 266.0566897 & 81.77581697 & 399.0120086 & 460.8922885 & 341.5815705 \\
+486.3650486 & 398.9817682 & 601.8745699 & 912.7856216 & 102.7510937 & 83.25854643 & 655.1995291 \\
+306.8558515 & 672.2668801 & 582.1884719 & 607.9748493 & 126.3316726 & 672.490033 & 754.4823663 \\
+745.6384032 & 369.5763752 & 170.8671329 & 248.2581139 & 994.2369771 & 28.13615151 & 230.6094341 \\
+270.3421307 & 193.6617479 & 374.94621 & 769.6975098 & 342.6845841 & 917.8180557 & 827.1024885 \\
+360.3810025 & 780.7139757 & 415.9038887 & 846.3157501 & 96.64026956 & 954.7160727 & 21.71722262 \\
+487.6847246 & 200.8682708 & 739.9673152 & 395.1695216 & 524.7826343 & 228.4705562 & 39.95541901 \\
+207.8091332 & 300.6871609 & 627.8808013 & 740.4949976 & 128.9558068 & 176.2158891 & 296.1642661 \\
+336.7537922 & 859.907318 & 704.2503641 & 426.845866 & 773.8926695 & 883.1773631 & 64.85043069 \\
+
+\bottomrule
+\end{tabular}
+
+\caption{Some random data that takes up too much room.}
+\end{table}
+\end{landscape}
+% at the end of the {landscape} environment, make the page style {plain}
+\pagestyle{plain}
+%
+% Uncomment this next command if you have more than one appendix
+%\appendicestrue
+
+% This command creates the cover page for the appendix/appendices
+\makeappendixcover
+\appendix
+\chapter{An appendix}
+\lipsum[9-15]
+\backmatter
+% The next command forces the Bibliography to have a dotted leader
+% (May not be required)
+\addtocontents{toc}{%
+   \protect\renewcommand{\protect\cftchapterdotsep}{\cftdotsep}}
+\SingleSpacing
+% This command creates the cover page for the bibliography
+\makebibliographycover
+\bibliography{MSU-thesis-testfile}
+\end{document}
+

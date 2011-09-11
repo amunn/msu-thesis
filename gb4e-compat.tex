@@ -1,0 +1,45 @@
+% Compatibility code for footnote text when using gb4e
+% This is fixed in the latest version of gb4e but since
+% it is not in wide distribution this is included for wider
+% compatibility.  It will be removed at some point.
+%
+
+\def\exe{\SingleSpacing\@ifnextchar [{\@exe}{\@exe[\@exwidth]}}%
+% This code repeats the memoir code because gb4e 
+% redefines footnote text badly. The newest version of gb4e
+% fixes this.
+
+\renewcommand{\@footnotetext}[1]{\insert\footins{%
+  \def\baselinestretch{\m@m@singlespace}%  <- v1.61803 addition
+  \reset@font%            <- v1.6180 addition
+  \foottextfont
+  \@preamfntext
+  \hsize\columnwidth
+  \protected@edef\@currentlabel{%
+    \csname p@footnote\endcsname\@thefnmark}%
+  \color@begingroup
+    \@makefntext{%
+      \rule\z@\footnotesep\ignorespaces{\foottextfont #1}%
+      \@finalstrut\strutbox}%
+  \color@endgroup}\m@mmf@prepare}
+\let\m@mold@footnotetext\@footnotetext
+\renewcommand*{\@footnotemark}{%
+  \leavevmode
+  \ifhmode
+    \edef\@x@sf{\the\spacefactor}%
+    \m@mmf@check
+    \nobreak
+  \fi
+  \@makefnmark
+  \m@mmf@prepare
+  \ifhmode\spacefactor\@x@sf\fi
+  \relax}
+
+% This is the new gb4e footnote text code
+
+\let\@gbsaved@footnotetext=\@footnotetext
+\long\def\@footnotetext#1{%
+    \@noftnotefalse\setcounter{fnx}{0}%
+    \@gbsaved@footnotetext{#1}%
+    \@noftnotetrue}
+\endinput
