@@ -76,11 +76,13 @@
 %                        if they don't need it.  Compatible also with pdflscape
 %                        for those using pdflatex; fixed problem with some long 
 %                        TOC entries
+% Version 2.1 2011/09/04 Added code to make the class compatible with hyperref
+%                        This is experimental, and mainly useful for drafts.
 % Use at your own risk! 
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{msu-thesis}[2011/08/24  Michigan State University Thesis Class version 2.0]
+\ProvidesClass{msu-thesis}[2011/08/24  Michigan State University Thesis Class version 2.1]
 \newif\ifmsu@lscape\msu@lscapefalse
 \DeclareOption{PhD}{\gdef\@degree{DOCTOR OF PHILOSOPHY}\gdef\@diss{DISSERTATION}}
 \DeclareOption{MA}{\gdef\@degree{MASTER OF ARTS}\gdef\@diss{THESIS}}
@@ -296,4 +298,18 @@
 \bfseries\MakeUppercase{\bibname}
 \end{center}}
 
+% the following code allows hyperref to be used. It is not guaranteed to 
+% work, and the thesis office presumably doesn't allow hyperlinks.
+% If the thesis office permits them, then I may try to support this more.
+% Thanks to Florent Chervet for the code.
+\AtBeginDocument{\@ifpackageloaded{hyperref}%
+{\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
+          {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
+\pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
+\renewcommand*{\l@chapter}[2]{%
+   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
+\renewcommand*{\l@appendix}[2]{%
+  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}}} % Format appendix names
+% if no hyperref
+{\relax}}
 \endinput
