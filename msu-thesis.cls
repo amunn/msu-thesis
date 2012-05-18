@@ -1,6 +1,6 @@
 % MSU Thesis Class
 %
-% Copyright 2009,2010 by Alan Munn <amunn@msu.edu>
+% Copyright 2009,2010,2011,2012 by Alan Munn <amunn@msu.edu>
 %
 % This is a class file for producing dissertations and theses according to the 
 % Michigan State University Graduate School Guidelines (2010)
@@ -26,7 +26,7 @@
 %   MSU-thesis-template.tex
 % A test file and test bibliography: 
 % 	MSU-thesis-testfile.tex, MSU-thesis-testfile.bib
-% It also contains a copy of the LSA Unified Style Sheet for lingusitics: 
+% It also contains a copy of the LSA Unified Style Sheet for linguistics: 
 % 	unified.bst
 %
 % Version 1.0 2010/04/17 Initial release
@@ -78,11 +78,13 @@
 %                        TOC entries
 % Version 2.1 2011/09/04 Added code to make the class compatible with hyperref
 %                        This is experimental, and mainly useful for drafts.
+% Version 2.1b 2012/05/18 Fixed  bug with redefinition of \contentsname
+%                         when babel is loaded.
 % Use at your own risk! 
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{msu-thesis}[2011/08/24  Michigan State University Thesis Class version 2.1]
+\ProvidesClass{msu-thesis}[2012/05/18  Michigan State University Thesis Class version 2.1b]
 \newif\ifmsu@lscape\msu@lscapefalse
 \DeclareOption{PhD}{\gdef\@degree{DOCTOR OF PHILOSOPHY}\gdef\@diss{DISSERTATION}}
 \DeclareOption{MA}{\gdef\@degree{MASTER OF ARTS}\gdef\@diss{THESIS}}
@@ -143,8 +145,7 @@
 
 
 % set up standard titles (Most not needed; just contents)
-
-\renewcommand*\contentsname{TABLE OF CONTENTS}
+\renewcommand\contentsname{TABLE OF CONTENTS} 
 
 %\renewcommand{\title}[1]{\gdef\@title{\MakeUppercase{#1}}}
 \addtoiargdef{\title}{%
@@ -298,11 +299,15 @@
 \bfseries\MakeUppercase{\bibname}
 \end{center}}
 
-% the following code allows hyperref to be used. It is not guaranteed to 
+% Do some stuff at begin document: check for babel and hyperref
+% The hyperref code allows hyperref to be used. It is not guaranteed to 
 % work, and the thesis office presumably doesn't allow hyperlinks.
 % If the thesis office permits them, then I may try to support this more.
 % Thanks to Florent Chervet for the code.
-\AtBeginDocument{\@ifpackageloaded{hyperref}%
+\AtBeginDocument{%
+\@ifpackageloaded{babel}%
+{\addto\captionsenglish{\renewcommand*\contentsname{TABLE OF CONTENTS}}}{\relax}
+\@ifpackageloaded{hyperref}%
 {\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
           {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
 \pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
