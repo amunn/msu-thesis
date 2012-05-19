@@ -80,6 +80,7 @@
 %                        This is experimental, and mainly useful for drafts.
 % Version 2.1b 2012/05/18 Fixed  bug with redefinition of \contentsname
 %                         when babel is loaded.
+% Version 2.1c 2012/05/18 Generalized babel bugfix to work with polyglossia
 % Use at your own risk! 
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
@@ -144,8 +145,11 @@
 \@ifpackageloaded{gb4e}{\input{gb4e-compat.tex}}{\relax}
 
 
-% set up standard titles (Most not needed; just contents)
-\renewcommand\contentsname{TABLE OF CONTENTS} 
+% set up contents title
+% we use a private macro here to avoid problems with babel and
+% polyglossia if they are loaded since they redefine the contents title
+% 
+\newcommand*\MSU@contentsname{TABLE OF CONTENTS} 
 
 %\renewcommand{\title}[1]{\gdef\@title{\MakeUppercase{#1}}}
 \addtoiargdef{\title}{%
@@ -200,7 +204,7 @@
 % set up TOC
 \maxtocdepth{subsubsection}
 \setsecnumdepth{subsubsection}
-\renewcommand*{\printtoctitle}[1]{\centering\bfseries\contentsname}
+\renewcommand*{\printtoctitle}[1]{\centering\bfseries\MSU@contentsname}
 \renewcommand*{\cftchaptername}{Chapter\space}
 \renewcommand*{\cftappendixname}{Appendix\space}
 \renewcommand*{\cftchapterdotsep}{\cftdotsep}
@@ -299,14 +303,12 @@
 \bfseries\MakeUppercase{\bibname}
 \end{center}}
 
-% Do some stuff at begin document: check for babel and hyperref
+% Do some stuff at begin document: check for hyperref
 % The hyperref code allows hyperref to be used. It is not guaranteed to 
 % work, and the thesis office presumably doesn't allow hyperlinks.
 % If the thesis office permits them, then I may try to support this more.
 % Thanks to Florent Chervet for the code.
 \AtBeginDocument{%
-\@ifpackageloaded{babel}%
-{\addto\captionsenglish{\renewcommand*\contentsname{TABLE OF CONTENTS}}}{\relax}
 \@ifpackageloaded{hyperref}%
 {\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
           {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
