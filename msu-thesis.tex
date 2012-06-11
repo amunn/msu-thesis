@@ -1,7 +1,7 @@
 \documentclass[11pt]{article}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics and Languages\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
-\date{Version 2.1c\\May 18, 2012}
+\date{Version 2.2\\June 7, 2012}
 \usepackage[T1]{fontenc}
 \usepackage[margin=1.25in]{geometry}
 \usepackage{titling}
@@ -64,7 +64,7 @@
 \thispagestyle{empty}
 \renewcommand{\abstractname}{\sffamily Abstract}
 
-\abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir} class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \emph{2010 Formatting Guide For Electronic Submission of Master’s Theses and Doctoral Dissertations} produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
+\abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir} class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \emph{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations} (2012) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
 \section{Introduction}
 Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the documentclass itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are actually sane, and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting.
 \section{Background}
@@ -80,13 +80,13 @@ In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcomman
 {[PhD]} &  Doctoral dissertation (default)\\
 {[MA]} & Master of Arts\\
 {[MS]} & Master of Science\\
-{[MAT]} & Master of Arts for Teachers 	 \\
+%{[MAT]} & Master of Arts for Teachers 	 \\
 {[MBA]} & Master of Business Administration 	 \\
 {[MFA]} & Master of Fine Arts 	 \\
 {[MIPS]} & Master of International Planning Studies 	 \\
 {[MHRL]} & Master of Human Resources and Labor Relations  \\
 {[MMus]} & Master of Music 	 \\
-{[MSN]} & Master of Science in Nursing 	 \\
+%{[MSN]} & Master of Science in Nursing 	 \\
 {[MPP]} & Master of Public Policy 	 \\
 {[MSW]} & Master of Social Work 	 \\
 {[MURP]} & Master in Urban and Regional Planning 	 \\
@@ -95,7 +95,7 @@ In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcomman
 \caption{Package degree options}\label{degrees}
 \end{table}
 \subsection{The \pkg{[lscape]} option}
-The Formatting Guide requires that any lansdscape pages be numbered in landscape mode (i.e. along the long edge of the page) rather than in portrait mode. The |[lscape]| option enables this. The option loads both the \pkg{lscape} package and \pkg{tikz}, and is implemented as a class option so that you are not required to load those packages if they are not needed.
+The Formatting Guide requires that any lansdscape pages be numbered in landscape mode (i.e. along the long edge of the page) rather than in portrait mode, and rotated in the final PDF. The |[lscape]| option enables this. The option loads both the \pkg{pdflscape} package and \pkg{tikz}, and is implemented as a class option so that you are not required to load those packages if they are not needed.
 
 \section{User commands}
 In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-thesis} class defines six new titling commands, and a command to signal that the document has multiple appendices. 
@@ -163,7 +163,7 @@ The \pkg{memoir} class replicates the functionality of many independent packages
 \begin{quote} \pkg{memoir} emulates the following packages: {\sffamily abstract, appendix, array, booktabs, ccaption, chngcntr, crop, dcolumn, delarray, enumerate, epigraph, ifmtarg, ifpdf, index, makeidx, moreverb, needspace, newfile, nextpage, pagenote, patchcmd, parskip, setspace, shortvrb, showidx, tabularx, titleref, tocbibind, tocloft, verbatim}, and {\sffamily verse}. It also provides functions equivalent to those in the following packages, although the class does not prevent you from using them: {\sffamily fancyhdr, framed, geometry, sidecap, subfigure}, and \sffamily{titlesec}.\\\hfill{\normalfont\emph{The Memoir Class} 8th Ed. 2010, p.345}
 \end{quote}
 \subsection{Landscape figures and tables}
-If you have large figures and tables that must be rotated, you should use the |[lscape]| option.  This enables a pagestyle |lscape| and places the page numbers correctly on the long edge of the page. The option loads the \pkg{lscape} package which provides a |landscape| environment to place the landscape figure in. Before the landscape environment, you need to issue a |\clearpage| command and change the pagestyle to |lscape|, and afterwards, change it back to |plain|. Schematically, then, any landscape pages should be created in the following way.  
+If you have large figures and tables that must be rotated, you should use the |[lscape]| option.  This enables a pagestyle |lscape| and places the page numbers correctly on the long edge of the page. The option loads the \pkg{pdflscape} package which provides a |landscape| environment to place the landscape figure in. Before the landscape environment, you need to issue a |\clearpage| command and change the pagestyle to |lscape|, and afterwards, change it back to |plain|. Schematically, then, any landscape pages should be created in the following way.  
 
 \begin{quote}
 \begin{lstlisting}
@@ -176,7 +176,7 @@ If you have large figures and tables that must be rotated, you should use the |[
 
 \end{quote}
 
-The |landscape| environment makes all pages within it landscape, so if you have multiple landscape figures in a row, you can put all of them inside a single |landscape| environment. If you are using \pkg{pdflatex} you can optionally load the \pkg{pdflscape} package, which actually rotates the landscape pages within the pdf document itself.
+The |landscape| environment makes all pages within it landscape, so if you have multiple landscape figures in a row, you can put all of them inside a single |landscape| environment. This option correctly rotates the landscape pages within the pdf document itself, which the thesis office seems to require.
 
 
 \subsection{Customizing the look of things}
@@ -191,6 +191,7 @@ I have created a basic looking style for Chapter headings based on the |thatcher
 Despite there being no explicit formatting requirements for Chapter headings (other than that they start 1 in from the top of the page), the thesis office has been known to dislike many things, so if you do decide to change things, be prepared for rejection or a frustrating fight.
 \subsection{Things to watch out for}
 \begin{itemize}[label={\textbullet}]
+\item If your title is long and you want to put a newline (|\\|) into it to improve the spacing, you must precede the newline with |\protect|.
 \item Make sure you pay attention to any ``Overfull hbox'' warnings when you are producing your final copy. You should make sure you eliminate all of them or else the thesis office is likely to reject your thesis. One common way to eliminate such warnings is to place the command |\sloppy| at the beginning of the paragraph that triggers the warning. You should only use this technique at the very end when you are completely done with everything.  Alternatively, rewording the text may also fix things. 
 \item Remember to use the |\tableofcontents*| command so that your table of contents is not listed in the table of contents.
 \item Remember to use the command |\appendicestrue| if you have more than one appendix.
@@ -199,11 +200,11 @@ Despite there being no explicit formatting requirements for Chapter headings (ot
 
 \section{Bugs and redistribution}
 \subsection{Current version}
-The latest copy of \pkg{msu-thesis} will always be available on  \href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=msu-thesis}{CTAN}. If you use TeXLive, then \pkg{tlmgr} will update or install the latest version. If you want others to use the class, \textsc{please} point them to that link, so that they can get an up-to-date version with all accompanying documentation and examples rather than passing along your copy. Please report \textsc{any} problems you have with the class to me \href{mailto:amunn@msu.edu}{amunn@msu.edu}, as this will aid in making things easier for those who follow you.
+The latest copy of \pkg{msu-thesis} will always be available on  \href{http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=msu-thesis}{CTAN}. If you use TeXLive or MiKTeX then their respective package managers will update or install the latest version. If you are using a Linux-based distribution, you may need to install the latest copy in your local |texmf| directory. If you want others to use the class, \textsc{please} point them to CTAN, so that they can get an up-to-date version with all accompanying documentation and examples rather than passing along your copy. Please report \textsc{any} problems you have with the class to me \href{mailto:amunn@msu.edu}{amunn@msu.edu}, as this will aid in making things easier for those who follow you.
 \subsection{Version history}
 Previous versions of \pkg{msuthesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.)
 \section{Acknowledgements}
-Thanks to Lars Masden, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0-1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the hyperref code. Thanks also to Matt Husband, Irina Agafonova, and Dmitriy Bryndin for reporting problems during initial testing.
+Thanks to Lars Masden, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0-1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the hyperref code. Thanks also to the following students who have reported problems over the years: Matt Husband, Irina Agafonova, Dmitriy Bryndin, Greg Christian, Changkuk Jung, and Yisu Zhou.
 
 \appendix
 \renewcommand{\thesection}{Appendix \Alph{section}}
@@ -218,7 +219,7 @@ Thanks to Lars Masden, Ulrike Fischer and Peter Wilson for help with setting up 
 %
 \title{The syntax and semantics of phonology}
 \author{Joe Linguist}
-\fieldofstudy{Linguistics}
+\fieldofstudy{Linguistics} % should be in sentence case
 \dedication{This thesis is dedicated to someone.}
 \date{2009}
 %

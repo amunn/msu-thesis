@@ -81,21 +81,32 @@
 % Version 2.1b 2012/05/18 Fixed  bug with redefinition of \contentsname
 %                         when babel is loaded.
 % Version 2.1c 2012/05/18 Generalized babel bugfix to work with polyglossia
+% Version 2.1d 2012/05/27 Removed superfluous title redefinition;
+%                         Made title in abstract upper case (bug);
+%                         Updated documentation; updated degree list
+% Version 2.2 2012/06/07	Made changes to case of copyright page and program name
+%						as per user report.  Who knows if the grad school will
+%                        change their mind again.  What kind of people care about this?
+%                        Name on copyright page is now upper case;
+%                        Program name is now as typed.
+%                        Chapter titles now single spaced
+%                        lscape option now requires the pdflscape package, since the thesis
+%                        office demands that the physical pages be rotated.
 % Use at your own risk! 
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{msu-thesis}[2012/05/18  Michigan State University Thesis Class version 2.1b]
+\ProvidesClass{msu-thesis}[2012/06/07  Michigan State University Thesis Class version 2.2]
 \newif\ifmsu@lscape\msu@lscapefalse
 \DeclareOption{PhD}{\gdef\@degree{DOCTOR OF PHILOSOPHY}\gdef\@diss{DISSERTATION}}
 \DeclareOption{MA}{\gdef\@degree{MASTER OF ARTS}\gdef\@diss{THESIS}}
 \DeclareOption{MS}{\gdef\@degree{MASTER OF SCIENCE}\gdef\@diss{THESIS}}
-\DeclareOption{MAT}{\gdef\@degree{MASTER OF ARTS FOR TEACHERS}\gdef\@diss{THESIS}}
+%\DeclareOption{MAT}{\gdef\@degree{MASTER OF ARTS FOR TEACHERS}\gdef\@diss{THESIS}}
 \DeclareOption{MBA}{\gdef\@degree{MASTER OF BUSINESS ADMINISTRATION}\gdef\@diss{THESIS}}
 \DeclareOption{MFA}{\gdef\@degree{MASTER OF FINE ARTS}\gdef\@diss{THESIS}}
 \DeclareOption{MIPS}{\gdef\@degree{MASTER OF INTERNATIONAL PLANNING STUDIES}\gdef\@diss{THESIS}}
 \DeclareOption{MHRL}{\gdef\@degree{MASTER OF HUMAN RESOURCES AND LABOR RELATIONS}\gdef\@diss{THESIS}}\DeclareOption{MMus}{\gdef\@degree{MASTER OF MUSIC}\gdef\@diss{THESIS}}
-\DeclareOption{MSN}{\gdef\@degree{MASTER OF SCIENCE IN NURSING}\gdef\@diss{THESIS}}
+%\DeclareOption{MSN}{\gdef\@degree{MASTER OF SCIENCE IN NURSING}\gdef\@diss{THESIS}}
 \DeclareOption{MPP}{\gdef\@degree{MASTER OF PUBLIC POLICY}\gdef\@diss{THESIS}}
 \DeclareOption{MSW}{\gdef\@degree{MASTER OF SOCIAL WORK}\gdef\@diss{THESIS}}
 \DeclareOption{MURP}{\gdef\@degree{MASTER IN URBAN AND REGIONAL PLANNING}\gdef\@diss{THESIS}}
@@ -112,7 +123,7 @@
 \RequirePackage{etex}
 % set up landscape page numbering
 \ifmsu@lscape
-  \RequirePackage{lscape}
+  \RequirePackage{pdflscape} % this will cause physical pages to be rotated in the PDF
   \RequirePackage{tikz}
 % adjust yshift (in both commands) to meet the thesis office requirements
 % positive values will move the number closer to the bottom of the table
@@ -133,7 +144,6 @@
 \setheadfoot{\baselineskip}{.5in}
 \AtBeginDocument{%
 \checkandfixthelayout
-
 % set up subscript sizes so that 10 pt is the smallest
 % (MSU Requirement)
 \DeclareMathSizes{12}{12}{10}{10}
@@ -150,19 +160,10 @@
 % polyglossia if they are loaded since they redefine the contents title
 % 
 \newcommand*\MSU@contentsname{TABLE OF CONTENTS} 
-
-%\renewcommand{\title}[1]{\gdef\@title{\MakeUppercase{#1}}}
-\addtoiargdef{\title}{%
-  \begingroup\let\footnote\@gobble}{%
-  \begingroup
-    \renewcommand{\thanks}[1]{}
-    \renewcommand{\thanksmark}[1]{}
-    \renewcommand{\thanksgap}[1]{}
-    \protected@xdef\thetitle{\MakeUppercase{#1}}
-  \endgroup\endgroup}
+  
 \newif\ifappendices\appendicesfalse
 \newcommand*{\@appendixcover}{\ifappendices{APPENDICES}\else{APPENDIX}\fi}
-\newcommand*{\fieldofstudy}[1]{\gdef\@fieldofstudy{\MakeUppercase{#1}}}
+\newcommand*{\fieldofstudy}[1]{\gdef\@fieldofstudy{#1}} % removed \MakeUppercase 6/5/12
 \newcommand{\dedication}[1]{\gdef\@dedication{#1}}
 \newcommand*{\degree}[1]{\gdef\@degree{\MakeUppercase{#1}}}
 \newcommand*{\appendixcover}[1]{\gdef\@appendixcover{\MakeUppercase{#1}}}
@@ -180,6 +181,8 @@
 \setlength{\droptitle}{.25in}
 
 % set up the title page
+% Because the title is sent to \MakeUppercase we need to \protect line
+% breaks within the title.  This has now been documented in the user docs.
 \pretitle{\begin{center}\MakeUppercase}
 \posttitle{\\[\baselineskip]\end{center}}
 \preauthor{\begin{center}by\\[\baselineskip]}
@@ -189,17 +192,17 @@
 % set up the chapter titles
 \chapterstyle{thatcher}
 \setlength{\beforechapskip}{0pt}
-%\setlength{\afterchapskip}{28pt}
+%\setlength{\afterchapskip}{28pt} % Thesis office didn't like this
 \renewcommand*{\chapnamefont}{\centering\bfseries}
 \renewcommand*{\chapnumfont}{\bfseries}
-\renewcommand*{\chaptitlefont}{\bfseries}
+\renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
 \renewcommand*{\printchapternonum}{}
 \renewcommand*{\afterchapternum}{}
 
 % set up the section styles
-\setsecheadstyle{\SingleSpacing\large\bfseries}
-\setsubsecheadstyle{\SingleSpacing\bfseries}
-\setsubsubsecheadstyle{\SingleSpacing\bfseries}
+\setsecheadstyle{\normalfont\SingleSpacing\large\bfseries}
+\setsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
+\setsubsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
 
 % set up TOC
 \maxtocdepth{subsubsection}
@@ -208,6 +211,7 @@
 \renewcommand*{\cftchaptername}{Chapter\space}
 \renewcommand*{\cftappendixname}{Appendix\space}
 \renewcommand*{\cftchapterdotsep}{\cftdotsep}
+
 \renewcommand*{\l@chapter}[2]{%
   \l@chapapp{\MakeUppercase{#1}}{#2}{\cftchaptername}} % Format chapter names
 \renewcommand*{\l@appendix}[2]{%
@@ -247,7 +251,7 @@
    \thispagestyle{empty}
    \plainbreak{-1.5}
     \begin{center}
-    		\thetitle\plainbreak{1}by\plainbreak{1}\theauthor
+    		\MakeUppercase{\thetitle}\plainbreak{1}by\plainbreak{1}\theauthor
  	\end{center}
      \DoubleSpacing
    }{\par}
@@ -272,7 +276,7 @@
 \newcommand*{\makecopyrightpage}{%
 \pagestyle{plain}\clearpage\thispagestyle{empty}
 \vspace*{7in}
-{\raggedleft Copyright by\\\theauthor\\\thedate\\}
+{\raggedleft Copyright by\\\MakeUppercase{\theauthor}\\\thedate\\} % Author now uppercase 6/5/12
 \clearpage}
 
 % make the dedication page
