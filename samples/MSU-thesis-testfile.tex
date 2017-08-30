@@ -1,39 +1,54 @@
-%\listfiles
+% !TEX TS-program = pdflatexmk
+% v2.7b Testfile
+\listfiles
 
 \documentclass[lscape]{msu-thesis}
 % lscape option is needed for this sample file to show correct placement
 % of page numbers on landscape pages. If you don't have any landscape pages
 % in your document, you don't need to load this option.
 \usepackage[T1]{fontenc}
-\usepackage{mathptmx}
+\usepackage{newtxtext,newtxmath} % If they want Times we’ll give them Times
 \usepackage{amsmath}
+%
+\usepackage[]{natbib}
+\bibliographystyle{unified}
+
+
 % If you need newlines in your title, you must use \protect\\
 \title{Topics in the Syntax and Semantics of Phonology}
 \author{Joe Linguist}
 \fieldofstudy{Linguistics}
 \dedication{This thesis is dedicated to someone.}
-\date{2010}
-
+\date{2017}
+\usepackage{listings}
+\lstset{language=TeX,basicstyle={\ttfamily}}
 \usepackage{lipsum}
-\usepackage[T1]{fontenc}
 \usepackage{xcolor}
 \usepackage{gb4e}
-\usepackage{cgloss}
-\usepackage{natbib}
 
-
+\usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
 
 \counterwithin{exx}{chapter}
-\bibliographystyle{unified}
 \singlegloss
-% Uncomment the next two lines for single spaced examples with gb4e
-%\let\oldexe\exe
-%\renewcommand{\exe}{\SingleSpacing\oldexe}
+
+% Uncomment the next line for single spaced examples with gb4e
+%\patchcommand{\exe}{\SingleSpacing}{}
+
+% This code is an example of how to set up a new list of
+\newlistof{listoflistings}{lol}{List of Listings}
+\newfloat[chapter]{listing}{lol}{Listing}
+\newlistentry{listing}{lol}{0}
+\renewcommand*{\cftlistingname}{Listing\space}
+\renewcommand*{\cftlistingaftersnum}{\msucaptiondelim}
+
 \begin{document}
 \frontmatter
 \maketitlepage
+\begin{publicabstract}
+\lipsum[1]
+\end{publicabstract}
 \begin{abstract}
-\lipsum
+\lipsum[1-6]
 \end{abstract}
 \clearpage
 \makecopyrightpage
@@ -49,10 +64,20 @@
 \listoftables
 \clearpage
 \listoffigures
+\clearpage
+\listoflistings
+\clearpage
+\chapter{Key to Abbreviations}
+\vspace{\cftparskip} % This is needed to make the list look like the other LoF/LoT/LoL etc.
+\begin{description}
+\item[foo]  This is a foo
+\item[bar] This is a bar
+\end{description}
 \mainmatter
 % The next command changes chapters in the TOC to have no dotted leader
 %\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep}{\cftnodots}}
 \chapter{Introduction}
+This is some text that precedes a section.
 \section{Some section}
 \lipsum[2]
 
@@ -73,7 +98,7 @@
 \end{exe}
 
 \lipsum[1]
-\lipsum[2]\cite{munn1999} says the following.\footnote{A footnote. This is a footnote with a subscript$_{\text{i}_{\text{j}}}$.  \lipsum[9]} \lipsum[2]
+\lipsum[2]\cite{Munn1999} says the following.\footnote{A footnote. This is a footnote with a subscript$_{\text{i}_{\text{j}}}$.  \lipsum[9]} \lipsum[2]
 \begin{table}
 \centering
 \begin{tabular}{ccc}
@@ -88,7 +113,7 @@ Men & Women & Monsters\\
 
 \lipsum[3]
 \section{More stuff}
-\lipsum[4]\cite{munn2005}
+\lipsum[4]\cite{Munn2005}
 \begin{figure}
 \centering
 {\color{gray!40}\rule{2in}{3in}}
@@ -136,7 +161,7 @@ Men & Women & Monsters\\
 \SingleSpacing
 This is a sample long quotation. \lipsum[2]
 
-\hfill{\citep{munn1999}}
+\hfill{\citep{Munn1999}}
 \end{quote}
 \begin{table}
 \centering
@@ -149,9 +174,25 @@ Men & Women & Monsters\\
 \end{tabular}
 \caption{Another sample table.}
 \end{table}
+\begin{listing}
+\begin{lstlisting}
+\begin{listing}
+This is a listing
+\end{listing}
+\end{lstlisting}
+\caption{A listing caption}
+\end{listing}
+\begin{listing}
+\begin{lstlisting}
+\begin{listing}
+This is another listing
+\end{listing}
+\end{lstlisting}
+\caption{Another listing caption}
+\end{listing}
 \lipsum[8]
-% Now sample page in landscape (need to use [lscape] option for this)
-% First clear the page. Then make the page style {lscape}
+ Now sample page in landscape (need to use [lscape] option for this)
+ First clear the page. Then make the page style {lscape}
 \clearpage\pagestyle{lscape}
 % Enclose landscape pages in the {landscape} environment. Every page within
 % this environment will be landscape. There is no need to enclose each individual
@@ -186,26 +227,59 @@ A & B & C & D & E & F & G \\
 
 \caption{Some random data that takes up too much room.}
 \end{table}
+
+\chapter{A chapter in landscape}
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lllllll}
+
+\toprule
+A & B & C & D & E & F & G \\
+\midrule
+821.3827119 & 661.0913922 & 106.3008156 & 474.009513 & 190.8146776 & 788.4459729 & 784.7964852 \\
+863.5891052 & 308.5023091 & 15.97055732 & 319.4531424 & 932.4330525 & 313.8826277 & 574.5100815 \\
+867.7203343 & 343.6538027 & 34.35605188 & 680.5890553 & 538.4341728 & 510.3271094 & 987.7874714 \\
+144.6465988 & 86.30176472 & 145.0166526 & 26.00087715 & 694.0117063 & 556.0943379 & 650.0605751 \\
+269.5656447 & 979.9087235 & 150.7698724 & 715.0255442 & 312.5203237 & 608.58149 & 737.0459961 \\
+361.7660545 & 38.81968682 & 7.788463243 & 789.031736 & 599.306695 & 407.9588464 & 420.3577306 \\
+22.45176377 & 631.7249181 & 266.0566897 & 81.77581697 & 399.0120086 & 460.8922885 & 341.5815705 \\
+486.3650486 & 398.9817682 & 601.8745699 & 912.7856216 & 102.7510937 & 83.25854643 & 655.1995291 \\
+306.8558515 & 672.2668801 & 582.1884719 & 607.9748493 & 126.3316726 & 672.490033 & 754.4823663 \\
+745.6384032 & 369.5763752 & 170.8671329 & 248.2581139 & 994.2369771 & 28.13615151 & 230.6094341 \\
+270.3421307 & 193.6617479 & 374.94621 & 769.6975098 & 342.6845841 & 917.8180557 & 827.1024885 \\
+360.3810025 & 780.7139757 & 415.9038887 & 846.3157501 & 96.64026956 & 954.7160727 & 21.71722262 \\
+487.6847246 & 200.8682708 & 739.9673152 & 395.1695216 & 524.7826343 & 228.4705562 & 39.95541901 \\
+207.8091332 & 300.6871609 & 627.8808013 & 740.4949976 & 128.9558068 & 176.2158891 & 296.1642661 \\
+336.7537922 & 859.907318 & 704.2503641 & 426.845866 & 773.8926695 & 883.1773631 & 64.85043069 \\
+
+\bottomrule
+\end{tabular}
+
+\caption{Some random data that takes up too much room.}
+\end{table}
 \end{landscape}
-% at the end of the {landscape} environment, make the page style {plain}
+%% at the end of the {landscape} environment, make the page style {plain}
 \pagestyle{plain}
 %
-% Uncomment this next command if you have more than one appendix
-%\appendicestrue
-% This command creates the cover page for the appendix/appendices
-\makeappendixcover
-\appendix
+
+
+%\begin{appendices} ... \end{appendices}
+% use this if you have more than one appendix
+\clearpage
+%\appendix   % use this if you have only one appendix
+\begin{appendices} % use this if you have more than one appendix
 \chapter{An appendix}
+\section{An appendix section}
 \lipsum[9-15]
+\chapter{A second appendix}
+\section{An appendix section}
+\lipsum[16-17]
+\end{appendices}
 \backmatter
-% The next command forces the Bibliography to have a dotted leader
-% (May not be required)
-\addtocontents{toc}{%
-   \protect\renewcommand{\protect\cftchapterdotsep}{\cftdotsep}}
 \SingleSpacing
 % This command creates the cover page for the bibliography
-\makebibliographycover
-
+\makebibliographypage
 \bibliography{MSU-thesis-testfile}
 \end{document}
 

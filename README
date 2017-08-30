@@ -1,10 +1,10 @@
-MSU Thesis Class Version 2.2 2012/06/07
+MSU Thesis Class Version 2.7 2017/06/22
 
-Copyright 2011,2012 by Alan Munn <amunn@msu.edu>
+Copyright 2011,2012,2013,2014,2015,2016, 2017 by Alan Munn <amunn@msu.edu>
 
 This is a class file for producing dissertations and theses according to
 the Michigan State University Graduate School Guidelines for Electronic
-Submission of Master's Theses and Dissertations (2012).
+Submission of Master's Theses and Dissertations (2016).
 
 The class is based on the memoir document class, and thefore inherits
 all of the functionality of that class.
@@ -15,7 +15,7 @@ The msu-thesis class is part of both TeXLive and MikTeX, so you should either al
 
 If you wish to install it locally, follow the directions below:
 
-Put msu-thesis.cls and gb4e-compat.tex into 
+Put msu-thesis.cls 
 <local texmf>/tex/latex/msu-thesis
 
 Put msu-thesis.tex, msu-thesis.pdf and the samples folder into
@@ -34,13 +34,12 @@ This package has the LPPL maintenance status `maintained'.
 
 The Current Maintainer of this package is Alan Munn.
 
-This package consists of the following source files:
+This package consists of the following source file:
 msu-thesis.cls,
-gb4e-compat.tex; 
 Documentation files:
 msu-thesis.tex and msu-thesis.pdf;
 A template file: MSU-thesis-template.tex;
-A test file, test bibliography, and the Unified Linguistics Stylesheet bst file: MSU-thesis-testfile.tex, testfile.bib, unified.bst
+A test file, test bibliography, and the Unified Linguistics Stylesheet bst file: MSU-thesis-testfile.tex, MSU-theis-testfile.bib, unified.bst
 
 
 Use at your own risk! Report bugs/problems/questions to <amunn@msu.edu>

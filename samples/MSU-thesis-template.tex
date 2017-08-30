@@ -1,20 +1,9 @@
 % This is a template for use with the MSU Thesis class
+% Vesion 2.7 2017/06/22
 %
 % Class options: 
-% PhD for dissertations;
-% MA for Master of Arts 
-% MS for Master of Science
-% MAT for Master of Arts for Teachers  
-% MBA for Master of Business Administration  
-% MFA for Master of Fine Arts  
-% MIPS for Master of International Planning Studies  
-% MHRL for Master of Human Resources and Labor Relations  
-% MMus for Master of Music  
-% MSN for Master of Science in Nursing  
-% MPP for Master of Public Policy  
-% MSW for Master of Social Work  
-% MURP for Master in Urban and Regional Planning  
-%
+%[PhD]	Doctor of Philosophy (default) %[DEd]	Doctor of Education%[DMA]	Doctor of Musical Arts%[MA]	Master of Arts%[MS]	Master of Science%[MAT]	Master of Arts for Teachers%[MBA]	Master of Business Administration%[MFA]	Master of Fine Arts%[MIPS]	Master of International Planning Studies%[MHRL]	Master of Human Resources and Labor Relations %[MMus]	Master of Music%[MPH]	Master of Public Health%[MPP]	Master of Public Policy%[MSW]	Master of Social Work%[MURP]	Master in Urban and Regional Planning 
+%%
 % Default is PhD
 %
 %
@@ -22,13 +11,22 @@
 % Just add real content and you're done!
 %
 \documentclass[]{msu-thesis}
-\usepackage{lipsum}
+%
+% for a prettier, but possibly non-compliant table of contents use the [mixedtoc] option
+% for a plain table of contents use the [plaintoc] option
+% for a horrendous looking, but possibly required table of contents, use the [boldtoc] option
+%
+% If you have large tables/figures that need to be in landscape mode, add the [lscape] option
+
+% This is standard fontenc/inputenc for pdflatex
+% If you use LuaLaTeX or XeLaTeX you should replace this with the fontspec package
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 %
 % If the thesis office requires Times, we'll give them Times
 % You can experiment with other font packages here if you like.
-\usepackage{mathptmx} 
+% If you are using XeLaTeX or LuaLaTeX load the Times or Times New Roman font with \setmainfont
+\usepackage{newtxtext,newtxmath} 
 %
 % Load any extra packages here
 %
@@ -36,7 +34,7 @@
 \title{The syntax and semantics of phonology}
 \author{Joe Linguist}
 \fieldofstudy{Linguistics} % This should be in sentence case
-\date{2010}
+\date{2016}
 
 % If you want a dedication page, specify the text of the dedication here and uncomment the next command.
 %
@@ -59,7 +57,7 @@
 % from having a copyright page unless you pay ProQuest to register the copyright.
 % This should be illegal, but I didn't make up the rule.
 
-%\makecopyrightpage
+\makecopyrightpage
 
 % If you have a dedication page, uncomment the next command to print the dedication page
 %
@@ -81,6 +79,7 @@ Your acknowledgements here.
 \listoffigures % comment this out if you have no figures
 %
 % If you have a list of abbreviations/symbols it would go here preceded by a \clearpage
+% See the class documentation and the Memoir manual for how to create other lists 
 %
 \mainmatter
 %
@@ -90,7 +89,7 @@ Your acknowledgements here.
 
 \chapter{Your first chapter}
 %
-% If you have pages that must appear in landscape mode, use the [lscape] option
+% If you have pages that must appear in landscape mode, use the [lscape] documentclass option
 % and enclose the pages in a {landscape} environment.
 %\clearpage\pagestyle{lscape} % first clear the page and change the pagestyle
 %\begin{landscape}
@@ -103,24 +102,31 @@ Your acknowledgements here.
 %
 % If you have appendices, they would go here.  
 % Comment these lines out if you don't
-% If you have more than one appendix, uncomment the next line
-%\appendicestrue
-\makeappendixcover % make the appendix cover page
+% If you have more than one appendix, you need to use 
+%   \begin{appendices}
+%   \chapter{First appendix}
+%   \chapter{Second appendix}
+%   \end{appendices}
+%
 \appendix
-\chapter{Your first appendix}
+\chapter{Your appendix}
 %
 \backmatter
 % The next lines add the dots back into the References/Bibliography heading
-% of the TOC.  Only uncomment this if you need to put the dots back in having
-% removed them for Chapter headings.
+% of the TOC.  Only uncomment this if you need to put the dots back in having removed them for Chapter headings.
 %
 %\addtocontents{toc}{%
 %   \protect\renewcommand{\protect\cftchapterdotsep} {\cftdotsep}}
 %
-\makebibliographycover % make the bibliography cover page
+\makebibliographypage % make the bibliography cover page
 % Bibliography can be single spaced
 %
 \SingleSpacing
+%
 % Your bibliography command here (e.g. \bibliography{your-bib-file}) if using natbib
+%
+% Remember that although the bibliography is single spaced, there needs to
+% be a blank line between entries. This is set by your bibliography package
+% If you are using natbib it is \bibsep; if using biblatex it's \bibitemsep
 \end{document}
 
