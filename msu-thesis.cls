@@ -131,15 +131,17 @@
 %						  Any list of abbreviations \chapter* will need an extra \vspace in the source.
 %						  Added support for apacite package which messes with bibname and TOC.
 %					      Removed gb4e compatibility code from distribution.
-% Version 2.7b 2017/06/24 Added {publicabstract} environment and \publicabstractname for the public abstract. 
+% Version 2.8 2017/12/13  Added {publicabstract} environment and \publicabstractname for the public abstract. 
 %						  This is an unnumbered and uncounted abstract. It’s not clear whether the title
 %                         should be the same as \abstractname. For the moment it is.  Updated documentation to 
-%						  include section about microtype and contents lists.     
+%						  include section about microtype and contents lists.
+%						  Changed \droptitle (again)
+%						  Fixed capitalization problem with Appendices     
 % Use at your own risk! 
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{2.7b}
-\def\msu@date{2017/06/24}
+\def\msu@version{2.8}
+\def\msu@date{2017/12/13}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -222,7 +224,7 @@
 
 % make title 2in from top of page
 % This value is crazy because the grad school doesn’t know how to measure
-\setlength{\droptitle}{.425in} 
+\setlength{\droptitle}{.25in} % changed again due to topskip removal 12/13/17
 
 % set up the title page
 % Because the title is set to \MakeUppercase we need to \protect line
@@ -301,7 +303,7 @@
 \cftinsertcode{APP}{
   \setlength\cftchapterindent{\cftsectionindent}
   \setlength\cftbeforechapterskip{0pt}
-  \renewcommand\cftchapterfont{\msu@tocfont}
+  \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
 }
@@ -549,7 +551,7 @@
 \renewcommand*{\l@chapter}[2]{%
    \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
 \renewcommand*{\l@appendix}[2]{%
-  \l@chapapp{\msu@tocfont#1}{#2}{\cftappendixname}}} % Format appendix names (changed 8/7/14)
+  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}}} % Format appendix names (changed 13/12/17)
 % if no hyperref
 {\relax}
 }
