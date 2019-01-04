@@ -1,2 +1,2 @@
 find . \( -name  '*.aux' -o -name '*.lot' -o -name '*.lof' -o -name '*.log' -o -name '*.bbl' -o -name '*.blg' -o -name '*.gz' -o -name '*.toc' \) -delete
-ctanify  -p msu-thesis msu-thesis.cls msu-thesis.pdf README samples/*=doc/latex/msu-thesis/samples  msu-thesis.tex=doc/latex/msu-thesis
+ctanify --no-tds  -p msu-thesis msu-thesis.cls msu-thesis.pdf README samples/*=doc/latex/msu-thesis/samples  msu-thesis.tex=doc/latex/msu-thesis
