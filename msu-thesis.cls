@@ -217,7 +217,7 @@
 % polyglossia if they are loaded since they redefine the contents title
 % 
 \newcommand*{\msu@contentsname}{TABLE OF CONTENTS} 
-\newcommand*{\fieldofstudy}[1]{\gdef\msu@fieldofstudy{#1}} % removed \MakeUppercase 6/5/12
+\newcommand*{\msu@fieldofstudy}[1]{\gdef\msu@fieldofstudy{#1}} % removed \MakeUppercase 6/5/12
 \newcommand{\dedication}[1]{\gdef\msu@dedication{#1}}
 \newcommand*{\msu@titleintro}{A~} % this is the beginning to the title page phrase
 \newcommand*{\msu@fieldseparator}{\textendash} % this is between the degree name and field of study
