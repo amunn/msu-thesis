@@ -143,7 +143,7 @@
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
 \def\msu@version{2.9beta}
-\def\msu@date{2017/12/13}
+\def\msu@date{2020/03/04}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
