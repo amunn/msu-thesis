@@ -1,6 +1,6 @@
 % MSU Thesis Class
 %
-% Copyright 2009,2010,2011,2012,2013,2014,2015,2016,2017 by Alan Munn <amunn@msu.edu>
+% Copyright 2009,2010,2011,2012,2013,2014,2015,2016,2017,2020 by Alan Munn <amunn@msu.edu>
 %
 % This is a class file for producing dissertations and theses according to the 
 % Michigan State University Graduate School Guidelines
@@ -136,11 +136,13 @@
 %                         should be the same as \abstractname. For the moment it is.  Updated documentation to 
 %						  include section about microtype and contents lists.
 %						  Changed \droptitle (again)
-%						  Fixed capitalization problem with Appendices     
-% Use at your own risk! 
+%						  Fixed capitalization problem with Appendices
+%
+% Version 2.9beta 2020/03/04 Removed super/subscript/footnote restrictions
+%						     Added document fontsize options.
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{2.8}
+\def\msu@version{2.9beta}
 \def\msu@date{2017/12/13}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
@@ -174,12 +176,15 @@
 \DeclareOption{boldtoc}{\msu@stupidtoctrue\msu@plaintocfalse\msu@mixedtocfalse}
 \DeclareOption{plaintoc}{\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse}
 \DeclareOption{mixedtoc}{\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse}
-\ExecuteOptions{PhD}
+\DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v 2.9
+\DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
+\DeclareOption{10pt}{\def\msu@sizeoption{10pt}}
+\ExecuteOptions{PhD,12pt}
 \DeclareOption*{ 
 \PassOptionsToClass{\CurrentOption}{memoir} 
 }
 \ProcessOptions\relax
-\LoadClass[12pt,oneside,letterpaper]{memoir}[2008/05/27]
+\LoadClass[\msu@sizeoption,oneside,letterpaper]{memoir}[2008/05/27]
 % Check for older versions of the latex kernel
 \ifx\e@alloc\@undefined
    \RequirePackage{etex}
@@ -364,11 +369,12 @@
 }
 
 % set up footnotes
-\footmarkstyle{\normalsize\textsuperscript{#1}} % reset size so that mark is right size
-\setlength{\footmarkwidth}{1.8em} 
-\setlength{\footmarksep}{-1.8em} 
-\setlength{\footparindent}{1em} 
-\renewcommand{\foottextfont}{\normalsize} % footnotes will be 12pt
+% Most of this removed v2.9
+%\footmarkstyle{\normalsize\textsuperscript{#1}} % reset size so that mark is right size
+%\setlength{\footmarkwidth}{1.8em} 
+%\setlength{\footmarksep}{-1.8em} 
+%\setlength{\footparindent}{1em} 
+%\renewcommand{\foottextfont}{\normalsize} % footnotes will be 12pt
 \feetbelowfloat % footnotes will appear below bottom floats
 
 % set up abstract and public abstract
@@ -534,9 +540,10 @@
 %
 % set up subscript sizes so that 10 pt is the smallest
 % (MSU Requirement)
-\DeclareMathSizes{12}{12}{10}{10}
-\DeclareMathSizes{10.95}{10.95}{10}{10}
-\DeclareMathSizes{10}{10}{10}{10}
+% Removed v2.9
+%\DeclareMathSizes{12}{12}{10}{10}
+%\DeclareMathSizes{10.95}{10.95}{10}{10}
+%\DeclareMathSizes{10}{10}{10}{10}
 %
 % check for hyperref
 % The hyperref code allows hyperref to be used. It is not guaranteed to 
