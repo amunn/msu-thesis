@@ -138,7 +138,7 @@
 %						  Changed \droptitle (again)
 %						  Fixed capitalization problem with Appendices
 %
-% Version 2.9beta 2020/03/04 Removed super/subscript/footnote restrictions
+% Version 2.9 2020/12/12 Removed super/subscript/footnote restrictions
 %						     Added document fontsize options.
 %							 Changed use of \baselineskip to \onelineskip so that idiocy of the 
 %							 thesis office can be accommodated. If complaints about the spacing 
