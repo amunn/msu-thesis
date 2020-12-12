@@ -140,6 +140,10 @@
 %
 % Version 2.9beta 2020/03/04 Removed super/subscript/footnote restrictions
 %						     Added document fontsize options.
+%							 Changed use of \baselineskip to \onelineskip so that idiocy of the 
+%							 thesis office can be accommodated. If complaints about the spacing 
+%							 of “double space” arise, redefine \onelineskip to be the fontsize rather
+%							 than the leading.
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
 \def\msu@version{2.9beta}
@@ -236,15 +240,15 @@
 % breaks within the title.  This has now been documented in the user docs.
 \newcommand*\msu@thesistype{\ifmsu@dissertation{DISSERTATION}\else{THESIS}\fi}
 \pretitle{\begin{center}\MakeUppercase}
-\posttitle{\\[\baselineskip]\end{center}}
-\preauthor{\begin{center}By\\[\baselineskip]}
+\posttitle{\\[\onelineskip]\end{center}}
+\preauthor{\begin{center}By\\[\onelineskip]}
 \postauthor{\end{center}}
-\predate{\vfill\begin{center}\msu@titleintro\msu@thesistype\\[\baselineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[\baselineskip]\msu@fieldofstudy~\msu@fieldseparator~\msu@degree\\[\baselineskip]}
+\predate{\vfill\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[\onelineskip]\msu@fieldofstudy~\msu@fieldseparator~\msu@degree\\[\onelineskip]}
 
 % set up the chapter titles
 \chapterstyle{thatcher}
-\setlength{\beforechapskip}{0pt}
-\setlength{\afterchapskip}{2\baselineskip} % changed 2017/05/03 because of thesis office complaints
+\setlength{\beforechapskip}{-1sp}% changed 2020/12/17 Need negative value to suppress indentation
+\setlength{\afterchapskip}{2\onelineskip} % changed 2017/05/03 because of thesis office complaints
 \renewcommand*{\chapnamefont}{\centering\bfseries}
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
@@ -260,7 +264,7 @@
 
 
 % set up the section styles
-\setbeforesecskip{0pt}
+\setbeforesecskip{-1sp}
 \setsecheadstyle{\normalfont\SingleSpacing\large\bfseries}
 \setsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
 \setsubsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
@@ -364,7 +368,7 @@
 \renewcommand\mem@tableofcontents[1]{%
    \oldmem@tableofcontents{#1}%
    \setlength{\cftbeforechapterskip}{0.0em \@plus\p@}
-	\setlength{\cftparskip}{\baselineskip}
+	\setlength{\cftparskip}{\onelineskip}
 	\pagestyle{plain}
 }
 
