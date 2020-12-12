@@ -146,8 +146,8 @@
 %							 than the leading.
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{2.9beta}
-\def\msu@date{2020/03/04}
+\def\msu@version{2.9}
+\def\msu@date{2020/12/12}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
