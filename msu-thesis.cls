@@ -151,6 +151,9 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
+\newif\ifmsu@chapterbib\msu@chapterbibfalse
+\def\msu@bibtype{BIB}
+\newif\ifmsu@chapterapp\msu@chapterappfalse
 \newif\ifmsu@lscape\msu@lscapefalse
 \newif\ifmsu@stupidtoc\msu@stupidtocfalse
 \newif\ifmsu@mixedtoc\msu@mixedtocfalse
@@ -180,6 +183,7 @@
 \DeclareOption{boldtoc}{\msu@stupidtoctrue\msu@plaintocfalse\msu@mixedtocfalse}
 \DeclareOption{plaintoc}{\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse}
 \DeclareOption{mixedtoc}{\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse}
+\DeclareOption{chapterbib}{\def\msu@bibtype{CHAPBIB}}
 \DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v 2.9
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
 \DeclareOption{10pt}{\def\msu@sizeoption{10pt}}

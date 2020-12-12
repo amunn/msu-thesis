@@ -191,6 +191,8 @@ This is another listing
 \caption{Another listing caption}
 \end{listing}
 \lipsum[8]
+\section{A section with no subsection following it}
+\lipsum[9]
  Now sample page in landscape (need to use [lscape] option for this)
  First clear the page. Then make the page style {lscape}
 \clearpage\pagestyle{lscape}
@@ -269,6 +271,7 @@ A & B & C & D & E & F & G \\
 \clearpage
 %\appendix   % use this if you have only one appendix
 \begin{appendices} % use this if you have more than one appendix
+\renewcommand{\afterchapternum}{\vspace*{\baselineskip}}
 \chapter{An appendix}
 \section{An appendix section}
 \lipsum[9-15]
