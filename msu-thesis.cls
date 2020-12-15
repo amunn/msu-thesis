@@ -144,9 +144,12 @@
 %							 thesis office can be accommodated. If complaints about the spacing 
 %							 of “double space” arise, redefine \onelineskip to be the fontsize rather
 %							 than the leading.
+%
+% Version 2.9a 2020/12/14 Fixed abstract title spacing after complaints about “double space”.
+%
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{2.9}
+\def\msu@version{2.9a}
 \def\msu@date{2020/12/12}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
@@ -383,13 +386,14 @@
 
 % set up abstract and public abstract
 \renewenvironment{abstract}{%
+   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\abstractname}
    \thispagestyle{empty}
-   \plainbreak{-.5} % changed 2016/06/08 after complaints
+%   \plainbreak{-.5} % changed 2016/06/08 after complaints
     \begin{center}
     	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
  	\end{center}
-	\plainbreak{-.5} % changed 2016/06/08 after complaints
+%	\plainbreak{-.5} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\par}
 %
@@ -403,13 +407,14 @@
 \newcommand{\publicabstractname}{\abstractname}
 \newenvironment{publicabstract}{%
    \setcounter{msu@pubabspages}{\value{page}}
+   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\publicabstractname}
    \thispagestyle{empty}
-   \plainbreak{-.5} % changed 2016/06/08 after complaints
+%   \plainbreak{-.5} % changed 2016/06/08 after complaints
     \begin{center}
     	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
  	\end{center}
-	\plainbreak{-.5} % changed 2016/06/08 after complaints
+%	\plainbreak{-.5} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\clearpage\setcounter{page}{\value{msu@pubabspages}}}
 
