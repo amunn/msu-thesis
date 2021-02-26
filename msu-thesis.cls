@@ -546,6 +546,10 @@
 \@ifpackageloaded{apacite}{\@tocbibfalse}{} % added 6/22/17
 %\topskip=0pt % setting this because the Grad School doesn’t know how to measure -changed back 6/15/17
 \checkandfixthelayout
+
+% Set epigraph fonts to \normalsize
+\renewcommand{\epigraphsize}{\normalsize}
+
 %
 % set up subscript sizes so that 10 pt is the smallest
 % (MSU Requirement)
