@@ -147,8 +147,10 @@
 %
 % Version 2.9a 2020/12/14 Fixed abstract title spacing after complaints about “double space”.
 % Version 2.9b 2021/02/26 Fixed epigraph fontsize
-% Version 2.9c 2021/05/07 Made \tableofcontents behave like \tableofcontents*; added warning when public abstract is used.
-%						  Minor changes to the documentation. 
+% Version 2.9c 2021/05/07 Made \tableofcontents behave like \tableofcontents*
+%						  Added warning when public abstract is used.
+%						  Minor changes to the documentation
+%						  Removed unified.bst from distribution; replaced with apalike in the test file.
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
