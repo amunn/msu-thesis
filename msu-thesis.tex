@@ -2,15 +2,14 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{2.8}
-\def\msudate{2017/12/13}
+\def\msuversion{2.9c}
+\def\msudate{2021/05/07}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics and Languages\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
 \usepackage[T1]{fontenc}
 \usepackage[lmargin=.75in,rmargin=.75in,tmargin=1in,bmargin=1in]{geometry}
 \usepackage{titling}
-\usepackage[utf8]{inputenc}
 \usepackage{array, booktabs, multicol, fancyhdr, xspace,tabularx}
 \usepackage{enumitem}
 \usepackage{fancyvrb,listings,url}
@@ -69,13 +68,13 @@
 \thispagestyle{empty}
 \renewcommand{\abstractname}{\sffamily Abstract}
 
-\abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir} class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \href{https://grad.msu.edu/etd/formatting-guide}{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations} (October 2017) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
+\abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir} class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \href{https://grad.msu.edu/etd/formatting-guide}{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations} (March 2020) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
 \section{Introduction}
 Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the document class itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are actually sane, and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting.
 \section{Background}
 The MSU Thesis Class is based on the \pkg{memoir} document class.  The \pkg{memoir} class is an extensive class that incorporates the functionality of many other packages into it. The class is extensively documented, and the documentation (\pkg{memman.pdf}) should be available with any \TeX\ distribution.  I strongly recommend that you familiarize yourself with \pkg{memoir} as you use the present class.
-\section{Package Options}
-In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}), the \pkg{msu-thesis} takes three options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering and one to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
+\section{Class Options}
+In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}, font size), the \pkg{msu-thesis} takes three options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering, and one to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
 \begin{table}
 \centering
 \begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
@@ -106,11 +105,14 @@ In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcomman
 The Formatting Guide requires that any lansdscape pages be numbered in landscape mode (i.e. along the long edge of the page) rather than in portrait mode, and rotated in the final PDF. The |[lscape]| option enables this. The option loads both the \pkg{pdflscape} package and \pkg{tikz}, and is implemented as a class option so that you are not required to load those packages if they are not needed.
 \subsection{The contents options}
 In 2013 I received reports that the thesis office now requires all elements in the Table of Contents to have the same formatting as they are in the main document, which means that all section, subsection, and subsubsection headings need to be bold.  Since this looks very ugly, I have created two options to turn it off, the |[plaintoc]| option (which makes all ToC entries plain) and |[mixedtoc]| option (which makes Chapters bold and other elements plain). I suspect that the thesis office checkers don't notice this all the time so if you want to have a prettier table of contents and are willing to have that format be corrected, you can use these options to turn off the MSWord inspired ugliness of an entirely bold Table of Contents. I've made |[plaintoc]| the default.  If you are forced by the thesis office to have an entirely bold ToC, use the |[boldtoc]| option.
+\subsection{Font size options}\label{fontsize}
+As of v2.9, the class now supports |10pt|, |11pt| and |12pt| font sizes. The default is |12pt|. If you are using a small font like Times New Roman or equivalent, you should stick to the default. If you are using a larger font like Computer Modern, |11pt| is probably fine. Use |10pt| at your own peril, as I suspect the Thesis Office will not accept it!
 
 \section{User commands}
-In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-thesis} class defines five new titling commands. 
+In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-thesis} class defines seven new titling commands. 
 \begin{quote}
 \begin{description}
+\item[\texttt{\bs maketitlepage}] Makes the main title page for the thesis.
 \item[\texttt{\bs fieldofstudy\{\}}] Takes one argument corresponding to your field of study.
 \item[\texttt{\bs dedication\{\}}] Takes one argument (should be short), your dedication.
 \item[\texttt{\{publicabstract\}}] Environment for the public abstract (unnumbered, uncounted).
@@ -224,7 +226,7 @@ before the contents lists and |\microtypesetup{protrusion=true}| afterwards.  Sc
 \end{quote}
 
 \subsection{Public abstract}
-If your thesis requires a public abstract, it should go immediately before the regular abstract. Use the |{publicabstract}| environment for this.
+If your thesis requires a public abstract, it should go immediately before the regular abstract. Use the |{publicabstract}| environment for this. Please note that you \emph{must} have an abstract even if you also have a public abstract.
 \subsection{Landscape figures and tables}
 If you have large figures and tables that must be rotated, you should use the |[lscape]| class option.  This enables a pagestyle |lscape| and places the page numbers correctly on the long edge of the page. The option loads the \pkg{pdflscape} package which provides a |landscape| environment to place the landscape figure in. Before the landscape environment, you need to issue a |\clearpage| command and change the pagestyle to |lscape|, and afterwards, change it back to |plain|. Schematically, then, any landscape pages should be created in the following way.  
 
@@ -302,14 +304,16 @@ Despite there being no explicit formatting requirements for Chapter headings (ot
 \item Remember to use the |appendices| environment instead of |\appendix| if you have more than one appendix.
 \item Remember to add the |\makebibliographypage| command before your bibliography.
 \end{itemize}
+\subsection{Master’s Theses}
+Master’s theses are sometimes relatively short, and you may think that you can just have |\section| commands with no chapters. This will \emph{not} work. The class is designed to use chapters (and as far as I can tell, the Graduate School also expects chapters).
 
 \section{Bugs and redistribution}
 \subsection{Current version}
-The latest copy of \pkg{msu-thesis} will always be available on  \href{https://ctan.org/pkg/msu-thesis?lang=en}{CTAN}. If you use MiKTeX, or a current year TeX Live then their respective package managers will update or install the latest version. If you are using a Linux-based distribution, or your TeXLive distribution is not the most recent year, you may need to install the latest copy in your local |texmf| directory. If you want others to use the class, \textsc{please} point them to CTAN, so that they can get an up-to-date version with all accompanying documentation and examples rather than passing along your copy. Please report \textsc{any} problems you have with the class to me \href{mailto:amunn@msu.edu}{amunn@msu.edu}, as this will aid in making things easier for those who follow you. The Graduate School rarely announces changes it makes to the formatting requirements, so your problem reports are extremely helpful for keeping the class in compliance with the latest standards.
+The latest copy of \pkg{msu-thesis} will always be available on  \href{https://ctan.org/pkg/msu-thesis?lang=en}{CTAN}. If you use MiKTeX, or a current year TeX Live then their respective package managers will update or install the latest version. If you are using Overleaf, you may or may not have the most recent version, since Overleaf is usually about one year behind in it’s TeX distribution.  If you are using a Linux-based distribution, or your TeXLive distribution is not the most recent year, you may need to install the latest copy in your local |texmf| directory. If you want others to use the class, \textsc{please} point them to CTAN, or tell them to use an up-to-date TeX distribution so that they can use an up-to-date version with all accompanying documentation and examples rather than passing along your copy. Please report \textsc{any} problems you have with the class to me \href{mailto:amunn@msu.edu}{amunn@msu.edu}, as this will aid in making things easier for those who follow you. If you prefer, you may also report issues using GitHub: \href{https://github.com/amunn/msu-thesis}{github.com/amunn/msu-thesis}.  The Graduate School rarely announces changes it makes to the formatting requirements, so your problem reports are extremely helpful for keeping the class in compliance with the latest standards.
 \subsection{Archiving your thesis for the future}
 Since the current version of the \pkg{msu-thesis} class satisfies the Graduate School requirements at any one time, as these requirements change, you may find that if you need to recompile your thesis after you have graduated that the formatting changes. To avoid this, I would recommend saving an archived version of the \pkg{msu-thesis.cls} file in the same folder as your thesis file.  You only need to do this once you have completely finished your thesis however; there's no need to do it during the writing process. 
 \subsection{Version history}
-Previous versions of \pkg{msu-thesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite} package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the the public abstract.
+Previous versions of \pkg{msu-thesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite} package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office.
 \section{Acknowledgements}
 Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the hyperref code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Matt Husband, Changkuk Jung, Adam Liter, William Muir, Adam Soliman, Alicia Parrish, Neil ver Planck, Michael Wojcik, Eremey Valetov, Matthew Vincent and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
 

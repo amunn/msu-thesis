@@ -146,11 +146,14 @@
 %							 than the leading.
 %
 % Version 2.9a 2020/12/14 Fixed abstract title spacing after complaints about “double space”.
+% Version 2.9b 2021/02/26 Fixed epigraph fontsize
+% Version 2.9c 2021/05/07 Made \tableofcontents behave like \tableofcontents*; added warning when public abstract is used.
+%						  Minor changes to the documentation. 
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{2.9a}
-\def\msu@date{2020/12/12}
+\def\msu@version{2.9c}
+\def\msu@date{2021/05/07}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -374,6 +377,13 @@
 	\setlength{\cftparskip}{\onelineskip}
 	\pagestyle{plain}
 }
+% This allows users to use either \tableofcontents or \tableofcontents* with the same effect
+% Code from https://tex.stackexchange.com/a/165968/2693
+% Allows users to not read the docs
+\renewcommand{\tableofcontents}{%
+  \@ifstar{\mem@tableofcontents{01}}
+          {\mem@tableofcontents{01}}%
+}
 
 % set up footnotes
 % Most of this removed v2.9
@@ -406,6 +416,7 @@
 \newcounter{msu@pubabspages}
 \newcommand{\publicabstractname}{\abstractname}
 \newenvironment{publicabstract}{%
+   \ClassWarning{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
    \setcounter{msu@pubabspages}{\value{page}}
    \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\publicabstractname}
@@ -548,7 +559,7 @@
 \checkandfixthelayout
 
 % Set epigraph fonts to \normalsize
-\renewcommand{\epigraphsize}{\normalsize}
+\renewcommand{\epigraphsize}{\normalsize} % added 2/26/21 
 
 %
 % set up subscript sizes so that 10 pt is the smallest
