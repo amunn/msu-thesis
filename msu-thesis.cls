@@ -144,10 +144,18 @@
 %							 thesis office can be accommodated. If complaints about the spacing 
 %							 of “double space” arise, redefine \onelineskip to be the fontsize rather
 %							 than the leading.
+%
+% Version 2.9a 2020/12/14 Fixed abstract title spacing after complaints about “double space”.
+% Version 2.9b 2021/02/26 Fixed epigraph fontsize
+% Version 2.9c 2021/05/07 Made \tableofcontents behave like \tableofcontents*
+%						  Added warning when public abstract is used.
+%						  Minor changes to the documentation
+%						  Removed unified.bst from distribution; replaced with apalike in the test file.
+%
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{2.9beta}
-\def\msu@date{2020/03/04}
+\def\msu@version{2.9c}
+\def\msu@date{2021/05/07}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -375,6 +383,13 @@
 	\setlength{\cftparskip}{\onelineskip}
 	\pagestyle{plain}
 }
+% This allows users to use either \tableofcontents or \tableofcontents* with the same effect
+% Code from https://tex.stackexchange.com/a/165968/2693
+% Allows users to not read the docs
+\renewcommand{\tableofcontents}{%
+  \@ifstar{\mem@tableofcontents{01}}
+          {\mem@tableofcontents{01}}%
+}
 
 % set up footnotes
 % Most of this removed v2.9
@@ -387,13 +402,14 @@
 
 % set up abstract and public abstract
 \renewenvironment{abstract}{%
+   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\abstractname}
    \thispagestyle{empty}
-   \plainbreak{-.5} % changed 2016/06/08 after complaints
+%   \plainbreak{-.5} % changed 2016/06/08 after complaints
     \begin{center}
     	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
  	\end{center}
-	\plainbreak{-.5} % changed 2016/06/08 after complaints
+%	\plainbreak{-.5} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\par}
 %
@@ -406,14 +422,16 @@
 \newcounter{msu@pubabspages}
 \newcommand{\publicabstractname}{\abstractname}
 \newenvironment{publicabstract}{%
+   \ClassWarning{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
    \setcounter{msu@pubabspages}{\value{page}}
+   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\publicabstractname}
    \thispagestyle{empty}
-   \plainbreak{-.5} % changed 2016/06/08 after complaints
+%   \plainbreak{-.5} % changed 2016/06/08 after complaints
     \begin{center}
     	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
  	\end{center}
-	\plainbreak{-.5} % changed 2016/06/08 after complaints
+%	\plainbreak{-.5} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\clearpage\setcounter{page}{\value{msu@pubabspages}}}
 
@@ -545,6 +563,10 @@
 \@ifpackageloaded{apacite}{\@tocbibfalse}{} % added 6/22/17
 %\topskip=0pt % setting this because the Grad School doesn’t know how to measure -changed back 6/15/17
 \checkandfixthelayout
+
+% Set epigraph fonts to \normalsize
+\renewcommand{\epigraphsize}{\normalsize} % added 2/26/21 
+
 %
 % set up subscript sizes so that 10 pt is the smallest
 % (MSU Requirement)
