@@ -269,9 +269,13 @@ A & B & C & D & E & F & G \\
 %\begin{appendices} ... \end{appendices}
 % use this if you have more than one appendix
 \clearpage
-%\appendix   % use this if you have only one appendix
+%\begin{appendix} ... \end{appendix}   % use this if you have only one appendix
+%\begin{appendix}
+%\chapter*{A single appendix}
+%\lipsum[11]
+%\end{appendix}
+
 \begin{appendices} % use this if you have more than one appendix
-\renewcommand{\afterchapternum}{\vspace*{\baselineskip}}
 \chapter{An appendix}
 \section{An appendix section}
 \lipsum[9-15]
