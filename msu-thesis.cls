@@ -197,11 +197,12 @@
 \DeclareOption{boldtoc}{\msu@stupidtoctrue\msu@plaintocfalse\msu@mixedtocfalse}
 \DeclareOption{plaintoc}{\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse}
 \DeclareOption{mixedtoc}{\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse}
-\DeclareOption{chapterbib}{\def\msu@bibtype{CHAPBIB}} % per-chapter bibliographies added v3.0
+\DeclareOption{chapterbib}{\global\msu@chapterbibtrue\def\msu@bibtype{CHAPBIB}} % per-chapter bibliographies added v3.0
 \DeclareOption{chapterapp}{
+    \global\msu@chapterapptrue
 	\def\msu@apptype{CHAPAPP}
-	% per-chapter appendices added v3.0 Appendix numbers restart at A every chapter
-%	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}} % Appendix numbers per-chapter (not allowed!)
+	% per-chapter appendices added v3.0 
+	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}} % Appendix numbers per-chapter (now permitted)
 }
 \DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v2.9
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
@@ -578,7 +579,7 @@
   {\renewcommand{\appendixname}{Appendix}
    \renewcommand{\appendixtocname}{Appendix}
    \renewcommand{\appendixpagename}{Appendix}
-   \renewcommand\msuappendixnumformat{}% make sure single appendix doesn't have a number
+   \ifmsu@chapterapp\else\renewcommand\msuappendixnumformat{}\fi% make sure single appendix doesn't have a number if global
    \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse}
 
