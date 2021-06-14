@@ -167,7 +167,7 @@
 \def\msu@bibtype{BIB}
 \newif\ifmsu@chapterapp\msu@chapterappfalse % added v3.0
 \def\msu@apptype{APP}
-\newcommand*\msuappendixnumformat{\Alph{chapter}} 
+\newcommand*\msuappendixnumformat{\Alph{chapter}}% Appendices are Alpha numbered
 \newif\ifmsu@lscape\msu@lscapefalse
 \newif\ifmsu@stupidtoc\msu@stupidtocfalse
 \newif\ifmsu@mixedtoc\msu@mixedtocfalse
@@ -198,8 +198,11 @@
 \DeclareOption{plaintoc}{\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse}
 \DeclareOption{mixedtoc}{\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse}
 \DeclareOption{chapterbib}{\def\msu@bibtype{CHAPBIB}} % per-chapter bibliographies added v3.0
-\DeclareOption{chapterapp}{\def\msu@apptype{CHAPAPP}
-	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}}} % per-chapter appendices added v3.0 
+\DeclareOption{chapterapp}{
+	\def\msu@apptype{CHAPAPP}
+	% per-chapter appendices added v3.0 Appendix numbers restart at A every chapter
+%	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}} % Appendix numbers per-chapter (not allowed!)
+}
 \DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v2.9
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
 \DeclareOption{10pt}{\def\msu@sizeoption{10pt}}
@@ -575,19 +578,20 @@
   {\renewcommand{\appendixname}{Appendix}
    \renewcommand{\appendixtocname}{Appendix}
    \renewcommand{\appendixpagename}{Appendix}
+   \renewcommand\msuappendixnumformat{}% make sure single appendix doesn't have a number
    \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse}
 
 \renewenvironment{appendices}%
-  {\msu@apppage\settocdepth{chapter}\@resets@pp\anappendixtrue}%
+  {\msu@apppage\settocdepth{chapter}
+   \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse}
 
 % The default numbering that memoir assumes is for appendices 
-% is sequential throughout the document; here we adopt
-% a slightly saner version where if there are per-chapter appendices
-% we prefix the chapter number to the appendix
-% Since the thesis office might complain about this, we provide the format
-% hook, defined in the chapterapp package option.
+% is sequential throughout the document; the thesis office 
+% requires them to restart from A every chapter. In case they
+% ever allow a saner numbering system we provide the \msuappendixnumberformat hook
+% for modifying the numbering scheme if allowed. 
 %
 
 \renewcommand{\@resets@pp}{%

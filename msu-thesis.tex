@@ -70,7 +70,7 @@
 
 \abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir} class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \href{https://grad.msu.edu/etd/formatting-guide}{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations} (March 2020) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
 \section{Introduction}
-Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the document class itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are actually sane, and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting.
+Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the document class itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are for the most part sane, and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting.
 \section{Background}
 The MSU Thesis Class is based on the \pkg{memoir} document class.  The \pkg{memoir} class is an extensive class that incorporates the functionality of many other packages into it. The class is extensively documented, and the documentation (\pkg{memman.pdf}) should be available with any \TeX\ distribution.  I strongly recommend that you familiarize yourself with \pkg{memoir} as you use the present class.
 \section{Class Options}
@@ -250,7 +250,7 @@ The |landscape| environment makes all pages within it landscape, so if you have 
 \subsection{Appendices}
 Appendices in a thesis are usually at the end of the document, but before the bibliography. MSU requires appendices to be preceded by a cover page which says either ``Appendix'' (if there is only one) or ``Appendices'' if there is more than one. The class implements this with two environments: |{appendix}| for a single appendix and |{appendices}| for multiple appendices. If your thesis organization requires appendices per-chapter, you must use the |[chapterapp]| class option. In either case, the code for appendices is identical.
 \subsubsection{Single appendix}
-If you have a single appendix, your code should look like this:
+If you have a single appendix, your code should look like this: 
 
 \begin{quote}
 \begin{lstlisting}
