@@ -1,10 +1,11 @@
 % This is a template for use with the MSU Thesis class
-% Vesion 2.9c 2021/05/07
+% Vesion 3.0 2021/06/10
 %
 % Class options: 
 %[PhD]	Doctor of Philosophy (default) 
 %[DEd]	Doctor of Education
 %[DMA]	Doctor of Musical Arts
+%[DNP]	Doctor of Nursing Practice
 %[MA]	Master of Arts
 %[MS]	Master of Science
 %[MAT]	Master of Arts for Teachers
@@ -32,16 +33,20 @@
 %
 % If you have large tables/figures that need to be in landscape mode, add the [lscape] option
 %
-% The class accepts 12pt, 11pt or 10pt font size options. For Times New Roman use 12pt (default).
-
-% This is standard fontenc/inputenc for pdflatex
+% The class accepts 12pt, 11pt or 10pt font size options. 
+% For Times New Roman as in this example document, use 12pt (default).
+%
+% If you require per-chapter appendices add the [chapterapp] option
+%
+% If you require per-chapter bibliographies add the [chapterbib] option
+%
+% This is standard fontenc for pdflatex
 % If you use LuaLaTeX or XeLaTeX you should replace this with the fontspec package
-\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 %
 % If the thesis office requires Times, we'll give them Times
 % You can experiment with other font packages here if you like.
-% If you are using XeLaTeX or LuaLaTeX load the Times or Times New Roman font with \setmainfont
+% If you are using XeLaTeX or LuaLaTeX load  TeX Gyre Termes, Times or Times New Roman font with \setmainfont
 \usepackage{newtxtext,newtxmath} 
 %
 % Load any extra packages here
@@ -62,16 +67,23 @@
 \frontmatter
 % First make the title page
 \maketitlepage
-% Next make the abstract
+
+% if you have public abstract (optional) it should go here
+%\begin{publicabstract}
+% Public abstract goes here
+%\end{publicabstract}
+
+% Next make the regular abstract (obligatory)
 \begin{abstract}
 % Your abstract goes here.  Master's 1 page max. PhD 2 page max.
 \end{abstract}
 
 % Force a newpage
 \clearpage
-% Make the copyright page. The Graduate School ridiculously prohibits you
-% from having a copyright page unless you pay ProQuest to register the copyright.
-% This should be illegal, but I didn't make up the rule.
+% Make the copyright page. The Graduate School ridiculously claims that you
+% can't have a copyright page unless you pay ProQuest to register the copyright.
+% This is simply not the case, so put in your copyright page whether or not you
+% intend to pay Proquest to register the copyright.  
 
 \makecopyrightpage
 
@@ -117,15 +129,20 @@ Your acknowledgements here.
 %
 %
 % If you have appendices, they would go here.  
-% Comment these lines out if you don't
+% If you only have one appendix it will look like this: (comment this out if you have no appendices)
+\begin{appendix}
+\chapter{Your appendix}
+\end{appendix}
+%
+%
 % If you have more than one appendix, you need to use 
 %   \begin{appendices}
 %   \chapter{First appendix}
 %   \chapter{Second appendix}
 %   \end{appendices}
 %
-\appendix
-\chapter{Your appendix}
+% If each chapter has its own set of appendices, then load the class with the [chapterapp] option
+% and put your {appendix} or {appendices} environments at the end of each chapter.
 %
 \backmatter
 % The next lines add the dots back into the References/Bibliography heading
@@ -135,14 +152,19 @@ Your acknowledgements here.
 %   \protect\renewcommand{\protect\cftchapterdotsep} {\cftdotsep}}
 %
 \makebibliographypage % make the bibliography cover page
-% Bibliography can be single spaced
 %
-\SingleSpacing
 %
-% Your bibliography command here (e.g. \bibliography{your-bib-file}) if using natbib
+% Your bibliography command here 
+% e.g. \bibliography{your-bib-file}) if using natbib
+% e.g. \printbibliography if using biblatex
 %
 % Remember that although the bibliography is single spaced, there needs to
 % be a blank line between entries. This is set by your bibliography package
 % If you are using natbib it is \bibsep; if using biblatex it's \bibitemsep
+% These are set automatically by the class if you are using these packages
+%
+% If you need per-chapter bibliographies, you would use \makebibliographypage before each
+% chapter level bibliography and then the relevant bibliography command
+%
 \end{document}
 

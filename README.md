@@ -1,4 +1,4 @@
-# MSU Thesis Class Version 2.9c 2021/05/07
+# MSU Thesis Class Version 3.0 2021/06/10
 
 Copyright 2011-2021 by Alan Munn <amunn@msu.edu>
 
@@ -49,7 +49,7 @@ A template file:
 A test file and a test bibliography:
 
  `MSU-thesis-testfile.tex`
- `MSU-theis-testfile.bib`
+ `MSU-thesis-testfile.bib`
 
 
 Use at your own risk! Report bugs/problems/questions to [amunn@msu.edu](mailto:amunn@msu.edu) or use the [GitHub repository bug tracker](https://github.com/amunn/msu-thesis/issues).
