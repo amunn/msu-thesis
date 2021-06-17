@@ -1,5 +1,5 @@
 % !TEX TS-program = pdflatexmk
-% v2.9c Testfile
+% v3.0 Testfile
 \listfiles
 
 \documentclass[lscape]{msu-thesis}
@@ -10,7 +10,7 @@
 \usepackage{newtxtext,newtxmath} % If they want Times we’ll give them Times
 \usepackage{amsmath}
 %
-\usepackage[]{natbib}
+\usepackage{natbib}
 \bibliographystyle{apalike}
 
 
@@ -96,7 +96,6 @@ This is some text that precedes a section.
 \trans A French example.}
 \end{xlist}
 \end{exe}
-
 \lipsum[1]
 \lipsum[2]\cite{Munn1999} says the following.\footnote{A footnote. This is a footnote with a subscript$_{\text{i}_{\text{j}}}$.  \lipsum[9]} \lipsum[2]
 \begin{table}
@@ -204,7 +203,6 @@ This is another listing
 \begin{table}
 \centering
 \begin{tabular}{lllllll}
-
 \toprule
 A & B & C & D & E & F & G \\
 \midrule
@@ -223,10 +221,8 @@ A & B & C & D & E & F & G \\
 487.6847246 & 200.8682708 & 739.9673152 & 395.1695216 & 524.7826343 & 228.4705562 & 39.95541901 \\
 207.8091332 & 300.6871609 & 627.8808013 & 740.4949976 & 128.9558068 & 176.2158891 & 296.1642661 \\
 336.7537922 & 859.907318 & 704.2503641 & 426.845866 & 773.8926695 & 883.1773631 & 64.85043069 \\
-
 \bottomrule
 \end{tabular}
-
 \caption{Some random data that takes up too much room.}
 \end{table}
 
@@ -264,27 +260,24 @@ A & B & C & D & E & F & G \\
 %% at the end of the {landscape} environment, make the page style {plain}
 \pagestyle{plain}
 %
-
-
 %\begin{appendices} ... \end{appendices}
 % use this if you have more than one appendix
 \clearpage
 %\begin{appendix} ... \end{appendix}   % use this if you have only one appendix
-%\begin{appendix}
-%\chapter*{A single appendix}
-%\lipsum[11]
-%\end{appendix}
+\begin{appendix}
+\chapter{A single appendix}
+\lipsum[11]
+\end{appendix}
 
-\begin{appendices} % use this if you have more than one appendix
-\chapter{An appendix}
-\section{An appendix section}
-\lipsum[9-15]
-\chapter{A second appendix}
-\section{An appendix section}
-\lipsum[16-17]
-\end{appendices}
+%\begin{appendices} % use this if you have more than one appendix
+%\chapter{An appendix}
+%\section{An appendix section}
+%\lipsum[9-15]
+%\chapter{A second appendix}
+%\section{An appendix section}
+%\lipsum[16-17]
+%\end{appendices}
 \backmatter
-\SingleSpacing
 % This command creates the cover page for the bibliography
 \makebibliographypage
 \bibliography{MSU-thesis-testfile}
