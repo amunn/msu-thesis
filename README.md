@@ -6,12 +6,12 @@ This is a class file for producing dissertations and theses according to
 the Michigan State University Graduate School Guidelines for Electronic
 Submission of Master's Theses and Dissertations (March 2020).
 
-The class is based on the memoir document class, and thefore inherits
+The class is based on the `memoir` document class, and therefore inherits
 all of the functionality of that class.
 
 ## Installation:
 
-The msu-thesis class is part of both TeXLive and MikTeX, so you should either already have it or should be able to install it with your package manager.
+The `msu-thesis` class is part of both TeXLive and MikTeX, so you should either already have it or should be able to install it with your package manager.
 
 If you wish to install it locally, follow the directions below:
 
