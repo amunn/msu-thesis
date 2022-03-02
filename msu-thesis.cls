@@ -155,11 +155,12 @@
 % 						  Added global chapter counter for proper hyperrefs to appendices
 %						  Added a formatting hook for appendix numbering. We'll see how this works in practice.                   
 %						  Added spacing hooks for bibliographies to make users' lives a little easier
+% Version 3.0b 2021/07/14 Added msu@hchap counter for hyperref targets in appendices (unreleased)
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.0}
-\def\msu@date{2021/06/10}
+\def\msu@version{3.0b}
+\def\msu@date{2021/07/14}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -256,6 +257,8 @@
 \newcommand*{\msu@fieldseparator}{\textendash} % this is between the degree name and field of study
 
 \newcounter{msu@hchap} % global counter for chapters used by hyperref
+% This may also be solved by using \hypersetup{hypertexnames=false}
+% hard to tell whether this is a better solution.
 
 
 % make title 2in from top of page
@@ -695,7 +698,7 @@
    \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
 \renewcommand*{\l@appendix}[2]{%
   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
-\apptocmd{\@resets@pp}{\gdef\theHchapter{\Alph{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0)
+\apptocmd{\@resets@pp}{\gdef\theHchapter{\arabic{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0; fixed v3.0b)
 }
   % if no hyperref
 {\relax}
