@@ -156,11 +156,12 @@
 %						  Added a formatting hook for appendix numbering. We'll see how this works in practice.                   
 %						  Added spacing hooks for bibliographies to make users' lives a little easier
 % Version 3.0b 2021/07/14 Added msu@hchap counter for hyperref targets in appendices (unreleased)
+% Version 3.1  2022/03/03 Added support for List of Algorithms plus fixes for algorithm2e and algorithmicx etc
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.0b}
-\def\msu@date{2021/07/14}
+\def\msu@version{3.1}
+\def\msu@date{2022/03/03}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -334,6 +335,21 @@
 	\def\msu@tocfont{\normalfont}
 	\def\msu@chapfont{\bfseries}
 \fi
+
+% Support for algorithm packages added v3.1
+% If using the algorithm2e package, you must load it with the algo2e package option
+% If you are using algorithmicx or its related versions you should not load
+% the algorithm package, but instead load the float package and then style
+% your algorithms accordingly using \floatstyle 
+% Importantly you MUST load float after defining any new lists since it clobbers
+% the memoir float methods
+
+
+\newlistof{listofalgorithms}{loa}{List of Algorithms}
+\newfloat[chapter]{algorithm}{loa}{Algorithm}
+\newlistentry{algorithm}{loa}{0}
+\renewcommand*{\cftalgorithmname}{Algorithm\space}
+\renewcommand*{\cftalgorithmaftersnum}{\msucaptiondelim}
 
 %
 % This code technique from http://tex.stackexchange.com/q/232121/
@@ -666,6 +682,7 @@
 \let\msucaptiondelim\@contdelim
 % Moved to AtBeginDocument to override apacite
 \@ifpackageloaded{apacite}{\@tocbibfalse}{} % added 6/22/17
+\@ifpackageloaded{algorithm2e}{\let\@chapter=\algocf@original@chapter}{}% undoes algorithm2e redefinition of chapter added v3.1
 % Make bibliography spacing more automatic for biblatex and natbib users 2021/06/10
 % This should cover most cases. Otherwise just set single spacing
 \@ifpackageloaded{biblatex}

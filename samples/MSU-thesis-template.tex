@@ -1,5 +1,5 @@
 % This is a template for use with the MSU Thesis class
-% Vesion 3.0 2021/06/10
+% Version 3.1 2022/03/03
 %
 % Class options: 
 %[PhD]	Doctor of Philosophy (default) 
@@ -107,13 +107,20 @@ Your acknowledgements here.
 \listoffigures % comment this out if you have no figures
 %
 % If you have a list of abbreviations/symbols it would go here preceded by a \clearpage
-% See the class documentation and the Memoir manual for how to create other lists 
+% See the class documentation and the Memoir manual for how to create other lists
+%
+% If you are using an algorithm formatting package (e.g. algorithmicx or algorithm2e)
+% please read the class documentation carefully on how to use these packages with the class
+% The class provides an {algorithm} environment and a \listofalgorithms by default 
 %
 \mainmatter
 %
 % The next line removes the dots in chapter headings in the TOC
 % May violate thesis office rules
 %\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep} {\cftnodots}}
+
+% ALL documents using this class must have \chapter divisions
+% If you are using it for an MA/MS thesis you still need to have chapters, even if they are very small.
 
 \chapter{Your first chapter}
 %
@@ -143,7 +150,9 @@ Your acknowledgements here.
 %
 % If each chapter has its own set of appendices, then load the class with the [chapterapp] option
 % and put your {appendix} or {appendices} environments at the end of each chapter.
-%
+% You should not use the \backmatter command before per-chapter material
+% 
+% There should only be ONE \backmatter command in your document, and it should separate only the thesis from the bibliography
 \backmatter
 % The next lines add the dots back into the References/Bibliography heading
 % of the TOC.  Only uncomment this if you need to put the dots back in having removed them for Chapter headings.
@@ -166,6 +175,7 @@ Your acknowledgements here.
 % If you need per-chapter bibliographies, you need to use the [chapterbib]
 % class option and you would use \makebibliographypage before each
 % chapter level bibliography and then the relevant bibliography command
+% You should not use the \backmatter command before per-chapter material
 %
 \end{document}
 

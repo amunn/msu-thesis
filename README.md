@@ -1,6 +1,6 @@
-# MSU Thesis Class Version 3.0 2021/06/10
+# MSU Thesis Class Version 3.1 2022/03/03
 
-Copyright 2011-2021 by Alan Munn <amunn@msu.edu>
+Copyright 2011-2022 by Alan Munn <amunn@msu.edu>
 
 This is a class file for producing dissertations and theses according to
 the Michigan State University Graduate School Guidelines for Electronic
