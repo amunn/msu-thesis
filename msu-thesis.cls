@@ -1,6 +1,6 @@
 % MSU Thesis Class
 %
-% Copyright 2009,2010,2011,2012,2013,2014,2015,2016,2017,2020 by Alan Munn <amunn@msu.edu>
+% Copyright 2009-2022 by Alan Munn <amunn@msu.edu>
 %
 % This is a class file for producing dissertations and theses according to the 
 % Michigan State University Graduate School Guidelines
@@ -157,11 +157,12 @@
 %						  Added spacing hooks for bibliographies to make users' lives a little easier
 % Version 3.0b 2021/07/14 Added msu@hchap counter for hyperref targets in appendices (unreleased)
 % Version 3.1  2022/03/03 Added support for List of Algorithms plus fixes for algorithm2e and algorithmicx etc
+% Version 3.1b 2022/03/25 Fixed numbering problem for single global appendix
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.1}
-\def\msu@date{2022/03/03}
+\def\msu@version{3.1b}
+\def\msu@date{2022/03/25}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -169,6 +170,7 @@
 \def\msu@bibtype{BIB}
 \newif\ifmsu@chapterapp\msu@chapterappfalse % added v3.0
 \def\msu@apptype{APP}
+\newif\ifmsu@singleappendix\msu@singleappendixfalse % added v3.1b
 \newcommand*\msuappendixnumformat{\Alph{chapter}}% Appendices are Alpha numbered
 \newif\ifmsu@lscape\msu@lscapefalse
 \newif\ifmsu@stupidtoc\msu@stupidtocfalse
@@ -287,7 +289,7 @@
 \renewcommand*{\printchapternonum}{} % modified 3/5/2017
 \renewcommand*{\afterchapternum}{}
 \renewcommand*{\printchaptername}{%
-    \centerline{\chapnumfont{\MakeUppercase\@chapapp\ \thechapter}}}
+    \centerline{\chapnumfont{\MakeUppercase\@chapapp\ \ifmsu@singleappendix\else\thechapter\fi}}}% added v3.1b
 \renewcommand{\partnamefont}{\centering\bfseries}
 \renewcommand{\partnumfont}{\bfseries}
 \renewcommand{\parttitlefont}{\SingleSpacing\bfseries}
@@ -598,7 +600,7 @@
   {\renewcommand{\appendixname}{Appendix}
    \renewcommand{\appendixtocname}{Appendix}
    \renewcommand{\appendixpagename}{Appendix}
-   \ifmsu@chapterapp\else\renewcommand\msuappendixnumformat{}\fi% make sure single appendix doesn't have a number if global
+   \ifmsu@chapterapp\else\msu@singleappendixtrue\fi% make sure single appendix doesn't have a number if global 3.1b
    \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse}
 
