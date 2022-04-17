@@ -150,9 +150,14 @@ Your acknowledgements here.
 %
 % If each chapter has its own set of appendices, then load the class with the [chapterapp] option
 % and put your {appendix} or {appendices} environments at the end of each chapter.
-% You should not use the \backmatter command before per-chapter material
+%
+%
+% Even though it is very unintuitive, per-chapter appendices are STILL \chapter commands
+% in your document!  If you use \section it will not work properly.
 % 
-% There should only be ONE \backmatter command in your document, and it should separate only the thesis from the bibliography
+% You should not use the \backmatter command before per-chapter material!
+% There should only be ONE \backmatter command in your document, 
+% and it should separate only the thesis from the bibliography
 \backmatter
 % The next lines add the dots back into the References/Bibliography heading
 % of the TOC.  Only uncomment this if you need to put the dots back in having removed them for Chapter headings.

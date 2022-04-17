@@ -158,11 +158,12 @@
 % Version 3.0b 2021/07/14 Added msu@hchap counter for hyperref targets in appendices (unreleased)
 % Version 3.1  2022/03/03 Added support for List of Algorithms plus fixes for algorithm2e and algorithmicx etc
 % Version 3.1b 2022/03/25 Fixed numbering problem for single global appendix
+% Version 3.2 2022/04/16 Fixed TOC formatting problem for per-chapter appendices
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.1b}
-\def\msu@date{2022/03/25}
+\def\msu@version{3.2}
+\def\msu@date{2022/04/16}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -399,6 +400,10 @@
 
 \cftinsertcode{CHAPAPPR}{
 \cftsetindents{section}{1.5em}{2.3em}
+\setlength{\cftchapterindent}{0em}
+\setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
+  \renewcommand\cftchapterfont{\msu@chapfont}
+  \renewcommand\cftchapterpagefont{\msu@chapfont}
 }
 % This code resets the changes made in the APP code back to normal
 % so that the bibliography will appear correctly in the TOC
@@ -584,7 +589,6 @@
    \interlinepenalty \@M
    \normalfont
    \printparttitle{\appendixpagename}\par}%
-   \cftinserthook{toc}{CHAPAPPR} % reset added 2021/06/10
   \@endpart}
 
 %
@@ -600,14 +604,19 @@
   {\renewcommand{\appendixname}{Appendix}
    \renewcommand{\appendixtocname}{Appendix}
    \renewcommand{\appendixpagename}{Appendix}
-   \ifmsu@chapterapp\else\msu@singleappendixtrue\fi% make sure single appendix doesn't have a number if global 3.1b
+% It's not clear if this should apply to per-chapter appendices also
+% I think it probably should, even though it leads to ambiguity. 
+% Changing this in 3.2 2022/04/16
+%   \ifmsu@chapterapp\else
+   \msu@singleappendixtrue
+% \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
    \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
-  {\@ppsaveapp\@pprestoresec\anappendixfalse}
+  {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
   {\msu@apppage\settocdepth{chapter}
    \@resets@pp\anappendixtrue}%
-  {\@ppsaveapp\@pprestoresec\anappendixfalse}
+  {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
 % The default numbering that memoir assumes is for appendices 
 % is sequential throughout the document; the thesis office 
