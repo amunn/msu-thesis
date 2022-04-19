@@ -159,11 +159,14 @@
 % Version 3.1  2022/03/03 Added support for List of Algorithms plus fixes for algorithm2e and algorithmicx etc
 % Version 3.1b 2022/03/25 Fixed numbering problem for single global appendix
 % Version 3.2 2022/04/16 Fixed TOC formatting problem for per-chapter appendices
+% Version 3.3 2022/04/18 New option bibassection to allow for thesis office inconsistencies.
+%						 Also adjusted chapter title code so that Appendix chapters can have
+%						 the extra blank line that the thesis office wants. More inconsistencies.
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.2}
-\def\msu@date{2022/04/16}
+\def\msu@version{3.3}
+\def\msu@date{2022/04/18}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -203,6 +206,8 @@
 \DeclareOption{plaintoc}{\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse}
 \DeclareOption{mixedtoc}{\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse}
 \DeclareOption{chapterbib}{\global\msu@chapterbibtrue\def\msu@bibtype{CHAPBIB}} % per-chapter bibliographies added v3.0
+\newcommand*\msu@bibsection{chapter} % per-chapter bibliographies like chapters in TOC
+\DeclareOption{bibassection}{\def\msu@bibsection{section}} % per-chapter bibs as sections in TOC
 \DeclareOption{chapterapp}{
     \global\msu@chapterapptrue
 	\def\msu@apptype{CHAPAPP}
@@ -288,7 +293,9 @@
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
 \renewcommand*{\printchapternonum}{} % modified 3/5/2017
-\renewcommand*{\afterchapternum}{}
+% added 18/4/2022 to allow stupid extra space for appendix chapter title
+\setlength{\midchapskip}{0pt}
+\renewcommand*{\afterchapternum}{\par\nobreak\vskip\midchapskip} 
 \renewcommand*{\printchaptername}{%
     \centerline{\chapnumfont{\MakeUppercase\@chapapp\ \ifmsu@singleappendix\else\thechapter\fi}}}% added v3.1b
 \renewcommand{\partnamefont}{\centering\bfseries}
@@ -667,9 +674,11 @@
 \newcommand{\msu@bibpageinfo}[1]{}
 \renewcommand{\prebibhook}{\vspace{\cftparskip}} % add extra space before entries to match ToC etc. 6/15/17
 
+% modified 4/18/2022 to allow for per-chapter bibliographies to appear either
+% as chapters or as sections in the bibliography. Thesis office isn't consistent in this.
 \newcommand\msu@addbibheadtotoc{%
     \ifmsu@chapterbib
-        \phantomsection\addcontentsline{toc}{section}{\bibtocname}
+        \phantomsection\addcontentsline{toc}{\msu@bibsection}{\bibtocname}
     \else
     	\phantomsection\addcontentsline{toc}{chapter}{\bibtocname}
 	\fi

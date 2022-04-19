@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{3.2}
-\def\msudate{2022/04/16}
+\def\msuversion{3.3}
+\def\msudate{2022/04/18}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -47,8 +47,8 @@
 }
   
 \newcommand*{\pkg}[1]{\texttt{#1}\xspace}
-\setitemize[1]{label={}}
-\setitemize[2]{label={}}
+\newlist{scheme}{itemize}{2}
+\setlist[scheme]{label={}}
 \setdescription{font={\normalfont}}
 \setlength{\droptitle}{-1in}
 
@@ -74,7 +74,7 @@ Formatting a dissertation according to a University's thesis requirements is not
 \section{Background}
 The MSU Thesis Class is based on the \pkg{memoir} document class.  The \pkg{memoir} class is an extensive class that incorporates the functionality of many other packages into it. The class is extensively documented, and the documentation (\pkg{memman.pdf}) should be available with any \TeX\ distribution.  I strongly recommend that you familiarize yourself with \pkg{memoir} as you use the present class.
 \section{Class Options}
-In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}, font size), the \pkg{msu-thesis} takes five options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering, two to enable per-chapter bibliographies and appendices, and one to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
+In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}, font size), the \pkg{msu-thesis} takes six options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering, two to enable per-chapter bibliographies and appendices, two to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
 \begin{table}
 \centering
 \begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
@@ -109,7 +109,11 @@ This option enables per-chapter bibliographies. Each chapter must have its own b
 \subsection{The \pkg{[chapterapp]} option}
 This option enables per-chapter appendices. Any appendix must be associated with its own chapter. If you have per-chapter appendices you cannot have any global appendices. 
 \subsection{The contents options}
+\subsubsection{Bold vs. plain contents}
 In 2013 I received reports that the thesis office now requires all elements in the Table of Contents to have the same formatting as they are in the main document, which means that all section, subsection, and subsubsection headings need to be bold.  Since this looks very ugly, I have created two options to turn it off, the |[plaintoc]| option (which makes all ToC entries plain) and |[mixedtoc]| option (which makes Chapters bold and other elements plain). I suspect that the thesis office checkers don't notice this all the time so if you want to have a prettier table of contents and are willing to have that format be corrected, you can use these options to turn off the MSWord inspired ugliness of an entirely bold Table of Contents. I've made |[plaintoc]| the default.  If you are forced by the thesis office to have an entirely bold ToC, use the |[boldtoc]| option.
+
+\subsubsection{Per-chapter bibliography contents format}
+I also have received inconsistent formatting requirements for per-chapter bibliographies. Some students have been told that they should appear in the Table of Contents formatted like sections, while others have been told they should be formatted like chapters, but without the leading space. The latter option is most consistent with how per-chapter appendices are formatted in the Table of Contents, and is therefore the default. If you are told that the per-chapter bibliographies should be formatted like sections, then use the |[bibassection]| class option. You should avoid using this option unless forced to use it.  
 \subsection{Font size options}\label{fontsize}
 As of v2.9, the class now supports |10pt|, |11pt| and |12pt| font sizes. The default is |12pt|. If you are using a small font like Times New Roman or equivalent, you should stick to the default. If you are using a larger font like Computer Modern, |11pt| is probably fine. Use |10pt| at your own peril, as I suspect the Thesis Office will not accept it!
 
@@ -134,10 +138,10 @@ Most book-length documents are divided into three main kinds of parts: the front
 The basic outline of a dissertation or thesis document is shown in Table~\ref{structure}: (your thesis may not have all of these parts, but if it does, they should be in this order.) You can find an annotated copy of the basic structure in the \href{https://ctan.org/tex-archive/macros/latex/contrib/msu-thesis/samples}{\pkg{samples}} folder of the \pkg{msu-thesis} documentation.
 
 \begin{table}[ht]
-\begin{itemize}
+\begin{scheme}
 \item |\begin{document}|
 \item |\frontmatter|
-\begin{itemize}
+\begin{scheme}
 	\item Titlepage
 	\item Public Abstract
 	\item Abstract
@@ -149,21 +153,21 @@ The basic outline of a dissertation or thesis document is shown in Table~\ref{st
 	\item List of Tables
 	\item List of Figures
 	\item List of Abbreviations/Symbols
-\end{itemize}
+\end{scheme}
 \item |\mainmatter|
-\begin{itemize}
+\begin{scheme}
 	\item Chapter 1
 	\item Chapter 2
 	\item \ldots
 	\item Chapter $n$
 	\item{Appendices}
-\end{itemize}
+\end{scheme}
 \item |\backmatter|
-\begin{itemize}
+\begin{scheme}
 	\item{Bibliography}
-\end{itemize}
+\end{scheme}
 \item |\end{document}|
-\end{itemize}
+\end{scheme}
 \caption{Basic structure of a thesis or dissertation}\label{structure}
 \end{table}
 \subsection{What does the class file do?}
@@ -313,8 +317,8 @@ I have created a basic looking style for Chapter headings based on the |thatcher
 \end{lstlisting}
 \end{quote}
 Despite there being no explicit formatting requirements for Chapter headings (other than that they start 1 in from the top of the page), the thesis office has been known to dislike many things, so if you do decide to change things, be prepared for rejection or a frustrating fight.
-\subsection{Things to watch out for}
-\begin{itemize}[label={\textbullet}]
+\subsection{Things to watch out for\label{watchout}}
+\begin{itemize}
 \item If you are having problems with the Thesis office about non-conforming formatting, please check first whether you have a local copy of the class instead of the latest version distributed via CTAN. The log file will reflect the date of the current version number. Remember if you are using the most current and updated TeXLive or MikTeX you will automatically have the latest version already and you should not need to install a local version. Overleaf users may need a local copy, since Overleaf is usually a year behind the TeXLive distribution schedule.
 \item If your title is long and you want to put a newline (|\\|) into it to improve the spacing, you must precede the newline with |\protect|.
 \item Make sure you pay attention to any ``Overfull hbox'' warnings when you are producing your final copy. You should make sure you eliminate all of them or else the thesis office is likely to reject your thesis. One common way to eliminate such warnings is to place the command |\sloppy| at the beginning of the paragraph that triggers the warning. You should only use this technique at the very end when you are completely done with everything.  Alternatively, rewording the text may also fix things. 
@@ -329,12 +333,23 @@ Master’s theses are sometimes relatively short, and you may think that you can
 \section{Bugs and redistribution}
 \subsection{Current version}
 The latest copy of \pkg{msu-thesis} will always be available on  \href{https://ctan.org/pkg/msu-thesis?lang=en}{CTAN}. If you use MiKTeX, or a current year TeX Live then their respective package managers will update or install the latest version. If you are using Overleaf, you may or may not have the most recent version, since Overleaf is usually about one year behind in its TeX distribution.  If you are using a Linux-based distribution, or your TeXLive distribution is not the most recent year, you may need to install the latest copy in your local |texmf| directory. If you want others to use the class, \textsc{please} point them to CTAN, or tell them to use an up-to-date TeX distribution so that they can use an up-to-date version with all accompanying documentation and examples rather than passing along your copy. Please report \textsc{any} problems you have with the class to me \href{mailto:amunn@msu.edu}{amunn@msu.edu}, as this will aid in making things easier for those who follow you. If you prefer, you may also report issues using GitHub: \href{https://github.com/amunn/msu-thesis}{github.com/amunn/msu-thesis}.  The Graduate School rarely announces changes it makes to the formatting requirements, so your problem reports are extremely helpful for keeping the class in compliance with the latest standards.
+\subsection{Asking me for help}
+I'm happy to answer emails about formatting issues with the class, especially when you are in the final stages of formatting your dissertation or thesis, but please keep in mind the following:
+\begin{itemize}
+\item If you have general LaTeX questions that are not specifically related to the class, please try to find answers elsewhere. \href{https://tex.stackexchange.com/}{tex.stackexchange.com} is an excellent resource for LaTeX help.
+\item Please make sure you have the latest version of the class (check the log file).
+\item Please make sure you've checked all the issues listed in section \ref{watchout}.
+\item Please send me an error-free, compilable sample document for me to test. The best option is for this to be a small sample document using the class that you create that recreates the problem you're having. (Of course if the class actually causes the error, your sample doesn't need to be error free; but it should be free of errors unrelated to the class itself.).
+\item If you feel the need to send me your thesis, please send a zip of all the files, otherwise it becomes impossible to test otherwise.
+\item If you are using Overleaf, PLEASE check the log file for errors, and fix them \emph{before} you send me a sample document. Overleaf has a tendency to produce output even when the document has lots of errors, and it is extremely time consuming for me to fix errors that have nothing to do with the class before trying to help you with your actual problem.
+\end{itemize}
 \subsection{Archiving your thesis for the future}
 Since the current version of the \pkg{msu-thesis} class satisfies the Graduate School requirements at any one time, as these requirements change, you may find that if you need to recompile your thesis after you have graduated that the formatting changes. To avoid this, I would recommend saving an archived version of the \pkg{msu-thesis.cls} file in the same folder as your thesis file.  You only need to do this once you have completely finished your thesis however; there's no need to do it during the writing process. 
 \subsection{Version history}
-Previous versions of \pkg{msu-thesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite} package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office. Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies. Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm} and \pkg{algorithm2e} packages.  Version 3.2 fixed some lingering problems with per-chapter appendices.
+Previous versions of \pkg{msu-thesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite} package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office. Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies. Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm} and \pkg{algorithm2e} packages.  Version 3.2 fixed some lingering problems with per-chapter appendices. Version 3.2 added code to accommodate the insane inconsistencies in formatting requirements that the thesis office requires, including a new contents option which hopefully should never be used.
+
 \section{Acknowledgements}
-Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref} code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, William Muir, Alicia Parrish, Neil ver Planck, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
+Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref} code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
 
 \appendix
 \renewcommand{\thesection}{Appendix \Alph{section}}
