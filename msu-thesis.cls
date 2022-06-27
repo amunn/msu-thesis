@@ -158,15 +158,18 @@
 % Version 3.0b 2021/07/14 Added msu@hchap counter for hyperref targets in appendices (unreleased)
 % Version 3.1  2022/03/03 Added support for List of Algorithms plus fixes for algorithm2e and algorithmicx etc
 % Version 3.1b 2022/03/25 Fixed numbering problem for single global appendix
-% Version 3.2 2022/04/16 Fixed TOC formatting problem for per-chapter appendices
+% Version 3.2 2022/04/16  Fixed TOC formatting problem for per-chapter appendices
 % Version 3.3 2022/04/18 New option bibassection to allow for thesis office inconsistencies.
 %						 Also adjusted chapter title code so that Appendix chapters can have
 %						 the extra blank line that the thesis office wants. More inconsistencies.
+% Version 3.3b 2022/06/24 Fixed secnumdepth problem when appendices are used; 
+%						  Fixed numbering issue of subsequent chapters; 
+%						  made TOC leaders all identical.
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.3}
-\def\msu@date{2022/04/18}
+\def\msu@version{3.3b}
+\def\msu@date{2022/06/24}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -345,6 +348,11 @@
 	\def\msu@tocfont{\normalfont}
 	\def\msu@chapfont{\bfseries}
 \fi
+% In all cases make the leaders identical to section leaders
+% Thesis office sometimes complains about the fact that chapter leaders
+% are larger because they define “consistency” as what Word does
+% Added 6/24/2022
+\let\cftchapterleader\cftsectionleader
 
 % Support for algorithm packages added v3.1
 % If using the algorithm2e package, you must load it with the algo2e package option
@@ -408,9 +416,11 @@
 \cftinsertcode{CHAPAPPR}{
 \cftsetindents{section}{1.5em}{2.3em}
 \setlength{\cftchapterindent}{0em}
+\setlength{\cftchapternumwidth}{3em} % added 6/24/2022
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
   \renewcommand\cftchapterfont{\msu@chapfont}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
+  \settocdepth{subsubsection} % added 6/24/2022
 }
 % This code resets the changes made in the APP code back to normal
 % so that the bibliography will appear correctly in the TOC
@@ -639,13 +649,13 @@
   \setcounter{chapter}{0}%
   \renewcommand\@chapapp{\appendixname}%
   \renewcommand\thechapter{\msuappendixnumformat}%
-  \restoreapp
+%  \restoreapp % removed 6/24/2022
   }
 
 
 % Don't save the appendix counters even for per-chapter appendices
 
-\let\restoreapp\relax
+%\let\restoreapp\relax % removed 6/24/2022 
 
 
 % make the bibliography page
