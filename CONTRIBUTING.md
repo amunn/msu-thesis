@@ -1,6 +1,6 @@
 ---
-name: Things to watch out for
-about: Things to watch out for
+name: Problems
+about: How to report a problem
 title: "[Problem Reporting Checklist]"
 labels: checklist
 assignees: ''

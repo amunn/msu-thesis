@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{3.3b}
-\def\msudate{2022/06/24}
+\def\msuversion{3.4}
+\def\msudate{2022/06/30}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -125,7 +125,7 @@ In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-
 \item[\texttt{\bs fieldofstudy\{\}}] Takes one argument corresponding to your field of study.
 \item[\texttt{\bs dedication\{\}}] Takes one argument (should be short), your dedication.
 \item[\texttt{\{publicabstract\}}] Environment for the public abstract (unnumbered, uncounted).
-\item[\texttt{\bs makecopyrightpage}] Creates the copyright page.
+\item[\texttt{\bs makecopyrightpage}] Creates the copyright page (use |\makecopyrightpage*| to align the text on the left.)
 \item[\texttt{\bs makededicationpage}] Creates the dedication page.
 \item[\texttt{\bs makebibliographypage}] Creates the bibliography cover page.
 \end{description}
@@ -179,11 +179,11 @@ The \pkg{memoir} class provides commands for single and double spacing (|\Single
 \sloppy The \pkg{memoir} class enforces the so-called ``new'' font changing commands (although they have now been in use for many years.) This means that it does not allow you to use the commands |\bf|, |\it|, |\rm|, etc.  Unfortunately there are some old packages that still use these commands, and there is also some outdated information on the web that might have examples using these commands. You should generally not use these commands (see \href{http://www.tex.ac.uk/cgi-bin/texfaq2html?label=2letterfontcmd}{Two Letter Font Commands}); if you do encounter problems, you can pass the option |[oldfontcommands]| to the class.
 \subsection{Extra Packages}
 The \pkg{memoir} class replicates the functionality of many independent packages, so if you are transferring \LaTeX\ source from other documents using the \pkg{article} class, you may encounter some warnings or errors.  The \pkg{memoir} documentation has substantial information about the packages it emulates, and the packages for which it provides equivalent functionality.  See Chap. 18 Sec. 24 of the \pkg{memoir} manual for details.  Quoting from the manual:
-\begin{quote} At the time of writing the emulated packages are: {\sffamily abstract, appendix, booktabs, ccaption, chngcntr, crop, enu- merate, epigraph, ifmtarg, ifpdf, index, makeidx, moreverb, needspace, newfile, nextpage, pagenote, patchcmd, parskip, setspace, shortvrb, showidx, titleref, tocbibind, tocloft, verbatim, and verse.} As well as the emulated packages memoir provides functions equivalent to those in the following packages, although the class does not prevent you from using them: {\sffamily fancyhdr, framed, geometry, sidecap, subfigure, and titlesec.}\\\hfill{\normalfont\emph{The Memoir Class} 10th impression, 2015, p.345}
+\begin{quote} At the time of writing the emulated packages are: {\sffamily abstract, appendix, booktabs, ccaption, chngcntr, crop, enumerate, epigraph, ifmtarg, ifpdf, index, makeidx, moreverb, needspace, newfile, nextpage, pagenote, patchcmd, parskip, setspace, shortvrb, showidx, titleref, tocbibind, tocloft, verbatim, and verse.} As well as the emulated packages memoir provides functions equivalent to those in the following packages, although the class does not prevent you from using them: {\sffamily fancyhdr, framed, geometry, sidecap, subfigure, and titlesec.}\\\hfill{\normalfont\emph{The Memoir Class} 10th impression, 2015, p.345}
 \end{quote}
 \subsection{Captions}
-\subsubsection{Caption delimiter}
-Because the thesis office doesn't understand anything about punctuation it requires the colon that would appear in a caption to also appear in the contents lists. Since they don't care about the colon itself, but just consistency I've removed colons from the captions entirely, since leaving it in makes the contents lists look really stupid. But in case you or your advisor want the colon in captions, you can add the colon back in by using the Memoir command |\captiondelim{:\space}| and the class will make sure the Lists of Tables and Figures match in formatting. 
+\subsubsection{Caption delimiter}\label{captiondelim}
+Because the thesis office doesn't understand anything about punctuation, it requires the colon that would appear in a caption to also appear in the contents lists. Since they don't care about the colon itself, but just consistency I've removed colons from the captions entirely, since leaving it in makes the contents lists look really stupid. But in case you or your advisor want the colon in captions, you can add the colon back in by adding   |\renewcommand{\msucaptiondelim}{:\space}| to your preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If you have other floating objects with captions (e.g., algorithms, listings) you may need to change their delimiter too (see below). How you do this may depend on the particular packages you are using.
 \subsubsection{New lists}
 If you are using other kinds of floats such as listings, you should use the Memoir |\newlistof| command to make the relevant list. The class provides a macro |\msucaptiondelim| which can be used to make sure the formatting of the captions in the list-of-X match the setting you have for Figures and Tables.  Here is an example of how you would add a listings list. For lists of algorithms, see section \ref{algorithms} below. The following code goes in your preamble:
 \begin{quote}
@@ -235,6 +235,31 @@ If you would normally load the \pkg{algorithm} package to create floating algori
 \restylefloat{algorithm}
 \end{lstlisting}
 \end{quote}
+\subsubsection{Algorithm caption delimiter}
+If you have changed the |\msucaptiondelimeter| to use a colon (see \ref{captiondelim}) then depending on the particular algorithm package you are using, there may be a mismatch between the format of the caption in the algorithm itself and in the List of Algorithms. The Graduate School thinks the presence or absence of a colon in captions and lists is of vital importance, and they may complain about this. Here are two options to use if they complain:
+
+The first method removes the colon from the word Algorithm in the List of Algorithms:
+\begin{quote}
+\begin{lstlisting}
+% Use this code after loading any algorithm package and the float package
+% This removes the colon after the word Algorithm in the List of Algorithms
+\renewcommand*{\cftalgorithmaftersnum}{}
+\end{lstlisting}
+\end{quote}
+
+The second method adds a colon to the word Algorithm in the captions of the algorithms
+
+\begin{quote}
+\begin{lstlisting}
+% Use this code after loading any algorithm package and the float package
+% This removes the colon after the word Algorithm in the List of Algorithms
+% Change the [ruled] specification to the algorithm style you are using. 
+\usepackage{caption}
+\captionsetup[ruled]{labelsep=colon}
+\end{lstlisting}
+\end{quote}
+
+
 
 \subsection{The \pkg{microtype} package and contents lists}
 If you use the \pkg{microtype} package with |protrusion| set, it’s best to turn it off before your contents lists.  You can do this by using |\microtypesetup{protrusion=false}|
@@ -332,12 +357,12 @@ Master’s theses are sometimes relatively short, and you may think that you can
 
 \section{Bugs and redistribution}
 \subsection{Current version}
-The latest copy of \pkg{msu-thesis} will always be available on  \href{https://ctan.org/pkg/msu-thesis?lang=en}{CTAN}. If you use MiKTeX, or a current year TeX Live then their respective package managers will update or install the latest version. If you are using Overleaf, you may or may not have the most recent version, since Overleaf is usually about one year behind in its TeX distribution.  If you are using a Linux-based distribution, or your TeXLive distribution is not the most recent year, you may need to install the latest copy in your local |texmf| directory. If you want others to use the class, \textsc{please} point them to CTAN, or tell them to use an up-to-date TeX distribution so that they can use an up-to-date version with all accompanying documentation and examples rather than passing along your copy. Please report \textsc{any} problems you have with the class to me \href{mailto:amunn@msu.edu}{amunn@msu.edu}, as this will aid in making things easier for those who follow you. If you prefer, you may also report issues using GitHub: \href{https://github.com/amunn/msu-thesis}{github.com/amunn/msu-thesis}.  The Graduate School rarely announces changes it makes to the formatting requirements, so your problem reports are extremely helpful for keeping the class in compliance with the latest standards.
+The latest copy of \pkg{msu-thesis} will always be available on  \href{https://ctan.org/pkg/msu-thesis?lang=en}{CTAN} and on \href{https://github.com/amunn/msu-thesis}{GitHub}. If you use MiKTeX, or a current year TeX Live then their respective package managers can update or install the latest version. If you are using Overleaf, you may not have the most recent version, since Overleaf is usually about one year behind in its TeX distribution.  If you are using a Linux-based distribution, or your TeXLive distribution is not the most recent year, you may need to install the latest copy in your local |texmf| directory or simply in the same directory as your main source file. If you want others to use the class, \textsc{please} point them to CTAN, or tell them to use an up-to-date TeX distribution so that they can use an up-to-date version with all accompanying documentation and examples rather than passing along your copy. Please report \textsc{any} problems you have with the class to me \href{mailto:amunn@msu.edu}{amunn@msu.edu}, as this will aid in making things easier for those who follow you. You may also report actual bugs or class-caused formatting issues using GitHub: \href{https://github.com/amunn/msu-thesis}{github.com/amunn/msu-thesis}, but in my experience, most issues are more easily dealt with using email.  The Graduate School rarely announces changes it makes to the formatting requirements, and it is often very inconsistent in what kinds of things it chooses to get annoyed about, so your problem reports are extremely helpful for keeping the class in compliance with the latest standards.
 \subsection{Asking me for help}
 I'm happy to answer emails about formatting issues with the class, especially when you are in the final stages of formatting your dissertation or thesis, but please keep in mind the following:
 \begin{itemize}
 \item If you have general LaTeX questions that are not specifically related to the class, please try to find answers elsewhere. \href{https://tex.stackexchange.com/}{tex.stackexchange.com} is an excellent resource for LaTeX help.
-\item Please make sure you have the latest version of the class (check the log file).
+\item Please make sure you have the latest version of the class (check the log file and compare it with \href{https://ctan.org/pkg/msu-thesis?lang=en}{CTAN} or  \href{https://github.com/amunn/msu-thesis}{GitHub}).
 \item Please make sure you've checked all the issues listed in section \ref{watchout}.
 \item Please send me an error-free, compilable sample document for me to test. The best option is for this to be a small sample document using the class that you create that recreates the problem you're having. (Of course if the class actually causes the error, your sample doesn't need to be error free; but it should be free of errors unrelated to the class itself.).
 \item If you feel the need to send me your thesis, please send a zip of all the files, otherwise it becomes impossible to test otherwise.
@@ -346,10 +371,10 @@ I'm happy to answer emails about formatting issues with the class, especially wh
 \subsection{Archiving your thesis for the future}
 Since the current version of the \pkg{msu-thesis} class satisfies the Graduate School requirements at any one time, as these requirements change, you may find that if you need to recompile your thesis after you have graduated that the formatting changes. To avoid this, I would recommend saving an archived version of the \pkg{msu-thesis.cls} file in the same folder as your thesis file.  You only need to do this once you have completely finished your thesis however; there's no need to do it during the writing process. 
 \subsection{Major Version history}
-Previous versions of \pkg{msu-thesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite} package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office. Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies. Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm} and \pkg{algorithm2e} packages.  Version 3.2 fixed some lingering problems with per-chapter appendices. Version 3.3 added code to accommodate the insane inconsistencies in formatting requirements that the thesis office requires, including a new contents option which hopefully should never be used.
+Previous versions of \pkg{msu-thesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite} package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office. Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies. Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm} and \pkg{algorithm2e} packages.  Version 3.2 fixed some lingering problems with per-chapter appendices. Version 3.3 added code to accommodate the insane inconsistencies in formatting requirements that the thesis office requires, including a new contents option which hopefully should never be used, and fixed some numbering problems with per-chapter appendices. Version 3.4 added a starred option to the |\makecopyrightpage| command after complaints about placement. The documentation has also been updated to include more information about caption formatting and removed colons from the default caption format.
 
 \section{Acknowledgements}
-Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref} code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Giacomo Romanini, William Sands, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
+Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref} code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Giacomo Romanini, William Sands, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
 
 \appendix
 \renewcommand{\thesection}{Appendix \Alph{section}}

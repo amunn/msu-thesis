@@ -165,11 +165,14 @@
 % Version 3.3b 2022/06/24 Fixed secnumdepth problem when appendices are used; 
 %						  Fixed numbering issue of subsequent chapters; 
 %						  made TOC leaders all identical.
+% Version 3.4 2022/06/30  Added a starred version of \makecopyrightpage;
+%						  removed colons from captions;
+%						  updated documentation on algorithms and captions
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.3b}
-\def\msu@date{2022/06/24}
+\def\msu@version{3.4}
+\def\msu@date{2022/06/30}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -324,8 +327,8 @@
 \renewcommand*{\cftchaptername}{Chapter\space}
 \renewcommand*{\cftappendixname}{Appendix\space}
 \renewcommand*{\cftchapterdotsep}{\cftdotsep}
-\renewcommand*{\cftfigureaftersnum}{\@contdelim} % This uses the same delimiter as in the captions
-\renewcommand*{\cfttableaftersnum}{\@contdelim}  % per thesis office punctuation idiocy
+\renewcommand*{\cftfigureaftersnum}{\msucaptiondelim} % This uses the same delimiter as in the captions
+\renewcommand*{\cfttableaftersnum}{\msucaptiondelim}  % per thesis office punctuation idiocy
 \renewcommand*{\cftfigurename}{Figure\space}
 \renewcommand*{\cfttablename}{Table\space}
 %\setlength{\cftbeforetableskip}{0pt}
@@ -368,7 +371,6 @@
 \newlistentry{algorithm}{loa}{0}
 \renewcommand*{\cftalgorithmname}{Algorithm\space}
 \renewcommand*{\cftalgorithmaftersnum}{\msucaptiondelim}
-
 %
 % This code technique from http://tex.stackexchange.com/q/232121/
 % Makes appendices formatted as sections not chapters in the TOC
@@ -525,6 +527,7 @@
 \newcounter{msu@pubabspages}
 \newcommand{\publicabstractname}{\abstractname}
 \newenvironment{publicabstract}{%
+   \phantomsection% added 6/30/2022 to remove spurious warning
    \ClassWarningNoLine{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
    \setcounter{msu@pubabspages}{\value{page}}
    \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
@@ -543,7 +546,8 @@
 \captionstyle[\centering]{\raggedright}
 % Make the caption delimiter a space instead of colon space so that the 
 % contents lists don't look so stupid.  Can be changed if necessary.
-%\captiondelim{\space}
+\newcommand*\msucaptiondelim{\space}
+\captiondelim{\msucaptiondelim}
 
 \pagestyle{plain}
 
@@ -557,12 +561,17 @@
 	\addtocounter{page}{1}}
 
 % make the copyright page
+% added * version because a new grad school minion has decided to interpret the formatting guide
+% as requiring left aligned copyright mark, even though the guide says it can be 
+% anywhere on the page as long as the text itself is left aligned.
+% * version will make things left aligned. Added v3.4 6/20/2022
 \newcommand*{\makecopyrightpage}{%
+	\@ifstar{\def\msu@copyrightalign{}}{\def\msu@copyrightalign{\raggedleft}}
 	\pagestyle{plain}
 	\clearpage
 	\thispagestyle{empty}
 	\vspace*{7in}
-	{\raggedleft Copyright by\\\MakeUppercase{\theauthor}\\\thedate\\}% Author now uppercase 6/5/12
+	{\noindent\msu@copyrightalign Copyright by\\\MakeUppercase{\theauthor}\\\thedate\\}% Author now uppercase 6/5/12
 	\clearpage}
 
 % make the dedication page
@@ -709,7 +718,6 @@
 }
 % Do some stuff at begin document: 
 \AtBeginDocument{%
-\let\msucaptiondelim\@contdelim
 % Moved to AtBeginDocument to override apacite
 \@ifpackageloaded{apacite}{\@tocbibfalse}{} % added 6/22/17
 \@ifpackageloaded{algorithm2e}{\let\@chapter=\algocf@original@chapter}{}% undoes algorithm2e redefinition of chapter added v3.1
