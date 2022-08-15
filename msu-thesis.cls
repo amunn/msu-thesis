@@ -168,11 +168,12 @@
 % Version 3.4 2022/06/30  Added a starred version of \makecopyrightpage;
 %						  removed colons from captions;
 %						  updated documentation on algorithms and captions
+% Version 3.5 2022/08/15  Added \setabstractnamespace to allow user control over thesis office idiocy
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.4}
-\def\msu@date{2022/06/30}
+\def\msu@version{3.5}
+\def\msu@date{2022/08/15}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -506,6 +507,11 @@
 \feetbelowfloat % footnotes will appear below bottom floats
 
 % set up abstract and public abstract
+% The thesis office is inconsistent in how they measure what they call a "double space". 
+% Adding a fudge factor that can be changed at the user level (v3.5 8/15/2022)
+% We'll set it to 1 for the moment; 0 is what should be 1 double space, but they seem to want more
+\newcommand\setabstractnamespace[1]{\gdef\msu@abstractnamespacefactor{#1}}
+\setabstractnamespace{1}
 \renewenvironment{abstract}{%
    \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\abstractname}
@@ -514,7 +520,7 @@
     \begin{center}
     	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
  	\end{center}
-%	\plainbreak{-.5} % changed 2016/06/08 after complaints
+	\plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\par}
 %

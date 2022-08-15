@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{3.4}
-\def\msudate{2022/06/30}
+\def\msuversion{3.5}
+\def\msudate{2022/08/15}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -14,6 +14,7 @@
 \usepackage{enumitem}
 \usepackage{fancyvrb,listings,url}
 \usepackage[sf]{titlesec}
+\usepackage[section]{placeins}
 \usepackage[colorlinks=true]{hyperref}
 
 
@@ -75,7 +76,7 @@ Formatting a dissertation according to a University's thesis requirements is not
 The MSU Thesis Class is based on the \pkg{memoir} document class.  The \pkg{memoir} class is an extensive class that incorporates the functionality of many other packages into it. The class is extensively documented, and the documentation (\pkg{memman.pdf}) should be available with any \TeX\ distribution.  I strongly recommend that you familiarize yourself with \pkg{memoir} as you use the present class.
 \section{Class Options}
 In addition to any options passed to the \pkg{memoir} class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}, font size), the \pkg{msu-thesis} takes six options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering, two to enable per-chapter bibliographies and appendices, two to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
-\begin{table}
+\begin{table}[htpb]
 \centering
 \begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
 \toprule
@@ -118,18 +119,34 @@ I also have received inconsistent formatting requirements for per-chapter biblio
 As of v2.9, the class now supports |10pt|, |11pt| and |12pt| font sizes. The default is |12pt|. If you are using a small font like Times New Roman or equivalent, you should stick to the default. If you are using a larger font like Computer Modern, |11pt| is probably fine. Use |10pt| at your own peril, as I suspect the Thesis Office will not accept it!
 
 \section{User commands}
-In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-thesis} class defines seven new titling commands. 
-\begin{quote}
-\begin{description}
-\item[\texttt{\bs maketitlepage}] Makes the main title page for the thesis.
-\item[\texttt{\bs fieldofstudy\{\}}] Takes one argument corresponding to your field of study.
-\item[\texttt{\bs dedication\{\}}] Takes one argument (should be short), your dedication.
-\item[\texttt{\{publicabstract\}}] Environment for the public abstract (unnumbered, uncounted).
-\item[\texttt{\bs makecopyrightpage}] Creates the copyright page (use |\makecopyrightpage*| to align the text on the left.)
-\item[\texttt{\bs makededicationpage}] Creates the dedication page.
-\item[\texttt{\bs makebibliographypage}] Creates the bibliography cover page.
-\end{description}
-\end{quote}
+In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-thesis} class defines seven new titling commands, and two “appeasement” commands, i.e., commands to tweak the formatting to appease the the thesis office’s inconsistency.
+\begin{table}[htpb]
+\centering
+\begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
+\toprule
+{\bs maketitlepage} & Makes the main title page for the thesis.\\
+{\bs fieldofstudy\{\}} &  Takes one argument corresponding to your field of study.\\
+{\bs dedication\{\}} &  Takes one argument (should be short), your dedication.\\
+{\{publicabstract\}} &  Environment for the public abstract (unnumbered, uncounted).\\
+{\bs makecopyrightpage} &  Creates the copyright page (use \texttt{\bs makecopyrightpage*} to align the text on the left.)\\
+{\bs makededicationpage} &  Creates the dedication page.\\
+{\bs makebibliographypage} &  Creates the bibliography cover page.\\
+\bottomrule
+\end{tabularx}
+\caption{Class titling commands}
+\end{table}
+
+\begin{table}[htpb]
+\centering
+\begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
+\toprule
+{\bs msucaptiondelim} &  Delimiter for floating elements (see section \ref{captiondelim}).\\
+{\bs setabstractnamespace} &  Changes spacing after the name in the abstract (see section \ref{abstractspacing}).\\
+\bottomrule
+\end{tabularx}
+\caption{Appeasement commands}
+\end{table}
+
 \section{Using the class}
 \subsection{Logical parts of the document}
 
@@ -277,8 +294,15 @@ before the contents lists and |\microtypesetup{protrusion=true}| afterwards.  Sc
 \microtypesetup{protrusion=true}
 \end{lstlisting}
 \end{quote}
+\subsection{Abstracts}
+MSU requires you to have an abstract, but you may also have a public abstract, which is weirdly unnumbered and uncounted.
 
-\subsection{Public abstract}
+\subsubsection{Spacing after the author name in the abstract}\label{abstractspacing}
+The thesis office is very inconsistent in how it determines what it thinks is a “double space”, and this especially seems to be true after the author name in the the abstract.  Because of this, I’ve created a way to change the spacing within the user document so that you can appease the thesis office bureaucrats without reporting an issue to me.
+
+Use the command |\setabstractnamespace| to change the spacing after the author name in the abstract. This command takes a value typically between 0 and 1 where 0 reduces the space to a single baselineskip, while 1 adds an extra baselineskip. The default is set to 1, but if that’s too large, try 0.5 or 0 as needed.
+
+\subsubsection{Public abstract}
 If your thesis requires a public abstract, it should go immediately before the regular abstract. Use the |{publicabstract}| environment for this. Please note that you \emph{must} have an abstract even if you also have a public abstract.
 \subsection{Landscape figures and tables}
 If you have large figures and tables that must be rotated, you should use the |[lscape]| class option.  This enables a pagestyle |lscape| and places the page numbers correctly on the long edge of the page. The option loads the \pkg{pdflscape} package which provides a |landscape| environment to place the landscape figure in. Before the landscape environment, you need to issue a |\clearpage| command and change the pagestyle to |lscape|, and afterwards, change it back to |plain|. Schematically, then, any landscape pages should be created in the following way.  
@@ -374,7 +398,7 @@ Since the current version of the \pkg{msu-thesis} class satisfies the Graduate S
 Previous versions of \pkg{msu-thesis} (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite} package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office. Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies. Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm} and \pkg{algorithm2e} packages.  Version 3.2 fixed some lingering problems with per-chapter appendices. Version 3.3 added code to accommodate the insane inconsistencies in formatting requirements that the thesis office requires, including a new contents option which hopefully should never be used, and fixed some numbering problems with per-chapter appendices. Version 3.4 added a starred option to the |\makecopyrightpage| command after complaints about placement. The documentation has also been updated to include more information about caption formatting and removed colons from the default caption format.
 
 \section{Acknowledgements}
-Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref} code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Giacomo Romanini, William Sands, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
+Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex} spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref} code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Giacomo Romanini, William Sands, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
 
 \appendix
 \renewcommand{\thesection}{Appendix \Alph{section}}
