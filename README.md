@@ -9,6 +9,10 @@ Submission of Master's Theses and Dissertations (March 2020).
 The class is based on the `memoir` document class, and therefore inherits
 all of the functionality of that class.
 
+## Documentation
+
+Please [read the documentation!](https://amunn.github.io/msu-thesis/)
+
 ## Installation:
 
 The `msu-thesis` class is part of both TeXLive and MikTeX, so you should either already have it or should be able to install it with your package manager.
