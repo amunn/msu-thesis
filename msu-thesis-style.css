@@ -1,0 +1,81 @@
+/*
+Color scheme
+#bab5a9;
+#d5e3c6
+
+ */
+
+/* ************** */
+/* *** Fonts  *** */
+/* ************** */
+
+/* Font size tricks from https://www.madebymike.com.au/writing/precise-control-responsive-typography/
+ * The font size will be adjusted to the screen size.
+ * */
+:root{
+  font-size: 18px;
+}
+
+/* the min width is calculated as:
+ * font-size / ( number of viewport units / 100 )
+ * it means 16 / (1.5/100)
+ */
+/*
+ */
+
+/* ************** */
+/* *** Layout *** */
+/* ************** */
+
+body{
+  /* max-width:52rem; */
+  margin:0;
+  padding:0;
+  /* display:grid; */
+  /* grid-auto-rows: auto; */
+}
+
+/* @media screen and (min-width: 57rem) {
+  body{
+    display:grid;
+    grid-template-columns: 15rem 1fr;
+  }
+  main.main-content{max-width:40rem;}
+  nav.TOC{
+    grid-row:1;
+    min-height:100vh;
+  }
+} */
+
+
+/* ****************** */
+/* *** Formatting *** */
+/* ****************** */
+
+main.main-content{
+  padding:1rem;
+}
+
+p.indent, p.noindent{text-indent:0}
+
+/* ************** */
+/* *** Colors *** */
+/* ************** */
+
+
+/* body{background-color:#dce8d0;} */
+/* It seems that dark background is better to my eyes */
+body{background-color:#F1EADE;}
+
+main.main-content{
+  background-color:white;
+}
+
+nav.TOC,nav.TOC a, nav.TOC a:visited{
+  background-color:#22211f;
+  color:#cec1aa;
+}
+
+nav.TOC span:hover, nav.TOC span:hover *{
+  background-color:#66635d;
+}

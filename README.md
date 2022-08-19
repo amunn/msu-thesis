@@ -15,7 +15,7 @@ The `msu-thesis` class is part of both TeXLive and MikTeX, so you should either 
 
 If you wish to install it locally, follow the directions below:
 
-Put `msu-thesis.cls`  into 
+Put `msu-thesis.cls`  into
 
 `<local texmf>/tex/latex/msu-thesis`
 
@@ -38,19 +38,23 @@ The Current Maintainer of this package is Alan Munn.
 
 This package consists of the following source file:
  - `msu-thesis.cls`
- 
+
 Documentation files:
- - `msu-thesis.tex` 
+ - `msu-thesis.tex`
  - `msu-thesis.pdf`
 
-A template file: 
+A template file:
  - `MSU-thesis-template.tex`
- 
+
 A test file and a test bibliography:
 
  `MSU-thesis-testfile.tex`
  `MSU-thesis-testfile.bib`
 
+## Problems
 
 Use at your own risk! Report bugs/problems/questions to [amunn@msu.edu](mailto:amunn@msu.edu) or use the [GitHub repository bug tracker](https://github.com/amunn/msu-thesis/issues).
 
+## Usage survey
+
+If you are using the class, please take a moment to fill out my [anonymous usage survey](https://forms.gle/bm2AUzthFxW2naK36). Thanks! You should be signed into your MSU Google account to access the form, but the form itself is anonymous.
