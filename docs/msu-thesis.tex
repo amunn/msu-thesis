@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{3.5}
-\def\msudate{2022/08/15}
+\def\msuversion{3.5b}
+\def\msudate{2022/08/19}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -63,7 +63,7 @@ Formatting a dissertation according to a University's thesis requirements is not
 \section{Background}
 The MSU Thesis Class is based on the \pkg{memoir}\ document class.  The \pkg{memoir}\ class is an extensive class that incorporates the functionality of many other packages into it. The class is extensively documented, and the documentation (\pkg{memman.pdf}) should be available with any \TeX\ distribution.  I strongly recommend that you familiarize yourself with \pkg{memoir}\ as you use the present class.
 \section{Class Options}
-In addition to any options passed to the \pkg{memoir}\ class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}, font size), the \pkg{msu-thesis}\ takes six options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering, two to enable per-chapter bibliographies and appendices, two to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
+In addition to any options passed to the \pkg{memoir}\ class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}, font size), the \pkg{msu-thesis}\ class takes six options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering, two to enable per-chapter bibliographies and appendices, two to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
 \begin{table}[htpb]
 \centering
 \begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
@@ -288,7 +288,7 @@ MSU requires you to have an abstract, but you may also have a public abstract, w
 \subsubsection{Spacing after the author name in the abstract}\label{abstractspacing}
 The thesis office is very inconsistent in how it determines what it thinks is a “double space”, and this especially seems to be true after the author name in the the abstract.  Because of this, I’ve created a way to change the spacing within the user document so that you can appease the thesis office bureaucrats without reporting an issue to me.
 
-Use the command |\setabstractnamespace| to change the spacing after the author name in the abstract. This command takes a value typically between 0 and 1 where 0 reduces the space to a single baselineskip, while 1 adds an extra baselineskip. The default is set to 1, but if that’s too large, try 0.5 or 0 as needed.
+Use the command |\setabstractnamespace| to change the spacing after the author name in the abstract (and the public abstract, if present). This command takes a value typically between -1 and  and 1 where 0 reduces the space to a single baselineskip, while 1 adds an extra baselineskip. The default is set to 0. Depending on their mood at the time they check your thesis, the thesis office may want more or less space here, so use this command only to satisfy their bureaucratic self-importance. 
 
 \subsubsection{Public abstract}
 If your thesis requires a public abstract, it should go immediately before the regular abstract. Use the |{publicabstract}| environment for this. Please note that you \emph{must} have an abstract even if you also have a public abstract.
