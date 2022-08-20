@@ -17,3 +17,7 @@ You can download a basic template file [here](https://github.com/amunn/msu-thesi
 ## Read the documentation!
 
 The documentation is available [online](https://amunn.github.io/msu-thesis/msu-thesis.html) or in [PDF form](https://github.com/amunn/msu-thesis/blob/master/msu-thesis.pdf).
+
+## Fill out the usage survey
+
+If you are using the class, please take a moment to fill out my [anonymous usage survey](https://forms.gle/bm2AUzthFxW2naK36). Thanks! You should be signed into your MSU Google account to access the form, but the form itself is anonymous.
