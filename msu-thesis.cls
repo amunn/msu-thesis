@@ -170,11 +170,15 @@
 %						  updated documentation on algorithms and captions
 % Version 3.5 2022/08/15  Added \setabstractnamespace to allow user control over thesis office idiocy
 % Version 3.5b 2022/08/19 Changed default for \setabstractnamespace
+% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros \msuabbrev \msuabbrevwidth \msuabbrevfont
+%                         to make format of the key to abbreviations match the LoF etc. 
+%						  Changed \onelinespace to match the fontsize (see v2.9)
+%						  Added undocumented command to reinstate the memoir leading values if needed.
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.5b}
-\def\msu@date{2022/08/19}
+\def\msu@version{3.6}
+\def\msu@date{2022/08/23}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -262,6 +266,13 @@
 \setlrmargins{1in}{*}{*}
 \setulmargins{1in}{*}{*}
 \setheadfoot{.5in}{.5in} % changed 5/3/2017
+\setlength{\onelineskip}{\msu@sizeoption} % changed v3.6 after more complaints about "double space"
+% memoir makes the value the leading of the chosen font size (defined in memXX.clo) where XX is the 
+% font size. The memoir values are 12pt, 13.6pt and 14.5pt, but depending on who's measuring, they don't
+% seem to like these values.  Add an undocumented reset to defaults for future inconsistency.
+\newcommand*\usememdefaultlineskip{
+	\let\onelineskip\headheight}
+	
 
 % set up contents title
 % we use a private macro here to avoid problems with babel and
@@ -373,6 +384,30 @@
 \newlistentry{algorithm}{loa}{0}
 \renewcommand*{\cftalgorithmname}{Algorithm\space}
 \renewcommand*{\cftalgorithmaftersnum}{\msucaptiondelim}
+
+% After complaints about the spacing in the key to abbreviations not matching the list
+% of figures, we now supply a \listofabbreviations which is formatted using regular LoF
+% methods along with a helper macro \msuabbrev which puts an abbreviation into the list.
+% The list is not sorted, so the \msuabbrev commands must be in the order that they will appear.
+% Since the abbreviations are just listed, this list doesn't require a new float command.
+% We use kta here, since loa will be used by list of algorithms. Added v3.6
+%
+\newlistof{listofabbreviations}{kta}{Key to Abbreviations}
+\newlistentry{abbrev}{kta}{0}
+\newcommand*\msuabbrevfont{\bfseries} % font for the abbreviation itself
+\renewcommand*\cftabbrevleader{} % no leaders
+\renewcommand*\cftabbrevformatpnum[1]{} % no page numbers
+\renewcommand*{\cftabbrevafterpnum}{\cftparfillskip} % fix horrible interword spacing
+\newlength{\msu@abbrevwidth} % maximum width of the abbreviations
+\newcommand*\msuabbrevwidth[1]{\setlength{\msu@abbrevwidth}{#1}} % helper macro to set width
+\msuabbrevwidth{.75in} % a reasonable minimum
+\cftsetindents{abbrev}{0em}{\msu@abbrevwidth} % sets the indents so that the entries themselves can wrap if long
+\newcommand*{\msuabbrevdelim}{} % in case you want a colon or something after each abbreviation
+\newcommand{\msuabbrev}[2]{%
+\addcontentsline{kta}{abbrev}{\makebox[\msu@abbrevwidth][l]{\msuabbrevfont#1\msuabbrevdelim}\normalfont#2}
+}
+
+
 %
 % This code technique from http://tex.stackexchange.com/q/232121/
 % Makes appendices formatted as sections not chapters in the TOC

@@ -19,8 +19,8 @@
 <br /> <span class='ec-lmr-12'>Department of Linguistics, Languages, and Cultures</span>
 <br />              <span class='ec-lmr-12'>Michigan State University</span>
 <br />                   <a href='mailto:amunn@msu.edu'><span class='ec-lmtt-12'>amunn@msu.edu</span></a></div><br />
-<div class='date'><span class='ec-lmr-12'>Version 3.5b</span><br />
-<span class='ec-lmr-12'>2022/08/19</span></div>
+<div class='date'><span class='ec-lmr-12'>Version 3.6</span><br />
+<span class='ec-lmr-12'>2022/08/23</span></div>
 </div>
 <div class='center'>
 <!-- l. 60 --><p class='noindent'>
@@ -197,7 +197,7 @@ align the text on the left.)                                </p></td>
   <table class='tabular' id='TBL-13'><colgroup id='TBL-13-1g'><col id='TBL-13-1' /><col id='TBL-13-2' /></colgroup><tr id='TBL-13-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-13-1-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\msucaptiondelim     </span></td>
                           <td class='td11' id='TBL-13-1-2' style='white-space:normal; text-align:left;'> <!-- l. 134 --><p class='noindent'>Delimiter for floating elements (see section <a href='#caption-delimiter'>5.6.1<!-- tex4ht:ref: captiondelim  --></a> ).  </p></td>
  </tr><tr id='TBL-13-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-13-2-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\setabstractnamespace </span></td><td class='td11' id='TBL-13-2-2' style='white-space:normal; text-align:left;'> <!-- l. 134 --><p class='noindent'>Changes spacing after the name in the abstract 
-(see section <a href='#spacing-after-the-author-name-in-the-abstract'>5.9.1<!-- tex4ht:ref: abstractspacing  --></a> ).                                         </p></td> 
+(see section <a href='#spacing-after-the-author-name-in-the-abstract'>5.10.1<!-- tex4ht:ref: abstractspacing  --></a> ).                                        </p></td> 
 
 </tr></table>
 <figcaption class='caption'><span class='id'>Table 3: </span><span class='content'>Appeasement commands</span></figcaption><!-- tex4ht:label?: x1-110023  -->
@@ -298,7 +298,7 @@ Bibliography<br />
 <!-- l. 181 --><p class='noindent'><span class='ec-lmr-10'>The </span><span class='ec-lmtt-10'>memoir</span><span class='ec-lmr-10'> class provides commands for single and double spacing (</span><span class='verb'><span class='ec-lmtt-10'>\SingleSpacing</span></span> <span class='ec-lmr-10'>and </span><span class='verb'><span class='ec-lmtt-10'>\DoubleSpacing</span></span><span class='ec-lmr-10'>)
 </span><span class='ec-lmr-10'>most of your thesis will be double spaced, but certain parts (such as the table of contents, lists of figures/tales,
 </span><span class='ec-lmr-10'>bibliography) may be single spaced. This duplicates the functionality of the </span><span class='ec-lmtt-10'>setspace</span><span class='ec-lmr-10'> package, which therefore
-</span><span class='ec-lmr-10'>should not be used. For bibliography spacing issues, see also Section </span><a href='#bibliography-spacing'><span class='ec-lmr-10'>5.12.1</span><!-- tex4ht:ref: bibspacing  --></a> <span class='ec-lmr-10'>.</span>
+</span><span class='ec-lmr-10'>should not be used. For bibliography spacing issues, see also Section </span><a href='#bibliography-spacing'><span class='ec-lmr-10'>5.13.1</span><!-- tex4ht:ref: bibspacing  --></a> <span class='ec-lmr-10'>.</span>
 </p>     
 <!-- l. 183 --><p class='noindent'>
 </p>        
@@ -348,7 +348,7 @@ Bibliography<br />
 <!-- l. 193 --><p class='noindent'><span class='ec-lmr-10'>If you are using other kinds of floats such as listings, you should use the Memoir </span><span class='verb'><span class='ec-lmtt-10'>\newlistof</span></span> <span class='ec-lmr-10'>command to make
 </span><span class='ec-lmr-10'>the relevant list. The class provides a macro </span><span class='verb'><span class='ec-lmtt-10'>\msucaptiondelim</span></span> <span class='ec-lmr-10'>which can be used to make sure the formatting
 </span><span class='ec-lmr-10'>of the captions in the list-of-X match the setting you have for Figures and Tables. Here is an example of how you
-</span><span class='ec-lmr-10'>would add a listings list. For lists of algorithms, see section </span><a href='#algorithm-packages'><span class='ec-lmr-10'>5.7</span><!-- tex4ht:ref: algorithms  --></a>  <span class='ec-lmr-10'>below. The following code goes in your
+</span><span class='ec-lmr-10'>would add a listings list. For lists of algorithms, see section </span><a href='#algorithm-packages'><span class='ec-lmr-10'>5.8</span><!-- tex4ht:ref: algorithms  --></a>  <span class='ec-lmr-10'>below. The following code goes in your
 </span><span class='ec-lmr-10'>preamble:</span>
 </p>     
 <blockquote class='quote'>
@@ -375,27 +375,71 @@ Bibliography<br />
 </span><span class='label'><a id='x1-20008r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote> 
-<!-- l. 214 --><p class='indent'>   <span class='ec-lmr-10'>Another common kind of list is a List of Abbreviations. The thesis office seems to want to call this “Key to
-</span><span class='ec-lmr-10'>Abbreviations”. To add such a list, you need to do the following:</span>
+<!-- l. 214 --><p class='noindent'>
+</p>        
+<h4 class='subsectionHead' id='key-to-abbreviations'><span class='titlemark'><span class='ec-lmr-10'>5.7   </span></span> <a id='x1-210005.7'></a><span class='ec-lmr-10'>Key to Abbreviations</span></h4>
+<!-- l. 215 --><p class='noindent'><span class='ec-lmr-10'>Another common kind of list is a List of Abbreviations. The thesis office seems to want to call this “Key to
+</span><span class='ec-lmr-10'>Abbreviations”. The thesis office seems to think that these should be formatted identically to other lists, even
+</span><span class='ec-lmr-10'>though they are not really contents lists. Because of this I have added a built-in </span><span class='verb'><span class='ec-lmtt-10'>\listofabbreviations</span></span> <span class='ec-lmr-10'>and a
+</span><span class='ec-lmr-10'>helper macro to add elements to the list. The basic idea is the following: for each abbreviation/symbol you add
+</span><span class='ec-lmr-10'>to the list use the command </span><span class='verb'><span class='ec-lmtt-10'>\msuabbrev{&lt;abbreviation&gt;}{&lt;explanation&gt;}</span></span><span class='ec-lmr-10'>. This command
+</span><span class='ec-lmr-10'>takes two arguments, the first being the abbreviation itself, and the second the explanation of the
+                                                                                                
+                                                                                                
+     
+</span><span class='ec-lmr-10'>abbreviation. For example, for a list of abbreviations containing the abbreviations MSU and MIT
+</span><span class='ec-lmr-10'>we would use the following code. At the end of all of the </span><span class='verb'><span class='ec-lmtt-10'>\msuabbrev</span></span> <span class='ec-lmr-10'>commands, there is the
+</span><span class='verb'><span class='ec-lmtt-10'>\listofabbreviations</span></span> 
+<span class='ec-lmr-10'>command which actually prints the list. The list is not automatically sorted, so you
+</span><span class='ec-lmr-10'>need to add abbreviations with </span><span class='verb'><span class='ec-lmtt-10'>\msuabbrev</span></span> <span class='ec-lmr-10'>in exactly the order you want them to appear in the
+</span><span class='ec-lmr-10'>list.</span>
 </p>     
-<!-- l. 216 --><p class='indent'>
+<!-- l. 217 --><p class='indent'>
 </p>     
 <blockquote class='quote'>
-<!-- l. 217 -->
-<pre class='lstlisting' id='listing-3'><span class='label'><a id='x1-20009r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-20010r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Key</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>Abbreviations}</span> 
-</span><span class='label'><a id='x1-20011r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>vspace</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftparskip</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-20012r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>addcontentsline</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>toc</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Key</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>Abbreviations}</span> 
-</span><span class='label'><a id='x1-20013r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>list </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>abbreviations </span><span class='ec-lmtt-10'>here.</span></span></pre>
+<!-- l. 218 -->
+<pre class='lstlisting' id='listing-3'><span class='label'><a id='x1-21001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msuabbrev</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>MIT</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Massachusetts</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Institute </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>Technology}</span> 
+</span><span class='label'><a id='x1-21002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msuabbrev</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>MSU</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Michigan</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>State </span><span class='ec-lmtt-10'>University}</span> 
+</span><span class='label'><a id='x1-21003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-21004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listofabbreviations</span></span></pre>
      
-</blockquote>
-                                                                                                
-                                                                                                
-     
-<!-- l. 226 --><p class='noindent'>
+</blockquote> 
+<!-- l. 225 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='algorithm-packages'><span class='titlemark'><span class='ec-lmr-10'>5.7   </span></span> <a id='x1-210005.7'></a><span class='ec-lmr-10'>Algorithm packages</span></h4>
-<!-- l. 227 --><p class='noindent'><span class='ec-lmr-10'>Because the various algorithm formatting packages such as </span><span class='ec-lmtt-10'>algorithm2e</span><span class='ec-lmr-10'> and </span><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> (or its related
+<h5 class='subsubsectionHead' id='summary-of-abbreviation-commands'><span class='titlemark'><span class='ec-lmr-10'>5.7.1   </span></span> <a id='x1-220005.7.1'></a><span class='ec-lmr-10'>Summary of abbreviation commands</span></h5>
+<!-- l. 226 --><p class='noindent'><span class='ec-lmr-10'>In addition to the </span><span class='verb'><span class='ec-lmtt-10'>\msuabbrev</span></span> <span class='ec-lmr-10'>command, there are a few other commands to change the format of the the
+</span><span class='verb'><span class='ec-lmtt-10'>\listofabbreviations</span></span> 
+<span class='ec-lmr-10'>as shown in Table </span><a href='#-list-of-abbreviation-commands'><span class='ec-lmr-10'>5</span><!-- tex4ht:ref: abbrev  --></a> <span class='ec-lmr-10'>.</span>
+</p>        
+<div class='table'>
+<!-- l. 228 --><p class='indent' id='-list-of-abbreviation-commands'>   <a id='x1-220015'></a></p><figure class='float'> 
+ <table class='tabular' id='TBL-17'><colgroup id='TBL-17-1g'><col id='TBL-17-1' /><col id='TBL-17-2' /></colgroup><tr id='TBL-17-1-' style='vertical-align:baseline;'><td class='td11' id='TBL-17-1-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\msuabbrev{&lt;abbreviation&gt;}{&lt;explantion&gt;} </span></td>
+                                                  <td class='td11' id='TBL-17-1-2' style='white-space:normal; text-align:left;'> <!-- l. 238 --><p class='noindent'>Add  an  abbreviation  to 
+the list.                          </p></td>
+ </tr><tr id='TBL-17-2-' style='vertical-align:baseline;'><td class='td11' id='TBL-17-2-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\listofabbreviations                      </span></td>
+                                                  <td class='td11' id='TBL-17-2-2' style='white-space:normal; text-align:left;'> <!-- l. 238 --><p class='noindent'>Print      the      list      of 
+abbreviations.                 </p></td>
+ </tr><tr id='TBL-17-3-' style='vertical-align:baseline;'><td class='td11' id='TBL-17-3-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\msuabbrevfont                            </span></td>
+                                                  <td class='td11' id='TBL-17-3-2' style='white-space:normal; text-align:left;'> <!-- l. 238 --><p class='noindent'>Format 
+of  the  abbreviation  itself 
+(default is <span class='ec-lmtt-10x-x-109'>\bfseries</span>).     </p></td>
+ 
+</tr><tr id='TBL-17-4-' style='vertical-align:baseline;'><td class='td11' id='TBL-17-4-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\msuabbrevdelim{}                         </span></td>
+<td class='td11' id='TBL-17-4-2' style='white-space:normal; text-align:left;'> <!-- l. 238 --><p class='noindent'>Add  a  delimiter  if  you 
+need (default is <span class='ec-lmtt-10x-x-109'>{}</span>).         </p></td>
+</tr><tr id='TBL-17-5-' style='vertical-align:baseline;'><td class='td11' id='TBL-17-5-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\msuabbrevwidth{}                         </span></td>
+<td class='td11' id='TBL-17-5-2' style='white-space:normal; text-align:left;'> <!-- l. 238 --><p class='noindent'>Set                          the 
+width of the abbreviation 
+column (default is <span class='ec-lmtt-10x-x-109'>.75in</span>).  </p></td>
+ 
+</tr></table>
+<figcaption class='caption'><span class='id'>Table 5: </span><span class='content'>List of abbreviation commands</span></figcaption><!-- tex4ht:label?: x1-220015  -->
+</figure>        
+</div>
+<!-- l. 242 --><p class='noindent'>
+</p>        
+<h4 class='subsectionHead' id='algorithm-packages'><span class='titlemark'><span class='ec-lmr-10'>5.8   </span></span> <a id='x1-230005.8'></a><span class='ec-lmr-10'>Algorithm packages</span></h4>
+<!-- l. 243 --><p class='noindent'><span class='ec-lmr-10'>Because the various algorithm formatting packages such as </span><span class='ec-lmtt-10'>algorithm2e</span><span class='ec-lmr-10'> and </span><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> (or its related
 </span><span class='ec-lmr-10'>packages) sometimes create incompatibilities with the </span><span class='ec-lmtt-10'>memoir</span><span class='ec-lmr-10'> float methods, the class provides you with floating
 </span><span class='verb'><span class='ec-lmtt-10'>{algorithm}</span></span> 
 <span class='ec-lmr-10'>environment and the corresponding list of algorithms, so you do not have to create your own list of
@@ -406,142 +450,143 @@ Bibliography<br />
 </li>
 <li class='itemize'><span class='ec-lmr-10'>If you use the </span><span class='ec-lmtt-10'>algorithm2e</span><span class='ec-lmr-10'> package you </span><span class='ec-lmri-10'>must </span><span class='ec-lmr-10'>load it with the </span><span class='verb'><span class='ec-lmtt-10'>[algo2e]</span></span> <span class='ec-lmr-10'>option (along with any
 </span><span class='ec-lmr-10'>other options you need).</span></li></ul>
-<!-- l. 232 --><p class='noindent'>
+<!-- l. 248 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='-algorithmicx-package'><span class='titlemark'><span class='ec-lmr-10'>5.7.1   </span></span> <a id='x1-220005.7.1'></a><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> package</span></h5>
-<!-- l. 232 --><p class='noindent'><span class='ec-lmr-10'>If you are using the </span><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> package, any of its related packages (including its older predecessor
+<h5 class='subsubsectionHead' id='-algorithmicx-package'><span class='titlemark'><span class='ec-lmr-10'>5.8.1   </span></span> <a id='x1-240005.8.1'></a><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> package</span></h5>
+<!-- l. 248 --><p class='noindent'><span class='ec-lmr-10'>If you are using the </span><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> package, any of its related packages (including its older predecessor
 </span><span class='ec-lmtt-10'>algorithmic</span><span class='ec-lmr-10'>) which suggest that you use the </span><span class='ec-lmtt-10'>algorithm</span><span class='ec-lmr-10'> package to create floating algorithms,
 </span><span class='ec-lmr-10'>you can load the </span><span class='ec-lmtt-10'>float</span><span class='ec-lmr-10'> package to use the its float styling capabilities instead of loading the
 </span><span class='ec-lmtt-10'>algorithm</span><span class='ec-lmr-10'> package. You should </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>however use the </span><span class='ec-lmtt-10'>float</span><span class='ec-lmr-10'> package to create new floating environments.
 </span><span class='ec-lmr-10'>You must use the </span><span class='ec-lmtt-10'>memoir</span><span class='ec-lmr-10'> methods to create new floating environments and only then load the
 </span><span class='ec-lmtt-10'>float</span><span class='ec-lmr-10'> package.</span>
 </p>     
-<!-- l. 234 --><p class='indent'>     <span class='ec-lmr-10'>If you would normally load the </span><span class='ec-lmtt-10'>algorithm</span><span class='ec-lmr-10'> package to create floating algorithms do the following instead. If
+<!-- l. 250 --><p class='indent'>     <span class='ec-lmr-10'>If you would normally load the </span><span class='ec-lmtt-10'>algorithm</span><span class='ec-lmr-10'> package to create floating algorithms do the following instead. If
 </span><span class='ec-lmr-10'>you are creating any other new floating environments (like listings as described above) you </span><span class='ec-lmri-10'>must </span><span class='ec-lmr-10'>create
 </span><span class='ec-lmr-10'>these environments first </span><span class='ec-lmri-10'>before </span><span class='ec-lmr-10'>loading the </span><span class='ec-lmtt-10'>float</span><span class='ec-lmr-10'> package otherwise your document will not
 </span><span class='ec-lmr-10'>compile.</span>
 </p>     
 <blockquote class='quote'>
-<!-- l. 236 -->
-<pre class='lstlisting' id='listing-4'><span class='label'><a id='x1-22001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>This </span><span class='ec-lmtt-10'>code </span><span class='ec-lmtt-10'>should </span><span class='ec-lmtt-10'>only </span><span class='ec-lmtt-10'>appear </span><span class='ec-lmtt-10'>AFTER </span><span class='ec-lmtt-10'>you </span><span class='ec-lmtt-10'>have </span><span class='ec-lmtt-10'>created </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>other </span><span class='ec-lmtt-10'>new </span><span class='ec-lmtt-10'>lists</span> 
-</span><span class='label'><a id='x1-22002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>usepackage</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>float</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-22003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>floatstyle</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ruled</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>or </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>predefined </span><span class='ec-lmtt-10'>float </span><span class='ec-lmtt-10'>styles</span> 
-</span><span class='label'><a id='x1-22004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>restylefloat</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>algorithm</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<!-- l. 252 -->
+<pre class='lstlisting' id='listing-4'><span class='label'><a id='x1-24001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>This </span><span class='ec-lmtt-10'>code </span><span class='ec-lmtt-10'>should </span><span class='ec-lmtt-10'>only </span><span class='ec-lmtt-10'>appear </span><span class='ec-lmtt-10'>AFTER </span><span class='ec-lmtt-10'>you </span><span class='ec-lmtt-10'>have </span><span class='ec-lmtt-10'>created </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>other </span><span class='ec-lmtt-10'>new </span><span class='ec-lmtt-10'>lists</span> 
+</span><span class='label'><a id='x1-24002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>usepackage</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>float</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-24003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>floatstyle</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ruled</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>or </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>predefined </span><span class='ec-lmtt-10'>float </span><span class='ec-lmtt-10'>styles</span> 
+</span><span class='label'><a id='x1-24004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>restylefloat</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>algorithm</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote> 
-<!-- l. 243 --><p class='noindent'>
+<!-- l. 259 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='algorithm-caption-delimiter'><span class='titlemark'><span class='ec-lmr-10'>5.7.2   </span></span> <a id='x1-230005.7.2'></a><span class='ec-lmr-10'>Algorithm caption delimiter</span></h5>
-<!-- l. 244 --><p class='noindent'><span class='ec-lmr-10'>If you have changed the </span><span class='verb'><span class='ec-lmtt-10'>\msucaptiondelimeter</span></span> <span class='ec-lmr-10'>to use a colon (see </span><a href='#caption-delimiter'><span class='ec-lmr-10'>5.6.1</span><!-- tex4ht:ref: captiondelim  --></a> <span class='ec-lmr-10'>) then depending on the particular
+<h5 class='subsubsectionHead' id='algorithm-caption-delimiter'><span class='titlemark'><span class='ec-lmr-10'>5.8.2   </span></span> <a id='x1-250005.8.2'></a><span class='ec-lmr-10'>Algorithm caption delimiter</span></h5>
+<!-- l. 260 --><p class='noindent'><span class='ec-lmr-10'>If you have changed the </span><span class='verb'><span class='ec-lmtt-10'>\msucaptiondelimeter</span></span> <span class='ec-lmr-10'>to use a colon (see </span><a href='#caption-delimiter'><span class='ec-lmr-10'>5.6.1</span><!-- tex4ht:ref: captiondelim  --></a> <span class='ec-lmr-10'>) then depending on the particular
 </span><span class='ec-lmr-10'>algorithm package you are using, there may be a mismatch between the format of the caption in the algorithm
 </span><span class='ec-lmr-10'>itself and in the List of Algorithms. The Graduate School thinks the presence or absence of a colon in captions
 </span><span class='ec-lmr-10'>and lists is of vital importance, and they may complain about this. Here are two options to use if they
 </span><span class='ec-lmr-10'>complain:</span>
 </p>     
-<!-- l. 246 --><p class='indent'>     <span class='ec-lmr-10'>The first method removes the colon from the word Algorithm in the List of Algorithms:</span>
+<!-- l. 262 --><p class='indent'>     <span class='ec-lmr-10'>The first method removes the colon from the word Algorithm in the List of Algorithms:</span>
 </p>     
 <blockquote class='quote'>
-<!-- l. 248 -->
-                                                                                                
-                                                                                                
-<pre class='lstlisting' id='listing-5'><span class='label'><a id='x1-23001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Use </span><span class='ec-lmtt-10'>this </span><span class='ec-lmtt-10'>code </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>loading </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>algorithm </span><span class='ec-lmtt-10'>package </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>float </span><span class='ec-lmtt-10'>package</span> 
-</span><span class='label'><a id='x1-23002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>This </span><span class='ec-lmtt-10'>removes </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>colon </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>word </span><span class='ec-lmtt-10'>Algorithm </span><span class='ec-lmtt-10'>in </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>List </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>Algorithms</span> 
-</span><span class='label'><a id='x1-23003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftalgorithmaftersnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{}</span></span></pre>
+<!-- l. 264 -->
+<pre class='lstlisting' id='listing-5'><span class='label'><a id='x1-25001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Use </span><span class='ec-lmtt-10'>this </span><span class='ec-lmtt-10'>code </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>loading </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>algorithm </span><span class='ec-lmtt-10'>package </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>float </span><span class='ec-lmtt-10'>package</span> 
+</span><span class='label'><a id='x1-25002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>This </span><span class='ec-lmtt-10'>removes </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>colon </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>word </span><span class='ec-lmtt-10'>Algorithm </span><span class='ec-lmtt-10'>in </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>List </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>Algorithms</span> 
+</span><span class='label'><a id='x1-25003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftalgorithmaftersnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{}</span></span></pre>
      
 </blockquote> 
-<!-- l. 255 --><p class='indent'>   <span class='ec-lmr-10'>The second method adds a colon to the word Algorithm in the captions of the algorithms</span>
-</p>     
-<!-- l. 257 --><p class='indent'>
-</p>     
-<blockquote class='quote'>
-<!-- l. 258 -->
-<pre class='lstlisting' id='listing-6'><span class='label'><a id='x1-23004r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Use </span><span class='ec-lmtt-10'>this </span><span class='ec-lmtt-10'>code </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>loading </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>algorithm </span><span class='ec-lmtt-10'>package </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>float </span><span class='ec-lmtt-10'>package</span> 
-</span><span class='label'><a id='x1-23005r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>This </span><span class='ec-lmtt-10'>removes </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>colon </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>word </span><span class='ec-lmtt-10'>Algorithm </span><span class='ec-lmtt-10'>in </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>List </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>Algorithms</span> 
-</span><span class='label'><a id='x1-23006r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Change </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>[ruled] </span><span class='ec-lmtt-10'>specification </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>algorithm </span><span class='ec-lmtt-10'>style </span><span class='ec-lmtt-10'>you </span><span class='ec-lmtt-10'>are </span><span class='ec-lmtt-10'>using.</span> 
-</span><span class='label'><a id='x1-23007r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>usepackage</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>caption</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-23008r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>captionsetup</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ruled</span></span><span style='color:#000000'><span class='ec-lmtt-10'>]{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>labelsep</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>colon</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
-     
-</blockquote> 
-<!-- l. 269 --><p class='noindent'>
-</p>        
-<h4 class='subsectionHead' id='the-microtype-package-and-contents-lists'><span class='titlemark'><span class='ec-lmr-10'>5.8   </span></span> <a id='x1-240005.8'></a><span class='ec-lmr-10'>The </span><span class='ec-lmtt-10'>microtype</span><span class='ec-lmr-10'> package and contents lists</span></h4>
-<!-- l. 270 --><p class='noindent'><span class='ec-lmr-10'>If you use the </span><span class='ec-lmtt-10'>microtype</span><span class='ec-lmr-10'> package with </span><span class='verb'><span class='ec-lmtt-10'>protrusion</span></span> <span class='ec-lmr-10'>set, it’s best to turn it off before your contents lists.
-</span><span class='ec-lmr-10'>You can do this by using </span><span class='verb'><span class='ec-lmtt-10'>\microtypesetup{protrusion=false}</span></span> <span class='ec-lmr-10'>before the contents lists and
-</span><span class='verb'><span class='ec-lmtt-10'>\microtypesetup{protrusion=true}</span></span> 
-<span class='ec-lmr-10'>afterwards. Schematically:</span>
+<!-- l. 271 --><p class='indent'>   <span class='ec-lmr-10'>The second method adds a colon to the word Algorithm in the captions of the algorithms</span>
 </p>     
 <!-- l. 273 --><p class='indent'>
 </p>     
 <blockquote class='quote'>
 <!-- l. 274 -->
-<pre class='lstlisting' id='listing-7'><span class='label'><a id='x1-24001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>microtypesetup</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protrusion</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>false</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-24002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>tableofcontents</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*</span></span> 
-<span class='label'><a id='x1-24003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-24004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoftables</span></span> 
-<span class='label'><a id='x1-24005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-24006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoffigures</span></span> 
-<span class='label'><a id='x1-24007r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>...</span></span> 
-<span class='label'><a id='x1-24008r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>microtypesetup</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protrusion</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>true</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<pre class='lstlisting' id='listing-6'><span class='label'><a id='x1-25004r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Use </span><span class='ec-lmtt-10'>this </span><span class='ec-lmtt-10'>code </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>loading </span><span class='ec-lmtt-10'>any </span><span class='ec-lmtt-10'>algorithm </span><span class='ec-lmtt-10'>package </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>float </span><span class='ec-lmtt-10'>package</span> 
+</span><span class='label'><a id='x1-25005r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>This </span><span class='ec-lmtt-10'>removes </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>colon </span><span class='ec-lmtt-10'>after </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>word </span><span class='ec-lmtt-10'>Algorithm </span><span class='ec-lmtt-10'>in </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>List </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>Algorithms</span> 
+</span><span class='label'><a id='x1-25006r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Change </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>[ruled] </span><span class='ec-lmtt-10'>specification </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>algorithm </span><span class='ec-lmtt-10'>style </span><span class='ec-lmtt-10'>you </span><span class='ec-lmtt-10'>are </span><span class='ec-lmtt-10'>using.</span> 
+</span><span class='label'><a id='x1-25007r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>usepackage</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>caption</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-25008r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>captionsetup</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ruled</span></span><span style='color:#000000'><span class='ec-lmtt-10'>]{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>labelsep</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>colon</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
-</blockquote> 
+</blockquote>
+                                                                                                
+                                                                                                
+     
 <!-- l. 285 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='abstracts'><span class='titlemark'><span class='ec-lmr-10'>5.9   </span></span> <a id='x1-250005.9'></a><span class='ec-lmr-10'>Abstracts</span></h4>
-<!-- l. 286 --><p class='noindent'><span class='ec-lmr-10'>MSU requires you to have an abstract, but you may also have a public abstract, which is weirdly unnumbered
+<h4 class='subsectionHead' id='the-microtype-package-and-contents-lists'><span class='titlemark'><span class='ec-lmr-10'>5.9   </span></span> <a id='x1-260005.9'></a><span class='ec-lmr-10'>The </span><span class='ec-lmtt-10'>microtype</span><span class='ec-lmr-10'> package and contents lists</span></h4>
+<!-- l. 286 --><p class='noindent'><span class='ec-lmr-10'>If you use the </span><span class='ec-lmtt-10'>microtype</span><span class='ec-lmr-10'> package with </span><span class='verb'><span class='ec-lmtt-10'>protrusion</span></span> <span class='ec-lmr-10'>set, it’s best to turn it off before your contents lists.
+</span><span class='ec-lmr-10'>You can do this by using </span><span class='verb'><span class='ec-lmtt-10'>\microtypesetup{protrusion=false}</span></span> <span class='ec-lmr-10'>before the contents lists and
+</span><span class='verb'><span class='ec-lmtt-10'>\microtypesetup{protrusion=true}</span></span> 
+<span class='ec-lmr-10'>afterwards. Schematically:</span>
+</p>     
+<!-- l. 289 --><p class='indent'>
+</p>     
+<blockquote class='quote'>
+<!-- l. 290 -->
+<pre class='lstlisting' id='listing-7'><span class='label'><a id='x1-26001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>microtypesetup</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protrusion</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>false</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-26002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>tableofcontents</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*</span></span> 
+<span class='label'><a id='x1-26003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-26004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoftables</span></span> 
+<span class='label'><a id='x1-26005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-26006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoffigures</span></span> 
+<span class='label'><a id='x1-26007r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>...</span></span> 
+<span class='label'><a id='x1-26008r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>microtypesetup</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protrusion</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=</span></span><span style='color:#000000'><span class='ec-lmtt-10'>true</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+     
+</blockquote> 
+<!-- l. 301 --><p class='noindent'>
+</p>        
+<h4 class='subsectionHead' id='abstracts'><span class='titlemark'><span class='ec-lmr-10'>5.10   </span></span> <a id='x1-270005.10'></a><span class='ec-lmr-10'>Abstracts</span></h4>
+<!-- l. 302 --><p class='noindent'><span class='ec-lmr-10'>MSU requires you to have an abstract, but you may also have a public abstract, which is weirdly unnumbered
 </span><span class='ec-lmr-10'>and uncounted.</span>
 </p>     
-<!-- l. 288 --><p class='noindent'>
+<!-- l. 304 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='spacing-after-the-author-name-in-the-abstract'><span class='titlemark'><span class='ec-lmr-10'>5.9.1   </span></span> <a id='x1-260005.9.1'></a><span class='ec-lmr-10'>Spacing after the author name in the abstract</span></h5>
-<!-- l. 289 --><p class='noindent'><span class='ec-lmr-10'>The thesis office is very inconsistent in how it determines what it thinks is a “double space”, and this especially
+<h5 class='subsubsectionHead' id='spacing-after-the-author-name-in-the-abstract'><span class='titlemark'><span class='ec-lmr-10'>5.10.1   </span></span> <a id='x1-280005.10.1'></a><span class='ec-lmr-10'>Spacing after the author name in the abstract</span></h5>
+<!-- l. 305 --><p class='noindent'><span class='ec-lmr-10'>The thesis office is very inconsistent in how it determines what it thinks is a “double space”, and this especially
 </span><span class='ec-lmr-10'>seems to be true after the author name in the the abstract. Because of this, I’ve created a way to change the
 </span><span class='ec-lmr-10'>spacing within the user document so that you can appease the thesis office bureaucrats without reporting an
 </span><span class='ec-lmr-10'>issue to me.</span>
 </p>     
-<!-- l. 291 --><p class='indent'>     <span class='ec-lmr-10'>Use the command </span><span class='verb'><span class='ec-lmtt-10'>\setabstractnamespace</span></span> <span class='ec-lmr-10'>to change the spacing after the author name in the
+<!-- l. 307 --><p class='indent'>     <span class='ec-lmr-10'>Use the command </span><span class='verb'><span class='ec-lmtt-10'>\setabstractnamespace</span></span> <span class='ec-lmr-10'>to change the spacing after the author name in the
 </span><span class='ec-lmr-10'>abstract (and the public abstract, if present). This command takes a value typically between -1 and
 </span><span class='ec-lmr-10'>and 1 where 0 reduces the space to a single baselineskip, while 1 adds an extra baselineskip.
 </span><span class='ec-lmr-10'>The default is set to 0. Depending on their mood at the time they check your thesis, the thesis
 </span><span class='ec-lmr-10'>office may want more or less space here, so use this command only to satisfy their bureaucratic
 </span><span class='ec-lmr-10'>self-importance.</span>
-                                                                                                
-                                                                                                
-     
-</p>
-<!-- l. 293 --><p class='noindent'>
+</p>     
+<!-- l. 309 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='public-abstract'><span class='titlemark'><span class='ec-lmr-10'>5.9.2   </span></span> <a id='x1-270005.9.2'></a><span class='ec-lmr-10'>Public abstract</span></h5>
-<!-- l. 294 --><p class='noindent'><span class='ec-lmr-10'>If your thesis requires a public abstract, it should go immediately before the regular abstract. Use the
+<h5 class='subsubsectionHead' id='public-abstract'><span class='titlemark'><span class='ec-lmr-10'>5.10.2   </span></span> <a id='x1-290005.10.2'></a><span class='ec-lmr-10'>Public abstract</span></h5>
+<!-- l. 310 --><p class='noindent'><span class='ec-lmr-10'>If your thesis requires a public abstract, it should go immediately before the regular abstract. Use the
 </span><span class='verb'><span class='ec-lmtt-10'>{publicabstract}</span></span> 
 <span class='ec-lmr-10'>environment for this. Please note that you </span><span class='ec-lmri-10'>must </span><span class='ec-lmr-10'>have an abstract even if you also have a
 </span><span class='ec-lmr-10'>public abstract.</span>
 </p>        
-<h4 class='subsectionHead' id='landscape-figures-and-tables'><span class='titlemark'><span class='ec-lmr-10'>5.10   </span></span> <a id='x1-280005.10'></a><span class='ec-lmr-10'>Landscape figures and tables</span></h4>
-<!-- l. 296 --><p class='noindent'><span class='ec-lmr-10'>If you have large figures and tables that must be rotated, you should use the </span><span class='verb'><span class='ec-lmtt-10'>[lscape]</span></span> <span class='ec-lmr-10'>class option. This enables
+<h4 class='subsectionHead' id='landscape-figures-and-tables'><span class='titlemark'><span class='ec-lmr-10'>5.11   </span></span> <a id='x1-300005.11'></a><span class='ec-lmr-10'>Landscape figures and tables</span></h4>
+<!-- l. 312 --><p class='noindent'><span class='ec-lmr-10'>If you have large figures and tables that must be rotated, you should use the </span><span class='verb'><span class='ec-lmtt-10'>[lscape]</span></span> <span class='ec-lmr-10'>class option. This enables
 </span><span class='ec-lmr-10'>a pagestyle </span><span class='verb'><span class='ec-lmtt-10'>lscape</span></span> <span class='ec-lmr-10'>and places the page numbers correctly on the long edge of the page. The option loads the
 </span><span class='ec-lmtt-10'>pdflscape</span><span class='ec-lmr-10'> package which provides a </span><span class='verb'><span class='ec-lmtt-10'>landscape</span></span> <span class='ec-lmr-10'>environment to place the landscape figure in. Before the
 </span><span class='ec-lmr-10'>landscape environment, you need to issue a </span><span class='verb'><span class='ec-lmtt-10'>\clearpage</span></span> <span class='ec-lmr-10'>command and change the pagestyle to </span><span class='verb'><span class='ec-lmtt-10'>lscape</span></span><span class='ec-lmr-10'>, and
 </span><span class='ec-lmr-10'>afterwards, change it back to </span><span class='verb'><span class='ec-lmtt-10'>plain</span></span><span class='ec-lmr-10'>. Schematically, then, any landscape pages should be created in the following
+                                                                                                
+                                                                                                
+     
 </span><span class='ec-lmr-10'>way.</span>
 </p>     
-<!-- l. 298 --><p class='indent'>
+<!-- l. 314 --><p class='indent'>
 </p>     
 <blockquote class='quote'>
-<!-- l. 299 -->
-<pre class='lstlisting' id='listing-8'><span class='label'><a id='x1-28001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>pagestyle</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lscape</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-28002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>landscape</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-28003r3'></a></span><span class='ec-lmtt-10'> </span><span style='color:#000000'><span class='ec-lmtt-10'>...</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>your </span><span class='ec-lmtt-10'>large </span><span class='ec-lmtt-10'>table(s) </span><span class='ec-lmtt-10'>or </span><span class='ec-lmtt-10'>figure(s) </span><span class='ec-lmtt-10'>here</span> 
-</span><span class='label'><a id='x1-28004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>landscape</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-28005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>pagestyle</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>plain</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<!-- l. 315 -->
+<pre class='lstlisting' id='listing-8'><span class='label'><a id='x1-30001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>pagestyle</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lscape</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-30002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>landscape</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-30003r3'></a></span><span class='ec-lmtt-10'> </span><span style='color:#000000'><span class='ec-lmtt-10'>...</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>your </span><span class='ec-lmtt-10'>large </span><span class='ec-lmtt-10'>table(s) </span><span class='ec-lmtt-10'>or </span><span class='ec-lmtt-10'>figure(s) </span><span class='ec-lmtt-10'>here</span> 
+</span><span class='label'><a id='x1-30004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>landscape</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-30005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>pagestyle</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>plain</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote> 
-<!-- l. 309 --><p class='indent'>   <span class='ec-lmr-10'>The </span><span class='verb'><span class='ec-lmtt-10'>landscape</span></span> <span class='ec-lmr-10'>environment makes all pages within it landscape, so if you have multiple landscape
+<!-- l. 325 --><p class='indent'>   <span class='ec-lmr-10'>The </span><span class='verb'><span class='ec-lmtt-10'>landscape</span></span> <span class='ec-lmr-10'>environment makes all pages within it landscape, so if you have multiple landscape
 </span><span class='ec-lmr-10'>figures in a row, you can put all of them inside a single </span><span class='verb'><span class='ec-lmtt-10'>landscape</span></span> <span class='ec-lmr-10'>environment. This option
 </span><span class='ec-lmr-10'>correctly rotates the landscape pages within the pdf document itself, which the thesis office seems to
 </span><span class='ec-lmr-10'>require.</span>
 </p>        
-<h4 class='subsectionHead' id='appendices'><span class='titlemark'><span class='ec-lmr-10'>5.11   </span></span> <a id='x1-290005.11'></a><span class='ec-lmr-10'>Appendices</span></h4>
-<!-- l. 311 --><p class='noindent'><span class='ec-lmr-10'>Appendices in a thesis are usually at the end of the document, but before the bibliography. MSU requires
+<h4 class='subsectionHead' id='appendices'><span class='titlemark'><span class='ec-lmr-10'>5.12   </span></span> <a id='x1-310005.12'></a><span class='ec-lmr-10'>Appendices</span></h4>
+<!-- l. 327 --><p class='noindent'><span class='ec-lmr-10'>Appendices in a thesis are usually at the end of the document, but before the bibliography. MSU requires
 </span><span class='ec-lmr-10'>appendices to be preceded by a cover page which says either “Appendix” (if there is only one) or “Appendices” if
 </span><span class='ec-lmr-10'>there is more than one. The class implements this with two environments: </span><span class='verb'><span class='ec-lmtt-10'>{appendix}</span></span> <span class='ec-lmr-10'>for a single appendix and
 </span><span class='verb'><span class='ec-lmtt-10'>{appendices}</span></span> 
@@ -549,53 +594,53 @@ Bibliography<br />
 </span><span class='ec-lmr-10'>the </span><span class='verb'><span class='ec-lmtt-10'>[chapterapp]</span></span> <span class='ec-lmr-10'>class option. In either case, the code for appendices is identical, i.e., each appendix is
 </span><span class='ec-lmr-10'>introduced with the </span><span class='verb'><span class='ec-lmtt-10'>\chapter</span></span> <span class='ec-lmr-10'>command.</span>
 </p>        
-<h5 class='subsubsectionHead' id='single-appendix'><span class='titlemark'><span class='ec-lmr-10'>5.11.1   </span></span> <a id='x1-300005.11.1'></a><span class='ec-lmr-10'>Single appendix</span></h5>
-<!-- l. 313 --><p class='noindent'><span class='ec-lmr-10'>If you have a single appendix, your code should look like this:</span>
+<h5 class='subsubsectionHead' id='single-appendix'><span class='titlemark'><span class='ec-lmr-10'>5.12.1   </span></span> <a id='x1-320005.12.1'></a><span class='ec-lmr-10'>Single appendix</span></h5>
+<!-- l. 329 --><p class='noindent'><span class='ec-lmr-10'>If you have a single appendix, your code should look like this:</span>
 </p>     
-<!-- l. 315 --><p class='indent'>
+<!-- l. 331 --><p class='indent'>
 </p>     
 <blockquote class='quote'>
-<!-- l. 316 -->
-<pre class='lstlisting' id='listing-9'><span class='label'><a id='x1-30001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendix</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-30002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>appendix </span><span class='ec-lmtt-10'>title}</span> 
-</span><span class='label'><a id='x1-30003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Appendix</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>goes </span><span class='ec-lmtt-10'>here</span> 
-</span><span class='label'><a id='x1-30004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendix</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<!-- l. 332 -->
+<pre class='lstlisting' id='listing-9'><span class='label'><a id='x1-32001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendix</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-32002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>appendix </span><span class='ec-lmtt-10'>title}</span> 
+</span><span class='label'><a id='x1-32003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Appendix</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>goes </span><span class='ec-lmtt-10'>here</span> 
+</span><span class='label'><a id='x1-32004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendix</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+     
+</blockquote> 
+<!-- l. 340 --><p class='noindent'>
+</p>        
+<h5 class='subsubsectionHead' id='multiple-appendices'><span class='titlemark'><span class='ec-lmr-10'>5.12.2   </span></span> <a id='x1-330005.12.2'></a><span class='ec-lmr-10'>Multiple appendices</span></h5>
+<!-- l. 341 --><p class='noindent'><span class='ec-lmr-10'>If you have more than one appendix, your code should look like this:</span>
+</p>     
+<!-- l. 343 --><p class='indent'>
+</p>     
+<blockquote class='quote'>
+<!-- l. 344 -->
+<pre class='lstlisting' id='listing-10'><span class='label'><a id='x1-33001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendices</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-33002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>first </span><span class='ec-lmtt-10'>appendix </span><span class='ec-lmtt-10'>title}</span> 
+</span><span class='label'><a id='x1-33003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Appendix</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>goes </span><span class='ec-lmtt-10'>here</span> 
+</span><span class='label'><a id='x1-33004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>second </span><span class='ec-lmtt-10'>appendix </span><span class='ec-lmtt-10'>title}</span> 
+</span><span class='label'><a id='x1-33005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Appendix</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>goes </span><span class='ec-lmtt-10'>here</span> 
+</span><span class='label'><a id='x1-33006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendices</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote>
                                                                                                 
                                                                                                 
      
-<!-- l. 324 --><p class='noindent'>
+<!-- l. 354 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='multiple-appendices'><span class='titlemark'><span class='ec-lmr-10'>5.11.2   </span></span> <a id='x1-310005.11.2'></a><span class='ec-lmr-10'>Multiple appendices</span></h5>
-<!-- l. 325 --><p class='noindent'><span class='ec-lmr-10'>If you have more than one appendix, your code should look like this:</span>
-</p>     
-<!-- l. 327 --><p class='indent'>
-</p>     
-<blockquote class='quote'>
-<!-- l. 328 -->
-<pre class='lstlisting' id='listing-10'><span class='label'><a id='x1-31001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendices</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-31002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>first </span><span class='ec-lmtt-10'>appendix </span><span class='ec-lmtt-10'>title}</span> 
-</span><span class='label'><a id='x1-31003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Appendix</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>goes </span><span class='ec-lmtt-10'>here</span> 
-</span><span class='label'><a id='x1-31004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>second </span><span class='ec-lmtt-10'>appendix </span><span class='ec-lmtt-10'>title}</span> 
-</span><span class='label'><a id='x1-31005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Appendix</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>goes </span><span class='ec-lmtt-10'>here</span> 
-</span><span class='label'><a id='x1-31006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendices</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
-     
-</blockquote> 
-<!-- l. 338 --><p class='noindent'>
-</p>        
-<h5 class='subsubsectionHead' id='appendices-per-chapter'><span class='titlemark'><span class='ec-lmr-10'>5.11.3   </span></span> <a id='x1-320005.11.3'></a><span class='ec-lmr-10'>Appendices per chapter</span></h5>
-<!-- l. 339 --><p class='noindent'><span class='ec-lmr-10'>If you need to add an appendix or appendices to a chapter, you must use the </span><span class='ec-lmtt-10'>[chapterapp]</span><span class='ec-lmr-10'> class option. The
+<h5 class='subsubsectionHead' id='appendices-per-chapter'><span class='titlemark'><span class='ec-lmr-10'>5.12.3   </span></span> <a id='x1-340005.12.3'></a><span class='ec-lmr-10'>Appendices per chapter</span></h5>
+<!-- l. 355 --><p class='noindent'><span class='ec-lmr-10'>If you need to add an appendix or appendices to a chapter, you must use the </span><span class='ec-lmtt-10'>[chapterapp]</span><span class='ec-lmr-10'> class option. The
 </span><span class='ec-lmr-10'>code for the appendices themselves is exactly as described above. This means that the appendix itself is
 </span><span class='ec-lmr-10'>introduced by the </span><span class='verb'><span class='ec-lmtt-10'>\chapter</span></span> <span class='ec-lmr-10'>command, </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>a </span><span class='verb'><span class='ec-lmtt-10'>\section</span></span> <span class='ec-lmr-10'>command (because the this seems to be
 </span><span class='ec-lmr-10'>how the thesis office wants things to look). Furthermore, per-chapter appendices should </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>be
 </span><span class='ec-lmr-10'>preceded by the </span><span class='verb'><span class='ec-lmtt-10'>\backmatter</span></span> <span class='ec-lmr-10'>command, which should only precede the global bibliography or
 </span><span class='ec-lmr-10'>appendices.</span>
 </p>     
-<!-- l. 341 --><p class='noindent'>
+<!-- l. 357 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='bibliographies'><span class='titlemark'><span class='ec-lmr-10'>5.12   </span></span> <a id='x1-330005.12'></a><span class='ec-lmr-10'>Bibliographies</span></h4>
-<!-- l. 342 --><p class='noindent'><span class='ec-lmr-10'>The class places no constraints on how you do your bibliography. It doesn’t care whether you are using the
+<h4 class='subsectionHead' id='bibliographies'><span class='titlemark'><span class='ec-lmr-10'>5.13   </span></span> <a id='x1-350005.13'></a><span class='ec-lmr-10'>Bibliographies</span></h4>
+<!-- l. 358 --><p class='noindent'><span class='ec-lmr-10'>The class places no constraints on how you do your bibliography. It doesn’t care whether you are using the
 </span><span class='ec-lmtt-10'>chapterbib</span><span class='ec-lmr-10'> package with </span><span class='ec-lmtt-10'>natbib</span><span class='ec-lmr-10'> or the per-chapter bibliography functionality provided by </span><span class='ec-lmtt-10'>biblatex</span><span class='ec-lmr-10'>. If you
 </span><span class='ec-lmr-10'>have per-chapter bibliographies, however, you </span><span class='ec-lmri-10'>must</span><span class='ec-lmr-10'> use the </span><span class='verb'><span class='ec-lmtt-10'>[chapterbib]</span></span> <span class='ec-lmr-10'>class option. This option lets the
 </span><span class='ec-lmr-10'>class know that you are using per-chapter bibliographies. Before any bibliography (whether global or
@@ -603,22 +648,19 @@ Bibliography<br />
 </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>be preceded by the </span><span class='verb'><span class='ec-lmtt-10'>\backmatter</span></span> <span class='ec-lmr-10'>command, which should only precede the global bibliography or
 </span><span class='ec-lmr-10'>appendices.</span>
 </p>     
-<!-- l. 344 --><p class='noindent'>
+<!-- l. 360 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='bibliography-spacing'><span class='titlemark'><span class='ec-lmr-10'>5.12.1   </span></span> <a id='x1-340005.12.1'></a><span class='ec-lmr-10'>Bibliography spacing</span></h5>
-<!-- l. 345 --><p class='noindent'><span class='ec-lmr-10'>Please note that although bibliography entries must be single spaced, there must be a space between
+<h5 class='subsubsectionHead' id='bibliography-spacing'><span class='titlemark'><span class='ec-lmr-10'>5.13.1   </span></span> <a id='x1-360005.13.1'></a><span class='ec-lmr-10'>Bibliography spacing</span></h5>
+<!-- l. 361 --><p class='noindent'><span class='ec-lmr-10'>Please note that although bibliography entries must be single spaced, there must be a space between
 </span><span class='ec-lmr-10'>each entry. This parameter is set by your bibliography package and not by the class itself. If you
 </span><span class='ec-lmr-10'>are using </span><span class='ec-lmtt-10'>natbib</span><span class='ec-lmr-10'> or </span><span class='ec-lmtt-10'>biblatex</span><span class='ec-lmr-10'> these spacing parameters are set for you by the class. If you are
 </span><span class='ec-lmr-10'>using another package for your bibliography you are responsible for adjusting the relevant spacing
 </span><span class='ec-lmr-10'>parameters.</span>
 </p>     
-<!-- l. 347 --><p class='noindent'>
+<!-- l. 363 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='customizing-the-look-of-things'><span class='titlemark'><span class='ec-lmr-10'>5.13   </span></span> <a id='x1-350005.13'></a><span class='ec-lmr-10'>Customizing the look of things</span></h4>
-                                                                                                
-                                                                                                
-     
-<!-- l. 348 --><p class='noindent'><span class='ec-lmr-10'>I have created a basic looking style for Chapter headings based on the </span><span class='verb'><span class='ec-lmtt-10'>thatcher</span></span> <span class='ec-lmr-10'>style in </span><span class='verb'><span class='ec-lmtt-10'>memoir</span></span><span class='ec-lmr-10'>. If you want to
+<h4 class='subsectionHead' id='customizing-the-look-of-things'><span class='titlemark'><span class='ec-lmr-10'>5.14   </span></span> <a id='x1-370005.14'></a><span class='ec-lmr-10'>Customizing the look of things</span></h4>
+<!-- l. 364 --><p class='noindent'><span class='ec-lmr-10'>I have created a basic looking style for Chapter headings based on the </span><span class='verb'><span class='ec-lmtt-10'>thatcher</span></span> <span class='ec-lmr-10'>style in </span><span class='verb'><span class='ec-lmtt-10'>memoir</span></span><span class='ec-lmr-10'>. If you want to
 </span><span class='ec-lmr-10'>change these things, you may, using the appropriate </span><span class='verb'><span class='ec-lmtt-10'>\renewcommand</span></span> <span class='ec-lmr-10'>commands. More information can be
 </span><span class='ec-lmr-10'>found in the </span><span class='verb'><span class='ec-lmtt-10'>memoir</span></span> <span class='ec-lmr-10'>documentation. The Thesis Office seems to require dotted leaders for the
 </span><span class='ec-lmr-10'>List of Figures/Tables in the Table of Contents, (despite the guide saying they are optional)
@@ -629,17 +671,20 @@ Bibliography<br />
 </span><span class='ec-lmr-10'>office.</span>
 </p>     
 <blockquote class='quote'>
-<!-- l. 350 -->
-<pre class='lstlisting' id='listing-11'><span class='label'><a id='x1-35001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>addtocontents</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>toc</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{%</span></span> 
-<span class='label'><a id='x1-35002r2'></a></span><span class='ec-lmtt-10'>   </span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protect</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protect</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftchapterdotsep</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-35003r3'></a></span><span class='ec-lmtt-10'>        </span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftnodots</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}}</span></span></pre>
+<!-- l. 366 -->
+<pre class='lstlisting' id='listing-11'><span class='label'><a id='x1-37001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>addtocontents</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>toc</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{%</span></span> 
+<span class='label'><a id='x1-37002r2'></a></span><span class='ec-lmtt-10'>   </span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protect</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>protect</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftchapterdotsep</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-37003r3'></a></span><span class='ec-lmtt-10'>        </span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftnodots</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}}</span></span></pre>
      
 </blockquote>
-<!-- l. 356 --><p class='noindent'><span class='ec-lmr-10'>Despite there being no explicit formatting requirements for Chapter headings (other than that they start 1 in from
+                                                                                                
+                                                                                                
+  
+<!-- l. 372 --><p class='noindent'><span class='ec-lmr-10'>Despite there being no explicit formatting requirements for Chapter headings (other than that they start 1 in from
 </span><span class='ec-lmr-10'>the top of the page), the thesis office has been known to dislike many things, so if you do decide to change
 </span><span class='ec-lmr-10'>things, be prepared for rejection or a frustrating fight.</span>
 </p>        
-<h4 class='subsectionHead' id='things-to-watch-out-for'><span class='titlemark'><span class='ec-lmr-10'>5.14   </span></span> <a id='x1-360005.14'></a><span class='ec-lmr-10'>Things to watch out for</span></h4>
+<h4 class='subsectionHead' id='things-to-watch-out-for'><span class='titlemark'><span class='ec-lmr-10'>5.15   </span></span> <a id='x1-380005.15'></a><span class='ec-lmr-10'>Things to watch out for</span></h4>
 <ul class='itemize1'>     
 <li class='itemize'><span class='ec-lmr-10'>If you are having problems with the Thesis office about non-conforming formatting, please check
 </span><span class='ec-lmr-10'>first whether you have a local copy of the class instead of the latest version distributed via CTAN.
@@ -669,20 +714,23 @@ Bibliography<br />
 </li>
 <li class='itemize'><span class='ec-lmr-10'>Remember  to  add  the  </span><span class='verb'><span class='ec-lmtt-10'>\makebibliographypage</span></span> <span class='ec-lmr-10'>command  before  any  bibliography  in  your
 </span><span class='ec-lmr-10'>document.</span></li></ul>
-<!-- l. 367 --><p class='noindent'>
+<!-- l. 383 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='masters-theses'><span class='titlemark'><span class='ec-lmr-10'>5.15   </span></span> <a id='x1-370005.15'></a><span class='ec-lmr-10'>Master’s Theses</span></h4>
-<!-- l. 368 --><p class='noindent'><span class='ec-lmr-10'>Master’s theses are sometimes relatively short, and you may think that you can just have </span><span class='verb'><span class='ec-lmtt-10'>\section</span></span> <span class='ec-lmr-10'>commands
+<h4 class='subsectionHead' id='masters-theses'><span class='titlemark'><span class='ec-lmr-10'>5.16   </span></span> <a id='x1-390005.16'></a><span class='ec-lmr-10'>Master’s Theses</span></h4>
+                                                                                                
+                                                                                                
+     
+<!-- l. 384 --><p class='noindent'><span class='ec-lmr-10'>Master’s theses are sometimes relatively short, and you may think that you can just have </span><span class='verb'><span class='ec-lmtt-10'>\section</span></span> <span class='ec-lmr-10'>commands
 </span><span class='ec-lmr-10'>with no chapters. This will </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>work. The class is designed to use chapters (and as far as I can tell, the Graduate
 </span><span class='ec-lmr-10'>School also expects chapters).</span>
 </p>     
-<!-- l. 370 --><p class='noindent'>
+<!-- l. 386 --><p class='noindent'>
 </p>        
-<h3 class='sectionHead' id='bugs-and-redistribution'><span class='titlemark'><span class='ec-lmr-10'>6   </span></span> <a id='x1-380006'></a><span class='ec-lmr-10'>Bugs and redistribution</span></h3>
-<!-- l. 371 --><p class='noindent'>
+<h3 class='sectionHead' id='bugs-and-redistribution'><span class='titlemark'><span class='ec-lmr-10'>6   </span></span> <a id='x1-400006'></a><span class='ec-lmr-10'>Bugs and redistribution</span></h3>
+<!-- l. 387 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='current-version'><span class='titlemark'><span class='ec-lmr-10'>6.1   </span></span> <a id='x1-390006.1'></a><span class='ec-lmr-10'>Current version</span></h4>
-<!-- l. 372 --><p class='noindent'><span class='ec-lmr-10'>The latest copy of </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> will always be available on </span><a href='https://ctan.org/pkg/msu-thesis?lang=en'><span class='ec-lmr-10'>CTAN</span></a> <span class='ec-lmr-10'>and on </span><a href='https://github.com/amunn/msu-thesis'><span class='ec-lmr-10'>GitHub</span></a><span class='ec-lmr-10'>. If you use MiKTeX, or a
+<h4 class='subsectionHead' id='current-version'><span class='titlemark'><span class='ec-lmr-10'>6.1   </span></span> <a id='x1-410006.1'></a><span class='ec-lmr-10'>Current version</span></h4>
+<!-- l. 388 --><p class='noindent'><span class='ec-lmr-10'>The latest copy of </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> will always be available on </span><a href='https://ctan.org/pkg/msu-thesis?lang=en'><span class='ec-lmr-10'>CTAN</span></a> <span class='ec-lmr-10'>and on </span><a href='https://github.com/amunn/msu-thesis'><span class='ec-lmr-10'>GitHub</span></a><span class='ec-lmr-10'>. If you use MiKTeX, or a
 </span><span class='ec-lmr-10'>current year TeX Live then their respective package managers can update or install the latest version. If you are
 </span><span class='ec-lmr-10'>using Overleaf, you may not have the most recent version, since Overleaf is usually about one year behind in its
 </span><span class='ec-lmr-10'>TeX distribution. If you are using a Linux-based distribution, or your TeXLive distribution is not the most
@@ -698,18 +746,15 @@ Bibliography<br />
 </span><span class='ec-lmr-10'>your problem reports are extremely helpful for keeping the class in compliance with the latest
 </span><span class='ec-lmr-10'>standards.</span>
 </p>        
-<h4 class='subsectionHead' id='usage-survey'><span class='titlemark'><span class='ec-lmr-10'>6.2   </span></span> <a id='x1-400006.2'></a><span class='ec-lmr-10'>Usage survey</span></h4>
-<!-- l. 374 --><p class='noindent'><span class='ec-lmr-10'>If you are using the class, please take a moment to fill out my </span><a href='https://forms.gle/bm2AUzthFxW2naK36'><span class='ec-lmr-10'>anonymous usage survey</span></a><span class='ec-lmr-10'>. Thanks!
+<h4 class='subsectionHead' id='usage-survey'><span class='titlemark'><span class='ec-lmr-10'>6.2   </span></span> <a id='x1-420006.2'></a><span class='ec-lmr-10'>Usage survey</span></h4>
+<!-- l. 390 --><p class='noindent'><span class='ec-lmr-10'>If you are using the class, please take a moment to fill out my </span><a href='https://forms.gle/bm2AUzthFxW2naK36'><span class='ec-lmr-10'>anonymous usage survey</span></a><span class='ec-lmr-10'>. Thanks!
 </span><span class='ec-lmr-10'>You should be signed into your MSU Google account to access the form, but the form itself is
 </span><span class='ec-lmr-10'>anonymous.</span>
-                                                                                                
-                                                                                                
-     
-</p>
-<!-- l. 376 --><p class='noindent'>
+</p>     
+<!-- l. 392 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='asking-me-for-help'><span class='titlemark'><span class='ec-lmr-10'>6.3   </span></span> <a id='x1-410006.3'></a><span class='ec-lmr-10'>Asking me for help</span></h4>
-<!-- l. 377 --><p class='noindent'><span class='ec-lmr-10'>I’m happy to answer emails about formatting issues with the class, especially when you are in
+<h4 class='subsectionHead' id='asking-me-for-help'><span class='titlemark'><span class='ec-lmr-10'>6.3   </span></span> <a id='x1-430006.3'></a><span class='ec-lmr-10'>Asking me for help</span></h4>
+<!-- l. 393 --><p class='noindent'><span class='ec-lmr-10'>I’m happy to answer emails about formatting issues with the class, especially when you are in
 </span><span class='ec-lmr-10'>the final stages of formatting your dissertation or thesis, but please keep in mind the following:</span>
 </p>     
 <ul class='itemize1'>
@@ -718,8 +763,11 @@ Bibliography<br />
 </li>
 <li class='itemize'><span class='ec-lmr-10'>Please make sure you have the latest version of the class (check the log file and compare it with</span>
 <a href='https://ctan.org/pkg/msu-thesis?lang=en'><span class='ec-lmr-10'>CTAN</span></a> <span class='ec-lmr-10'>or </span><a href='https://github.com/amunn/msu-thesis'><span class='ec-lmr-10'>GitHub</span></a><span class='ec-lmr-10'>).</span>
-</li>
-<li class='itemize'><span class='ec-lmr-10'>Please make sure you’ve checked all the issues listed in section </span><a href='#things-to-watch-out-for'><span class='ec-lmr-10'>5.14</span><!-- tex4ht:ref: watchout  --></a> <span class='ec-lmr-10'>.</span>
+                                                                                                
+                                                                                                
+     
+</li>     
+<li class='itemize'><span class='ec-lmr-10'>Please make sure you’ve checked all the issues listed in section </span><a href='#things-to-watch-out-for'><span class='ec-lmr-10'>5.15</span><!-- tex4ht:ref: watchout  --></a> <span class='ec-lmr-10'>.</span>
 </li>
 <li class='itemize'><span class='ec-lmr-10'>Please send me an error-free, compilable sample document for me to test. The best option is for
 </span><span class='ec-lmr-10'>this to be a small sample document using the class that you create that recreates the problem
@@ -733,23 +781,20 @@ Bibliography<br />
 </span><span class='ec-lmr-10'>a sample document. Overleaf has a tendency to produce output even when the document has lots
 </span><span class='ec-lmr-10'>of errors, and it is extremely time consuming for me to fix errors that have nothing to do with the
 </span><span class='ec-lmr-10'>class before trying to help you with your actual problem.</span></li></ul>
-<!-- l. 386 --><p class='noindent'>
+<!-- l. 402 --><p class='noindent'>
 </p>        
-<h4 class='subsectionHead' id='archiving-your-thesis-for-the-future'><span class='titlemark'><span class='ec-lmr-10'>6.4   </span></span> <a id='x1-420006.4'></a><span class='ec-lmr-10'>Archiving your thesis for the future</span></h4>
-<!-- l. 387 --><p class='noindent'><span class='ec-lmr-10'>Since the current version of the </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> class satisfies the Graduate School requirements at any one time, as
+<h4 class='subsectionHead' id='archiving-your-thesis-for-the-future'><span class='titlemark'><span class='ec-lmr-10'>6.4   </span></span> <a id='x1-440006.4'></a><span class='ec-lmr-10'>Archiving your thesis for the future</span></h4>
+<!-- l. 403 --><p class='noindent'><span class='ec-lmr-10'>Since the current version of the </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> class satisfies the Graduate School requirements at any one time, as
 </span><span class='ec-lmr-10'>these requirements change, you may find that if you need to recompile your thesis after you have graduated
 </span><span class='ec-lmr-10'>that the formatting changes. To avoid this, I would recommend saving an archived version of
 </span><span class='ec-lmr-10'>the </span><span class='ec-lmtt-10'>msu-thesis.cls</span><span class='ec-lmr-10'> file in the same folder as your thesis file. You only need to do this once
 </span><span class='ec-lmr-10'>you have completely finished your thesis however; there’s no need to do it during the writing
 </span><span class='ec-lmr-10'>process.</span>
 </p>        
-<h4 class='subsectionHead' id='major-version-history'><span class='titlemark'><span class='ec-lmr-10'>6.5   </span></span> <a id='x1-430006.5'></a><span class='ec-lmr-10'>Major Version history</span></h4>
-<!-- l. 389 --><p class='noindent'><span class='ec-lmr-10'>Previous versions of </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> (versions 1.0–1.4b) were created for non-electronic submission and should not
+<h4 class='subsectionHead' id='major-version-history'><span class='titlemark'><span class='ec-lmr-10'>6.5   </span></span> <a id='x1-450006.5'></a><span class='ec-lmr-10'>Major Version history</span></h4>
+<!-- l. 405 --><p class='noindent'><span class='ec-lmr-10'>Previous versions of </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> (versions 1.0–1.4b) were created for non-electronic submission and should not
 </span><span class='ec-lmr-10'>be used. Versions 1.5–1.6 (the first electronic submission versions) contained a </span><span class='verb'><span class='ec-lmtt-10'>\makeabstract</span></span> <span class='ec-lmr-10'>command and a
 </span><span class='ec-lmr-10'>separate </span><span class='verb'><span class='ec-lmtt-10'>msuabstract</span></span> <span class='ec-lmr-10'>environment. These have been removed as of version 1.7. Users who are upgrading from
-                                                                                                
-                                                                                                
-     
 </span><span class='ec-lmr-10'>earlier versions to version 1.7 do not need to change these commands however but their use will trigger a
 </span><span class='ec-lmr-10'>warning.) Version 2.0 implemented landscape pages; version 2.1 added support for </span><span class='ec-lmtt-10'>hyperref</span><span class='ec-lmr-10'>. Versions 2.2–2.5
 </span><span class='ec-lmr-10'>mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed
@@ -765,22 +810,25 @@ Bibliography<br />
 </span><span class='ec-lmr-10'>per-chapter appendices. Version 3.3 added code to accommodate the insane inconsistencies in
 </span><span class='ec-lmr-10'>formatting requirements that the thesis office requires, including a new contents option which
 </span><span class='ec-lmr-10'>hopefully should never be used, and fixed some numbering problems with per-chapter appendices.
+                                                                                                
+                                                                                                
+     
 </span><span class='ec-lmr-10'>Version 3.4 added a starred option to the </span><span class='verb'><span class='ec-lmtt-10'>\makecopyrightpage</span></span> <span class='ec-lmr-10'>command after complaints about
 </span><span class='ec-lmr-10'>placement. The documentation has also been updated to include more information about caption
 </span><span class='ec-lmr-10'>formatting and removed colons from the default caption format. Version 3.5 added user level
 </span><span class='ec-lmr-10'>way to change the spacing after the author’s name in the abstract, to deal with thesis office
 </span><span class='ec-lmr-10'>inconsistency.</span>
 </p>     
-<!-- l. 391 --><p class='noindent'>
+<!-- l. 407 --><p class='noindent'>
 </p>        
-<h3 class='sectionHead' id='acknowledgements'><span class='titlemark'><span class='ec-lmr-10'>7   </span></span> <a id='x1-440007'></a><span class='ec-lmr-10'>Acknowledgements</span></h3>
-<!-- l. 392 --><p class='noindent'><span class='ec-lmr-10'>Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for
+<h3 class='sectionHead' id='acknowledgements'><span class='titlemark'><span class='ec-lmr-10'>7   </span></span> <a id='x1-460007'></a><span class='ec-lmr-10'>Acknowledgements</span></h3>
+<!-- l. 408 --><p class='noindent'><span class='ec-lmr-10'>Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for
 </span><span class='ec-lmr-10'>versions 1.0–1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the
 </span><span class='ec-lmtt-10'>linguex</span><span class='ec-lmr-10'> spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original
 </span><span class='ec-lmr-10'>version, and Florent Chervet for the </span><span class='ec-lmtt-10'>hyperref</span><span class='ec-lmr-10'> code. Thanks also to the following students who have reported
-</span><span class='ec-lmr-10'>problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, Dmitriy
-</span><span class='ec-lmr-10'>Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam
-</span><span class='ec-lmr-10'>Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Giacomo Romanini,
+</span><span class='ec-lmr-10'>problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, Dmitriy Bryndin, Greg
+</span><span class='ec-lmr-10'>Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa
+</span><span class='ec-lmr-10'>Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Nick Rekuski, Giacomo Romanini,
 </span><span class='ec-lmr-10'>William Sands, Adam Soliman, Erik Stitt, Eremey Valetov, Matthew Vincent, Michael Wojcik,
 </span><span class='ec-lmr-10'>Stephen Yowono, Ali Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously
 </span><span class='ec-lmr-10'>provided a copy of his entire thesis which allowed me to debug some especially subtle spacing
@@ -788,60 +836,60 @@ Bibliography<br />
                                                                                                 
                                                                                                 
 </p>        
-<h3 class='sectionHead' id='sample-template'><span class='titlemark'><span class='ec-lmr-10'>Appendix A   </span></span> <a id='x1-45000Appendix A'></a><span class='ec-lmr-10'>Sample template</span></h3>
-<!-- l. 398 --><p class='noindent'><span class='ec-lmr-10'>You can find a copy of this template </span><a href='http://mirrors.ctan.org/macros/latex/contrib/msu-thesis/samples/MSU-thesis-template.tex'><span class='ec-lmr-10'>here</span></a><span class='ec-lmr-10'>.</span> </p><!-- l. 400 -->
-<pre class='lstlisting' id='listing-12'><span class='label'><a id='x1-45001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>documentclass</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>PhD</span></span><span style='color:#000000'><span class='ec-lmtt-10'>]{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msu</span></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>thesis</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-45002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Your </span><span class='ec-lmtt-10'>extra </span><span class='ec-lmtt-10'>packages </span><span class='ec-lmtt-10'>here</span> 
-</span><span class='label'><a id='x1-45003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Define </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>title, </span><span class='ec-lmtt-10'>author, </span><span class='ec-lmtt-10'>field </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>study, </span><span class='ec-lmtt-10'>date, </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>dedication </span><span class='ec-lmtt-10'>(optional)</span> 
-</span><span class='label'><a id='x1-45005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>title</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>The</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>syntax </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>semantics </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>phonology}</span> 
-</span><span class='label'><a id='x1-45007r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>author</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Joe</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Linguist}</span> 
-</span><span class='label'><a id='x1-45008r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>fieldofstudy</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Linguistics</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>% </span><span class='ec-lmtt-10'>should </span><span class='ec-lmtt-10'>be </span><span class='ec-lmtt-10'>in </span><span class='ec-lmtt-10'>sentence </span><span class='ec-lmtt-10'>case</span> 
-</span><span class='label'><a id='x1-45009r9'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>dedication</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>This</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>thesis </span><span class='ec-lmtt-10'>is </span><span class='ec-lmtt-10'>dedicated </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>someone.}</span> 
-</span><span class='label'><a id='x1-45010r10'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>date</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{2014}</span></span> 
-<span class='label'><a id='x1-45011r11'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45012r12'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>document</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-45013r13'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>frontmatter</span></span> 
-<span class='label'><a id='x1-45014r14'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45015r15'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>maketitlepage</span></span> 
-<span class='label'><a id='x1-45016r16'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45017r17'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>abstract</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-45018r18'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>abstract </span><span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>here</span> 
-</span><span class='label'><a id='x1-45019r19'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>abstract</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-45020r20'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45021r21'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-45022r22'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>makecopyrightpage</span></span> 
-<span class='label'><a id='x1-45023r23'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>makededicationpage</span></span> 
-<span class='label'><a id='x1-45024r24'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45025r25'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-45026r26'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Acknowledgements</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-45027r27'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>DoubleSpacing</span></span> 
-<span class='label'><a id='x1-45028r28'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>acknowledgements </span><span class='ec-lmtt-10'>here</span> 
-</span><span class='label'><a id='x1-45029r29'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45030r30'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-45031r31'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span> 
-<span class='label'><a id='x1-45032r32'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>tableofcontents</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*</span></span> 
-<span class='label'><a id='x1-45033r33'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-45034r34'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoftables</span></span> 
-<span class='label'><a id='x1-45035r35'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
-<span class='label'><a id='x1-45036r36'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoffigures</span></span> 
-<span class='label'><a id='x1-45037r37'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45038r38'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>mainmatter</span></span> 
-<span class='label'><a id='x1-45039r39'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>first </span><span class='ec-lmtt-10'>chapter}</span> 
-</span><span class='label'><a id='x1-45040r40'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-45041r41'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendix</span></span> 
-<span class='label'><a id='x1-45042r42'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>first </span><span class='ec-lmtt-10'>appendix}</span> 
-</span><span class='label'><a id='x1-45043r43'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>backmatter</span></span> 
-<span class='label'><a id='x1-45044r44'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>makebibliographypage</span></span> 
-<span class='label'><a id='x1-45045r45'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span> 
-<span class='label'><a id='x1-45046r46'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>bibliography</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>your</span></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>bib</span></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>file</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x1-45047r47'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>document</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<h3 class='sectionHead' id='sample-template'><span class='titlemark'><span class='ec-lmr-10'>Appendix A   </span></span> <a id='x1-47000Appendix A'></a><span class='ec-lmr-10'>Sample template</span></h3>
+<!-- l. 414 --><p class='noindent'><span class='ec-lmr-10'>You can find a copy of this template </span><a href='http://mirrors.ctan.org/macros/latex/contrib/msu-thesis/samples/MSU-thesis-template.tex'><span class='ec-lmr-10'>here</span></a><span class='ec-lmr-10'>.</span> </p><!-- l. 416 -->
+<pre class='lstlisting' id='listing-12'><span class='label'><a id='x1-47001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>documentclass</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>PhD</span></span><span style='color:#000000'><span class='ec-lmtt-10'>]{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msu</span></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>thesis</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-47002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Your </span><span class='ec-lmtt-10'>extra </span><span class='ec-lmtt-10'>packages </span><span class='ec-lmtt-10'>here</span> 
+</span><span class='label'><a id='x1-47003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Define </span><span class='ec-lmtt-10'>the </span><span class='ec-lmtt-10'>title, </span><span class='ec-lmtt-10'>author, </span><span class='ec-lmtt-10'>field </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>study, </span><span class='ec-lmtt-10'>date, </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>dedication </span><span class='ec-lmtt-10'>(optional)</span> 
+</span><span class='label'><a id='x1-47005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47006r6'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>title</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>The</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>syntax </span><span class='ec-lmtt-10'>and </span><span class='ec-lmtt-10'>semantics </span><span class='ec-lmtt-10'>of </span><span class='ec-lmtt-10'>phonology}</span> 
+</span><span class='label'><a id='x1-47007r7'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>author</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Joe</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>Linguist}</span> 
+</span><span class='label'><a id='x1-47008r8'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>fieldofstudy</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Linguistics</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>% </span><span class='ec-lmtt-10'>should </span><span class='ec-lmtt-10'>be </span><span class='ec-lmtt-10'>in </span><span class='ec-lmtt-10'>sentence </span><span class='ec-lmtt-10'>case</span> 
+</span><span class='label'><a id='x1-47009r9'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>dedication</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>This</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>thesis </span><span class='ec-lmtt-10'>is </span><span class='ec-lmtt-10'>dedicated </span><span class='ec-lmtt-10'>to </span><span class='ec-lmtt-10'>someone.}</span> 
+</span><span class='label'><a id='x1-47010r10'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>date</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{2014}</span></span> 
+<span class='label'><a id='x1-47011r11'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47012r12'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>document</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-47013r13'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>frontmatter</span></span> 
+<span class='label'><a id='x1-47014r14'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47015r15'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>maketitlepage</span></span> 
+<span class='label'><a id='x1-47016r16'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47017r17'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>abstract</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-47018r18'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>abstract </span><span class='ec-lmtt-10'>text </span><span class='ec-lmtt-10'>here</span> 
+</span><span class='label'><a id='x1-47019r19'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>abstract</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-47020r20'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47021r21'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-47022r22'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>makecopyrightpage</span></span> 
+<span class='label'><a id='x1-47023r23'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>makededicationpage</span></span> 
+<span class='label'><a id='x1-47024r24'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47025r25'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-47026r26'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Acknowledgements</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-47027r27'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>DoubleSpacing</span></span> 
+<span class='label'><a id='x1-47028r28'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>acknowledgements </span><span class='ec-lmtt-10'>here</span> 
+</span><span class='label'><a id='x1-47029r29'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47030r30'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-47031r31'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span> 
+<span class='label'><a id='x1-47032r32'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>tableofcontents</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*</span></span> 
+<span class='label'><a id='x1-47033r33'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-47034r34'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoftables</span></span> 
+<span class='label'><a id='x1-47035r35'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>clearpage</span></span> 
+<span class='label'><a id='x1-47036r36'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoffigures</span></span> 
+<span class='label'><a id='x1-47037r37'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47038r38'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>mainmatter</span></span> 
+<span class='label'><a id='x1-47039r39'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>first </span><span class='ec-lmtt-10'>chapter}</span> 
+</span><span class='label'><a id='x1-47040r40'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-47041r41'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>appendix</span></span> 
+<span class='label'><a id='x1-47042r42'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>first </span><span class='ec-lmtt-10'>appendix}</span> 
+</span><span class='label'><a id='x1-47043r43'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>backmatter</span></span> 
+<span class='label'><a id='x1-47044r44'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>makebibliographypage</span></span> 
+<span class='label'><a id='x1-47045r45'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span> 
+<span class='label'><a id='x1-47046r46'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>bibliography</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>your</span></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>bib</span></span><span style='color:#000000'><span class='ec-lmtt-10'>-</span></span><span style='color:#000000'><span class='ec-lmtt-10'>file</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x1-47047r47'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>document</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
                                                                                                 
                                                                                                 
         
-<h3 class='sectionHead' id='linguistic-examples-with-gbe-and-linguex'><span class='titlemark'><span class='ec-lmr-10'>Appendix B   </span></span> <a id='x1-46000Appendix B'></a><span class='ec-lmr-10'>Linguistic Examples with </span><span class='ec-lmtt-10'>gb4e</span><span class='ec-lmr-10'> and </span><span class='ec-lmtt-10'>linguex</span></h3>
-<!-- l. 452 --><p class='noindent'><span class='ec-lmr-10'>The </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> class has been tested with both the </span><span class='ec-lmtt-10'>gb4e</span><span class='ec-lmr-10'> package, and the </span><span class='ec-lmtt-10'>linguex</span><span class='ec-lmr-10'> package. Unfortunately
+<h3 class='sectionHead' id='linguistic-examples-with-gbe-and-linguex'><span class='titlemark'><span class='ec-lmr-10'>Appendix B   </span></span> <a id='x1-48000Appendix B'></a><span class='ec-lmr-10'>Linguistic Examples with </span><span class='ec-lmtt-10'>gb4e</span><span class='ec-lmr-10'> and </span><span class='ec-lmtt-10'>linguex</span></h3>
+<!-- l. 468 --><p class='noindent'><span class='ec-lmr-10'>The </span><span class='ec-lmtt-10'>msu-thesis</span><span class='ec-lmr-10'> class has been tested with both the </span><span class='ec-lmtt-10'>gb4e</span><span class='ec-lmr-10'> package, and the </span><span class='ec-lmtt-10'>linguex</span><span class='ec-lmr-10'> package. Unfortunately
 </span><span class='ec-lmr-10'>some versions of </span><span class='ec-lmtt-10'>gb4e</span><span class='ec-lmr-10'> use old font commands, and so does </span><span class='ec-lmtt-10'>linguex</span><span class='ec-lmr-10'>, so if you encounter problems with either
 </span><span class='ec-lmr-10'>package, load the class with the </span><span class='verb'><span class='ec-lmtt-10'>oldfontcommands</span></span> <span class='ec-lmr-10'>option. Since linguistic examples are usually single spaced,
 </span><span class='ec-lmr-10'>even in theses, you should use the </span><span class='verb'><span class='ec-lmtt-10'>\singlegloss</span></span> <span class='ec-lmr-10'>command (from the </span><span class='ec-lmtt-10'>cgloss4e</span><span class='ec-lmr-10'> package loaded by both
@@ -853,18 +901,18 @@ Bibliography<br />
 </span><span class='ec-lmr-10'>used.</span>
 </p>     
 <blockquote class='quote'>
-<!-- l. 454 -->
-<pre class='lstlisting' id='listing-13'><span class='label'><a id='x1-46001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>patchcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>exe</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{}</span></span></pre>
+<!-- l. 470 -->
+<pre class='lstlisting' id='listing-13'><span class='label'><a id='x1-48001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>patchcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>exe</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{}</span></span></pre>
      
 </blockquote>
-<!-- l. 458 --><p class='noindent'><span class='ec-lmr-10'>For the </span><span class='ec-lmtt-10'>linguex</span><span class='ec-lmr-10'> package, you can use the following code:</span>
+<!-- l. 474 --><p class='noindent'><span class='ec-lmr-10'>For the </span><span class='ec-lmtt-10'>linguex</span><span class='ec-lmr-10'> package, you can use the following code:</span>
 </p>     
 <blockquote class='quote'>
-<!-- l. 460 -->
-<pre class='lstlisting' id='listing-14'><span class='label'><a id='x1-46002r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>patchcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ex</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{}</span></span> 
-<span class='label'><a id='x1-46003r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ExEnd</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{%</span></span> 
-<span class='label'><a id='x1-46004r3'></a></span><span class='ec-lmtt-10'>    </span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ifnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>theExDepth</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=0\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>global</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>unembeddedfalse</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>DoubleSpacing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>else</span></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
-<span class='label'><a id='x1-46005r4'></a></span><span class='ec-lmtt-10'>          </span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>list</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>addtocounter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ExDepth</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{-1}\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ExEnd</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>fi</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<!-- l. 476 -->
+<pre class='lstlisting' id='listing-14'><span class='label'><a id='x1-48002r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>patchcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ex</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>SingleSpacing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{}</span></span> 
+<span class='label'><a id='x1-48003r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ExEnd</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{%</span></span> 
+<span class='label'><a id='x1-48004r3'></a></span><span class='ec-lmtt-10'>    </span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ifnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>theExDepth</span></span><span style='color:#000000'><span class='ec-lmtt-10'>=0\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>global</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>unembeddedfalse</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>DoubleSpacing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>else</span></span><span style='color:#000000'><span class='ec-lmtt-10'>%</span></span> 
+<span class='label'><a id='x1-48005r4'></a></span><span class='ec-lmtt-10'>          </span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>list</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>addtocounter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ExDepth</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{-1}\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>ExEnd</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>fi</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote>   
  

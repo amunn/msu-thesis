@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{3.5b}
-\def\msudate{2022/08/19}
+\def\msuversion{3.6}
+\def\msudate{2022/08/23}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -211,17 +211,33 @@ Your listing code here
 \end{lstlisting}
 \end{quote}
 
-Another common kind of list is a List of Abbreviations. The thesis office seems to want to call this “Key to Abbreviations”.  To add such a list, you need to do the following:
+\subsection{Key to Abbreviations}
+Another common kind of list is a List of Abbreviations. The thesis office seems to want to call this “Key to Abbreviations”.  The thesis office seems to think that these should be formatted identically to other lists, even though they are not really contents lists. Because of this I have added a built-in |\listofabbreviations| and a helper macro to add elements to the list. The basic idea is the following: for each abbreviation/symbol you add to the list use the command |\msuabbrev{<abbreviation>}{<explanation>}|. This command takes two arguments, the first being the abbreviation itself, and the second the explanation of the abbreviation. For example, for a list of abbreviations containing the abbreviations MSU and MIT we would use the following code. At the end of all of the |\msuabbrev| commands, there is the |\listofabbreviations| command which actually prints the list. The list is not automatically sorted, so you need to add abbreviations with |\msuabbrev| in exactly the order you want them to appear in the list. 
 
 \begin{quote}
 \begin{lstlisting}
+\msuabbrev{MIT}{Massachusetts Institute of Technology}
+\msuabbrev{MSU}{Michigan State University}
 \clearpage
-\chapter*{Key to Abbreviations}
-\vspace{\cftparskip}
-\addcontentsline{toc}{chapter}{Key to Abbreviations}
-Your list of abbreviations here.
+\listofabbreviations
 \end{lstlisting}
 \end{quote}
+\subsubsection{Summary of abbreviation commands}
+In addition to the |\msuabbrev| command, there are a few other commands to change the format of the the |\listofabbreviations| as shown in Table~\ref{abbrev}.
+
+\begin{table}[htpb]
+\centering
+\begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
+\toprule
+{\bs msuabbrev\{<abbreviation>\}\{<explantion>\}} & Add an abbreviation to the list.\\
+{\bs listofabbreviations } & Print the list of abbreviations.\\
+{\bs msuabbrevfont} & Format of the abbreviation itself (default is \texttt{\bs bfseries}).\\
+{\bs msuabbrevdelim\{\}} &  Add a delimiter if you need (default is \texttt{\{\}}).\\
+{\bs msuabbrevwidth\{\}} &  Set the width of the abbreviation column (default is \texttt{.75in}).\\
+\bottomrule
+\end{tabularx}
+\caption{List of abbreviation commands}\label{abbrev}
+\end{table}
 
 \subsection{Algorithm packages\label{algorithms}}
 Because the various algorithm formatting packages such as \pkg{algorithm2e}\ and \pkg{algorithmicx}\ (or its related packages) sometimes create incompatibilities with the \pkg{memoir}\ float methods, the class provides you with floating |{algorithm}| environment and the corresponding list of algorithms, so you do not have to create your own list of algorithms. Here are some specific important points about using \pkg{algorithm2e}\ and \pkg{algorithmicx}.
@@ -389,7 +405,7 @@ Since the current version of the \pkg{msu-thesis}\ class satisfies the Graduate 
 Previous versions of \pkg{msu-thesis}\ (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite}\ package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office. Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies. Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm}\ and \pkg{algorithm2e}\ packages.  Version 3.2 fixed some lingering problems with per-chapter appendices. Version 3.3 added code to accommodate the insane inconsistencies in formatting requirements that the thesis office requires, including a new contents option which hopefully should never be used, and fixed some numbering problems with per-chapter appendices. Version 3.4 added a starred option to the |\makecopyrightpage| command after complaints about placement. The documentation has also been updated to include more information about caption formatting and removed colons from the default caption format. Version 3.5 added user level way to change the spacing after the author’s name in the abstract, to deal with thesis office inconsistency.
 
 \section{Acknowledgements}
-Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex}\ spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref}\ code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Giacomo Romanini, William Sands, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
+Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex}\ spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version, and Florent Chervet for the \pkg{hyperref}\ code. Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Adam Liter, Vanessa Maldonado, William Muir, Alicia Parrish, Neil ver Planck, Nick Rekuski, Giacomo Romanini, William Sands, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
 
 \appendix
 \renewcommand{\thesection}{Appendix \Alph{section}}

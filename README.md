@@ -1,4 +1,4 @@
-# MSU Thesis Class Version 3.5b 2022/08/19
+# MSU Thesis Class Version 3.6 2022/08/23
 
 Copyright 2011-2022 by Alan Munn <amunn@msu.edu>
 

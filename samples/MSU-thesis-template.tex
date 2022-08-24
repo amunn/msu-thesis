@@ -1,5 +1,5 @@
 % This is a template for use with the MSU Thesis class
-% Version 3.4 2022/06/30
+% Version 3.6 2022/08/23
 %
 % Class options: 
 %[PhD]	Doctor of Philosophy (default) 
@@ -109,7 +109,17 @@ Your acknowledgements here.
 \clearpage
 \listoffigures % comment this out if you have no figures
 %
-% If you have a list of abbreviations/symbols it would go here preceded by a \clearpage
+% If you have a Key to  Abbreviations/symbols you would add each abbreviation in its display order
+% using as in the following examples:
+\msuabbrev{ASU}{Arizona State University}
+\msuabbrev{MIT}{Massachusetts Institute of Technology}
+\msuabbrev{MSU}{Michigan State University}
+% Then issue a \clearpage and print the list 
+\clearpage
+\listofabbreviations 
+% Comment out the code above if you have no abbreviations
+% See the documentation if you need to change the width or format of the abbreviation column
+
 % See the class documentation and the Memoir manual for how to create other lists
 %
 % If you are using an algorithm formatting package (e.g. algorithmicx or algorithm2e)
