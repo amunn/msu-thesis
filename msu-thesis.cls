@@ -688,13 +688,13 @@
 \@ifpackageloaded{hyperref}%
 {\hypersetup{pdfborder= 0 0 0}
 \msu@hyperloadedtrue
-	\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
-          {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
-\pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
-\renewcommand*{\l@chapter}[2]{%
-   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
-\renewcommand*{\l@appendix}[2]{%
-  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
+%	\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
+%          {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
+%\pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
+%\renewcommand*{\l@chapter}[2]{%
+%   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
+%\renewcommand*{\l@appendix}[2]{%
+%  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
 \apptocmd{\@resets@pp}{\gdef\theHchapter{\Alph{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0)
 }
   % if no hyperref
