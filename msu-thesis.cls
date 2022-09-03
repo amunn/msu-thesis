@@ -1,8 +1,8 @@
 % MSU Thesis Class
 %
-% Copyright 2009,2010,2011,2012,2013,2014,2015,2016,2017,2020 by Alan Munn <amunn@msu.edu>
+% Copyright 2009-2022 by Alan Munn <amunn@msu.edu>
 %
-% This is a class file for producing dissertations and theses according to the 
+% This is a class file for producing dissertations and theses according to the
 % Michigan State University Graduate School Guidelines
 %
 %
@@ -15,18 +15,18 @@
 % version 2005/12/01 or later.
 %
 % This package has the LPPL maintenance status `maintained'.
-% 
+%
 % The Current Maintainer of this package is Alan Munn.
 %
-% This package consists of the following source file:  
-% 	msu-thesis.cls 
+% This package consists of the following source file:
+% 	msu-thesis.cls
 % Documentation files:
-%   msu-thesis.tex and msu-thesis.pdf; 
+%   msu-thesis.tex and msu-thesis.pdf;
 % A template file:
 %   MSU-thesis-template.tex
-% A test file and test bibliography: 
+% A test file and test bibliography:
 % 	MSU-thesis-testfile.tex, MSU-thesis-testfile.bib
-% It also contains a copy of the LSA Unified Style Sheet for linguistics: 
+% It also contains a copy of the LSA Unified Style Sheet for linguistics:
 % 	unified.bst
 %
 % Version 1.0 2010/04/17 Initial release
@@ -51,9 +51,9 @@
 % 						 in anticipation of electronic submission
 % Version 1.4b 2010/12/11 Fixed problems with Appendix formatting in the TOC
 % Version 1.5 2010/12/12 Removed code to format the second abstract since this
-% 						 is no longer part of the document with electronic 
+% 						 is no longer part of the document with electronic
 % 						 submission.  Removed \advisor command and [final] option.
-% Version 1.5b 2010/12/13 Fixed margins to new specifications; fixed page numbering 
+% Version 1.5b 2010/12/13 Fixed margins to new specifications; fixed page numbering
 %						 issue when dedication was missing.
 % Version 1.6 2010/12/16 Bug fixes that introduced another bug. Never released.
 % Version 1.7 2010/12/16 Fixed page numbering problems with TOC; Fixed abstract
@@ -74,7 +74,7 @@
 %                        on landscape pages.  Implemented as a package option
 %                        so that people aren't forced to load lscape or tikz
 %                        if they don't need it.  Compatible also with pdflscape
-%                        for those using pdflatex; fixed problem with some long 
+%                        for those using pdflatex; fixed problem with some long
 %                        TOC entries
 % Version 2.1 2011/09/04 Added code to make the class compatible with hyperref
 %                        This is experimental, and mainly useful for drafts.
@@ -99,7 +99,7 @@
 %						 Added \msu@fieldseparator in case they object to an en-dash. Don't they
 %                        have better things to do with their time?
 %                        To comply with the new MSWord mimicry, all section elements in the TOC
-%                        are bold; this can be turned off with the [noboldtoc] option for a 
+%                        are bold; this can be turned off with the [noboldtoc] option for a
 %                        prettier, but possibly non-compliant TOC.
 %						 Changed capitalization of 'by' to 'By' which makes things so much better...
 % Version 2.5 2014/08/08 Fixed problem with bibliography cover page and appendix formatting
@@ -108,11 +108,11 @@
 %                        User commands simplified: \appendix = 1 appendix; \appendices = >1
 %						 Added three TOC options: boldtoc, plaintoc, mixedtoc replacing noboldtoc
 %						 Improved hyperref support for Appendices and Bibliography
-% Version 2.5b 2015/04/20 Changed spacing between top of page and titles by .06” to appease the 
+% Version 2.5b 2015/04/20 Changed spacing between top of page and titles by .06” to appease the
 %						  the Grad School who measure to the tops of letters instead of to baselines.
 % Version 2.5c 2015/07/11 Made loading etex conditional due to changes in LaTeX kernel for 2015.
 %                         Removed gb4e compatibility code (code remains in the distributed files)
-% Version 2.6 2016/05/09  Completely revised the stupid appendix/appendices and bibliography cover page 
+% Version 2.6 2016/05/09  Completely revised the stupid appendix/appendices and bibliography cover page
 %                         code using memoir internals instead of hacks.
 %                         This should fix numbering issues in the TOC w.r.t the cover pages and
 %                         also fix bookmarks in the PDF when hyperref is loaded.
@@ -121,27 +121,27 @@
 % Version 2.6b 2016/06/08 Reworked some vertical spacing after complaints from the thesis office
 %                         despite the fact that people successfully submitted theses in May with
 %                         the previous spacing. This is getting ridiculous.
-%                         Also updated documentation to show how to add list of abbreviations  
-% Version 2.7 2017/06/22  Updated list of degree options; renamed msu@diss to \msu@thesistype  and made 
+%                         Also updated documentation to show how to add list of abbreviations
+% Version 2.7 2017/06/22  Updated list of degree options; renamed msu@diss to \msu@thesistype  and made
 %                         definition a conditional via \ifmsu@dissertation. Fixed problem with placement
 %						  of 'to' on title page.  Adjusted landscape page number position and added internal
 %                         \msu@lsyshift for possible adjustment of landscape page numbering.  Added boolean
-%						  to change pagestyle for \chapter within a landscape environment.   
+%						  to change pagestyle for \chapter within a landscape environment.
 %						  Fixed spacing issue after contents lists and bibliography and unnumbered chapters
 %						  Any list of abbreviations \chapter* will need an extra \vspace in the source.
 %						  Added support for apacite package which messes with bibname and TOC.
 %					      Removed gb4e compatibility code from distribution.
-% Version 2.8 2017/12/13  Added {publicabstract} environment and \publicabstractname for the public abstract. 
+% Version 2.8 2017/12/13  Added {publicabstract} environment and \publicabstractname for the public abstract.
 %						  This is an unnumbered and uncounted abstract. It’s not clear whether the title
-%                         should be the same as \abstractname. For the moment it is.  Updated documentation to 
+%                         should be the same as \abstractname. For the moment it is.  Updated documentation to
 %						  include section about microtype and contents lists.
 %						  Changed \droptitle (again)
 %						  Fixed capitalization problem with Appendices
 %
 % Version 2.9 2020/12/12 Removed super/subscript/footnote restrictions
 %						     Added document fontsize options.
-%							 Changed use of \baselineskip to \onelineskip so that idiocy of the 
-%							 thesis office can be accommodated. If complaints about the spacing 
+%							 Changed use of \baselineskip to \onelineskip so that idiocy of the
+%							 thesis office can be accommodated. If complaints about the spacing
 %							 of “double space” arise, redefine \onelineskip to be the fontsize rather
 %							 than the leading.
 %
@@ -153,13 +153,32 @@
 %						  Removed unified.bst from distribution; replaced with apalike in the test file.
 % Version 3.0  2021/06/10 Full support for per-chapter appendices and bibliographies.
 % 						  Added global chapter counter for proper hyperrefs to appendices
-%						  Added a formatting hook for appendix numbering. We'll see how this works in practice.                   
+%						  Added a formatting hook for appendix numbering. We'll see how this works in practice.
 %						  Added spacing hooks for bibliographies to make users' lives a little easier
+% Version 3.0b 2021/07/14 Added msu@hchap counter for hyperref targets in appendices (unreleased)
+% Version 3.1  2022/03/03 Added support for List of Algorithms plus fixes for algorithm2e and algorithmicx etc
+% Version 3.1b 2022/03/25 Fixed numbering problem for single global appendix
+% Version 3.2 2022/04/16  Fixed TOC formatting problem for per-chapter appendices
+% Version 3.3 2022/04/18 New option bibassection to allow for thesis office inconsistencies.
+%						 Also adjusted chapter title code so that Appendix chapters can have
+%						 the extra blank line that the thesis office wants. More inconsistencies.
+% Version 3.3b 2022/06/24 Fixed secnumdepth problem when appendices are used;
+%						  Fixed numbering issue of subsequent chapters;
+%						  made TOC leaders all identical.
+% Version 3.4 2022/06/30  Added a starred version of \makecopyrightpage;
+%						  removed colons from captions;
+%						  updated documentation on algorithms and captions
+% Version 3.5 2022/08/15  Added \setabstractnamespace to allow user control over thesis office idiocy
+% Version 3.5b 2022/08/19 Changed default for \setabstractnamespace
+% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros \msuabbrev \msuabbrevwidth \msuabbrevfont
+%                         to make format of the key to abbreviations match the LoF etc. 
+%						  Changed \onelinespace to match the fontsize (see v2.9)
+%						  Added undocumented command to reinstate the memoir leading values if needed.
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.0}
-\def\msu@date{2021/06/10}
+\def\msu@version{3.6}
+\def\msu@date{2022/08/23}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -167,6 +186,7 @@
 \def\msu@bibtype{BIB}
 \newif\ifmsu@chapterapp\msu@chapterappfalse % added v3.0
 \def\msu@apptype{APP}
+\newif\ifmsu@singleappendix\msu@singleappendixfalse % added v3.1b
 \newcommand*\msuappendixnumformat{\Alph{chapter}}% Appendices are Alpha numbered
 \newif\ifmsu@lscape\msu@lscapefalse
 \newif\ifmsu@stupidtoc\msu@stupidtocfalse
@@ -198,18 +218,20 @@
 \DeclareOption{plaintoc}{\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse}
 \DeclareOption{mixedtoc}{\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse}
 \DeclareOption{chapterbib}{\global\msu@chapterbibtrue\def\msu@bibtype{CHAPBIB}} % per-chapter bibliographies added v3.0
+\newcommand*\msu@bibsection{chapter} % per-chapter bibliographies like chapters in TOC
+\DeclareOption{bibassection}{\def\msu@bibsection{section}} % per-chapter bibs as sections in TOC
 \DeclareOption{chapterapp}{
     \global\msu@chapterapptrue
 	\def\msu@apptype{CHAPAPP}
-	% per-chapter appendices added v3.0 
+	% per-chapter appendices added v3.0
 	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}} % Appendix numbers per-chapter (now permitted)
 }
 \DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v2.9
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
 \DeclareOption{10pt}{\def\msu@sizeoption{10pt}}
 \ExecuteOptions{PhD,12pt}
-\DeclareOption*{ 
-\PassOptionsToClass{\CurrentOption}{memoir} 
+\DeclareOption*{
+\PassOptionsToClass{\CurrentOption}{memoir}
 }
 \ProcessOptions\relax
 \LoadClass[\msu@sizeoption,oneside,letterpaper]{memoir}[2008/05/27]
@@ -237,25 +259,34 @@
   \makeoddfoot{lscape}{}{\tikz[remember picture,overlay]
       \node[msu landscape pagenum] at (current page.east)
       {\thepage};}{}
-\fi     
+\fi
 
 % set up page for MSU Thesis guidelines
 \settypeblocksize{9in}{6.5in}{*}
 \setlrmargins{1in}{*}{*}
 \setulmargins{1in}{*}{*}
 \setheadfoot{.5in}{.5in} % changed 5/3/2017
+\setlength{\onelineskip}{\msu@sizeoption} % changed v3.6 after more complaints about "double space"
+% memoir makes the value the leading of the chosen font size (defined in memXX.clo) where XX is the 
+% font size. The memoir values are 12pt, 13.6pt and 14.5pt, but depending on who's measuring, they don't
+% seem to like these values.  Add an undocumented reset to defaults for future inconsistency.
+\newcommand*\usememdefaultlineskip{
+	\let\onelineskip\headheight}
+	
 
 % set up contents title
 % we use a private macro here to avoid problems with babel and
 % polyglossia if they are loaded since they redefine the contents title
-% 
-\newcommand*{\msu@contentsname}{TABLE OF CONTENTS} 
+%
+\newcommand*{\msu@contentsname}{TABLE OF CONTENTS}
 \newcommand*{\fieldofstudy}[1]{\gdef\msu@fieldofstudy{#1}} % removed \MakeUppercase 6/5/12
 \newcommand{\dedication}[1]{\gdef\msu@dedication{#1}}
 \newcommand*{\msu@titleintro}{A~} % this is the beginning to the title page phrase
 \newcommand*{\msu@fieldseparator}{\textendash} % this is between the degree name and field of study
 
 \newcounter{msu@hchap} % global counter for chapters used by hyperref
+% This may also be solved by using \hypersetup{hypertexnames=false}
+% hard to tell whether this is a better solution.
 
 
 % make title 2in from top of page
@@ -281,16 +312,18 @@
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
 \renewcommand*{\printchapternonum}{} % modified 3/5/2017
-\renewcommand*{\afterchapternum}{}
+% added 18/4/2022 to allow stupid extra space for appendix chapter title
+\setlength{\midchapskip}{0pt}
+\renewcommand*{\afterchapternum}{\par\nobreak\vskip\midchapskip}
 \renewcommand*{\printchaptername}{%
-    \centerline{\chapnumfont{\MakeUppercase\@chapapp\ \thechapter}}}
+    \centerline{\chapnumfont{\MakeUppercase\@chapapp\ \ifmsu@singleappendix\else\thechapter\fi}}}% added v3.1b
 \renewcommand{\partnamefont}{\centering\bfseries}
 \renewcommand{\partnumfont}{\bfseries}
 \renewcommand{\parttitlefont}{\SingleSpacing\bfseries}
 \renewcommand{\printpartname}{\partnamefont{\MakeUppercase{\partname}}}
 \renewcommand{\printparttitle}[1]{\parttitlefont \MakeUppercase#1}
 % Set epigraph fonts to \normalsize
-\renewcommand{\epigraphsize}{\normalsize} % added 2/26/21 
+\renewcommand{\epigraphsize}{\normalsize} % added 2/26/21
 
 
 % set up the section styles
@@ -304,11 +337,11 @@
 \maxtocdepth{subsubsection}
 \setsecnumdepth{subsubsection}
 \renewcommand*{\printtoctitle}[1]{\centering\bfseries\msu@contentsname}
-\renewcommand*{\cftchaptername}{CHAPTER\space}
-\renewcommand*{\cftappendixname}{APPENDIX\space}
+\renewcommand*{\cftchaptername}{Chapter\space}
+\renewcommand*{\cftappendixname}{Appendix\space}
 \renewcommand*{\cftchapterdotsep}{\cftdotsep}
-\renewcommand*{\cftfigureaftersnum}{\@contdelim} % This uses the same delimiter as in the captions
-\renewcommand*{\cfttableaftersnum}{\@contdelim}  % per thesis office punctuation idiocy
+\renewcommand*{\cftfigureaftersnum}{\msucaptiondelim} % This uses the same delimiter as in the captions
+\renewcommand*{\cfttableaftersnum}{\msucaptiondelim}  % per thesis office punctuation idiocy
 \renewcommand*{\cftfigurename}{Figure\space}
 \renewcommand*{\cfttablename}{Table\space}
 %\setlength{\cftbeforetableskip}{0pt}
@@ -331,13 +364,56 @@
 	\def\msu@tocfont{\normalfont}
 	\def\msu@chapfont{\bfseries}
 \fi
+% In all cases make the leaders identical to section leaders
+% Thesis office sometimes complains about the fact that chapter leaders
+% are larger because they define “consistency” as what Word does
+% Added 6/24/2022
+\let\cftchapterleader\cftsectionleader
+
+% Support for algorithm packages added v3.1
+% If using the algorithm2e package, you must load it with the algo2e package option
+% If you are using algorithmicx or its related versions you should not load
+% the algorithm package, but instead load the float package and then style
+% your algorithms accordingly using \floatstyle
+% Importantly you MUST load float after defining any new lists since it clobbers
+% the memoir float methods
+
+
+\newlistof{listofalgorithms}{loa}{List of Algorithms}
+\newfloat[chapter]{algorithm}{loa}{Algorithm}
+\newlistentry{algorithm}{loa}{0}
+\renewcommand*{\cftalgorithmname}{Algorithm\space}
+\renewcommand*{\cftalgorithmaftersnum}{\msucaptiondelim}
+
+% After complaints about the spacing in the key to abbreviations not matching the list
+% of figures, we now supply a \listofabbreviations which is formatted using regular LoF
+% methods along with a helper macro \msuabbrev which puts an abbreviation into the list.
+% The list is not sorted, so the \msuabbrev commands must be in the order that they will appear.
+% Since the abbreviations are just listed, this list doesn't require a new float command.
+% We use kta here, since loa will be used by list of algorithms. Added v3.6
+%
+\newlistof{listofabbreviations}{kta}{Key to Abbreviations}
+\newlistentry{abbrev}{kta}{0}
+\newcommand*\msuabbrevfont{\bfseries} % font for the abbreviation itself
+\renewcommand*\cftabbrevleader{} % no leaders
+\renewcommand*\cftabbrevformatpnum[1]{} % no page numbers
+\renewcommand*{\cftabbrevafterpnum}{\cftparfillskip} % fix horrible interword spacing
+\newlength{\msu@abbrevwidth} % maximum width of the abbreviations
+\newcommand*\msuabbrevwidth[1]{\setlength{\msu@abbrevwidth}{#1}} % helper macro to set width
+\msuabbrevwidth{.75in} % a reasonable minimum
+\cftsetindents{abbrev}{0em}{\msu@abbrevwidth} % sets the indents so that the entries themselves can wrap if long
+\newcommand*{\msuabbrevdelim}{} % in case you want a colon or something after each abbreviation
+\newcommand{\msuabbrev}[2]{%
+\addcontentsline{kta}{abbrev}{\makebox[\msu@abbrevwidth][l]{\msuabbrevfont#1\msuabbrevdelim}\normalfont#2}
+}
+
 
 %
 % This code technique from http://tex.stackexchange.com/q/232121/
 % Makes appendices formatted as sections not chapters in the TOC
 % This is due to MSU idiocy, and also will make the appendix name
 % upper case (because of MSU case matching requirements in TOC/chap)
-% So the appendices are chapters in the document but formatted as 
+% So the appendices are chapters in the document but formatted as
 % sections in the TOC.  Code needs to be changed back for subsequent chapters.
 % This also accounts for the bizarre formatting of per-chapter appendices and
 % bibliographies which look like chapters except for the spacing in the TOC
@@ -349,7 +425,7 @@
 \cftinsertcode{APP}{
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
-  \renewcommand*{\cftappendixname}{APPENDIX\space}
+%  \renewcommand*{\cftappendixname}{APPENDIX\space}
 }
 % This code removes the before chapter spaces for in-chapter apps
 \cftinsertcode{CHAPAPP}{
@@ -362,7 +438,7 @@
 % This code adds extra space in the TOC margin for the APPENDIX name, and
 % makes the appendices formatted like sections even though they are
 % chapters in the source
- 
+
 \newlength\apptoclen
 \settowidth{\apptoclen}{APPENDIX M}
 \cftinsertcode{APPENDICES}{
@@ -378,6 +454,12 @@
 
 \cftinsertcode{CHAPAPPR}{
 \cftsetindents{section}{1.5em}{2.3em}
+\setlength{\cftchapterindent}{0em}
+\setlength{\cftchapternumwidth}{3em} % added 6/24/2022
+\setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
+  \renewcommand\cftchapterfont{\msu@chapfont}
+  \renewcommand\cftchapterpagefont{\msu@chapfont}
+  \settocdepth{subsubsection} % added 6/24/2022
 }
 % This code resets the changes made in the APP code back to normal
 % so that the bibliography will appear correctly in the TOC
@@ -414,13 +496,6 @@
  \renewcommand{\cftchapterpagefont}{\msu@tocfont}
   \setlength{\cftchapternumwidth}{2em}
   \l@chapapp{\msu@tocfont\MakeUppercase{#1}}{#2}{\cftappendixname}} % Format appendix names
-
-%\renewcommand{\cftchapterpagefont}{\msu@chapfont}
-%\patchcmd\@chapter{\addcontentsline{toc}{chapter}{\protect\chapternumberline{\thechapter}\f@rtoc}}
-%                  {\addcontentsline{toc}{chapter}{\protect\chapternumberline{\thechapter}\MakeUppercase{\f@rtoc}}}
-%                  {}{}
-                  
-             
 \setlength{\cftchapternumwidth}{3em}
 \setrmarg{3.5em} % better wrapping of long titles
 
@@ -441,7 +516,7 @@
 
 % MSU requires double spacing between entries in the list of tables, figures etc.
 % so we add the commands  to change the 'list of'
-% spacing after the ToC is formatted. 
+% spacing after the ToC is formatted.
 
 \let\oldmem@tableofcontents\mem@tableofcontents
 \renewcommand\mem@tableofcontents[1]{%
@@ -461,13 +536,20 @@
 % set up footnotes
 % Most of this removed v2.9
 %\footmarkstyle{\normalsize\textsuperscript{#1}} % reset size so that mark is right size
-%\setlength{\footmarkwidth}{1.8em} 
-%\setlength{\footmarksep}{-1.8em} 
-%\setlength{\footparindent}{1em} 
+%\setlength{\footmarkwidth}{1.8em}
+%\setlength{\footmarksep}{-1.8em}
+%\setlength{\footparindent}{1em}
 %\renewcommand{\foottextfont}{\normalsize} % footnotes will be 12pt
 \feetbelowfloat % footnotes will appear below bottom floats
 
 % set up abstract and public abstract
+% The thesis office is inconsistent in how they measure what they call a "double space".
+% Adding a fudge factor that can be changed at the user level (v3.5 8/15/2022)
+% We'll set it to 0 for the moment; 0 is what should be 1 double space, 
+% but depending on their mood and and whether Mars is in conjunction with Jupiter they seem to want more
+% or less. Nothing better than random application of useless rules to waste everyone’s time.
+\newcommand\setabstractnamespace[1]{\gdef\msu@abstractnamespacefactor{#1}}
+\setabstractnamespace{0} % this may be too big
 \renewenvironment{abstract}{%
    \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\abstractname}
@@ -476,7 +558,7 @@
     \begin{center}
     	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
  	\end{center}
-%	\plainbreak{-.5} % changed 2016/06/08 after complaints
+	\plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\par}
 %
@@ -489,6 +571,7 @@
 \newcounter{msu@pubabspages}
 \newcommand{\publicabstractname}{\abstractname}
 \newenvironment{publicabstract}{%
+   \phantomsection% added 6/30/2022 to remove spurious warning
    \ClassWarningNoLine{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
    \setcounter{msu@pubabspages}{\value{page}}
    \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
@@ -499,15 +582,17 @@
     	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
  	\end{center}
 %	\plainbreak{-.5} % changed 2016/06/08 after complaints
+    \plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\clearpage\setcounter{page}{\value{msu@pubabspages}}}
 
 
 % set up captions
 \captionstyle[\centering]{\raggedright}
-% Make the caption delimiter a space instead of colon space so that the 
+% Make the caption delimiter a space instead of colon space so that the
 % contents lists don't look so stupid.  Can be changed if necessary.
-%\captiondelim{\space}
+\newcommand*\msucaptiondelim{\space}
+\captiondelim{\msucaptiondelim}
 
 \pagestyle{plain}
 
@@ -521,12 +606,17 @@
 	\addtocounter{page}{1}}
 
 % make the copyright page
+% added * version because a new grad school minion has decided to interpret the formatting guide
+% as requiring left aligned copyright mark, even though the guide says it can be
+% anywhere on the page as long as the text itself is left aligned.
+% * version will make things left aligned. Added v3.4 6/20/2022
 \newcommand*{\makecopyrightpage}{%
+	\@ifstar{\def\msu@copyrightalign{}}{\def\msu@copyrightalign{\raggedleft}}
 	\pagestyle{plain}
 	\clearpage
 	\thispagestyle{empty}
 	\vspace*{7in}
-	{\raggedleft Copyright by\\\MakeUppercase{\theauthor}\\\thedate\\}% Author now uppercase 6/5/12
+	{\noindent\msu@copyrightalign Copyright by\\\MakeUppercase{\theauthor}\\\thedate\\}% Author now uppercase 6/5/12
 	\clearpage}
 
 % make the dedication page
@@ -570,36 +660,40 @@
    \interlinepenalty \@M
    \normalfont
    \printparttitle{\appendixpagename}\par}%
-   \cftinserthook{toc}{CHAPAPPR} % reset added 2021/06/10
   \@endpart}
 
 %
 % Code for appendix/appendices
 % Because the thesis office wants chapter appendices to look like chapters
 % we make the same code work for per-chapter or global appendices
-% 
+%
 % Instead of using \appendix we create an {appendix} environment for a single
 % appendix. This allows the same code to be used for both global and per chapter
 % appendices.
 %
 \renewenvironment{appendix}%
   {\renewcommand{\appendixname}{Appendix}
-   \renewcommand{\appendixtocname}{APPENDIX}
-   \renewcommand{\appendixpagename}{APPENDIX}
-   \ifmsu@chapterapp\else\renewcommand\msuappendixnumformat{}\fi% make sure single appendix doesn't have a number if global
+   \renewcommand{\appendixtocname}{Appendix}
+   \renewcommand{\appendixpagename}{Appendix}
+% It's not clear if this should apply to per-chapter appendices also
+% I think it probably should, even though it leads to ambiguity.
+% Changing this in 3.2 2022/04/16
+%   \ifmsu@chapterapp\else
+   \msu@singleappendixtrue
+% \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
    \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
-  {\@ppsaveapp\@pprestoresec\anappendixfalse}
+  {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
   {\msu@apppage\settocdepth{chapter}
    \@resets@pp\anappendixtrue}%
-  {\@ppsaveapp\@pprestoresec\anappendixfalse}
+  {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
-% The default numbering that memoir assumes is for appendices 
-% is sequential throughout the document; the thesis office 
+% The default numbering that memoir assumes is for appendices
+% is sequential throughout the document; the thesis office
 % requires them to restart from A every chapter. In case they
 % ever allow a saner numbering system we provide the \msuappendixnumberformat hook
-% for modifying the numbering scheme if allowed. 
+% for modifying the numbering scheme if allowed.
 %
 
 \renewcommand{\@resets@pp}{%
@@ -609,13 +703,13 @@
   \setcounter{chapter}{0}%
   \renewcommand\@chapapp{\appendixname}%
   \renewcommand\thechapter{\msuappendixnumformat}%
-  \restoreapp
+%  \restoreapp % removed 6/24/2022
   }
 
 
 % Don't save the appendix counters even for per-chapter appendices
 
-\let\restoreapp\relax
+%\let\restoreapp\relax % removed 6/24/2022
 
 
 % make the bibliography page
@@ -638,15 +732,17 @@
    \printparttitle{\bibpagename}\par}%
   \@endpart
    \cftinserthook{toc}{BIB}}
-   
+
 \newcommand\msu@preaddbibpagetotochook{}
 \newcommand\msu@postaddbibpagetotochook{}
 \newcommand{\msu@bibpageinfo}[1]{}
 \renewcommand{\prebibhook}{\vspace{\cftparskip}} % add extra space before entries to match ToC etc. 6/15/17
 
+% modified 4/18/2022 to allow for per-chapter bibliographies to appear either
+% as chapters or as sections in the bibliography. Thesis office isn't consistent in this.
 \newcommand\msu@addbibheadtotoc{%
     \ifmsu@chapterbib
-        \phantomsection\addcontentsline{toc}{section}{\bibtocname}
+        \phantomsection\addcontentsline{toc}{\msu@bibsection}{\bibtocname}
     \else
     	\phantomsection\addcontentsline{toc}{chapter}{\bibtocname}
 	\fi
@@ -665,11 +761,11 @@
 \AtEndDocument{%
 \ifmsu@dissertation\else\ClassWarningNoLine{msu-thesis}{Masters theses MUST have chapters to be formatted correctly!}\fi
 }
-% Do some stuff at begin document: 
+% Do some stuff at begin document:
 \AtBeginDocument{%
-\let\msucaptiondelim\@contdelim
 % Moved to AtBeginDocument to override apacite
 \@ifpackageloaded{apacite}{\@tocbibfalse}{} % added 6/22/17
+\@ifpackageloaded{algorithm2e}{\let\@chapter=\algocf@original@chapter}{}% undoes algorithm2e redefinition of chapter added v3.1
 % Make bibliography spacing more automatic for biblatex and natbib users 2021/06/10
 % This should cover most cases. Otherwise just set single spacing
 \@ifpackageloaded{biblatex}
@@ -688,23 +784,13 @@
 %\DeclareMathSizes{10}{10}{10}{10}
 %
 % check for hyperref
-% The hyperref code allows hyperref to be used. It is not guaranteed to 
+% The hyperref code allows hyperref to be used. It is not guaranteed to
 % work and has been lightly tested.
 % Thanks to Florent Chervet for the code.
 % Added hypersetup to remove borders around links 5/9/16
 \@ifpackageloaded{hyperref}%
 {\hypersetup{pdfborder= 0 0 0}
 \msu@hyperloadedtrue
-\robustify \hyper@linkend
-\NewCommandCopy\ori@hyper@linkstart\hyper@linkstart
-\RenewExpandableDocumentCommand\hyper@linkstart{mm}
- {
-   \CaseSwitch
-    {\ori@hyper@linkstart{#1}{#2}}
-    {\ori@hyper@linkstart{#1}{#2}}
-    {\ori@hyper@linkstart{#1}{#2}}
-    {\ori@hyper@linkstart{#1}{#2}}
- }
 	\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
           {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
 \pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
@@ -712,7 +798,7 @@
    \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
 \renewcommand*{\l@appendix}[2]{%
   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
-\apptocmd{\@resets@pp}{\gdef\theHchapter{\Alph{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0)
+\apptocmd{\@resets@pp}{\gdef\theHchapter{\arabic{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0; fixed v3.0b)
 }
   % if no hyperref
 {\relax}

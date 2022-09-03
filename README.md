@@ -1,21 +1,25 @@
-# MSU Thesis Class Version 3.0 2021/06/10
+# MSU Thesis Class Version 3.6 2022/08/23
 
-Copyright 2011-2021 by Alan Munn <amunn@msu.edu>
+Copyright 2011-2022 by Alan Munn <amunn@msu.edu>
 
 This is a class file for producing dissertations and theses according to
 the Michigan State University Graduate School Guidelines for Electronic
 Submission of Master's Theses and Dissertations (March 2020).
 
-The class is based on the memoir document class, and thefore inherits
+The class is based on the `memoir` document class, and therefore inherits
 all of the functionality of that class.
+
+## Documentation
+
+Please [read the documentation!](https://amunn.github.io/msu-thesis/)
 
 ## Installation:
 
-The msu-thesis class is part of both TeXLive and MikTeX, so you should either already have it or should be able to install it with your package manager.
+The `msu-thesis` class is part of both TeXLive and MikTeX, so you should either already have it or should be able to install it with your package manager.
 
 If you wish to install it locally, follow the directions below:
 
-Put `msu-thesis.cls`  into 
+Put `msu-thesis.cls`  into
 
 `<local texmf>/tex/latex/msu-thesis`
 
@@ -38,19 +42,23 @@ The Current Maintainer of this package is Alan Munn.
 
 This package consists of the following source file:
  - `msu-thesis.cls`
- 
+
 Documentation files:
- - `msu-thesis.tex` 
+ - `msu-thesis.tex`
  - `msu-thesis.pdf`
 
-A template file: 
+A template file:
  - `MSU-thesis-template.tex`
- 
+
 A test file and a test bibliography:
 
  `MSU-thesis-testfile.tex`
  `MSU-thesis-testfile.bib`
 
+## Problems
 
 Use at your own risk! Report bugs/problems/questions to [amunn@msu.edu](mailto:amunn@msu.edu) or use the [GitHub repository bug tracker](https://github.com/amunn/msu-thesis/issues).
 
+## Usage survey
+
+If you are using the class, please take a moment to fill out my [anonymous usage survey](https://forms.gle/bm2AUzthFxW2naK36). Thanks! You should be signed into your MSU Google account to access the form, but the form itself is anonymous.

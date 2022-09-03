@@ -3,6 +3,7 @@
 \listfiles
 
 \documentclass[lscape]{msu-thesis}
+
 % lscape option is needed for this sample file to show correct placement
 % of page numbers on landscape pages. If you don't have any landscape pages
 % in your document, you don't need to load this option.
@@ -24,9 +25,10 @@
 \lstset{language=TeX,basicstyle={\ttfamily}}
 \usepackage{lipsum}
 \usepackage{xcolor}
+\usepackage{enumitem}
 \usepackage{gb4e}
 
-
+\usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
 
 \counterwithin{exx}{chapter}
 \singlegloss
@@ -40,7 +42,8 @@
 \newlistentry{listing}{lol}{0}
 \renewcommand*{\cftlistingname}{Listing\space}
 \renewcommand*{\cftlistingaftersnum}{\msucaptiondelim}
-\usepackage[bookmarksopenlevel=2,bookmarks=true,linktocpage]{hyperref} % not needed but here for testing
+
+
 \begin{document}
 \frontmatter
 \maketitlepage
@@ -66,13 +69,12 @@
 \listoffigures
 \clearpage
 \listoflistings
+% Add all the abbreviations here in their sorted order using \msuabbrev
+\msuabbrev{ASA}{A small abbreviation}
+\msuabbrev{ABA}{An abbreviation with an explanation so long that the explanation should wrap to the next line and align properly with the previous line}
+% Then print the list
 \clearpage
-\chapter{Key to Abbreviations}
-\vspace{\cftparskip} % This is needed to make the list look like the other LoF/LoT/LoL etc.
-\begin{description}
-\item[foo]  This is a foo
-\item[bar] This is a bar
-\end{description}
+\listofabbreviations
 \mainmatter
 % The next command changes chapters in the TOC to have no dotted leader
 %\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep}{\cftnodots}}
