@@ -304,8 +304,8 @@
 \maxtocdepth{subsubsection}
 \setsecnumdepth{subsubsection}
 \renewcommand*{\printtoctitle}[1]{\centering\bfseries\msu@contentsname}
-\renewcommand*{\cftchaptername}{Chapter\space}
-\renewcommand*{\cftappendixname}{Appendix\space}
+\renewcommand*{\cftchaptername}{CHAPTER\space}
+\renewcommand*{\cftappendixname}{APPENDIX\space}
 \renewcommand*{\cftchapterdotsep}{\cftdotsep}
 \renewcommand*{\cftfigureaftersnum}{\@contdelim} % This uses the same delimiter as in the captions
 \renewcommand*{\cfttableaftersnum}{\@contdelim}  % per thesis office punctuation idiocy
@@ -349,7 +349,7 @@
 \cftinsertcode{APP}{
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
-%  \renewcommand*{\cftappendixname}{APPENDIX\space}
+  \renewcommand*{\cftappendixname}{APPENDIX\space}
 }
 % This code removes the before chapter spaces for in-chapter apps
 \cftinsertcode{CHAPAPP}{
@@ -414,6 +414,13 @@
  \renewcommand{\cftchapterpagefont}{\msu@tocfont}
   \setlength{\cftchapternumwidth}{2em}
   \l@chapapp{\msu@tocfont\MakeUppercase{#1}}{#2}{\cftappendixname}} % Format appendix names
+
+%\renewcommand{\cftchapterpagefont}{\msu@chapfont}
+%\patchcmd\@chapter{\addcontentsline{toc}{chapter}{\protect\chapternumberline{\thechapter}\f@rtoc}}
+%                  {\addcontentsline{toc}{chapter}{\protect\chapternumberline{\thechapter}\MakeUppercase{\f@rtoc}}}
+%                  {}{}
+                  
+             
 \setlength{\cftchapternumwidth}{3em}
 \setrmarg{3.5em} % better wrapping of long titles
 
@@ -577,8 +584,8 @@
 %
 \renewenvironment{appendix}%
   {\renewcommand{\appendixname}{Appendix}
-   \renewcommand{\appendixtocname}{Appendix}
-   \renewcommand{\appendixpagename}{Appendix}
+   \renewcommand{\appendixtocname}{APPENDIX}
+   \renewcommand{\appendixpagename}{APPENDIX}
    \ifmsu@chapterapp\else\renewcommand\msuappendixnumformat{}\fi% make sure single appendix doesn't have a number if global
    \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse}
@@ -688,13 +695,23 @@
 \@ifpackageloaded{hyperref}%
 {\hypersetup{pdfborder= 0 0 0}
 \msu@hyperloadedtrue
-%	\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
-%          {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
-%\pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
-%\renewcommand*{\l@chapter}[2]{%
-%   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
-%\renewcommand*{\l@appendix}[2]{%
-%  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
+\robustify \hyper@linkend
+\NewCommandCopy\ori@hyper@linkstart\hyper@linkstart
+\RenewExpandableDocumentCommand\hyper@linkstart{mm}
+ {
+   \CaseSwitch
+    {\ori@hyper@linkstart{#1}{#2}}
+    {\ori@hyper@linkstart{#1}{#2}}
+    {\ori@hyper@linkstart{#1}{#2}}
+    {\ori@hyper@linkstart{#1}{#2}}
+ }
+	\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
+          {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
+\pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
+\renewcommand*{\l@chapter}[2]{%
+   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
+\renewcommand*{\l@appendix}[2]{%
+  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
 \apptocmd{\@resets@pp}{\gdef\theHchapter{\Alph{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0)
 }
   % if no hyperref

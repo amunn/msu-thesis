@@ -26,7 +26,7 @@
 \usepackage{xcolor}
 \usepackage{gb4e}
 
-\usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
+
 
 \counterwithin{exx}{chapter}
 \singlegloss
@@ -40,7 +40,7 @@
 \newlistentry{listing}{lol}{0}
 \renewcommand*{\cftlistingname}{Listing\space}
 \renewcommand*{\cftlistingaftersnum}{\msucaptiondelim}
-
+\usepackage[bookmarksopenlevel=2,bookmarks=true,linktocpage]{hyperref} % not needed but here for testing
 \begin{document}
 \frontmatter
 \maketitlepage
