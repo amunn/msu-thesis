@@ -28,7 +28,7 @@
 \usepackage{enumitem}
 \usepackage{gb4e}
 
-\usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
+
 
 \counterwithin{exx}{chapter}
 \singlegloss
@@ -37,13 +37,14 @@
 %\patchcommand{\exe}{\SingleSpacing}{}
 
 % This code is an example of how to set up a new list of
-\newlistof{listoflistings}{lol}{List of Listings}
+\newcommand{\listlistingsname}{List of Listings}
+\newlistof{listoflistings}{lol}{\listlistingsname}
 \newfloat[chapter]{listing}{lol}{Listing}
 \newlistentry{listing}{lol}{0}
 \renewcommand*{\cftlistingname}{Listing\space}
 \renewcommand*{\cftlistingaftersnum}{\msucaptiondelim}
 
-
+\usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
 \begin{document}
 \frontmatter
 \maketitlepage
@@ -70,11 +71,11 @@
 \clearpage
 \listoflistings
 % Add all the abbreviations here in their sorted order using \msuabbrev
-\msuabbrev{ASA}{A small abbreviation}
-\msuabbrev{ABA}{An abbreviation with an explanation so long that the explanation should wrap to the next line and align properly with the previous line}
+\begin{abbreviations}
+\abbrev{ASA}{A small abbreviation}
+\abbrev{ABA}{An abbreviation with an explanation so long that the explanation should wrap to the next line and align properly with the previous line}
+\end{abbreviations}
 % Then print the list
-\clearpage
-\listofabbreviations
 \mainmatter
 % The next command changes chapters in the TOC to have no dotted leader
 %\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep}{\cftnodots}}

@@ -170,15 +170,20 @@
 %						  updated documentation on algorithms and captions
 % Version 3.5 2022/08/15  Added \setabstractnamespace to allow user control over thesis office idiocy
 % Version 3.5b 2022/08/19 Changed default for \setabstractnamespace
-% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros \msuabbrev \msuabbrevwidth \msuabbrevfont
+% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros 
+%						  \msuabbrev \msuabbrevwidth \msuabbrevfont
 %                         to make format of the key to abbreviations match the LoF etc. 
 %						  Changed \onelinespace to match the fontsize (see v2.9)
 %						  Added undocumented command to reinstate the memoir leading values if needed.
+% Version 3.7 2022/09/04  Rewrote ToC formatting code to support hyperref better. Modifications to internal
+%						  chapter commands are no longer required, and hyperref injection code revised. 
+%						  This requires an up-to-date LaTeX and is therefore only released as development for the
+%						  moment. 
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.6}
-\def\msu@date{2022/08/23}
+\def\msu@version{3.7}
+\def\msu@date{2022/09/05}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -317,10 +322,10 @@
 \renewcommand*{\afterchapternum}{\par\nobreak\vskip\midchapskip}
 \renewcommand*{\printchaptername}{%
     \centerline{\chapnumfont{\MakeUppercase\@chapapp\ \ifmsu@singleappendix\else\thechapter\fi}}}% added v3.1b
-\renewcommand{\partnamefont}{\centering\bfseries}
+\renewcommand{\partnamefont}{\centering\bfseries} 
 \renewcommand{\partnumfont}{\bfseries}
 \renewcommand{\parttitlefont}{\SingleSpacing\bfseries}
-\renewcommand{\printpartname}{\partnamefont{\MakeUppercase{\partname}}}
+\renewcommand{\printpartname}{\partnamefont{\partname}}
 \renewcommand{\printparttitle}[1]{\parttitlefont \MakeUppercase#1}
 % Set epigraph fonts to \normalsize
 \renewcommand{\epigraphsize}{\normalsize} % added 2/26/21
@@ -378,8 +383,8 @@
 % Importantly you MUST load float after defining any new lists since it clobbers
 % the memoir float methods
 
-
-\newlistof{listofalgorithms}{loa}{List of Algorithms}
+\newcommand{\listalgorithmname}{List of Algorithms} % added v3.7 for hyperref
+\newlistof{listofalgorithms}{loa}{\listalgorithmname}
 \newfloat[chapter]{algorithm}{loa}{Algorithm}
 \newlistentry{algorithm}{loa}{0}
 \renewcommand*{\cftalgorithmname}{Algorithm\space}
@@ -387,13 +392,16 @@
 
 % After complaints about the spacing in the key to abbreviations not matching the list
 % of figures, we now supply a \listofabbreviations which is formatted using regular LoF
-% methods along with a helper macro \msuabbrev which puts an abbreviation into the list.
-% The list is not sorted, so the \msuabbrev commands must be in the order that they will appear.
+% methods along with a helper macro \abbrev which puts an abbreviation into the list.
+% The list is not sorted, so the \abbrev commands must be in the order that they will appear.
 % Since the abbreviations are just listed, this list doesn't require a new float command.
-% We use kta here, since loa will be used by list of algorithms. Added v3.6
+% We use lob here, since loa will be used by list of algorithms. Added v3.6
+% For ease of use, the list is wrapped into an environment.
 %
-\newlistof{listofabbreviations}{kta}{Key to Abbreviations}
-\newlistentry{abbrev}{kta}{0}
+\newcommand{\listabbreviationsname}{Key to Abbreviations} % added v3.7 for hyperref
+\newlistof{listofabbreviations}{lob}{\listabbreviationsname}
+\newlistentry{abbrev}{lob}{0}
+
 \newcommand*\msuabbrevfont{\bfseries} % font for the abbreviation itself
 \renewcommand*\cftabbrevleader{} % no leaders
 \renewcommand*\cftabbrevformatpnum[1]{} % no page numbers
@@ -403,9 +411,12 @@
 \msuabbrevwidth{.75in} % a reasonable minimum
 \cftsetindents{abbrev}{0em}{\msu@abbrevwidth} % sets the indents so that the entries themselves can wrap if long
 \newcommand*{\msuabbrevdelim}{} % in case you want a colon or something after each abbreviation
-\newcommand{\msuabbrev}[2]{%
-\addcontentsline{kta}{abbrev}{\makebox[\msu@abbrevwidth][l]{\msuabbrevfont#1\msuabbrevdelim}\normalfont#2}
-}
+\newcommand{\abbrev}[2]{%
+\addcontentsline{lob}{abbrev}{\makebox[\msu@abbrevwidth][l]{\msuabbrevfont#1\msuabbrevdelim}\normalfont#2}}
+\newenvironment{abbreviations}
+{}
+{\clearpage
+\listofabbreviations}
 
 
 %
@@ -457,7 +468,7 @@
 \setlength{\cftchapterindent}{0em}
 \setlength{\cftchapternumwidth}{3em} % added 6/24/2022
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
-  \renewcommand\cftchapterfont{\msu@chapfont}
+  \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
   \settocdepth{subsubsection} % added 6/24/2022
 }
@@ -466,7 +477,7 @@
 \cftinsertcode{BIB}{
 \setlength{\cftchapterindent}{0em}
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
-  \renewcommand\cftchapterfont{\msu@chapfont}
+  \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
 }
 
@@ -479,7 +490,7 @@
 
 
 % Set up all the font styles for the TOC
-\renewcommand*{\cftchapterfont}{\msu@chapfont}
+\renewcommand*{\cftchapterfont}{\msu@chapfont\MakeUppercase}
 \renewcommand*{\cftchapterpagefont}{\msu@chapfont}
 \renewcommand*{\cftsectionfont}{\msu@tocfont}
 \renewcommand*{\cftsubsectionfont}{\msu@tocfont}
@@ -488,14 +499,16 @@
 \renewcommand*{\cftsubsectionpagefont}{\msu@tocfont}
 \renewcommand*{\cftsubsubsectionpagefont}{\msu@tocfont}
 
+% Removed v3.7 to accommodate more hyperref options
+%\renewcommand*{\l@chapter}[2]{%
+%  \renewcommand{\cftchapterpagefont}{\msu@chapfont}
+%  \l@chapapp{\MakeUppercase{#1}}{#2}{\cftchaptername}} % Format chapter names
+%\renewcommand*{\l@appendix}[2]{%
+% \renewcommand{\cftchapterpagefont}{\msu@tocfont}
+%  \setlength{\cftchapternumwidth}{2em}
+%  \l@chapapp{\msu@tocfont\MakeUppercase{#1}}{#2}{\cftappendixname}} % Format appendix names
+%
 
-\renewcommand*{\l@chapter}[2]{%
-  \renewcommand{\cftchapterpagefont}{\msu@chapfont}
-  \l@chapapp{\MakeUppercase{#1}}{#2}{\cftchaptername}} % Format chapter names
-\renewcommand*{\l@appendix}[2]{%
- \renewcommand{\cftchapterpagefont}{\msu@tocfont}
-  \setlength{\cftchapternumwidth}{2em}
-  \l@chapapp{\msu@tocfont\MakeUppercase{#1}}{#2}{\cftappendixname}} % Format appendix names
 \setlength{\cftchapternumwidth}{3em}
 \setrmarg{3.5em} % better wrapping of long titles
 
@@ -672,9 +685,9 @@
 % appendices.
 %
 \renewenvironment{appendix}%
-  {\renewcommand{\appendixname}{Appendix}
-   \renewcommand{\appendixtocname}{Appendix}
-   \renewcommand{\appendixpagename}{Appendix}
+  {\renewcommand{\appendixname}{\MakeUppercase{Appendix}}
+   \renewcommand{\appendixtocname}{\MakeUppercase{Appendix}}
+   \renewcommand{\appendixpagename}{\MakeUppercase{Appendix}}
 % It's not clear if this should apply to per-chapter appendices also
 % I think it probably should, even though it leads to ambiguity.
 % Changing this in 3.2 2022/04/16
@@ -694,7 +707,7 @@
 % requires them to restart from A every chapter. In case they
 % ever allow a saner numbering system we provide the \msuappendixnumberformat hook
 % for modifying the numbering scheme if allowed.
-%
+
 
 \renewcommand{\@resets@pp}{%
   \par
@@ -705,7 +718,6 @@
   \renewcommand\thechapter{\msuappendixnumformat}%
 %  \restoreapp % removed 6/24/2022
   }
-
 
 % Don't save the appendix counters even for per-chapter appendices
 
@@ -784,20 +796,21 @@
 %\DeclareMathSizes{10}{10}{10}{10}
 %
 % check for hyperref
-% The hyperref code allows hyperref to be used. It is not guaranteed to
-% work and has been lightly tested.
-% Thanks to Florent Chervet for the code.
+% The hyperref code allows hyperref to be used. Requires a very new 2022 or > kernel
+% Code here from Ulrike Fischer
 % Added hypersetup to remove borders around links 5/9/16
 \@ifpackageloaded{hyperref}%
 {\hypersetup{pdfborder= 0 0 0}
-\msu@hyperloadedtrue
-	\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
-          {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
-\pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
-\renewcommand*{\l@chapter}[2]{%
-   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
-\renewcommand*{\l@appendix}[2]{%
-  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
+\robustify \hyper@linkend
+\NewCommandCopy\ori@hyper@linkstart\hyper@linkstart
+\RenewExpandableDocumentCommand\hyper@linkstart{mm}
+ {
+   \CaseSwitch
+    {\ori@hyper@linkstart{#1}{#2}}
+    {\ori@hyper@linkstart{#1}{#2}}
+    {\ori@hyper@linkstart{#1}{#2}}
+    {\ori@hyper@linkstart{#1}{#2}}
+ }
 \apptocmd{\@resets@pp}{\gdef\theHchapter{\arabic{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0; fixed v3.0b)
 }
   % if no hyperref
