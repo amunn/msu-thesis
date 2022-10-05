@@ -6,12 +6,13 @@ This is a class file for producing dissertations and theses according to
 the Michigan State University Graduate School Guidelines for Electronic
 Submission of Master's Theses and Dissertations (March 2020).
 
-# Update on new formatting requirements
-
-It seems that the Graduate School has again changed some of the formatting requirements as of September 2022. I have just become aware of them and will try to update the class as soon as I can. It's still helpful to email me the complaints that you get from the thesis office, but as of now (October, 2022) I am aware of the issue.
-
 The class is based on the `memoir` document class, and therefore inherits
 all of the functionality of that class.
+
+
+# Update on new formatting requirements (Fall 2022)
+
+It seems that the Graduate School has again changed some of the formatting requirements as of September 2022. I have just become aware of them and will try to update the class as soon as I can. It's still helpful to email me the complaints that you get from the thesis office, but as of now (October, 2022) I am aware of the issue.
 
 ## Documentation
 
