@@ -268,23 +268,24 @@ A & B & C & D & E & F & G \\
 %\begin{appendices} ... \end{appendices}
 % use this if you have more than one appendix
 \clearpage
-%\begin{appendix} ... \end{appendix}   % use this if you have only one appendix
-\begin{appendix}
-\chapter{A single appendix}
-\lipsum[11]
-\end{appendix}
-
-%\begin{appendices} % use this if you have more than one appendix
-%\chapter{An appendix}
-%\section{An appendix section}
-%\lipsum[9-15]
-%\chapter{A second appendix}
-%\section{An appendix section}
-%\lipsum[16-17]
-%\end{appendices}
-\backmatter
-% This command creates the cover page for the bibliography
-\makebibliographypage
+%\backmatter
 \bibliography{MSU-thesis-testfile}
+%\begin{appendix} ... \end{appendix}   % use this if you have only one appendix
+%\begin{appendix}
+%\chapter{A single appendix}
+%\lipsum[11]
+%\end{appendix}
+
+\begin{appendices} % use this if you have more than one appendix
+\chapter{An appendix}
+\section{An appendix section}
+\lipsum[9-15]
+\chapter{A second appendix}
+\section{An appendix section}
+\lipsum[16-17]
+\end{appendices}
+% This command creates the cover page for the bibliography
+%\makebibliographypage
+
 \end{document}
 

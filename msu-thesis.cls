@@ -193,7 +193,7 @@
 \newif\ifmsu@chapterapp\msu@chapterappfalse % added v3.0
 \def\msu@apptype{APP}
 \newif\ifmsu@singleappendix\msu@singleappendixfalse % added v3.1b
-\newcommand*\msuappendixnumformat{\Alph{chapter}}% Appendices are Alpha numbered
+\newcommand*\msuappendixnumformat{\ifmsu@singleappendix\else\Alph{chapter}\fi}% Appendices are Alpha numbered
 \newif\ifmsu@lscape\msu@lscapefalse
 \newif\ifmsu@stupidtoc\msu@stupidtocfalse
 \newif\ifmsu@mixedtoc\msu@mixedtocfalse
@@ -230,7 +230,7 @@
     \global\msu@chapterapptrue
 	\def\msu@apptype{CHAPAPP}
 	% per-chapter appendices added v3.0
-	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}} % Appendix numbers per-chapter (now permitted)
+	\renewcommand\msuappendixnumformat{\the@ppsavesec\ifmsu@singleappendix\else\Alph{chapter}\fi} % Appendix numbers per-chapter (now permitted)
 }
 \DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v2.9
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
@@ -456,7 +456,8 @@
 \cftinsertcode{APP}{
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
-%  \renewcommand*{\cftappendixname}{APPENDIX\space}
+  \renewcommand\cftchapteraftersnum{}
+  \renewcommand*{\cftappendixname}{APPENDIX\space}
 }
 % This code removes the before chapter spaces for in-chapter apps
 \cftinsertcode{CHAPAPP}{
@@ -697,6 +698,7 @@
    \normalfont
    \printparttitle{\appendixpagename}\par}%
   \@endpart}
+\let\msu@apppage\relax
 
 %
 % Code for appendix/appendices
@@ -716,12 +718,14 @@
 % Changing this in 3.2 2022/04/16
 %   \ifmsu@chapterapp\else
    \msu@singleappendixtrue
+   \cftinserthook{toc}{APP}
+   \setsecnumdepth{chapter}
 % \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
-   \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
+   \msu@apppage\settocdepth{chapter}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@apppage\settocdepth{section}
+  {\msu@apppage\settocdepth{chapter}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
@@ -784,7 +788,7 @@
 	}
 % Since the bibliography page is the TOC entry we remove the bib in the TOC
 % when it's introduced
-\nobibintoc
+%\nobibintoc % removed v4 as no longer needed
 % Modified 8/7/14 to add the bibliography cover page to the TOC and not the actual bibliography page
 % This should also work for biblatex even though memoir doesn't check for it
 
@@ -827,12 +831,12 @@
 \robustify \hyper@linkend
 \NewCommandCopy\ori@hyper@linkstart\hyper@linkstart
 \RenewExpandableDocumentCommand\hyper@linkstart{mm}
- {
-   \CaseSwitch
-    {\ori@hyper@linkstart{#1}{#2}}
-    {\ori@hyper@linkstart{#1}{#2}}
-    {\ori@hyper@linkstart{#1}{#2}}
-    {\ori@hyper@linkstart{#1}{#2}}
+ {%
+   \CaseSwitch%
+    {\ori@hyper@linkstart{#1}{#2}}% remove spurious space v4
+    {\ori@hyper@linkstart{#1}{#2}}%
+    {\ori@hyper@linkstart{#1}{#2}}%
+    {\ori@hyper@linkstart{#1}{#2}}%
  }
 \apptocmd{\@resets@pp}{\gdef\theHchapter{\arabic{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0; fixed v3.0b)
 }
