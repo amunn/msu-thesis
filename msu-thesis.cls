@@ -246,6 +246,7 @@
    \RequirePackage{etex}
 \fi
 \RequirePackage{etoolbox}
+% textpos package added v4.0 to deal with absolute positioning of title page elements
 \RequirePackage[absolute]{textpos}
 \setlength{\TPHorizModule}{.5in}
 \setlength{\TPVertModule}{.5in}
@@ -307,6 +308,7 @@
 % Because the title is set to \MakeUppercase we need to \protect line
 % breaks within the title.  This has now been documented in the user docs.
 % Using \onelineskip here instead of \baselineskip because thesis office doesn't know how to measure
+% v4 now uses textpos to position these elements absolutely on the page
 \newcommand*\msu@thesistype{\ifmsu@dissertation{DISSERTATION}\else{THESIS}\fi}
 \pretitle{\begin{center}\MakeUppercase}
 \posttitle{\end{center}}
@@ -628,13 +630,15 @@
 % as requiring left aligned copyright mark, even though the guide says it can be
 % anywhere on the page as long as the text itself is left aligned.
 % * version will make things left aligned. Added v3.4 6/20/2022
+% In a tour de force of bad design the 2023 requirements now have this centred vertically Added v4
 \newcommand*{\makecopyrightpage}{%
-	\@ifstar{\def\msu@copyrightalign{}}{\def\msu@copyrightalign{\raggedleft}}
+	\@ifstar{\def\msu@copyrightalign{}}{\def\msu@copyrightalign{}}
 	\pagestyle{plain}
 	\clearpage
 	\thispagestyle{empty}
-	\vspace*{7in}
-	{\noindent\msu@copyrightalign Copyright by\\\MakeUppercase{\theauthor}\\\thedate\\}% Author now uppercase 6/5/12
+	% Author now uppercase 6/5/12
+	% Use vplace to centre vertically added v4
+	{\begin{vplace}\noindent\msu@copyrightalign Copyright by\\\MakeUppercase{\theauthor}\\\thedate\end{vplace}}
 	\clearpage}
 
 % make the dedication page
