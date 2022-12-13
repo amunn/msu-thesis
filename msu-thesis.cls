@@ -319,7 +319,7 @@
 % set up the chapter titles
 \chapterstyle{thatcher}
 \setlength{\beforechapskip}{-1sp}% changed 2020/12/17 Need negative value to suppress indentation
-\setlength{\afterchapskip}{2\onelineskip} % changed 2017/05/03 because of thesis office complaints
+\setlength{\afterchapskip}{\onelineskip} % changed 2017/05/03 because of thesis office complaints; changed again for v4
 \renewcommand*{\chapnamefont}{\centering\bfseries}
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
@@ -343,11 +343,22 @@
 \setsecheadstyle{\normalfont\SingleSpacing\large\bfseries}
 \setsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
 \setsubsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
+% 2023 requirements seem to want "uniform" spacing even after headings, even though this
+% is not stated explicitly anywhere. After skips must be positive not zero to avoid runin formatting
+% Before skips can be 0
+% This is another insane decision typographically...
+\setbeforesecskip{0pt}
+\setbeforesubsecskip{0pt}
+\setbeforesubsubsecskip{0pt}
+\setaftersecskip{.1pt}
+\setaftersubsecskip{.1pt}
+\setaftersubsubsecskip{.1pt}
 
 % set up TOC
 
-\maxtocdepth{subsubsection}
+\maxtocdepth{section}
 \setsecnumdepth{subsubsection}
+\setlength{\cftsectionindent}{.5in}
 \renewcommand*{\printtoctitle}[1]{\centering\bfseries\msu@contentsname}
 \renewcommand*{\cftchaptername}{Chapter\space}
 \renewcommand*{\cftappendixname}{Appendix\space}
@@ -356,6 +367,8 @@
 \renewcommand*{\cfttableaftersnum}{\msucaptiondelim}  % per thesis office punctuation idiocy
 \renewcommand*{\cftfigurename}{Figure\space}
 \renewcommand*{\cfttablename}{Table\space}
+\renewcommand*{\cftchapteraftersnum}{\msutocdelim}
+\renewcommand*{\cftsectionaftersnum}{\msutocdelim}
 %\setlength{\cftbeforetableskip}{0pt}
 %\setlength{\cftbeforefigureskip}{0pt}
 \renewcommand{\insertchapterspace}{}
@@ -405,7 +418,7 @@
 % We use lob here, since loa will be used by list of algorithms. Added v3.6
 % For ease of use, the list is wrapped into an environment.
 %
-\newcommand{\listabbreviationsname}{Key to Abbreviations} % added v3.7 for hyperref
+\newcommand{\listabbreviationsname}{List of Abbreviations} % added v3.7 for hyperref; name changed v4
 \newlistof{listofabbreviations}{lob}{\listabbreviationsname}
 \newlistentry{abbrev}{lob}{0}
 
@@ -477,7 +490,7 @@
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
   \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
-  \settocdepth{subsubsection} % added 6/24/2022
+  \settocdepth{section} % added 6/24/2022
 }
 % This code resets the changes made in the APP code back to normal
 % so that the bibliography will appear correctly in the TOC
@@ -612,6 +625,7 @@
 % Make the caption delimiter a space instead of colon space so that the
 % contents lists don't look so stupid.  Can be changed if necessary.
 \newcommand*\msucaptiondelim{\space}
+\newcommand*\msutocdelim{:}
 \captiondelim{\msucaptiondelim}
 
 \pagestyle{plain}
@@ -707,7 +721,7 @@
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@apppage\settocdepth{chapter}
+  {\msu@apppage\settocdepth{section}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
@@ -740,7 +754,7 @@
   \let\bibtocname\bibname % moved inside this page to beat apacite
   \let\bibpagename\bibname
   \cftinserthook{toc}{\msu@bibtype}
-  \settocdepth{subsubsection} % changed v2.7 to allow for chapter bibs
+  \settocdepth{section} % changed v2.7 to allow for chapter bibs
   \@setuppart
   \msu@preaddbibpagetotochook
   \msu@addbibheadtotoc
