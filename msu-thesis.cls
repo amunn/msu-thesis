@@ -178,12 +178,13 @@
 % Version 3.7 2022/09/04  Rewrote ToC formatting code to support hyperref better. Modifications to internal
 %						  chapter commands are no longer required, and hyperref injection code revised. 
 %						  This requires an up-to-date LaTeX and is therefore only released as development for the
-%						  moment. 
+%						  moment.
+% Version 4 2023/12/13	  First version to conform to the updated requirements (September 2023) 
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.7}
-\def\msu@date{2022/09/05}
+\def\msu@version{4.0}
+\def\msu@date{2023/12/13}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -245,6 +246,10 @@
    \RequirePackage{etex}
 \fi
 \RequirePackage{etoolbox}
+\RequirePackage[absolute]{textpos}
+\setlength{\TPHorizModule}{.5in}
+\setlength{\TPVertModule}{.5in}
+\textblockorigin{0in}{0in}
 % set up landscape page numbering
 % make a boolean for selecting pagestyle properly if \chapter appears in a landscape environment
 \newif\ifmsu@lscapemode\msu@lscapemodefalse
@@ -304,10 +309,10 @@
 % Using \onelineskip here instead of \baselineskip because thesis office doesn't know how to measure
 \newcommand*\msu@thesistype{\ifmsu@dissertation{DISSERTATION}\else{THESIS}\fi}
 \pretitle{\begin{center}\MakeUppercase}
-\posttitle{\\[\onelineskip]\end{center}}
-\preauthor{\begin{center}By\\[\onelineskip]}
-\postauthor{\end{center}}
-\predate{\vfill\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[\onelineskip]\msu@fieldofstudy~\msu@fieldseparator~\msu@degree\\[\onelineskip]}
+\posttitle{\end{center}}
+\preauthor{\begin{textblock}{6}(5.5,6.625)\begin{center}By\\[2\onelineskip]}
+\postauthor{\end{center}\end{textblock}}
+\predate{\begin{textblock}{6}(5.5,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[2\onelineskip]\msu@fieldofstudy~\msu@fieldseparator~\msu@degree\\[2\onelineskip]}\postdate{\end{center}\end{textblock}}
 
 % set up the chapter titles
 \chapterstyle{thatcher}
