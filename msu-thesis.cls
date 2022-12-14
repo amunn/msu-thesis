@@ -228,7 +228,7 @@
 \DeclareOption{bibassection}{\def\msu@bibsection{section}} % per-chapter bibs as sections in TOC
 \DeclareOption{chapterapp}{
     \global\msu@chapterapptrue
-	\def\msu@apptype{CHAPAPP}
+	\def\msu@apptype{APPENDICES}
 	% per-chapter appendices added v3.0
 	\renewcommand\msuappendixnumformat{\the@ppsavesec\ifmsu@singleappendix\else\Alph{chapter}\fi} % Appendix numbers per-chapter (now permitted)
 }
@@ -485,7 +485,7 @@
 % This code resets the TOC back to normal section spacing if appendices have been used
 
 \cftinsertcode{CHAPAPPR}{
-\cftsetindents{section}{1.5em}{2.3em}
+\cftsetindents{section}{.5in}{2.3em}
 \setlength{\cftchapterindent}{0em}
 \setlength{\cftchapternumwidth}{3em} % added 6/24/2022
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
@@ -503,7 +503,7 @@
 }
 
 \cftinsertcode{CHAPBIB}{
-  \setlength\cftchapterindent{0em}
+  \setlength\cftchapterindent{\cftsectionindent}
   \setlength\cftbeforechapterskip{0pt}
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
@@ -685,20 +685,22 @@
 % Modified 2021/06/10 to deal with both in-chapter and end of document appendices
 %
 \newcommand{\msu@apppage}{%
-  \@setuppart
+%  \@setuppart
   \cftinserthook{toc}{\msu@apptype} % extra space or not added 2021/06/10
-  \mempreaddapppagetotochook
-  \addappheadtotoc
-  \mempostaddapppagetotochook
-  \partmark{\appendixpagename}%
-  \memapppageinfo{\appendixpagename}%
-  \cftinserthook{toc}{APPENDICES} % reset for subappendices added 2021/06/10
-  {\centering
-   \interlinepenalty \@M
-   \normalfont
-   \printparttitle{\appendixpagename}\par}%
-  \@endpart}
-\let\msu@apppage\relax
+%  \mempreaddapppagetotochook
+%  \addappheadtotoc
+%  \mempostaddapppagetotochook
+%  \partmark{\appendixpagename}%
+%  \memapppageinfo{\appendixpagename}%
+% reset for subappendices added 2021/06/10
+%  {\centering
+%   \interlinepenalty \@M
+%   \normalfont
+%   \printparttitle{\appendixpagename}\par}%
+%  \@endpart}
+}
+%\let\msu@apppage\relax
+
 
 %
 % Code for appendix/appendices
@@ -718,14 +720,14 @@
 % Changing this in 3.2 2022/04/16
 %   \ifmsu@chapterapp\else
    \msu@singleappendixtrue
-   \cftinserthook{toc}{APP}
+%   \cftinserthook{toc}{APP}
    \setsecnumdepth{chapter}
 % \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
    \msu@apppage\settocdepth{chapter}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@apppage\settocdepth{chapter}
+  {\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\settocdepth{chapter}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
@@ -759,17 +761,17 @@
   \let\bibpagename\bibname
   \cftinserthook{toc}{\msu@bibtype}
   \settocdepth{section} % changed v2.7 to allow for chapter bibs
-  \@setuppart
-  \msu@preaddbibpagetotochook
+%  \@setuppart
+%  \msu@preaddbibpagetotochook
   \msu@addbibheadtotoc
-  \msu@postaddbibpagetotochook
-  \partmark{\bibpagename}%
-  \msu@bibpageinfo{\bibpagename}%
-  {\centering
-   \interlinepenalty \@M
-   \normalfont
-   \printparttitle{\bibpagename}\par}%
-  \@endpart
+%  \msu@postaddbibpagetotochook
+%  \partmark{\bibpagename}%
+%  \msu@bibpageinfo{\bibpagename}%
+%  {\centering
+%   \interlinepenalty \@M
+%   \normalfont
+%   \printparttitle{\bibpagename}\par}%
+%  \@endpart
    \cftinserthook{toc}{BIB}}
 
 \newcommand\msu@preaddbibpagetotochook{}
@@ -788,11 +790,11 @@
 	}
 % Since the bibliography page is the TOC entry we remove the bib in the TOC
 % when it's introduced
-%\nobibintoc % removed v4 as no longer needed
+\nobibintoc % removed v4 as no longer neededd
 % Modified 8/7/14 to add the bibliography cover page to the TOC and not the actual bibliography page
 % This should also work for biblatex even though memoir doesn't check for it
 
-\newcommand*{\makebibliographypage}{\msu@bibpage}
+%\newcommand*{\makebibliographypage}{\msu@bibpage}
 %\let\makebibliographycover\makebibliographypage No longer needed for compatibility
 
 % Informational warnings
@@ -808,8 +810,9 @@
 % Make bibliography spacing more automatic for biblatex and natbib users 2021/06/10
 % This should cover most cases. Otherwise just set single spacing
 \@ifpackageloaded{biblatex}
-	{\renewcommand{\bibsetup}{\SingleSpacing\setlength{\bibitemsep}{\baselineskip}}} % biblatex
-	{\@ifpackageloaded{natbib}
+	{\renewcommand{\bibsetup}{\msu@bibpage\SingleSpacing\setlength{\bibitemsep}{\baselineskip}}} % biblatex
+	{\pretocmd{\bibliography}{\msu@bibpage}{}{}
+	 \@ifpackageloaded{natbib}
 		{\AtBeginEnvironment{thebibliography}{\SingleSpacing\setlength{\bibsep}{\baselineskip}}} % natbib
 		{\AtBeginEnvironment{thebibliography}{\SingleSpacing}}} % any other bib package
 %\topskip=0pt % setting this because the Grad School doesn’t know how to measure -changed back 6/15/17
