@@ -230,7 +230,7 @@
     \global\msu@chapterapptrue
 	\def\msu@apptype{APPENDICES}
 	% per-chapter appendices added v3.0
-	\renewcommand\msuappendixnumformat{\the@ppsavesec\ifmsu@singleappendix\else\Alph{chapter}\fi} % Appendix numbers per-chapter (now permitted)
+	\renewcommand\msuappendixnumformat{\ifmsu@singleappendix\else\Alph{chapter}\fi} % Appendix numbers per-chapter not permitted as of v4
 }
 \DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v2.9
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
@@ -336,6 +336,8 @@
 \renewcommand{\printparttitle}[1]{\parttitlefont \MakeUppercase#1}
 % Set epigraph fonts to \normalsize
 \renewcommand{\epigraphsize}{\normalsize} % added 2/26/21
+% Set a fixed floatsep to appease 2023 idiocy
+\setlength\textfloatsep{\onelineskip}
 
 
 % set up the section styles
@@ -356,7 +358,7 @@
 
 % set up TOC
 
-\maxtocdepth{section}
+\settocdepth{section}
 \setsecnumdepth{subsubsection}
 \setlength{\cftsectionindent}{.5in}
 \renewcommand*{\printtoctitle}[1]{\centering\bfseries\msu@contentsname}
@@ -456,16 +458,19 @@
 \cftinsertcode{APP}{
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
-  \renewcommand\cftchapteraftersnum{}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
 }
+
+\cftinsertcode{SINGAPP}{\renewcommand{\cftchapteraftersnum}{}}
 % This code removes the before chapter spaces for in-chapter apps
-\cftinsertcode{CHAPAPP}{
-  \setlength\cftbeforechapterskip{0pt}
-  \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
-  \renewcommand\cftchapterpagefont{\msu@tocfont}
-  \renewcommand*{\cftappendixname}{APPENDIX\space}
-}
+% removed v4 not needed
+%\cftinsertcode{CHAPAPP}{
+%  \setlength\cftbeforechapterskip{0pt}
+%  \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
+%  \renewcommand\cftchapterpagefont{\msu@tocfont}
+%  \renewcommand\cftchapteraftersnum{\msutocdelim}
+%  \renewcommand*{\cftappendixname}{APPENDIX\space}
+%}
 
 % This code adds extra space in the TOC margin for the APPENDIX name, and
 % makes the appendices formatted like sections even though they are
@@ -480,6 +485,8 @@
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
+  \renewcommand\cftchapteraftersnum{\msutocdelim}
+
 }
 
 % This code resets the TOC back to normal section spacing if appendices have been used
@@ -500,6 +507,7 @@
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
   \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
+  \settocdepth{section}
 }
 
 \cftinsertcode{CHAPBIB}{
@@ -582,17 +590,18 @@
 % We'll set it to 0 for the moment; 0 is what should be 1 double space, 
 % but depending on their mood and and whether Mars is in conjunction with Jupiter they seem to want more
 % or less. Nothing better than random application of useless rules to waste everyone’s time.
-\newcommand\setabstractnamespace[1]{\gdef\msu@abstractnamespacefactor{#1}}
-\setabstractnamespace{0} % this may be too big
+%\newcommand\setabstractnamespace[1]{\gdef\msu@abstractnamespacefactor{#1}}
+%\setabstractnamespace{0} % this may be too big
+% Changed v4, as no name required any more
 \renewenvironment{abstract}{%
-   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
+%   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\abstractname}
    \thispagestyle{empty}
 %   \plainbreak{-.5} % changed 2016/06/08 after complaints
-    \begin{center}
-    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
- 	\end{center}
-	\plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
+%    \begin{center}
+%    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
+% 	\end{center}
+%	\plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\par}
 %
@@ -602,23 +611,25 @@
 %
 % this just stores the current page number and replaces it at the end
 
-\newcounter{msu@pubabspages}
-\newcommand{\publicabstractname}{\abstractname}
-\newenvironment{publicabstract}{%
-   \phantomsection% added 6/30/2022 to remove spurious warning
-   \ClassWarningNoLine{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
-   \setcounter{msu@pubabspages}{\value{page}}
-   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
-   \chapter*{\publicabstractname}
-   \thispagestyle{empty}
-%   \plainbreak{-.5} % changed 2016/06/08 after complaints
-    \begin{center}
-    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
- 	\end{center}
-%	\plainbreak{-.5} % changed 2016/06/08 after complaints
-    \plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
-    \DoubleSpacing
-   }{\clearpage\setcounter{page}{\value{msu@pubabspages}}}
+% Removed v4 (no longer needed?)
+
+%\newcounter{msu@pubabspages}
+%\newcommand{\publicabstractname}{\abstractname}
+%\newenvironment{publicabstract}{%
+%   \phantomsection% added 6/30/2022 to remove spurious warning
+%   \ClassWarningNoLine{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
+%   \setcounter{msu@pubabspages}{\value{page}}
+%   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
+%   \chapter*{\publicabstractname}
+%   \thispagestyle{empty}
+%%   \plainbreak{-.5} % changed 2016/06/08 after complaints
+%    \begin{center}
+%    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
+% 	\end{center}
+%%	\plainbreak{-.5} % changed 2016/06/08 after complaints
+%    \plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
+%    \DoubleSpacing
+%   }{\clearpage\setcounter{page}{\value{msu@pubabspages}}}
 
 
 % set up captions
@@ -720,14 +731,12 @@
 % Changing this in 3.2 2022/04/16
 %   \ifmsu@chapterapp\else
    \msu@singleappendixtrue
-%   \cftinserthook{toc}{APP}
-   \setsecnumdepth{chapter}
 % \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
-   \msu@apppage\settocdepth{chapter}\@resets@pp\anappendixtrue}%
+   \msu@apppage\cftinserthook{toc}{SINGAPP}\settocdepth{chapter}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\settocdepth{chapter}
+  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\settocdepth{chapter}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 

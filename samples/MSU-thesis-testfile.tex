@@ -28,8 +28,10 @@
 \usepackage{enumitem}
 \usepackage[unit=in]{fgruler}
 \usepackage{gb4e}
+\makeatletter
+%\setlength\textfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
 
-
+\makeatother
 
 \counterwithin{exx}{chapter}
 \singlegloss
@@ -49,9 +51,10 @@
 \begin{document}
 \frontmatter
 \maketitlepage
-\begin{publicabstract}
-\lipsum[1]
-\end{publicabstract}
+% public abstract removed v4
+%\begin{publicabstract}
+%\lipsum[1]
+%\end{publicabstract}
 \begin{abstract}
 \lipsum[1-6]
 \end{abstract}
