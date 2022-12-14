@@ -4,4 +4,4 @@ make4ht -l -c msu-thesis.cfg  msu-thesis.tex
 mv msu-thesis.pdf ..
 find . \( -name  '*.aux' -o -name '*.lot' -o -name '*.lof' -o -name '*.log' -o -name '*.bbl' -o -name '*.blg' -o -name '*.gz' -o -name '*.toc'   \) -delete
 cd ..
-ctanify --no-tds  -p msu-thesis msu-thesis.cls msu-thesis.pdf README.md samples/*=doc/latex/msu-thesis/samples  docs/msu-thesis.tex=doc/latex/msu-thesis
+ctanify --no-tds  -p msu-thesis msu-thesis.cls msu-thesis.pdf README.md samples/*=doc/latex/msu-thesis/samples docs/msu-thesis.tex=doc/latex/msu-thesis

@@ -1,10 +1,10 @@
-# MSU Thesis Class Version 3.7 2022/09/05
+# MSU Thesis Class Version 4.0 2022/12/13
 
 Copyright 2011-2022 by Alan Munn <amunn@msu.edu>
 
 This is a class file for producing dissertations and theses according to
 the Michigan State University Graduate School Guidelines for Electronic
-Submission of Master's Theses and Dissertations (March 2020).
+Submission of Master's Theses and Dissertations (September 2022).
 
 The class is based on the `memoir` document class, and therefore inherits
 all of the functionality of that class.
@@ -50,9 +50,10 @@ Documentation files:
 A template file:
  - `MSU-thesis-template.tex`
 
-A test file and a test bibliography:
+Two test files and a test bibliography:
 
  `MSU-thesis-testfile.tex`
+ `MSU-thesis-chapterbib-testfile.tex`
  `MSU-thesis-testfile.bib`
 
 ## Problems

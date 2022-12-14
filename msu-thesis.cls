@@ -24,10 +24,9 @@
 %   msu-thesis.tex and msu-thesis.pdf;
 % A template file:
 %   MSU-thesis-template.tex
-% A test file and test bibliography:
-% 	MSU-thesis-testfile.tex, MSU-thesis-testfile.bib
-% It also contains a copy of the LSA Unified Style Sheet for linguistics:
-% 	unified.bst
+% Two test files and test bibliography:
+% 	MSU-thesis-testfile.tex, MSU-thesis-chapterbib-testfile.tex, MSU-thesis-testfile.bib
+%
 %
 % Version 1.0 2010/04/17 Initial release
 % Version 1.1 2010/04/20 Require etex package (fix problem with qtree)
@@ -170,16 +169,16 @@
 %						  updated documentation on algorithms and captions
 % Version 3.5 2022/08/15  Added \setabstractnamespace to allow user control over thesis office idiocy
 % Version 3.5b 2022/08/19 Changed default for \setabstractnamespace
-% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros 
+% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros
 %						  \msuabbrev \msuabbrevwidth \msuabbrevfont
-%                         to make format of the key to abbreviations match the LoF etc. 
+%                         to make format of the key to abbreviations match the LoF etc.
 %						  Changed \onelinespace to match the fontsize (see v2.9)
 %						  Added undocumented command to reinstate the memoir leading values if needed.
 % Version 3.7 2022/09/04  Rewrote ToC formatting code to support hyperref better. Modifications to internal
-%						  chapter commands are no longer required, and hyperref injection code revised. 
+%						  chapter commands are no longer required, and hyperref injection code revised.
 %						  This requires an up-to-date LaTeX and is therefore only released as development for the
 %						  moment.
-% Version 4 2023/12/13	  First version to conform to the updated requirements (September 2023) 
+% Version 4 2023/12/13	  First version to conform to the updated requirements (September 2023)
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
@@ -279,12 +278,12 @@
 \setulmargins{1in}{*}{*}
 \setheadfoot{.5in}{.5in} % changed 5/3/2017
 \setlength{\onelineskip}{\msu@sizeoption} % changed v3.6 after more complaints about "double space"
-% memoir makes the value the leading of the chosen font size (defined in memXX.clo) where XX is the 
+% memoir makes the value the leading of the chosen font size (defined in memXX.clo) where XX is the
 % font size. The memoir values are 12pt, 13.6pt and 14.5pt, but depending on who's measuring, they don't
 % seem to like these values.  Add an undocumented reset to defaults for future inconsistency.
 \newcommand*\usememdefaultlineskip{
 	\let\onelineskip\headheight}
-	
+
 
 % set up contents title
 % we use a private macro here to avoid problems with babel and
@@ -331,7 +330,7 @@
 \renewcommand*{\afterchapternum}{\par\nobreak\vskip\midchapskip}
 \renewcommand*{\printchaptername}{%
     \centerline{\chapnumfont{\MakeUppercase\@chapapp\ \ifmsu@singleappendix\else\thechapter\fi}}}% added v3.1b
-\renewcommand{\partnamefont}{\centering\bfseries} 
+\renewcommand{\partnamefont}{\centering\bfseries}
 \renewcommand{\partnumfont}{\bfseries}
 \renewcommand{\parttitlefont}{\SingleSpacing\bfseries}
 \renewcommand{\printpartname}{\partnamefont{\partname}}
@@ -589,7 +588,7 @@
 % set up abstract and public abstract
 % The thesis office is inconsistent in how they measure what they call a "double space".
 % Adding a fudge factor that can be changed at the user level (v3.5 8/15/2022)
-% We'll set it to 0 for the moment; 0 is what should be 1 double space, 
+% We'll set it to 0 for the moment; 0 is what should be 1 double space,
 % but depending on their mood and and whether Mars is in conjunction with Jupiter they seem to want more
 % or less. Nothing better than random application of useless rules to waste everyone’s time.
 %\newcommand\setabstractnamespace[1]{\gdef\msu@abstractnamespacefactor{#1}}
