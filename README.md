@@ -12,7 +12,7 @@ all of the functionality of that class.
 
 # Update on new formatting requirements (Fall 2022)
 
-It seems that the Graduate School has again changed some of the formatting requirements as of September 2022. I have just become aware of them and will try to update the class as soon as I can. It's still helpful to email me the complaints that you get from the thesis office, but as of now (October, 2022) I am aware of the issue.
+Version 4.0 now conforms to the new formatting requirements! As a side effect, your thesis will now look more and more like it was produced with MSWord. 
 
 ## Documentation
 
