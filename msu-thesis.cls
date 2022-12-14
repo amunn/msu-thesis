@@ -794,7 +794,7 @@
 % Modified 8/7/14 to add the bibliography cover page to the TOC and not the actual bibliography page
 % This should also work for biblatex even though memoir doesn't check for it
 
-%\newcommand*{\makebibliographypage}{\msu@bibpage}
+\newcommand*{\makebibliographypage}{} % will be removed soon
 %\let\makebibliographycover\makebibliographypage No longer needed for compatibility
 
 % Informational warnings
