@@ -24,10 +24,9 @@
 %   msu-thesis.tex and msu-thesis.pdf;
 % A template file:
 %   MSU-thesis-template.tex
-% A test file and test bibliography:
-% 	MSU-thesis-testfile.tex, MSU-thesis-testfile.bib
-% It also contains a copy of the LSA Unified Style Sheet for linguistics:
-% 	unified.bst
+% Two test files and test bibliography:
+% 	MSU-thesis-testfile.tex, MSU-thesis-chapterbib-testfile.tex, MSU-thesis-testfile.bib
+%
 %
 % Version 1.0 2010/04/17 Initial release
 % Version 1.1 2010/04/20 Require etex package (fix problem with qtree)
@@ -170,15 +169,21 @@
 %						  updated documentation on algorithms and captions
 % Version 3.5 2022/08/15  Added \setabstractnamespace to allow user control over thesis office idiocy
 % Version 3.5b 2022/08/19 Changed default for \setabstractnamespace
-% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros \msuabbrev \msuabbrevwidth \msuabbrevfont
-%                         to make format of the key to abbreviations match the LoF etc. 
+% Version 3.6 2022/08/23  Added a \listofabbreviations plus helper macros
+%						  \msuabbrev \msuabbrevwidth \msuabbrevfont
+%                         to make format of the key to abbreviations match the LoF etc.
 %						  Changed \onelinespace to match the fontsize (see v2.9)
 %						  Added undocumented command to reinstate the memoir leading values if needed.
+% Version 3.7 2022/09/04  Rewrote ToC formatting code to support hyperref better. Modifications to internal
+%						  chapter commands are no longer required, and hyperref injection code revised.
+%						  This requires an up-to-date LaTeX and is therefore only released as development for the
+%						  moment.
+% Version 4 2023/12/13	  First version to conform to the updated requirements (September 2023)
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{3.6}
-\def\msu@date{2022/08/23}
+\def\msu@version{4.0}
+\def\msu@date{2023/12/13}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -187,13 +192,14 @@
 \newif\ifmsu@chapterapp\msu@chapterappfalse % added v3.0
 \def\msu@apptype{APP}
 \newif\ifmsu@singleappendix\msu@singleappendixfalse % added v3.1b
-\newcommand*\msuappendixnumformat{\Alph{chapter}}% Appendices are Alpha numbered
+\newcommand*\msuappendixnumformat{\ifmsu@singleappendix\else\Alph{chapter}\fi}% Appendices are Alpha numbered
 \newif\ifmsu@lscape\msu@lscapefalse
 \newif\ifmsu@stupidtoc\msu@stupidtocfalse
 \newif\ifmsu@mixedtoc\msu@mixedtocfalse
 \newif\ifmsu@plaintoc\msu@plaintoctrue % make this the default to see what the reaction is
 \newif\ifmsu@colonintoc\msu@colonintocfalse
 \newif\ifmsu@hyperloaded\msu@hyperloadedfalse
+\newif\ifmsu@dualmajor\msu@dualmajorfalse
 \DeclareOption{PhD}{\gdef\msu@degree{Doctor of Philosophy}}
 \DeclareOption{DEd}{\gdef\msu@degree{Doctor of Education}}
 \DeclareOption{DMA}{\gdef\msu@degree{Doctor of Musical Arts}}
@@ -222,9 +228,9 @@
 \DeclareOption{bibassection}{\def\msu@bibsection{section}} % per-chapter bibs as sections in TOC
 \DeclareOption{chapterapp}{
     \global\msu@chapterapptrue
-	\def\msu@apptype{CHAPAPP}
+	\def\msu@apptype{APPENDICES}
 	% per-chapter appendices added v3.0
-	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}} % Appendix numbers per-chapter (now permitted)
+	\renewcommand\msuappendixnumformat{\ifmsu@singleappendix\else\Alph{chapter}\fi} % Appendix numbers per-chapter not permitted as of v4
 }
 \DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v2.9
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
@@ -240,6 +246,11 @@
    \RequirePackage{etex}
 \fi
 \RequirePackage{etoolbox}
+% textpos package added v4.0 to deal with absolute positioning of title page elements
+\RequirePackage[absolute]{textpos}
+\setlength{\TPHorizModule}{.5in}
+\setlength{\TPVertModule}{.5in}
+\textblockorigin{0in}{0in}
 % set up landscape page numbering
 % make a boolean for selecting pagestyle properly if \chapter appears in a landscape environment
 \newif\ifmsu@lscapemode\msu@lscapemodefalse
@@ -267,12 +278,12 @@
 \setulmargins{1in}{*}{*}
 \setheadfoot{.5in}{.5in} % changed 5/3/2017
 \setlength{\onelineskip}{\msu@sizeoption} % changed v3.6 after more complaints about "double space"
-% memoir makes the value the leading of the chosen font size (defined in memXX.clo) where XX is the 
+% memoir makes the value the leading of the chosen font size (defined in memXX.clo) where XX is the
 % font size. The memoir values are 12pt, 13.6pt and 14.5pt, but depending on who's measuring, they don't
 % seem to like these values.  Add an undocumented reset to defaults for future inconsistency.
 \newcommand*\usememdefaultlineskip{
 	\let\onelineskip\headheight}
-	
+
 
 % set up contents title
 % we use a private macro here to avoid problems with babel and
@@ -282,8 +293,9 @@
 \newcommand*{\fieldofstudy}[1]{\gdef\msu@fieldofstudy{#1}} % removed \MakeUppercase 6/5/12
 \newcommand{\dedication}[1]{\gdef\msu@dedication{#1}}
 \newcommand*{\msu@titleintro}{A~} % this is the beginning to the title page phrase
-\newcommand*{\msu@fieldseparator}{\textendash} % this is between the degree name and field of study
-
+\newcommand*{\msu@fieldseparator}{\textemdash} % this is between the degree name and field of study
+\newcommand*{\dualmajor}[2]{\msu@dualmajortrue\gdef\msu@fieldofstudy{#1}\gdef\msu@dualmajor{#2}}
+\newcommand*{\msu@DUALMAJOR}{Dual Major}
 \newcounter{msu@hchap} % global counter for chapters used by hyperref
 % This may also be solved by using \hypersetup{hypertexnames=false}
 % hard to tell whether this is a better solution.
@@ -297,17 +309,18 @@
 % Because the title is set to \MakeUppercase we need to \protect line
 % breaks within the title.  This has now been documented in the user docs.
 % Using \onelineskip here instead of \baselineskip because thesis office doesn't know how to measure
+% v4 now uses textpos to position these elements absolutely on the page
 \newcommand*\msu@thesistype{\ifmsu@dissertation{DISSERTATION}\else{THESIS}\fi}
 \pretitle{\begin{center}\MakeUppercase}
-\posttitle{\\[\onelineskip]\end{center}}
-\preauthor{\begin{center}By\\[\onelineskip]}
-\postauthor{\end{center}}
-\predate{\vfill\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[\onelineskip]\msu@fieldofstudy~\msu@fieldseparator~\msu@degree\\[\onelineskip]}
+\posttitle{\end{center}}
+\preauthor{\begin{textblock}{6}(5.5,6.625)\begin{center}By\\[2\onelineskip]}
+\postauthor{\end{center}\end{textblock}}
+\predate{\begin{textblock}{6}(5.5,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[2\onelineskip]\msu@fieldofstudy\msu@fieldseparator\msu@degree\ifmsu@dualmajor\\\msu@dualmajor\msu@fieldseparator\msu@DUALMAJOR\\[\onelineskip]\else\\[2\onelineskip]\fi}\postdate{\end{center}\end{textblock}}
 
 % set up the chapter titles
 \chapterstyle{thatcher}
 \setlength{\beforechapskip}{-1sp}% changed 2020/12/17 Need negative value to suppress indentation
-\setlength{\afterchapskip}{2\onelineskip} % changed 2017/05/03 because of thesis office complaints
+\setlength{\afterchapskip}{0pt} % changed 2017/05/03 because of thesis office complaints; changed again for v4 since now they want "uniform" space
 \renewcommand*{\chapnamefont}{\centering\bfseries}
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
@@ -320,22 +333,35 @@
 \renewcommand{\partnamefont}{\centering\bfseries}
 \renewcommand{\partnumfont}{\bfseries}
 \renewcommand{\parttitlefont}{\SingleSpacing\bfseries}
-\renewcommand{\printpartname}{\partnamefont{\MakeUppercase{\partname}}}
+\renewcommand{\printpartname}{\partnamefont{\partname}}
 \renewcommand{\printparttitle}[1]{\parttitlefont \MakeUppercase#1}
 % Set epigraph fonts to \normalsize
 \renewcommand{\epigraphsize}{\normalsize} % added 2/26/21
+% Set a fixed floatsep to appease 2023 idiocy
+\setlength\textfloatsep{\onelineskip}
 
 
 % set up the section styles
-\setbeforesecskip{-1sp}
-\setsecheadstyle{\normalfont\SingleSpacing\large\bfseries}
+
+\setsecheadstyle{\normalfont\SingleSpacing\bfseries} % made uniform size v4
 \setsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
 \setsubsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
+% 2023 requirements seem to want "uniform" spacing even after headings, even though this
+% is not stated explicitly anywhere. After skips must be positive not zero to avoid runin formatting
+% Before skips can be 0
+% This is another insane decision typographically...
+\setbeforesecskip{0pt}
+\setbeforesubsecskip{0pt}
+\setbeforesubsubsecskip{0pt}
+\setaftersecskip{.1pt}
+\setaftersubsecskip{.1pt}
+\setaftersubsubsecskip{.1pt}
 
 % set up TOC
 
-\maxtocdepth{subsubsection}
+\settocdepth{section}
 \setsecnumdepth{subsubsection}
+\setlength{\cftsectionindent}{.5in}
 \renewcommand*{\printtoctitle}[1]{\centering\bfseries\msu@contentsname}
 \renewcommand*{\cftchaptername}{Chapter\space}
 \renewcommand*{\cftappendixname}{Appendix\space}
@@ -344,6 +370,8 @@
 \renewcommand*{\cfttableaftersnum}{\msucaptiondelim}  % per thesis office punctuation idiocy
 \renewcommand*{\cftfigurename}{Figure\space}
 \renewcommand*{\cfttablename}{Table\space}
+\renewcommand*{\cftchapteraftersnum}{\msutocdelim}
+\renewcommand*{\cftsectionaftersnum}{\msutocdelim}
 %\setlength{\cftbeforetableskip}{0pt}
 %\setlength{\cftbeforefigureskip}{0pt}
 \renewcommand{\insertchapterspace}{}
@@ -378,8 +406,8 @@
 % Importantly you MUST load float after defining any new lists since it clobbers
 % the memoir float methods
 
-
-\newlistof{listofalgorithms}{loa}{List of Algorithms}
+\newcommand{\listalgorithmname}{List of Algorithms} % added v3.7 for hyperref
+\newlistof{listofalgorithms}{loa}{\listalgorithmname}
 \newfloat[chapter]{algorithm}{loa}{Algorithm}
 \newlistentry{algorithm}{loa}{0}
 \renewcommand*{\cftalgorithmname}{Algorithm\space}
@@ -387,13 +415,16 @@
 
 % After complaints about the spacing in the key to abbreviations not matching the list
 % of figures, we now supply a \listofabbreviations which is formatted using regular LoF
-% methods along with a helper macro \msuabbrev which puts an abbreviation into the list.
-% The list is not sorted, so the \msuabbrev commands must be in the order that they will appear.
+% methods along with a helper macro \abbrev which puts an abbreviation into the list.
+% The list is not sorted, so the \abbrev commands must be in the order that they will appear.
 % Since the abbreviations are just listed, this list doesn't require a new float command.
-% We use kta here, since loa will be used by list of algorithms. Added v3.6
+% We use lob here, since loa will be used by list of algorithms. Added v3.6
+% For ease of use, the list is wrapped into an environment.
 %
-\newlistof{listofabbreviations}{kta}{Key to Abbreviations}
-\newlistentry{abbrev}{kta}{0}
+\newcommand{\listabbreviationsname}{List of Abbreviations} % added v3.7 for hyperref; name changed v4
+\newlistof{listofabbreviations}{lob}{\listabbreviationsname}
+\newlistentry{abbrev}{lob}{0}
+
 \newcommand*\msuabbrevfont{\bfseries} % font for the abbreviation itself
 \renewcommand*\cftabbrevleader{} % no leaders
 \renewcommand*\cftabbrevformatpnum[1]{} % no page numbers
@@ -403,9 +434,12 @@
 \msuabbrevwidth{.75in} % a reasonable minimum
 \cftsetindents{abbrev}{0em}{\msu@abbrevwidth} % sets the indents so that the entries themselves can wrap if long
 \newcommand*{\msuabbrevdelim}{} % in case you want a colon or something after each abbreviation
-\newcommand{\msuabbrev}[2]{%
-\addcontentsline{kta}{abbrev}{\makebox[\msu@abbrevwidth][l]{\msuabbrevfont#1\msuabbrevdelim}\normalfont#2}
-}
+\newcommand{\abbrev}[2]{%
+\addcontentsline{lob}{abbrev}{\makebox[\msu@abbrevwidth][l]{\msuabbrevfont#1\msuabbrevdelim}\normalfont#2}}
+\newenvironment{abbreviations}
+{}
+{\clearpage
+\listofabbreviations}
 
 
 %
@@ -425,15 +459,19 @@
 \cftinsertcode{APP}{
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
-%  \renewcommand*{\cftappendixname}{APPENDIX\space}
-}
-% This code removes the before chapter spaces for in-chapter apps
-\cftinsertcode{CHAPAPP}{
-  \setlength\cftbeforechapterskip{0pt}
-  \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
-  \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
 }
+
+\cftinsertcode{SINGAPP}{\renewcommand{\cftchapteraftersnum}{}}
+% This code removes the before chapter spaces for in-chapter apps
+% removed v4 not needed
+%\cftinsertcode{CHAPAPP}{
+%  \setlength\cftbeforechapterskip{0pt}
+%  \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
+%  \renewcommand\cftchapterpagefont{\msu@tocfont}
+%  \renewcommand\cftchapteraftersnum{\msutocdelim}
+%  \renewcommand*{\cftappendixname}{APPENDIX\space}
+%}
 
 % This code adds extra space in the TOC margin for the APPENDIX name, and
 % makes the appendices formatted like sections even though they are
@@ -448,30 +486,33 @@
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
+  \renewcommand\cftchapteraftersnum{\msutocdelim}
+
 }
 
 % This code resets the TOC back to normal section spacing if appendices have been used
 
 \cftinsertcode{CHAPAPPR}{
-\cftsetindents{section}{1.5em}{2.3em}
+\cftsetindents{section}{.5in}{2.3em}
 \setlength{\cftchapterindent}{0em}
 \setlength{\cftchapternumwidth}{3em} % added 6/24/2022
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
-  \renewcommand\cftchapterfont{\msu@chapfont}
+  \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
-  \settocdepth{subsubsection} % added 6/24/2022
+  \settocdepth{section} % added 6/24/2022
 }
 % This code resets the changes made in the APP code back to normal
 % so that the bibliography will appear correctly in the TOC
 \cftinsertcode{BIB}{
 \setlength{\cftchapterindent}{0em}
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
-  \renewcommand\cftchapterfont{\msu@chapfont}
+  \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
+  \settocdepth{section}
 }
 
 \cftinsertcode{CHAPBIB}{
-  \setlength\cftchapterindent{0em}
+  \setlength\cftchapterindent{\cftsectionindent}
   \setlength\cftbeforechapterskip{0pt}
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
@@ -479,7 +520,7 @@
 
 
 % Set up all the font styles for the TOC
-\renewcommand*{\cftchapterfont}{\msu@chapfont}
+\renewcommand*{\cftchapterfont}{\msu@chapfont\MakeUppercase}
 \renewcommand*{\cftchapterpagefont}{\msu@chapfont}
 \renewcommand*{\cftsectionfont}{\msu@tocfont}
 \renewcommand*{\cftsubsectionfont}{\msu@tocfont}
@@ -488,14 +529,16 @@
 \renewcommand*{\cftsubsectionpagefont}{\msu@tocfont}
 \renewcommand*{\cftsubsubsectionpagefont}{\msu@tocfont}
 
+% Removed v3.7 to accommodate more hyperref options
+%\renewcommand*{\l@chapter}[2]{%
+%  \renewcommand{\cftchapterpagefont}{\msu@chapfont}
+%  \l@chapapp{\MakeUppercase{#1}}{#2}{\cftchaptername}} % Format chapter names
+%\renewcommand*{\l@appendix}[2]{%
+% \renewcommand{\cftchapterpagefont}{\msu@tocfont}
+%  \setlength{\cftchapternumwidth}{2em}
+%  \l@chapapp{\msu@tocfont\MakeUppercase{#1}}{#2}{\cftappendixname}} % Format appendix names
+%
 
-\renewcommand*{\l@chapter}[2]{%
-  \renewcommand{\cftchapterpagefont}{\msu@chapfont}
-  \l@chapapp{\MakeUppercase{#1}}{#2}{\cftchaptername}} % Format chapter names
-\renewcommand*{\l@appendix}[2]{%
- \renewcommand{\cftchapterpagefont}{\msu@tocfont}
-  \setlength{\cftchapternumwidth}{2em}
-  \l@chapapp{\msu@tocfont\MakeUppercase{#1}}{#2}{\cftappendixname}} % Format appendix names
 \setlength{\cftchapternumwidth}{3em}
 \setrmarg{3.5em} % better wrapping of long titles
 
@@ -545,20 +588,21 @@
 % set up abstract and public abstract
 % The thesis office is inconsistent in how they measure what they call a "double space".
 % Adding a fudge factor that can be changed at the user level (v3.5 8/15/2022)
-% We'll set it to 0 for the moment; 0 is what should be 1 double space, 
+% We'll set it to 0 for the moment; 0 is what should be 1 double space,
 % but depending on their mood and and whether Mars is in conjunction with Jupiter they seem to want more
 % or less. Nothing better than random application of useless rules to waste everyone’s time.
-\newcommand\setabstractnamespace[1]{\gdef\msu@abstractnamespacefactor{#1}}
-\setabstractnamespace{0} % this may be too big
+%\newcommand\setabstractnamespace[1]{\gdef\msu@abstractnamespacefactor{#1}}
+%\setabstractnamespace{0} % this may be too big
+% Changed v4, as no name required any more
 \renewenvironment{abstract}{%
-   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
+%   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
    \chapter*{\abstractname}
    \thispagestyle{empty}
 %   \plainbreak{-.5} % changed 2016/06/08 after complaints
-    \begin{center}
-    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
- 	\end{center}
-	\plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
+%    \begin{center}
+%    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
+% 	\end{center}
+%	\plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
     \DoubleSpacing
    }{\par}
 %
@@ -568,23 +612,25 @@
 %
 % this just stores the current page number and replaces it at the end
 
-\newcounter{msu@pubabspages}
-\newcommand{\publicabstractname}{\abstractname}
-\newenvironment{publicabstract}{%
-   \phantomsection% added 6/30/2022 to remove spurious warning
-   \ClassWarningNoLine{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
-   \setcounter{msu@pubabspages}{\value{page}}
-   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
-   \chapter*{\publicabstractname}
-   \thispagestyle{empty}
-%   \plainbreak{-.5} % changed 2016/06/08 after complaints
-    \begin{center}
-    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
- 	\end{center}
-%	\plainbreak{-.5} % changed 2016/06/08 after complaints
-    \plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
-    \DoubleSpacing
-   }{\clearpage\setcounter{page}{\value{msu@pubabspages}}}
+% Removed v4 (no longer needed?)
+
+%\newcounter{msu@pubabspages}
+%\newcommand{\publicabstractname}{\abstractname}
+%\newenvironment{publicabstract}{%
+%   \phantomsection% added 6/30/2022 to remove spurious warning
+%   \ClassWarningNoLine{msu-thesis}{You have provided a public abstract. Please make sure you ALSO have a regular abstract!}
+%   \setcounter{msu@pubabspages}{\value{page}}
+%   \setlength{\afterchapskip}{\onelineskip} % changed 2020/12/14 again removed manual spacing from 2016
+%   \chapter*{\publicabstractname}
+%   \thispagestyle{empty}
+%%   \plainbreak{-.5} % changed 2016/06/08 after complaints
+%    \begin{center}
+%    	\MakeUppercase{\thetitle}\plainbreak{1}By\plainbreak{1}\theauthor
+% 	\end{center}
+%%	\plainbreak{-.5} % changed 2016/06/08 after complaints
+%    \plainbreak{\msu@abstractnamespacefactor} % changed 2016/06/08 after complaints
+%    \DoubleSpacing
+%   }{\clearpage\setcounter{page}{\value{msu@pubabspages}}}
 
 
 % set up captions
@@ -592,6 +638,7 @@
 % Make the caption delimiter a space instead of colon space so that the
 % contents lists don't look so stupid.  Can be changed if necessary.
 \newcommand*\msucaptiondelim{\space}
+\newcommand*\msutocdelim{:}
 \captiondelim{\msucaptiondelim}
 
 \pagestyle{plain}
@@ -610,13 +657,15 @@
 % as requiring left aligned copyright mark, even though the guide says it can be
 % anywhere on the page as long as the text itself is left aligned.
 % * version will make things left aligned. Added v3.4 6/20/2022
+% In a tour de force of bad design the 2023 requirements now have this centred vertically Added v4
 \newcommand*{\makecopyrightpage}{%
-	\@ifstar{\def\msu@copyrightalign{}}{\def\msu@copyrightalign{\raggedleft}}
+	\@ifstar{\def\msu@copyrightalign{}}{\def\msu@copyrightalign{}}
 	\pagestyle{plain}
 	\clearpage
 	\thispagestyle{empty}
-	\vspace*{7in}
-	{\noindent\msu@copyrightalign Copyright by\\\MakeUppercase{\theauthor}\\\thedate\\}% Author now uppercase 6/5/12
+	% Author now uppercase 6/5/12
+	% Use vplace to centre vertically added v4
+	{\begin{vplace}\noindent\msu@copyrightalign Copyright by\\\MakeUppercase{\theauthor}\\\thedate\end{vplace}}
 	\clearpage}
 
 % make the dedication page
@@ -648,19 +697,22 @@
 % Modified 2021/06/10 to deal with both in-chapter and end of document appendices
 %
 \newcommand{\msu@apppage}{%
-  \@setuppart
+%  \@setuppart
   \cftinserthook{toc}{\msu@apptype} % extra space or not added 2021/06/10
-  \mempreaddapppagetotochook
-  \addappheadtotoc
-  \mempostaddapppagetotochook
-  \partmark{\appendixpagename}%
-  \memapppageinfo{\appendixpagename}%
-  \cftinserthook{toc}{APPENDICES} % reset for subappendices added 2021/06/10
-  {\centering
-   \interlinepenalty \@M
-   \normalfont
-   \printparttitle{\appendixpagename}\par}%
-  \@endpart}
+%  \mempreaddapppagetotochook
+%  \addappheadtotoc
+%  \mempostaddapppagetotochook
+%  \partmark{\appendixpagename}%
+%  \memapppageinfo{\appendixpagename}%
+% reset for subappendices added 2021/06/10
+%  {\centering
+%   \interlinepenalty \@M
+%   \normalfont
+%   \printparttitle{\appendixpagename}\par}%
+%  \@endpart}
+}
+%\let\msu@apppage\relax
+
 
 %
 % Code for appendix/appendices
@@ -672,20 +724,20 @@
 % appendices.
 %
 \renewenvironment{appendix}%
-  {\renewcommand{\appendixname}{Appendix}
-   \renewcommand{\appendixtocname}{Appendix}
-   \renewcommand{\appendixpagename}{Appendix}
+  {\renewcommand{\appendixname}{\MakeUppercase{Appendix}}
+   \renewcommand{\appendixtocname}{\MakeUppercase{Appendix}}
+   \renewcommand{\appendixpagename}{\MakeUppercase{Appendix}}
 % It's not clear if this should apply to per-chapter appendices also
 % I think it probably should, even though it leads to ambiguity.
 % Changing this in 3.2 2022/04/16
 %   \ifmsu@chapterapp\else
    \msu@singleappendixtrue
 % \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
-   \msu@apppage\settocdepth{part}\@resets@pp\anappendixtrue}%
+   \msu@apppage\cftinserthook{toc}{SINGAPP}\settocdepth{chapter}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@apppage\settocdepth{chapter}
+  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\settocdepth{chapter}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
@@ -694,7 +746,7 @@
 % requires them to restart from A every chapter. In case they
 % ever allow a saner numbering system we provide the \msuappendixnumberformat hook
 % for modifying the numbering scheme if allowed.
-%
+
 
 \renewcommand{\@resets@pp}{%
   \par
@@ -705,7 +757,6 @@
   \renewcommand\thechapter{\msuappendixnumformat}%
 %  \restoreapp % removed 6/24/2022
   }
-
 
 % Don't save the appendix counters even for per-chapter appendices
 
@@ -719,18 +770,18 @@
   \let\bibtocname\bibname % moved inside this page to beat apacite
   \let\bibpagename\bibname
   \cftinserthook{toc}{\msu@bibtype}
-  \settocdepth{subsubsection} % changed v2.7 to allow for chapter bibs
-  \@setuppart
-  \msu@preaddbibpagetotochook
+  \settocdepth{section} % changed v2.7 to allow for chapter bibs
+%  \@setuppart
+%  \msu@preaddbibpagetotochook
   \msu@addbibheadtotoc
-  \msu@postaddbibpagetotochook
-  \partmark{\bibpagename}%
-  \msu@bibpageinfo{\bibpagename}%
-  {\centering
-   \interlinepenalty \@M
-   \normalfont
-   \printparttitle{\bibpagename}\par}%
-  \@endpart
+%  \msu@postaddbibpagetotochook
+%  \partmark{\bibpagename}%
+%  \msu@bibpageinfo{\bibpagename}%
+%  {\centering
+%   \interlinepenalty \@M
+%   \normalfont
+%   \printparttitle{\bibpagename}\par}%
+%  \@endpart
    \cftinserthook{toc}{BIB}}
 
 \newcommand\msu@preaddbibpagetotochook{}
@@ -749,11 +800,11 @@
 	}
 % Since the bibliography page is the TOC entry we remove the bib in the TOC
 % when it's introduced
-\nobibintoc
+\nobibintoc % removed v4 as no longer neededd
 % Modified 8/7/14 to add the bibliography cover page to the TOC and not the actual bibliography page
 % This should also work for biblatex even though memoir doesn't check for it
 
-\newcommand*{\makebibliographypage}{\msu@bibpage}
+\newcommand*{\makebibliographypage}{} % will be removed soon
 %\let\makebibliographycover\makebibliographypage No longer needed for compatibility
 
 % Informational warnings
@@ -769,8 +820,9 @@
 % Make bibliography spacing more automatic for biblatex and natbib users 2021/06/10
 % This should cover most cases. Otherwise just set single spacing
 \@ifpackageloaded{biblatex}
-	{\renewcommand{\bibsetup}{\SingleSpacing\setlength{\bibitemsep}{\baselineskip}}} % biblatex
-	{\@ifpackageloaded{natbib}
+	{\renewcommand{\bibsetup}{\msu@bibpage\SingleSpacing\setlength{\bibitemsep}{\baselineskip}}} % biblatex
+	{\pretocmd{\bibliography}{\msu@bibpage}{}{}
+	 \@ifpackageloaded{natbib}
 		{\AtBeginEnvironment{thebibliography}{\SingleSpacing\setlength{\bibsep}{\baselineskip}}} % natbib
 		{\AtBeginEnvironment{thebibliography}{\SingleSpacing}}} % any other bib package
 %\topskip=0pt % setting this because the Grad School doesn’t know how to measure -changed back 6/15/17
@@ -784,20 +836,21 @@
 %\DeclareMathSizes{10}{10}{10}{10}
 %
 % check for hyperref
-% The hyperref code allows hyperref to be used. It is not guaranteed to
-% work and has been lightly tested.
-% Thanks to Florent Chervet for the code.
+% The hyperref code allows hyperref to be used. Requires a very new 2022 or > kernel
+% Code here from Ulrike Fischer
 % Added hypersetup to remove borders around links 5/9/16
 \@ifpackageloaded{hyperref}%
 {\hypersetup{pdfborder= 0 0 0}
-\msu@hyperloadedtrue
-	\def\MakeLinkUppercase \hyper@linkstart #1#2#3\hyper@linkend
-          {\hyper@linkstart {#1}{#2}{\MakeUppercase{#3}}\hyper@linkend }
-\pdfstringdefDisableCommands{\let\MakeUppercase \@firstofone }
-\renewcommand*{\l@chapter}[2]{%
-   \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftchaptername}} % Format chapter names
-\renewcommand*{\l@appendix}[2]{%
-  \l@chapapp{\MakeLinkUppercase #1}{#2}{\cftappendixname}} % Format appendix names (changed 13/12/17)
+\robustify \hyper@linkend
+\NewCommandCopy\ori@hyper@linkstart\hyper@linkstart
+\RenewExpandableDocumentCommand\hyper@linkstart{mm}
+ {%
+   \CaseSwitch%
+    {\ori@hyper@linkstart{#1}{#2}}% remove spurious space v4
+    {\ori@hyper@linkstart{#1}{#2}}%
+    {\ori@hyper@linkstart{#1}{#2}}%
+    {\ori@hyper@linkstart{#1}{#2}}%
+ }
 \apptocmd{\@resets@pp}{\gdef\theHchapter{\arabic{msu@hchap}}}{}{} % get hypertargets in appendices right (added v3.0; fixed v3.0b)
 }
   % if no hyperref

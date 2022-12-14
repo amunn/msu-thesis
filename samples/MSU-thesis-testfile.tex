@@ -13,12 +13,15 @@
 %
 \usepackage{natbib}
 \bibliographystyle{apalike}
-
+\usepackage[labelfont=bf,
+            format=plain, 
+            justification=raggedright,
+            singlelinecheck=off]{caption}
 
 % If you need newlines in your title, you must use \protect\\
 \title{Topics in the Syntax and Semantics of Phonology}
 \author{Joe Linguist}
-\fieldofstudy{Linguistics}
+\dualmajor{Linguistics}{Computer Science}
 \dedication{This thesis is dedicated to someone.}
 \date{2021}
 \usepackage{listings}
@@ -26,9 +29,12 @@
 \usepackage{lipsum}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage[unit=in]{fgruler}
 \usepackage{gb4e}
+\makeatletter
+%\setlength\textfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
 
-\usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
+\makeatother
 
 \counterwithin{exx}{chapter}
 \singlegloss
@@ -37,19 +43,21 @@
 %\patchcommand{\exe}{\SingleSpacing}{}
 
 % This code is an example of how to set up a new list of
-\newlistof{listoflistings}{lol}{List of Listings}
+\newcommand{\listlistingsname}{List of Listings}
+\newlistof{listoflistings}{lol}{\listlistingsname}
 \newfloat[chapter]{listing}{lol}{Listing}
 \newlistentry{listing}{lol}{0}
 \renewcommand*{\cftlistingname}{Listing\space}
 \renewcommand*{\cftlistingaftersnum}{\msucaptiondelim}
 
-
+\usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
 \begin{document}
 \frontmatter
 \maketitlepage
-\begin{publicabstract}
-\lipsum[1]
-\end{publicabstract}
+% public abstract removed v4
+%\begin{publicabstract}
+%\lipsum[1]
+%\end{publicabstract}
 \begin{abstract}
 \lipsum[1-6]
 \end{abstract}
@@ -64,17 +72,18 @@
 \SingleSpacing
 \tableofcontents* % ToC will not appear in the table of contents
 \clearpage
-\listoftables
+% removed other contents lists as per recommendations v4!
+%\listoftables
 \clearpage
-\listoffigures
+%\listoffigures
 \clearpage
-\listoflistings
+%\listoflistings
 % Add all the abbreviations here in their sorted order using \msuabbrev
-\msuabbrev{ASA}{A small abbreviation}
-\msuabbrev{ABA}{An abbreviation with an explanation so long that the explanation should wrap to the next line and align properly with the previous line}
+\begin{abbreviations}
+\abbrev{ASA}{A small abbreviation}
+\abbrev{ABA}{An abbreviation with an explanation so long that the explanation should wrap to the next line and align properly with the previous line}
+\end{abbreviations}
 % Then print the list
-\clearpage
-\listofabbreviations
 \mainmatter
 % The next command changes chapters in the TOC to have no dotted leader
 %\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep}{\cftnodots}}
@@ -265,23 +274,24 @@ A & B & C & D & E & F & G \\
 %\begin{appendices} ... \end{appendices}
 % use this if you have more than one appendix
 \clearpage
-%\begin{appendix} ... \end{appendix}   % use this if you have only one appendix
-\begin{appendix}
-\chapter{A single appendix}
-\lipsum[11]
-\end{appendix}
-
-%\begin{appendices} % use this if you have more than one appendix
-%\chapter{An appendix}
-%\section{An appendix section}
-%\lipsum[9-15]
-%\chapter{A second appendix}
-%\section{An appendix section}
-%\lipsum[16-17]
-%\end{appendices}
-\backmatter
-% This command creates the cover page for the bibliography
-\makebibliographypage
+%\backmatter
 \bibliography{MSU-thesis-testfile}
+%\begin{appendix} ... \end{appendix}   % use this if you have only one appendix
+%\begin{appendix}
+%\chapter{A single appendix}
+%\lipsum[11]
+%\end{appendix}
+
+\begin{appendices} % use this if you have more than one appendix
+\chapter{An appendix}
+\section{An appendix section}
+\lipsum[9-15]
+\chapter{A second appendix}
+\section{An appendix section}
+\lipsum[16-17]
+\end{appendices}
+% This command creates the cover page for the bibliography
+%\makebibliographypage
+
 \end{document}
 
