@@ -200,6 +200,7 @@
 \newif\ifmsu@plaintoc\msu@plaintoctrue % make this the default to see what the reaction is
 \newif\ifmsu@colonintoc\msu@colonintocfalse
 \newif\ifmsu@hyperloaded\msu@hyperloadedfalse
+\newif\ifmsu@dualmajor\msu@dualmajorfalse
 \DeclareOption{PhD}{\gdef\msu@degree{Doctor of Philosophy}}
 \DeclareOption{DEd}{\gdef\msu@degree{Doctor of Education}}
 \DeclareOption{DMA}{\gdef\msu@degree{Doctor of Musical Arts}}
@@ -293,8 +294,9 @@
 \newcommand*{\fieldofstudy}[1]{\gdef\msu@fieldofstudy{#1}} % removed \MakeUppercase 6/5/12
 \newcommand{\dedication}[1]{\gdef\msu@dedication{#1}}
 \newcommand*{\msu@titleintro}{A~} % this is the beginning to the title page phrase
-\newcommand*{\msu@fieldseparator}{\textendash} % this is between the degree name and field of study
-
+\newcommand*{\msu@fieldseparator}{\textemdash} % this is between the degree name and field of study
+\newcommand*{\dualmajor}[2]{\msu@dualmajortrue\gdef\msu@fieldofstudy{#1}\gdef\msu@dualmajor{#2}}
+\newcommand*{\msu@DUALMAJOR}{Dual Major}
 \newcounter{msu@hchap} % global counter for chapters used by hyperref
 % This may also be solved by using \hypersetup{hypertexnames=false}
 % hard to tell whether this is a better solution.
@@ -314,12 +316,12 @@
 \posttitle{\end{center}}
 \preauthor{\begin{textblock}{6}(5.5,6.625)\begin{center}By\\[2\onelineskip]}
 \postauthor{\end{center}\end{textblock}}
-\predate{\begin{textblock}{6}(5.5,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[2\onelineskip]\msu@fieldofstudy~\msu@fieldseparator~\msu@degree\\[2\onelineskip]}\postdate{\end{center}\end{textblock}}
+\predate{\begin{textblock}{6}(5.5,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[2\onelineskip]\msu@fieldofstudy\msu@fieldseparator\msu@degree\ifmsu@dualmajor\\\msu@dualmajor\msu@fieldseparator\msu@DUALMAJOR\\[\onelineskip]\else\\[2\onelineskip]\fi}\postdate{\end{center}\end{textblock}}
 
 % set up the chapter titles
 \chapterstyle{thatcher}
 \setlength{\beforechapskip}{-1sp}% changed 2020/12/17 Need negative value to suppress indentation
-\setlength{\afterchapskip}{\onelineskip} % changed 2017/05/03 because of thesis office complaints; changed again for v4
+\setlength{\afterchapskip}{0pt} % changed 2017/05/03 because of thesis office complaints; changed again for v4 since now they want "uniform" space
 \renewcommand*{\chapnamefont}{\centering\bfseries}
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
@@ -341,8 +343,8 @@
 
 
 % set up the section styles
-\setbeforesecskip{-1sp}
-\setsecheadstyle{\normalfont\SingleSpacing\large\bfseries}
+
+\setsecheadstyle{\normalfont\SingleSpacing\bfseries} % made uniform size v4
 \setsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
 \setsubsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
 % 2023 requirements seem to want "uniform" spacing even after headings, even though this
