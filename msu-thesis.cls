@@ -178,12 +178,13 @@
 %						  chapter commands are no longer required, and hyperref injection code revised.
 %						  This requires an up-to-date LaTeX and is therefore only released as development for the
 %						  moment.
-% Version 4 2023/12/13	  First version to conform to the updated requirements (September 2023)
+% Version 4.0 2022/12/13  First version to conform to the updated requirements (September 2022)
+% Version 4.0b 2022/12/15 Made box for degree name larger
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.0}
-\def\msu@date{2023/12/13}
+\def\msu@version{4.0b}
+\def\msu@date{2023/12/15}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -315,7 +316,7 @@
 \posttitle{\end{center}}
 \preauthor{\begin{textblock}{6}(5.5,6.625)\begin{center}By\\[2\onelineskip]}
 \postauthor{\end{center}\end{textblock}}
-\predate{\begin{textblock}{6}(5.5,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[2\onelineskip]\msu@fieldofstudy\msu@fieldseparator\msu@degree\ifmsu@dualmajor\\\msu@dualmajor\msu@fieldseparator\msu@DUALMAJOR\\[\onelineskip]\else\\[2\onelineskip]\fi}\postdate{\end{center}\end{textblock}}
+\predate{\begin{textblock}{13.5}(1.75,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[2\onelineskip]\msu@fieldofstudy\msu@fieldseparator\msu@degree\ifmsu@dualmajor\\\msu@dualmajor\msu@fieldseparator\msu@DUALMAJOR\\[\onelineskip]\else\\[2\onelineskip]\fi}\postdate{\end{center}\end{textblock}}
 
 % set up the chapter titles
 \chapterstyle{thatcher}

@@ -1,4 +1,4 @@
-# MSU Thesis Class Version 4.0 2022/12/13
+# MSU Thesis Class Version 4.0b 2022/12/15
 
 Copyright 2011-2022 by Alan Munn <amunn@msu.edu>
 
@@ -12,7 +12,17 @@ all of the functionality of that class.
 
 # Update on new formatting requirements (Fall 2022)
 
-Version 4.0 now conforms to the new formatting requirements! As a side effect, your thesis will now look more and more like it was produced with MSWord. 
+ The msu-thesis development team is displeased to announce a new
+  and "improved" version of the class that conforms to the most recent
+  (September 2022) MSU Thesis Formatting Guide.
+  Among the notable new features are implementation of questionable
+  formatting requirements that will make your thesis look more and more
+  like it was produced using MSWord. Other important changes include
+  a new title page with your name 2 inches lower than before, and a
+  new copyright page with the copyright text left aligned and centred
+  vertically, a tour de force of bad typography.
+  Some minor positive changes include the removal of bibliography
+  and appendix cover pages.
 
 ## Documentation
 
