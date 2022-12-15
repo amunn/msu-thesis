@@ -12,7 +12,7 @@ all of the functionality of that class.
 
 # Update on new formatting requirements (Fall 2022)
 
- The msu-thesis development team is displeased to announce a new
+ The `msu-thesis` development team is displeased to announce a new
   and "improved" version of the class that conforms to the most recent
   (September 2022) MSU Thesis Formatting Guide.
   Among the notable new features are implementation of questionable
@@ -42,7 +42,7 @@ Put `msu-thesis.tex`, `msu-thesis.pdf` and the `samples` folder into
 
 `<local texmf>/doc/latex/msu-thesis`
 
-The samples folder contains a thesis test-file and
+The samples folder contains two thesis test-files and
 a template.
 
 This package may be distributed and/or modified under the conditions of
