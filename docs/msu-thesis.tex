@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{4.0b}
-\def\msudate{2022/12/15}
+\def\msuversion{4.1}
+\def\msudate{2023/05/18}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -57,7 +57,7 @@
 \thispagestyle{empty}
 \renewcommand{\abstractname}{\sffamily Abstract}
 
-\abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir}\ class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \href{https://grad.msu.edu/etd/formatting-guide}{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations}\ (September, 2022) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
+\abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir}\ class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \href{https://grad.msu.edu/etd/formatting-guide}{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations}\ (January, 2023) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
 \section{Introduction}
 Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the document class itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are for the most part sane, and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting. 
 \section{Background}
@@ -121,6 +121,7 @@ In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-
 {\bs makededicationpage} &  Creates the dedication page.\\
 %{\bs makebibliographypage} &  Creates the bibliography cover page.\\
 {\{abbreviations\}} & Environment for the List of Abbreviations \\
+{msutocdeph} & Counter for setting the TOC depth. Default is 1 (sections+chapters). Set this to 0 to use the simplified (chapters only) format that the thesis office suggests but doesn’t require.\\
 \bottomrule
 \end{tabularx}
 \caption{Class titling commands}
@@ -190,6 +191,14 @@ The \pkg{memoir}\ class replicates the functionality of many independent package
 \subsection{Captions}
 \subsubsection{Caption delimiter}\label{captiondelim}
 Because the thesis office doesn't understand anything about punctuation, it requires the colon that would appear in a caption to also appear in the contents lists. Since they don't care about the colon itself, but just consistency I've removed colons from the captions entirely, since leaving it in makes the contents lists look really stupid. But in case you or your advisor want the colon in captions, you can add the colon back in by adding   |\renewcommand{\msucaptiondelim}{:\space}| to your preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If you have other floating objects with captions (e.g., algorithms, listings) you may need to change their delimiter too (see below). How you do this may depend on the particular packages you are using.
+
+\subsubsection{Simplified vs. full contents}
+The thesis guide suggests that you use a simplified table of contents that lists only chapter levels, but that you are welcome to use a more detailed table of contents if you wish. As with most, if not all of the “design” decisions made by the thesis office, this one makes very little typographic sense, and so I have left the default TOC level to be 1, i.e., chapters and sections will be listed in the TOC. If you wish to use the simplified contents format that just lists chapters, add the following to your preamble:
+
+\begin{quote}
+|\setcounter{msutocdepth}{0}|
+\end{quote}
+
 \subsubsection{New lists}
 If you are using other kinds of floats such as listings, you should use the Memoir |\newlistof| command to make the relevant list. The class provides a macro |\msucaptiondelim| which can be used to make sure the formatting of the captions in the list-of-X match the setting you have for Figures and Tables.  Here is an example of how you would add a listings list. For lists of algorithms, see section \ref{algorithms} below. The following code goes in your preamble:
 \begin{quote}
@@ -402,10 +411,43 @@ I'm happy to answer emails about formatting issues with the class, especially wh
 \subsection{Archiving your thesis for the future}
 Since the current version of the \pkg{msu-thesis}\ class satisfies the Graduate School requirements at any one time, as these requirements change, you may find that if you need to recompile your thesis after you have graduated that the formatting changes. To avoid this, I would recommend saving an archived version of the \pkg{msu-thesis.cls}\ file in the same folder as your thesis file.  You only need to do this once you have completely finished your thesis however; there's no need to do it during the writing process. 
 \subsection{Major Version history}
-Previous versions of \pkg{msu-thesis}\ (versions 1.0--1.4b) were created for non-electronic submission and should not be used. Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment. These have been removed as of version 1.7.  Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}. Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School. Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation. Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite}\ package, and updated degree options. Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract. Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office. Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies. Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm}\ and \pkg{algorithm2e}\ packages.  Version 3.2 fixed some lingering problems with per-chapter appendices. Version 3.3 added code to accommodate the insane inconsistencies in formatting requirements that the thesis office requires, including a new contents option which hopefully should never be used, and fixed some numbering problems with per-chapter appendices. Version 3.4 added a starred option to the |\makecopyrightpage| command after complaints about placement. The documentation has also been updated to include more information about caption formatting and removed colons from the default caption format. Version 3.5 added user level way to change the spacing after the author’s name in the abstract, to deal with thesis office inconsistency. Version 3.6 added built-in support for the Key to Abbreviations. Version 3.7 added improved support for \pkg{hyperref}. Version 4.0 implements the new requirements as of September 2022, including adding a |\dualmajor| command. Various spacing changes have been made which will make your document look like you used Word, but this is what the thesis office seems to care about. 
+Previous versions of \pkg{msu-thesis}\ (versions 1.0--1.4b) were created for non-electronic submission and should not be used.
+Versions 1.5--1.6 (the first electronic submission versions) contained a |\makeabstract| command and a separate |msuabstract| environment.
+These have been removed as of version 1.7.
+ Users who are upgrading from earlier versions to version 1.7 do not need to change these commands however but their use will trigger a warning.) Version 2.0 implemented landscape pages; version 2.1 added support for \pkg{hyperref}.
+Versions 2.2--2.5 mainly accommodated to the ever changing whims of the MSU Graduate School.
+Version 2.6 fixed some appendix bugs introduced by the previous whim accommodation.
+Version 2.7 fixed various small spacing issues, fixed a bug which prevented a new chapter page to be a landscape page, added support for the \pkg{apacite}\ package, and updated degree options.
+Version 2.8 fixed some spacing and capitalization issues and added support for the public abstract.
+Version 2.9 removed subscript/superscript size restrictions, added font size options and made small spacing changes to appease the thesis office.
+Version 3.0 added full support for per-chapter bibliographies and appendices, and automated bibliography spacing for |natbib| and |biblatex| produced bibliographies.
+Version 3.1 added support for an |{algorithm}| environment and a list of algorithms to combat incompatibilities with the \pkg{algorithm}\ and \pkg{algorithm2e}\ packages.
+ Version 3.2 fixed some lingering problems with per-chapter appendices.
+Version 3.3 added code to accommodate the insane inconsistencies in formatting requirements that the thesis office requires, including a new contents option which hopefully should never be used, and fixed some numbering problems with per-chapter appendices.
+Version 3.4 added a starred option to the |\makecopyrightpage| command after complaints about placement.
+The documentation has also been updated to include more information about caption formatting and removed colons from the default caption format.
+Version 3.5 added user level way to change the spacing after the author’s name in the abstract, to deal with thesis office inconsistency.
+Version 3.6 added built-in support for the Key to Abbreviations.
+Version 3.7 added improved support for \pkg{hyperref}.
+Version 4.0 implements the new requirements as of September 2022, including adding a |\dualmajor| command.
+Various spacing changes have been made which will make your document look like you used Word, but this is what the thesis office seems to care about.
+Version 4.1 added the |msutocdepth| counter to allow for the chapters-only format that the thesis office recommends. 
 
 \section{Acknowledgements}
-Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks to Wolfgang Sternefeld for supplying the \pkg{linguex}\ spacing fix code, Leo Liu for the landscape page numbering code, which greatly simplified my original version. Thanks to Florent Chervet for early \pkg{hyperref} code (up until v.3.6), and Ulrike Fischer for the current \pkg{hyperref} code.  Thanks also to the following students who have reported problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk Jung, Claire Kopenhafer, Adam Liter, Vanessa Maldonado, William Muir, Eureka Pai, Alicia Parrish, Neil ver Planck, Nick Rekuski, Giacomo Romanini, William Sands, Adam Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy of his entire thesis which allowed me to debug some especially subtle spacing inconsistencies.
+Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of 
+the memoir code for versions 1.0--1.4 (now eliminated due to changed requirements). Thanks 
+to Wolfgang Sternefeld for supplying the \pkg{linguex}\ spacing fix code, Leo Liu for the 
+landscape page numbering code, which greatly simplified my original version. Thanks to 
+Florent Chervet for early \pkg{hyperref} code (up until v.3.6), and Ulrike Fischer for the 
+current \pkg{hyperref} code.  Thanks also to the following students who have reported 
+problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, 
+Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk 
+Jung, Claire Kopenhafer, Adam Liter, Vanessa Maldonado, Ben Miller, William Muir, Eureka 
+Pai, Alicia Parrish, Neil ver Planck, Nick Rekuski, Giacomo Romanini, William Sands, Adam 
+Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali 
+Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy 
+of his entire thesis which allowed me to debug some especially subtle spacing 
+inconsistencies.
 
 \appendix
 \renewcommand{\thesection}{Appendix \Alph{section}}

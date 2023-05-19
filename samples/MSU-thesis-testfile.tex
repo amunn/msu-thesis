@@ -30,9 +30,8 @@
 \usepackage{gb4e}
 \makeatletter
 %\setlength\textfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
-
 \makeatother
-
+\setlength{\cftchapternumwidth}{1.5em}
 \counterwithin{exx}{chapter}
 \singlegloss
 
@@ -48,7 +47,10 @@
 \renewcommand*{\cftlistingaftersnum}{\msucaptiondelim}
 
 \usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
+\setcounter{msutocdepth}{0} % default is 1; this puts only chapters in the TOC
+
 \begin{document}
+
 \frontmatter
 \maketitlepage
 % public abstract removed v4
@@ -128,7 +130,7 @@ Men & Women & Monsters\\
 \end{figure}
 \lipsum[5]
 \lipsum[10]
-\chapter{A chapter with a really long title to see if the chapter titles wrap correctly}
+\chapter[A chapter with a really long title to\\see if the chapter titles wrap correctly]{A chapter with a really long title to see if the chapter titles wrap correctly}
 \lipsum
 \begin{figure}
 \centering

@@ -1,5 +1,5 @@
 % This is a template for use with the MSU Thesis class
-% Version 3.6 2022/08/23
+% Version 4.1 2023/05/18
 %
 % Class options: 
 %[PhD]	Doctor of Philosophy (default) 
@@ -61,6 +61,11 @@
 %
 %\dedication{This thesis is dedicated to someone.}
 %
+% The default TOC format for the class lists both chapters and sections
+% The thesis office suggests only listing chapters. If you prefer that format
+% uncomment the next line:
+%\setcounter{msutocdepth}{0} % sets TOC to list chapters only
+%
 \begin{document}
 
 % All the stuff before your actual chapters is called the front matter
@@ -68,10 +73,6 @@
 % First make the title page
 \maketitlepage
 
-% if you have public abstract (optional) it should go here
-%\begin{publicabstract}
-% Public abstract goes here
-%\end{publicabstract}
 
 % Next make the regular abstract (obligatory)
 \begin{abstract}
@@ -84,9 +85,7 @@
 % can't have a copyright page unless you pay ProQuest to register the copyright.
 % This is simply not the case, so put in your copyright page whether or not you
 % intend to pay Proquest to register the copyright.
-% Furthermore, they have occasionally complained that the copyright mark is aligned
-% to the right, even though that has been the format for more than a decade.
-% If they want the copyright mark aligned to the left, use \makecopyrightpage* instead. 
+
 
 \makecopyrightpage 
 

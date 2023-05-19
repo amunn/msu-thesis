@@ -1,6 +1,6 @@
 % MSU Thesis Class
 %
-% Copyright 2009-2022 by Alan Munn <amunn@msu.edu>
+% Copyright 2009-2023 by Alan Munn <amunn@msu.edu>
 %
 % This is a class file for producing dissertations and theses according to the
 % Michigan State University Graduate School Guidelines
@@ -180,11 +180,12 @@
 %						  moment.
 % Version 4.0 2022/12/13  First version to conform to the updated requirements (September 2022)
 % Version 4.0b 2022/12/15 Made box for degree name larger
+% Version 4.1 2023/05/18 Added msutocdepth to allow minimal chapters only TOC
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.0b}
-\def\msu@date{2023/12/15}
+\def\msu@version{4.1}
+\def\msu@date{2023/05/18}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -297,6 +298,8 @@
 \newcommand*{\msu@fieldseparator}{\textemdash} % this is between the degree name and field of study
 \newcommand*{\dualmajor}[2]{\msu@dualmajortrue\gdef\msu@fieldofstudy{#1}\gdef\msu@dualmajor{#2}}
 \newcommand*{\msu@DUALMAJOR}{Dual Major}
+\newcounter{msutocdepth}
+\setcounter{msutocdepth}{1} % section level included in the TOC
 \newcounter{msu@hchap} % global counter for chapters used by hyperref
 % This may also be solved by using \hypersetup{hypertexnames=false}
 % hard to tell whether this is a better solution.
@@ -360,7 +363,7 @@
 
 % set up TOC
 
-\settocdepth{section}
+\setcounter{tocdepth}{\value{msutocdepth}}
 \setsecnumdepth{subsubsection}
 \setlength{\cftsectionindent}{.5in}
 \renewcommand*{\printtoctitle}[1]{\centering\bfseries\msu@contentsname}
@@ -488,6 +491,7 @@
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
   \renewcommand\cftchapteraftersnum{\msutocdelim}
+  \addtocounter{tocdepth}{-1}
 
 }
 
@@ -496,11 +500,11 @@
 \cftinsertcode{CHAPAPPR}{
 \cftsetindents{section}{.5in}{2.3em}
 \setlength{\cftchapterindent}{0em}
-\setlength{\cftchapternumwidth}{3em} % added 6/24/2022
+%\setlength{\cftchapternumwidth}{3em} % removed 2/1/2023 
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
   \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
-  \settocdepth{section} % added 6/24/2022
+  \setcounter{tocdepth}{\value{msutocdepth}}
 }
 % This code resets the changes made in the APP code back to normal
 % so that the bibliography will appear correctly in the TOC
@@ -509,7 +513,7 @@
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
   \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
-  \settocdepth{section}
+  \setcounter{tocdepth}{\value{msutocdepth}}
 }
 
 \cftinsertcode{CHAPBIB}{
@@ -517,6 +521,7 @@
   \setlength\cftbeforechapterskip{0pt}
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
+  \addtocounter{tocdepth}{-1}
 }
 
 
@@ -540,7 +545,7 @@
 %  \l@chapapp{\msu@tocfont\MakeUppercase{#1}}{#2}{\cftappendixname}} % Format appendix names
 %
 
-\setlength{\cftchapternumwidth}{3em}
+\setlength{\cftchapternumwidth}{3em} % Could this be smaller?
 \setrmarg{3.5em} % better wrapping of long titles
 
 % Added to make sure that chapters within landscape mode have correct pagestyle
@@ -734,11 +739,11 @@
 %   \ifmsu@chapterapp\else
    \msu@singleappendixtrue
 % \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
-   \msu@apppage\cftinserthook{toc}{SINGAPP}\settocdepth{chapter}\@resets@pp\anappendixtrue}%
+   \msu@apppage\cftinserthook{toc}{SINGAPP}\setcounter{tocdepth}{0}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\settocdepth{chapter}
+  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\setcounter{tocdepth}{\value{msutocdepth}}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
@@ -771,7 +776,7 @@
   \let\bibtocname\bibname % moved inside this page to beat apacite
   \let\bibpagename\bibname
   \cftinserthook{toc}{\msu@bibtype}
-  \settocdepth{section} % changed v2.7 to allow for chapter bibs
+  \setcounter{tocdepth}{\value{msutocdepth}} % changed v2.7 to allow for chapter bibs
 %  \@setuppart
 %  \msu@preaddbibpagetotochook
   \msu@addbibheadtotoc
@@ -827,6 +832,7 @@
 		{\AtBeginEnvironment{thebibliography}{\SingleSpacing\setlength{\bibsep}{\baselineskip}}} % natbib
 		{\AtBeginEnvironment{thebibliography}{\SingleSpacing}}} % any other bib package
 %\topskip=0pt % setting this because the Grad School doesn’t know how to measure -changed back 6/15/17
+\setcounter{tocdepth}{\value{msutocdepth}}
 \checkandfixthelayout
 %
 % set up subscript sizes so that 10 pt is the smallest

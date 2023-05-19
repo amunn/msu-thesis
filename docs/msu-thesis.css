@@ -100,7 +100,18 @@
 .ec-lmri-10{ font-style:italic;}
 .ec-lmri-10{ font-style:italic;}
 .ec-lmri-10{ font-style:italic;}
-.ec-lmcsc-10{font-size:90%;}
+.ec-lmcsc-10{font-size:90%; font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
 p + p{margin-top:1em;}
@@ -115,6 +126,15 @@ td center { margin-top:0em; margin-bottom:0em; }
 .Canvas { position:relative; }
 img.math{vertical-align:middle;}
 div.par-math-display, div.math-display{text-align:center;}
+body{ margin:1em auto; max-width:80ch; padding:0 .62em; }
+h1,h2,h3,h4,h5 { line-height:1.2; }
+@media print{ body{ max-width:none } }
+.partHead, likepartHead { font-size: 2em; }
+.chapterHead, likechapterHead { font-size: 1.7411em; }
+.sectionHead, likesectionHead { font-size: 1.5157em; }
+.subsectionHead, likesubsectionHead { font-size: 1.3195em; }
+.subsubsectionHead, likesubsubsectionHead { font-size: 1.1487em; }
+ @media (prefers-color-scheme: dark) { img[src^="msu-thesis"]{filter: invert(1); } } 
 li p.indent { text-indent: 0em }
 li p:first-child{ margin-top:0em; }
 li p:last-child, li div:last-child { margin-bottom:0.5em; }
@@ -203,6 +223,7 @@ div.caption span.id{font-weight: bold; white-space: nowrap; }
 h1.partHead{text-align: center}
 p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
 p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+.subsubsectionHead, .likesubsubsectionHead { font-size: 1em; }
 .paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
 .subparagraphHead, .likesubparagraphHead { font-weight: bold;}
 .verse{white-space:nowrap; margin-left:2em}
@@ -264,7 +285,7 @@ tr#TBL-5-1- {border-top:0.12263em solid #000;}
 tr#TBL-5-1- {border-bottom:0.07664em solid #000}
 tr#TBL-5-17- {border-bottom:0.12263em solid #000}
 tr#TBL-9-1- {border-top:0.12263em solid #000;} 
-tr#TBL-9-7- {border-bottom:0.12263em solid #000}
+tr#TBL-9-8- {border-bottom:0.12263em solid #000}
 tr#TBL-13-1- {border-top:0.12263em solid #000;} 
 tr#TBL-13-1- {border-bottom:0.12263em solid #000}
 tr#TBL-17-1- {border-top:0.12263em solid #000;} 
