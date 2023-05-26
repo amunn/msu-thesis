@@ -182,7 +182,8 @@
 % Version 4.0b 2022/12/15 Made box for degree name larger
 % Version 4.1 2023/05/18  Added msutocdepth to allow minimal chapters only TOC
 % Version 4.1b 2023/05/25 Removed stupid contents colon; fixed template file to actually
-%                         reflect the current version of the class
+%                         reflect the current version of the class; reinstituted spacing
+%						  after chapter titles.
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
@@ -326,7 +327,7 @@
 % set up the chapter titles
 \chapterstyle{thatcher}
 \setlength{\beforechapskip}{-1sp}% changed 2020/12/17 Need negative value to suppress indentation
-\setlength{\afterchapskip}{0pt} % changed 2017/05/03 because of thesis office complaints; changed again for v4 since now they want "uniform" space
+\setlength{\afterchapskip}{\onelineskip} % changed 2017/05/03 because of thesis office complaints; changed again for v4 since now they want "uniform" space % changed again 4.1
 \renewcommand*{\chapnamefont}{\centering\bfseries}
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}

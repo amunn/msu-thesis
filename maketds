@@ -2,6 +2,6 @@ cd docs
 latexmk -lualatex msu-thesis
 make4ht -l -c msu-thesis.cfg  msu-thesis.tex
 mv msu-thesis.pdf ..
-find . \( -name  '*.aux' -o -name '*.lot' -o -name '*.lof' -o -name '*.log' -o -name '*.bbl' -o -name '*.blg' -o -name '*.gz' -o -name '*.toc'   \) -delete
 cd ..
+find . \( -name  '*.aux' -o -name '*.lot' -o -name '*.lof' -o -name '*.lob' -o -name '*.log' -o -name '*.bbl' -o -name '*.blg'  -o -name '*.toc' -o -name '*.fdb_latexmk' -o -name '*.fls' -o -name '*.bcf' -o -name '*.nav' -o -name '*.out' -o -name '*.run.xml' -o -name '*.snm' -o -name '*.dvi' -o -name '*.synctex*' -o -name '*.lol' -o -name '*.loa' -o -name '*.kta' -o -name '*.4ct' -o -name '*.4tc' -o -name '*.idv' -o -name '*.lg' -o -name '*.tmp' -o -name '*.xref' -o -name '*.mx1'  \) -delete
 ctanify --no-tds  -p msu-thesis msu-thesis.cls msu-thesis.pdf README.md samples/*=doc/latex/msu-thesis/samples docs/msu-thesis.tex=doc/latex/msu-thesis
