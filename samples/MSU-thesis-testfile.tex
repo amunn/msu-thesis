@@ -1,5 +1,5 @@
 % !TEX TS-program = pdflatexmk
-% v3.0 Testfile
+% v4.1b Testfile
 \listfiles
 
 \documentclass[lscape]{msu-thesis}
@@ -28,10 +28,6 @@
 \usepackage{enumitem}
 \usepackage[unit=in]{fgruler}
 \usepackage{gb4e}
-\makeatletter
-%\setlength\textfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
-\makeatother
-\setlength{\cftchapternumwidth}{1.5em}
 \counterwithin{exx}{chapter}
 \singlegloss
 
@@ -77,12 +73,11 @@
 %\listoffigures
 \clearpage
 %\listoflistings
-% Add all the abbreviations here in their sorted order using \msuabbrev
+% Add all the abbreviations here in their sorted order using \abbrev
 \begin{abbreviations}
 \abbrev{ASA}{A small abbreviation}
 \abbrev{ABA}{An abbreviation with an explanation so long that the explanation should wrap to the next line and align properly with the previous line}
 \end{abbreviations}
-% Then print the list
 \mainmatter
 % The next command changes chapters in the TOC to have no dotted leader
 %\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep}{\cftnodots}}

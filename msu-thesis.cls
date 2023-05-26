@@ -180,12 +180,14 @@
 %						  moment.
 % Version 4.0 2022/12/13  First version to conform to the updated requirements (September 2022)
 % Version 4.0b 2022/12/15 Made box for degree name larger
-% Version 4.1 2023/05/18 Added msutocdepth to allow minimal chapters only TOC
+% Version 4.1 2023/05/18  Added msutocdepth to allow minimal chapters only TOC
+% Version 4.1b 2023/05/25 Removed stupid contents colon; fixed template file to actually
+%                         reflect the current version of the class
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1}
-\def\msu@date{2023/05/18}
+\def\msu@version{4.1b}
+\def\msu@date{2023/05/25}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -644,7 +646,7 @@
 % Make the caption delimiter a space instead of colon space so that the
 % contents lists don't look so stupid.  Can be changed if necessary.
 \newcommand*\msucaptiondelim{\space}
-\newcommand*\msutocdelim{:}
+\newcommand*\msutocdelim{} % removed idiotic colon 5/25/23
 \captiondelim{\msucaptiondelim}
 
 \pagestyle{plain}

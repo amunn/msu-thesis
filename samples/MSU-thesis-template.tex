@@ -1,5 +1,5 @@
 % This is a template for use with the MSU Thesis class
-% Version 4.1 2023/05/18
+% Version 4.1b 2023/05/25
 %
 % Class options: 
 %[PhD]	Doctor of Philosophy (default) 
@@ -108,18 +108,18 @@ Your acknowledgements here.
 %\clearpage
 %\listoffigures % comment this out if you have no figures
 %
-% If you have a Key to  Abbreviations/symbols you would add each abbreviation in its display order
-% using as in the following examples:
-\msuabbrev{ASU}{Arizona State University}
-\msuabbrev{MIT}{Massachusetts Institute of Technology}
-\msuabbrev{MSU}{Michigan State University}
-% Then issue a \clearpage and print the list 
-\clearpage
-\listofabbreviations 
-% Comment out the code above if you have no abbreviations
-% See the documentation if you need to change the width or format of the abbreviation column
-
+% If you have a Key to  Abbreviations/symbols you would add each abbreviation in its
+% display order using as in the following examples:
+\begin{abbreviations}
+\abbrev{ASU}{Arizona State University}
+\abbrev{MIT}{Massachusetts Institute of Technology}
+\abbrev{MSU}{Michigan State University}
+\end{abbreviations}
+% Comment out the code above if you have no abbreviations. See the class documentation
+% for information on how to change the formatting of the lists. 
 % See the class documentation and the Memoir manual for how to create other lists
+% Note that the thesis office no longer seems to require these lists at all, but 
+% you are still allowed to have them. 
 %
 % If you are using an algorithm formatting package (e.g. algorithmicx or algorithm2e)
 % please read the class documentation carefully on how to use these packages with the class
@@ -127,10 +127,6 @@ Your acknowledgements here.
 %
 \mainmatter
 %
-% The next line removes the dots in chapter headings in the TOC
-% May violate thesis office rules
-%\addtocontents{toc}{\protect\renewcommand{\protect\cftchapterdotsep} {\cftnodots}}
-
 % ALL documents using this class must have \chapter divisions
 % If you are using it for an MA/MS thesis you still need to have chapters, even if they are very small.
 

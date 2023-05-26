@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{4.1}
-\def\msudate{2023/05/18}
+\def\msuversion{4.1b}
+\def\msudate{2023/05/25}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -121,7 +121,8 @@ In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-
 {\bs makededicationpage} &  Creates the dedication page.\\
 %{\bs makebibliographypage} &  Creates the bibliography cover page.\\
 {\{abbreviations\}} & Environment for the List of Abbreviations \\
-{msutocdeph} & Counter for setting the TOC depth. Default is 1 (sections+chapters). Set this to 0 to use the simplified (chapters only) format that the thesis office suggests but doesn’t require.\\
+{\bs abbrev\{\}\{\}} & add an abbreviation to the list of abbreviations\\
+{msutocdepth} & Counter for setting the TOC depth. Default is 1 (sections+chapters). Set this to 0 to use the simplified (chapters only) format that the thesis office suggests but doesn’t require.\\
 \bottomrule
 \end{tabularx}
 \caption{Class titling commands}
@@ -132,6 +133,7 @@ In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-
 \begin{tabularx}{.8\textwidth}{>{\ttfamily}lX}
 \toprule
 {\bs msucaptiondelim} &  Delimiter for floating elements (see section \ref{captiondelim}).\\
+{\bs msutocdelim} &  Delimiter for table of contents chapter/section titles.\\
 %{\bs setabstractnamespace} &  Changes spacing after the name in the abstract (see section \ref{abstractspacing}).\\
 \bottomrule
 \end{tabularx}
@@ -199,7 +201,9 @@ The thesis guide suggests that you use a simplified table of contents that lists
 |\setcounter{msutocdepth}{0}|
 \end{quote}
 
-\subsubsection{New lists}
+\subsubsection{New lists and floats}
+Note that the thesis office no longer seems to \emph{require} lists of anything other than the main table of contents. This is another odd decision on their part. If do include a List of Tables and List of Figures and need to add other lists, you can follow the directions here. Note that lists of algorithms require special treatment. See §\ref{algorithms}.
+
 If you are using other kinds of floats such as listings, you should use the Memoir |\newlistof| command to make the relevant list. The class provides a macro |\msucaptiondelim| which can be used to make sure the formatting of the captions in the list-of-X match the setting you have for Figures and Tables.  Here is an example of how you would add a listings list. For lists of algorithms, see section \ref{algorithms} below. The following code goes in your preamble:
 \begin{quote}
 \begin{lstlisting}
@@ -443,7 +447,7 @@ current \pkg{hyperref} code.  Thanks also to the following students who have rep
 problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, 
 Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk 
 Jung, Claire Kopenhafer, Adam Liter, Vanessa Maldonado, Ben Miller, William Muir, Eureka 
-Pai, Alicia Parrish, Neil ver Planck, Nick Rekuski, Giacomo Romanini, William Sands, Adam 
+Pai, Alicia Parrish, Neil ver Planck, Taha Posos, Nick Rekuski, Giacomo Romanini, William Sands, Adam 
 Soliman, Erik Stitt,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Ali 
 Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy 
 of his entire thesis which allowed me to debug some especially subtle spacing 
