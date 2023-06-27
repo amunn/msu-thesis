@@ -1,9 +1,14 @@
 # MSU Thesis Class Documentation
 
-## UPDATE May 26, 2023
+## UPDATE June 27, 2023
 
- - Because of conflicting reports of spacing issues with chapter titles, I've reinstituted some spacing after chapter titles that the thesis office wanted removed. This may be problematic since they are so inconsistent with their measuring. If they complain about too *much* space after chapter titles, please let me know, but you can add the following to your preamble to solve the problem:
- 
+ - Because of conflicting reports of spacing issues with chapter titles, I've removed some spacing after chapter titles that the thesis office wanted removed. This may be problematic since they are so inconsistent with their measuring. If they complain about too *little* space after chapter titles, please let me know, but you can add the following to your preamble to solve the problem. 
+  
+`\setlength{\afterchapskip}{\onelineskip}`
+
+If they complain about too *much* space after chapter titles, you can add the following (this is the current default):
+
+
 `\setlength{\afterchapskip}{0pt}`
 
 
