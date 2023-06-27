@@ -184,11 +184,12 @@
 % Version 4.1b 2023/05/25 Removed stupid contents colon; fixed template file to actually
 %                         reflect the current version of the class; reinstituted spacing
 %						  after chapter titles.
+% Version 4.1c 2023/06/27 Removed spacing after chapter titles (again)
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1b}
-\def\msu@date{2023/05/25}
+\def\msu@version{4.1c}
+\def\msu@date{2023/06/27}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -327,7 +328,7 @@
 % set up the chapter titles
 \chapterstyle{thatcher}
 \setlength{\beforechapskip}{-1sp}% changed 2020/12/17 Need negative value to suppress indentation
-\setlength{\afterchapskip}{\onelineskip} % changed 2017/05/03 because of thesis office complaints; changed again for v4 since now they want "uniform" space % changed again 4.1
+\setlength{\afterchapskip}{0pt} % changed 2017/05/03 because of thesis office complaints; changed again for v4 since now they want "uniform" space % changed again 4.1
 \renewcommand*{\chapnamefont}{\centering\bfseries}
 \renewcommand*{\chapnumfont}{\bfseries}
 \renewcommand*{\chaptitlefont}{\SingleSpacing\bfseries}
