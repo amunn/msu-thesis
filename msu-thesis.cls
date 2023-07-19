@@ -185,11 +185,12 @@
 %                         reflect the current version of the class; reinstituted spacing
 %						  after chapter titles.
 % Version 4.1c 2023/06/27 Removed spacing after chapter titles (again)
+% Version 4.1d 2023/07/19 Fixed per chapter bibliography TOC page number bug
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1c}
-\def\msu@date{2023/06/27}
+\def\msu@version{4.1d}
+\def\msu@date{2023/07/19}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -801,15 +802,17 @@
 
 % modified 4/18/2022 to allow for per-chapter bibliographies to appear either
 % as chapters or as sections in the bibliography. Thesis office isn't consistent in this.
+% \clearpage added 7/19/2023 because page numbers were off in the TOC.
+% This code probably needs to be revisited since it’s a unholy amalgam of old and new code
 \newcommand\msu@addbibheadtotoc{%
     \ifmsu@chapterbib
-        \phantomsection\addcontentsline{toc}{\msu@bibsection}{\bibtocname}
+        \clearpage\phantomsection\addcontentsline{toc}{\msu@bibsection}{\bibtocname}
     \else
-    	\phantomsection\addcontentsline{toc}{chapter}{\bibtocname}
+    	\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bibtocname}
 	\fi
 	}
 % Since the bibliography page is the TOC entry we remove the bib in the TOC
-% when it's introduced
+% when it's introduced.  This should be revisited too.
 \nobibintoc % removed v4 as no longer neededd
 % Modified 8/7/14 to add the bibliography cover page to the TOC and not the actual bibliography page
 % This should also work for biblatex even though memoir doesn't check for it
