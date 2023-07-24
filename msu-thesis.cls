@@ -186,11 +186,12 @@
 %						  after chapter titles.
 % Version 4.1c 2023/06/27 Removed spacing after chapter titles (again)
 % Version 4.1d 2023/07/19 Fixed per chapter bibliography TOC page number bug
+% Version 4.1e 2023/07/24 Fixed per chapter appendices TOC bug; 
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1d}
-\def\msu@date{2023/07/19}
+\def\msu@version{4.1e}
+\def\msu@date{2023/07/24}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -496,8 +497,7 @@
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
   \renewcommand\cftchapteraftersnum{\msutocdelim}
-  \addtocounter{tocdepth}{-1}
-
+  \ifthenelse{\value{msutocdepth}=0}{\addtocounter{tocdepth}{-1}}{}
 }
 
 % This code resets the TOC back to normal section spacing if appendices have been used
@@ -748,7 +748,7 @@
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\setcounter{tocdepth}{\value{msutocdepth}}
+  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\addtocontents{toc}{\setcounter{tocdepth}{0}}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
