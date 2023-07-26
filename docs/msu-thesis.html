@@ -38,8 +38,8 @@ and superscript sizes etc.</span></p></blockquote>
 <!-- l. 61 --><p class='noindent'><span class='ec-lmr-10'>Formatting a dissertation according to a University’s thesis requirements is not always a simple task in LaTeX,
 especially since the requirements are generally aimed at MSWord users. Furthermore, most of the work of
 formatting a document is supposed to be done by the document class itself, and not by the individual user.
-Fortunately, Michigan State University’s thesis requirements are for the most part sane, and
-fairly straightforward. The present class file is designed to further make the process easier for
+Fortunately, Michigan State University’s thesis requirements are for the most part sane, (even if the thesis office
+itself isn’t) and fairly straightforward. The present class file is designed to further make the process easier for
 LaTeX users, by doing all the heavy lifting for you, so that you can focus on the content and not the
 formatting.</span>
 </p>     
@@ -178,13 +178,7 @@ command instead.                                              </p></td>
  </tr><tr id='TBL-9-4-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-4-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\dedication{}       </span></td>
                         <td class='td11' id='TBL-9-4-2' style='white-space:normal; text-align:left;'> <!-- l. 126 --><p class='noindent'>Takes   one   argument   (should   be   short),   your 
 dedication.                                                       </p></td>
- </tr><tr id='TBL-9-5-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-5-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\makecopyrightpage  </span></td>
-                        <td class='td11' id='TBL-9-5-2' style='white-space:normal; text-align:left;'> <!-- l. 126 --><p class='noindent'>Creates            the            copyright            page 
-(use <span class='ec-lmtt-10x-x-109'>\makecopyrightpage* </span>to align the text on the 
-left.)                                                               </p></td>
- 
-</tr><tr id='TBL-9-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-6-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\makededicationpage </span></td>
-<td class='td11' id='TBL-9-6-2' style='white-space:normal; text-align:left;'> <!-- l. 126 --><p class='noindent'>Creates the dedication page.                                </p></td> 
+ </tr><tr id='TBL-9-5-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-5-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\makecopyrightpage  </span></td><td class='td11' id='TBL-9-5-2' style='white-space:normal; text-align:left;'> <!-- l. 126 --><p class='noindent'>Creates the copyright page.                                  </p></td> </tr><tr id='TBL-9-6-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-6-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\makededicationpage </span></td> <td class='td11' id='TBL-9-6-2' style='white-space:normal; text-align:left;'> <!-- l. 126 --><p class='noindent'>Creates the dedication page.</p></td> 
 </tr><tr id='TBL-9-7-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-7-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>{abbreviations}     </span></td>
 <td class='td11' id='TBL-9-7-2' style='white-space:normal; text-align:left;'> <!-- l. 126 --><p class='noindent'>Environment for the List of Abbreviations              </p></td> 
 </tr><tr id='TBL-9-8-' style='vertical-align:baseline;'><td class='td11' id='TBL-9-8-1' style='white-space:nowrap; text-align:left;'> <span class='ec-lmtt-10x-x-109'>\abbrev{}{}         </span></td>
@@ -616,8 +610,8 @@ case, the code for appendices is identical, i.e., each appendix is introduced wi
 <h5 class='subsubsectionHead' id='appendices-per-chapter'><span class='titlemark'><span class='ec-lmr-10'>5.11.3   </span></span> <a id='x1-320005.11.3'></a><span class='ec-lmr-10'>Appendices per chapter</span></h5>
 <!-- l. 367 --><p class='noindent'><span class='ec-lmr-10'>If you need to add an appendix or appendices to a chapter, you must use the </span><span class='ec-lmtt-10'>[chapterapp]</span><span class='ec-lmr-10'> class option. The
 code for the appendices themselves is exactly as described above. This means that the appendix itself is
-introduced by the </span><span class='verb'><span class='ec-lmtt-10'>\chapter</span></span> <span class='ec-lmr-10'>command, </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>a </span><span class='verb'><span class='ec-lmtt-10'>\section</span></span> <span class='ec-lmr-10'>command (because the this seems to be how the thesis
-office wants things to look). Furthermore, per-chapter appendices should </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>be preceded by the </span><span class='verb'><span class='ec-lmtt-10'>\backmatter</span></span>
+introduced by the </span><span class='verb'><span class='ec-lmtt-10'>\chapter</span></span> <span class='ec-lmr-10'>command, </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>a </span><span class='verb'><span class='ec-lmtt-10'>\section</span></span> <span class='ec-lmr-10'>command (because this seems to be how the thesis office
+wants things to look). Furthermore, per-chapter appendices should </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>be preceded by the </span><span class='verb'><span class='ec-lmtt-10'>\backmatter</span></span>
 <span class='ec-lmr-10'>command, which should not be used at all.</span>
 </p>     
 <!-- l. 369 --><p class='noindent'>

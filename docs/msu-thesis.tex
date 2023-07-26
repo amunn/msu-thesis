@@ -58,7 +58,7 @@
 
 \abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir}\ class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \href{https://grad.msu.edu/etd/formatting-guide}{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations}\ (January, 2023) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
 \section{Introduction}
-Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the document class itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are for the most part sane, and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting. 
+Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the document class itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are for the most part sane, (even if the thesis office itself isn’t) and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting. 
 \section{Background}
 The MSU Thesis Class is based on the \pkg{memoir}\ document class.  The \pkg{memoir}\ class is an extensive class that incorporates the functionality of many other packages into it. The class is extensively documented, and the documentation (\pkg{memman.pdf}) should be available with any \TeX\ distribution.  I strongly recommend that you familiarize yourself with \pkg{memoir}\ as you use the present class.
 \section{Class Options}
@@ -116,7 +116,7 @@ In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-
 {\bs dualmajor\{\}\{\}} & Takes two arguments, one for each of the two majors.\\
 {\bs dedication\{\}} &  Takes one argument (should be short), your dedication.\\
 %{\{publicabstract\}} &  Environment for the public abstract (unnumbered, uncounted).\\
-{\bs makecopyrightpage} &  Creates the copyright page (use \texttt{\bs makecopyrightpage*} to align the text on the left.)\\
+{\bs makecopyrightpage} &  Creates the copyright page.\\
 {\bs makededicationpage} &  Creates the dedication page.\\
 %{\bs makebibliographypage} &  Creates the bibliography cover page.\\
 {\{abbreviations\}} & Environment for the List of Abbreviations \\
@@ -364,7 +364,7 @@ Appendix text goes here
 \end{quote}
 
 \subsubsection{Appendices per chapter}
-If you need to add an appendix or appendices to a chapter, you must use the \pkg{[chapterapp]}\ class option. The code for the appendices themselves is  exactly as described above. This means that the appendix itself is introduced by the |\chapter| command, \emph{not} a |\section| command (because the this seems to be how the thesis office wants things to look).  Furthermore,  per-chapter appendices should \emph{not} be preceded by the |\backmatter| command, which should not be used at all.
+If you need to add an appendix or appendices to a chapter, you must use the \pkg{[chapterapp]}\ class option. The code for the appendices themselves is  exactly as described above. This means that the appendix itself is introduced by the |\chapter| command, \emph{not} a |\section| command (because this seems to be how the thesis office wants things to look).  Furthermore,  per-chapter appendices should \emph{not} be preceded by the |\backmatter| command, which should not be used at all.
 
 \subsection{Bibliographies}
 The class places no constraints on how you do your bibliography. It doesn't care whether you are using the \pkg{chapterbib}\ package with \pkg{natbib}\ or the per-chapter bibliography functionality provided by \pkg{biblatex}. If you have per-chapter bibliographies, however, you \emph{must}\ use the |[chapterbib]| class option.  This option lets the class know that you are using per-chapter bibliographies.    Note that per-chapter bibliographies should \emph{not} be preceded by the |\backmatter| command, which should not be used at all.
