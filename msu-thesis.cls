@@ -187,11 +187,12 @@
 % Version 4.1c 2023/06/27 Removed spacing after chapter titles (again)
 % Version 4.1d 2023/07/19 Fixed per chapter bibliography TOC page number bug
 % Version 4.1e 2023/07/24 Fixed per chapter appendices TOC bug; 
+% Version 4.1f 2023/07/28 Fixed title page spacing issue
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1e}
-\def\msu@date{2023/07/24}
+\def\msu@version{4.1f}
+\def\msu@date{2023/07/28}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -325,7 +326,7 @@
 \posttitle{\end{center}}
 \preauthor{\begin{textblock}{6}(5.5,6.625)\begin{center}By\\[2\onelineskip]}
 \postauthor{\end{center}\end{textblock}}
-\predate{\begin{textblock}{13.5}(1.75,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[2\onelineskip]\msu@fieldofstudy\msu@fieldseparator\msu@degree\ifmsu@dualmajor\\\msu@dualmajor\msu@fieldseparator\msu@DUALMAJOR\\[\onelineskip]\else\\[2\onelineskip]\fi}\postdate{\end{center}\end{textblock}}
+\predate{\begin{textblock}{13.5}(1.75,13.625)\begin{center}\msu@titleintro\msu@thesistype\\[2\onelineskip]Submitted to\\Michigan State University\\in partial fulfillment of the requirements\\for the degree of\\[\onelineskip]\msu@fieldofstudy\msu@fieldseparator\msu@degree\ifmsu@dualmajor\\\msu@dualmajor\msu@fieldseparator\msu@DUALMAJOR\\[\onelineskip]\else\\[2\onelineskip]\fi}\postdate{\end{center}\end{textblock}}
 
 % set up the chapter titles
 \chapterstyle{thatcher}
