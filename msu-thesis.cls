@@ -188,11 +188,12 @@
 % Version 4.1d 2023/07/19 Fixed per chapter bibliography TOC page number bug
 % Version 4.1e 2023/07/24 Fixed per chapter appendices TOC bug; 
 % Version 4.1f 2023/07/28 Fixed title page spacing issue
+% Version 4.1g 2023/08/12 Per chapter appendices and bibliography TOC issue
 %
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1f}
-\def\msu@date{2023/07/28}
+\def\msu@version{4.1g}
+\def\msu@date{2023/08/12}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
@@ -498,7 +499,7 @@
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
   \renewcommand\cftchapteraftersnum{\msutocdelim}
-  \ifthenelse{\value{msutocdepth}=0}{\addtocounter{tocdepth}{-1}}{}
+  %\ifthenelse{\value{msutocdepth}=0}{\addtocounter{tocdepth}{-1}}{} % removed 8/12/2023
 }
 
 % This code resets the TOC back to normal section spacing if appendices have been used
@@ -527,7 +528,7 @@
   \setlength\cftbeforechapterskip{0pt}
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
-  \addtocounter{tocdepth}{-1}
+%  \addtocounter{tocdepth}{-1} % removed 8/12/2023
 }
 
 
