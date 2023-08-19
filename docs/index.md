@@ -1,5 +1,9 @@
 # MSU Thesis Class Documentation
 
+## News Aug, 19, 2023
+
+ - Changes in the `memoir` code have produced an incompatibility with the `float` package. If you are loading `float` you may need to add some code to your preamble to solve the problem. For the moment I am not adjusting the class code, since this is a `memoir` issue. Please email me if you encounter problems using the `float` package.
+
 ## UPDATE June 27, 2023
 
  - Because of conflicting reports of spacing issues with chapter titles, I've removed some spacing after chapter titles that the thesis office wanted removed. This may be problematic since they are so inconsistent with their measuring. If they complain about too *little* space after chapter titles, please let me know, but you can add the following to your preamble to solve the problem. 
