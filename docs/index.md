@@ -1,8 +1,8 @@
 # MSU Thesis Class Documentation
 
-## News Aug, 19, 2023
+## News Aug 21, 2023
 
- - Changes in the `memoir` code have produced an incompatibility with the `float` package. If you are loading `float` you may need to add some code to your preamble to solve the problem. For the moment I am not adjusting the class code, since this is a `memoir` issue. Please email me if you encounter problems using the `float` package.
+ - Changes in the `memoir` code temporarily produced an incompatibility with the `float` package.  If you are loading `float` and encounter problems you should update your TeX distribution to make sure you have the most recent version of `memoir` installed.
 
 ## UPDATE June 27, 2023
 
