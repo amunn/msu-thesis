@@ -1,0 +1,63 @@
+<!DOCTYPE html> 
+<html lang='en-US' xml:lang='en-US'> 
+<head><title>Captions</title> 
+<meta charset='utf-8' /> 
+<meta content='TeX4ht (https://tug.org/tex4ht/)' name='generator' /> 
+<meta content='width=device-width,initial-scale=1' name='viewport' /> 
+<link href='msu-thesis.css' rel='stylesheet' type='text/css' /> 
+<meta content='msu-thesis.tex' name='src' /> 
+<link href='msu-thesis-style.css' rel='stylesheet' type='text/css' /> 
+</head><body>
+<p><object class='toc' data='msu-thesis-toc.html'> <span class='ec-lmr-10'>[</span><a href='msu-thesis-toc.html'><span class='ec-lmr-10'>table of contents</span></a><span class='ec-lmr-10'>] </span></object>
+</p><!-- l. 190 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='KeytoAbbreviations.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='#tailCaptions.html'><span class='ec-lmr-10'>tail</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#Captions.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
+<h4 class='subsectionHead' id='captions'><span class='titlemark'><span class='ec-lmr-10'>5.6   </span></span> <a id='x18-180005.6'></a><span class='ec-lmr-10'>Captions</span></h4>
+<!-- l. 191 --><p class='noindent'>
+</p>        
+<h5 class='subsubsectionHead' id='caption-delimiter'><span class='titlemark'><span class='ec-lmr-10'>5.6.1   </span></span> <a id='x18-190005.6.1'></a><span class='ec-lmr-10'>Caption delimiter</span></h5>
+<!-- l. 192 --><p class='noindent'><span class='ec-lmr-10'>Because the thesis office doesn’t understand anything about punctuation, it requires the colon that would appear
+in a caption to also appear in the contents lists. Since they don’t care about the colon itself, but
+just consistency I’ve removed colons from the captions entirely, since leaving it in makes the
+contents lists look really stupid. But in case you or your advisor want the colon in captions, you
+can add the colon back in by adding </span><span class='verb'><span class='ec-lmtt-10'>\renewcommand{\msucaptiondelim}{:\space}</span></span> <span class='ec-lmr-10'>to your
+preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If
+you have other floating objects with captions (e.g., algorithms, listings) you may need to change
+their delimiter too (see below). How you do this may depend on the particular packages you are
+using.</span>
+</p>        
+<h5 class='subsubsectionHead' id='new-lists'><span class='titlemark'><span class='ec-lmr-10'>5.6.2   </span></span> <a id='x18-200005.6.2'></a><span class='ec-lmr-10'>New lists</span></h5>
+<!-- l. 194 --><p class='noindent'><span class='ec-lmr-10'>If you are using other kinds of floats such as listings, you should use the Memoir </span><span class='verb'><span class='ec-lmtt-10'>\newlistof</span></span> <span class='ec-lmr-10'>command to make
+the relevant list. The class provides a macro </span><span class='verb'><span class='ec-lmtt-10'>\msucaptiondelim</span></span> <span class='ec-lmr-10'>which can be used to make sure the formatting
+of the captions in the list-of-X match the setting you have for Figures and Tables. Here is an example of how you
+would add a listings list. For lists of algorithms, see section </span><a href='Algorithmpackageslabelalgorithms.html#algorithm-packages'><span class='ec-lmr-10'>5.8</span><!-- tex4ht:ref: algorithms  --></a> <span class='ec-lmr-10'>below. The following code goes in your
+preamble:</span>
+</p>     
+<blockquote class='quote'>
+<!-- l. 196 -->
+<pre class='lstlisting' id='listing-1'><span class='label'><a id='x18-20001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newlistof</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoflistings</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>List</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>of Listings}</span> 
+</span><span class='label'><a id='x18-20002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newfloat</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>]{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x18-20003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newlistentry</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{0}</span></span> 
+<span class='label'><a id='x18-20004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftlistingname</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>space</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x18-20005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftlistingaftersnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msucaptiondelim</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+                                                                                                
+                                                                                                
+     
+</blockquote> 
+<!-- l. 205 --><p class='indent'>   <span class='ec-lmr-10'>Then in your front matter you include a </span><span class='verb'><span class='ec-lmtt-10'>\listoflistings</span></span> <span class='ec-lmr-10'>in the same way you would add the
+</span><span class='verb'><span class='ec-lmtt-10'>\listoffigures</span></span> 
+<span class='ec-lmr-10'>or </span><span class='verb'><span class='ec-lmtt-10'>\listoftables</span></span> <span class='ec-lmr-10'>(preceded by a </span><span class='verb'><span class='ec-lmtt-10'>\clearpage</span></span><span class='ec-lmr-10'>). In your actual document you would use. (Note
+that this code doesn’t actually format a listing as code; you would further embed your favourite code listing
+environment inside this environment.)</span>
+</p>     
+<!-- l. 207 --><p class='indent'>
+</p>     
+<blockquote class='quote'>
+<!-- l. 208 -->
+<pre class='lstlisting' id='listing-2'><span class='label'><a id='x18-20006r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x18-20007r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>listing code here</span> 
+</span><span class='label'><a id='x18-20008r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+     
+</blockquote>   
+<!-- l. 215 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='KeytoAbbreviations.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='Captions.html'><span class='ec-lmr-10'>front</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#Captions.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
+<!-- l. 215 --><p class='indent'>   <a id='tailCaptions.html'></a>  </p> 
+</body> 
+</html>

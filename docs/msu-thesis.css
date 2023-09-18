@@ -100,7 +100,18 @@
 .ec-lmri-10{ font-style:italic;}
 .ec-lmri-10{ font-style:italic;}
 .ec-lmri-10{ font-style:italic;}
-.ec-lmcsc-10{font-size:90%;}
+.ec-lmcsc-10{font-size:90%; font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
+.ec-lmcsc-10{ font-variant: small-caps;}
 p{margin-top:0;margin-bottom:0}
 p.indent{text-indent:0;}
 p + p{margin-top:1em;}
@@ -115,6 +126,15 @@ td center { margin-top:0em; margin-bottom:0em; }
 .Canvas { position:relative; }
 img.math{vertical-align:middle;}
 div.par-math-display, div.math-display{text-align:center;}
+body{ margin:1em auto; max-width:80ch; padding:0 .62em; }
+h1,h2,h3,h4,h5 { line-height:1.2; }
+@media print{ body{ max-width:none } }
+.partHead, likepartHead { font-size: 2em; }
+.chapterHead, likechapterHead { font-size: 1.7411em; }
+.sectionHead, likesectionHead { font-size: 1.5157em; }
+.subsectionHead, likesubsectionHead { font-size: 1.3195em; }
+.subsubsectionHead, likesubsubsectionHead { font-size: 1.1487em; }
+ @media (prefers-color-scheme: dark) { img[src^="msu-thesis"]{filter: invert(1); } } 
 li p.indent { text-indent: 0em }
 li p:first-child{ margin-top:0em; }
 li p:last-child, li div:last-child { margin-bottom:0.5em; }
@@ -137,7 +157,7 @@ pre.verbatim {font-family: monospace,monospace; text-align:left; clear:both; }
 .fbox {padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
 div.fbox {display:table}
 div.center div.fbox {text-align:center; clear:both; padding-left:3.0pt; padding-right:3.0pt; text-indent:0pt; border:solid black 0.4pt; }
-div.minipage{width:100\%;}
+div.minipage{width:100%;}
 div.center, div.center div.center {text-align: center; margin-left:1em; margin-right:1em;}
 div.center div {text-align: left;}
 div.flushright, div.flushright div.flushright {text-align: right;}
@@ -150,7 +170,9 @@ div.flushleft {text-align: left;}
 .framebox-l {text-align:left;}
 .framebox-r {text-align:right;}
 span.thank-mark{ vertical-align: super }
-span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80\%; }
+span.footnote-mark sup.textsuperscript, span.footnote-mark a sup.textsuperscript{ font-size:80%; }
+div.footnotes{border-top:solid 1px black; border-bottom:solid 1px black; padding-bottom:1ex; padding-top:0.5ex; margin-right:15%; margin-top:2ex; font-style:italic; font-size:85%;}
+div.footnotes p{margin-top:0; margin-bottom:0; text-indent:0;}
 div.tabular, div.center div.tabular {text-align: center; margin-top:0.5em; margin-bottom:0.5em; }
 table.tabular td p{margin-top:0em;}
 table.tabular {margin-left: auto; margin-right: auto;}
@@ -170,37 +192,43 @@ table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 .hline td, .cline td{ padding: 0; }
 .hline hr, .cline hr{border:none;border-top:1px solid black;}
 .hline {border-top: 1px solid black;}
+.hline + .vspace:last-child{display:none;}
+.hline:first-child{border-bottom:1px solid black;border-top:none;}
 .tabbing-right {text-align:right;}
 div.float, div.figure {margin-left: auto; margin-right: auto;}
 div.float img {text-align:center;}
 div.figure img {text-align:center;}
-.marginpar,.reversemarginpar {width:20\%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85\%; text-decoration:underline;}
+.marginpar,.reversemarginpar {width:20%; float:right; text-align:left; margin-left:auto; margin-top:0.5em; font-size:85%; text-decoration:underline;}
 .marginpar p,.reversemarginpar p{margin-top:0.4em; margin-bottom:0.4em;}
 .reversemarginpar{float:left;}
-table.equation {width:100\%;}
+table.equation {width:100%;}
 .equation td{text-align:center; }
 td.equation { margin-top:1em; margin-bottom:1em; } 
-td.equation-label { width:5\%; text-align:center; }
-td.eqnarray4 { width:5\%; white-space: normal; }
-td.eqnarray2 { width:5\%; }
-table.eqnarray-star, table.eqnarray {width:100\%;}
+td.equation-label { width:5%; text-align:center; }
+td.eqnarray4 { width:5%; white-space: normal; }
+td.eqnarray2 { width:5%; }
+table.eqnarray-star, table.eqnarray {width:100%;}
 div.eqnarray{text-align:center;}
 div.array {text-align:center;}
 div.pmatrix {text-align:center;}
-table.pmatrix {width:100\%;}
+table.pmatrix {width:100%;}
 span.pmatrix img{vertical-align:middle;}
 div.pmatrix {text-align:center;}
-table.pmatrix {width:100\%;}
+table.pmatrix {width:100%;}
 span.bar-css {text-decoration:overline;}
 img.cdots{vertical-align:middle;}
-.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200\%; font-weight:bold; font-size:110\%;}
-.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200\%; font-weight:bold;}
+.partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
+.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200%; font-weight:bold;}
+object.toc { float: left; width: 25%; height: 100%; border: 1px solid #888888; margin-left:0em; margin-top:0em; margin-bottom:1em; margin-right:1em; padding-right:1em; }
+body#jobname-toc{margin:0em;}
+body#jobname-toc .tableofcontents{ white-space: nowrap; }
 .index-item, .index-subitem, .index-subsubitem {display:block}
 div.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:left;}
 div.caption span.id{font-weight: bold; white-space: nowrap; }
 h1.partHead{text-align: center}
 p.bibitem { text-indent: -2em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
 p.bibitem-p { text-indent: 0em; margin-left: 2em; margin-top:0.6em; margin-bottom:0.6em; }
+.subsubsectionHead, .likesubsubsectionHead { font-size: 1em; }
 .paragraphHead, .likeparagraphHead { margin-top:2em; font-weight: bold;}
 .subparagraphHead, .likesubparagraphHead { font-weight: bold;}
 .verse{white-space:nowrap; margin-left:2em}
@@ -208,11 +236,14 @@ div.maketitle {text-align:center;}
 h2.titleHead{text-align:center;}
 div.maketitle{ margin-bottom: 2em; }
 div.author, div.date {text-align:center;}
-div.thanks{text-align:left; margin-left:10\%; font-size:85\%; font-style:italic; }
-div.author{white-space: nowrap;}
-div.abstract p {margin-left:5\%; margin-right:5\%;}
-div.abstract {width:100\%;}
+div.thanks{text-align:left; margin-left:10%; font-size:85%; font-style:italic; }
+div.abstract p {margin-left:5%; margin-right:5%;}
+div.abstract {width:100%;}
 .abstracttitle{text-align:center;margin-bottom:1em;}
+.subsectionToc, .likesubsectionToc {margin-left:2em;}
+.subsubsectionToc, .likesubsubsectionToc {margin-left:4em;}
+.paragraphToc, .likeparagraphToc {margin-left:6em;}
+.subparagraphToc, .likesubparagraphToc {margin-left:8em;}
 figure.float, div.figure {margin-left: auto; margin-right: auto;}
 figure.figure {text-align:center;}
 figcaption.caption {text-indent:-2em; margin-left:3em; margin-right:1em; text-align:center;}
@@ -239,6 +270,8 @@ table[rules] {border-left:solid black 0.4pt; border-right:solid black 0.4pt; }
 .hline td, .cline td{ padding: 0; }
 .hline hr, .cline hr{border:none;border-top:1px solid black;}
 .hline {border-top: 1px solid black;}
+.hline + .vspace:last-child{display:none;}
+.hline:first-child{border-bottom:1px solid black;border-top:none;}
 div.array {text-align:center;}
 dl.enumerate-enumitem{display:grid; grid-template-columns: 3ch 1fr; align-items: top; row-gap:1ch;}
 pre.fancyvrb {white-space: pre-wrap; margin:0em;font-family:monospace,monospace;}
@@ -248,22 +281,19 @@ pre.listings{font-family: monospace,monospace; white-space: pre-wrap; margin-top
 pre.lstlisting{font-family: monospace,monospace; white-space: pre-wrap; margin-top:0.5em; margin-bottom:0.5em; }
 pre.lstinputlisting{ font-family: monospace,monospace; white-space: pre-wrap; }
 .lstinputlisting .label{margin-right:0.5em;}
-.ec-lmtt-10x-x-109 {font-size:16px; }
-.ec-lmtt-12 {font-size:16px; }
-.ec-lmtt-10 {font-size:16px; }
-h4 {font-size:1.15em }
-h5 {font-size:1em }
+.ec-lmtt-10x-x-109 {font-size:80%; }
+.ec-lmtt-12 {font-size:80%; }
+.ec-lmtt-10 {font-size:80%; }
 table.tabular {margin-left: auto; margin-right: auto; margin-bottom: 1em;}
-.tableofcontents span{display:inline-block;margin-top:0.3rem;}
-.tableofcontents span:first-child{margin-top:0}
+object.toc { float:top; width:100%; height:100%; margin-left:0em; margin-top:0em; margin-bottom:1em; margin-right:0em; padding-bottom:1em; }
 tr#TBL-5-1- {border-top:0.12263em solid #000;} 
 tr#TBL-5-1- {border-bottom:0.07664em solid #000}
 tr#TBL-5-17- {border-bottom:0.12263em solid #000}
 tr#TBL-9-1- {border-top:0.12263em solid #000;} 
-tr#TBL-9-7- {border-bottom:0.12263em solid #000}
+tr#TBL-9-8- {border-bottom:0.12263em solid #000}
 tr#TBL-13-1- {border-top:0.12263em solid #000;} 
 tr#TBL-13-2- {border-bottom:0.12263em solid #000}
 tr#TBL-17-1- {border-top:0.12263em solid #000;} 
-tr#TBL-17-5- {border-bottom:0.12263em solid #000}
+tr#TBL-17-4- {border-bottom:0.12263em solid #000}
 /* end css.sty */
 
