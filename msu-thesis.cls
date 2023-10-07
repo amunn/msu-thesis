@@ -196,6 +196,44 @@
 \def\msu@date{2023/08/12}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
+\DeclareKeys[msu-thesis]
+{
+PhD.code = {\gdef\msu@degree{Doctor of Philosophy}},
+DEd.code = {\gdef\msu@degree{Doctor of Education}},
+DMA.code = {\gdef\msu@degree{Doctor of Musical Arts}},
+DNP.code = {\gdef\msu@degree{Doctor of Nursing Practice}},
+MA.code = {\gdef\msu@degree{Master of Arts}\global\msu@dissertationfalse},
+MS.code = {\gdef\msu@degree{Master of Science}\global\msu@dissertationfalse},
+MAT.code = {\gdef\msu@degree{Master of Arts for Teachers}\global\msu@dissertationfalse},
+MBA.code = {\gdef\msu@degree{Master of Business Administration}\global\msu@dissertationfalse},
+MFA.code = {\gdef\msu@degree{Master of Fine Arts}\global\msu@dissertationfalse},
+MIPS.code = {\gdef\msu@degree{Master of International Planning Studies}\global\msu@dissertationfalse},
+MHRL.code = {\gdef\msu@degree{Master of Human Resources and Labor Relations}\global\msu@dissertationfalse},
+MMus.code = {\gdef\msu@degree{Master of Music}\global\msu@dissertationfalse},
+%MSN.code = {\gdef\msu@degree{Master of Science in Nursing}\global\msu@dissertationfalse},
+MPH.code = {\gdef\msu@degree{Master of Public Health}\global\msu@dissertationfalse},
+MPP.code = {\gdef\msu@degree{Master of Public Policy}\global\msu@dissertationfalse},
+MSW.code = {\gdef\msu@degree{Master of Social Work}\global\msu@dissertationfalse},
+MURP.code = {\gdef\msu@degree{Master in Urban and Regional Planning}\global\msu@dissertationfalse},
+lscape.code = {%
+\msu@lscapetrue
+\AtEndDocument{\ClassWarningNoLine{msu-thesis}{You have chosen the [lscape] option. You may need to run latex twice to get landscape page numbering to display correctly}}},
+boldtoc.code = {\msu@stupidtoctrue\msu@plaintocfalse\msu@mixedtocfalse},
+plaintoc.code = {\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse},
+mixedtoc.code = {\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse},
+chapterbib.code = {\global\msu@chapterbibtrue\def\msu@bibtype{CHAPBIB}}, % per-chapter bibliographies added v3.0
+bibassection.code = {\def\msu@bibsection{section}}, % per-chapter bibs as sections in TOC
+chapterapp.code = {
+    \global\msu@chapterapptrue
+	\def\msu@apptype{CHAPAPP}
+	% per-chapter appendices added v3.0
+	\renewcommand\msuappendixnumformat{\the@ppsavesec\Alph{chapter}} % Appendix numbers per-chapter (now permitted)
+},
+12pt.code = {\def\msu@sizeoption{12pt}}, % added v2.9
+11pt.code = {\def\msu@sizeoption{11pt}},
+10pt.code = {\def\msu@sizeoption{10pt}}
+}
+
 \newif\ifmsu@dissertation\msu@dissertationtrue % added v2.7 boolean for \msu@thesistype
 \newif\ifmsu@chapterbib\msu@chapterbibfalse % added v3.0
 \def\msu@bibtype{BIB}
@@ -209,6 +247,7 @@
 \newif\ifmsu@plaintoc\msu@plaintoctrue % make this the default to see what the reaction is
 \newif\ifmsu@colonintoc\msu@colonintocfalse
 \newif\ifmsu@hyperloaded\msu@hyperloadedfalse
+<<<<<<< HEAD
 \newif\ifmsu@dualmajor\msu@dualmajorfalse
 \DeclareOption{PhD}{\gdef\msu@degree{Doctor of Philosophy}}
 \DeclareOption{DEd}{\gdef\msu@degree{Doctor of Education}}
@@ -246,6 +285,11 @@
 \DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
 \DeclareOption{10pt}{\def\msu@sizeoption{10pt}}
 \ExecuteOptions{PhD,12pt}
+=======
+\newcommand*\msu@bibsection{chapter} % per-chapter bibliographies like chapters in TOC
+\SetKeys[msu-thesis]{PhD,12pt}
+\ProcessKeyOptions[msu-thesis]
+>>>>>>> development
 \DeclareOption*{
 \PassOptionsToClass{\CurrentOption}{memoir}
 }
