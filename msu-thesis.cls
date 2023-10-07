@@ -247,49 +247,10 @@ chapterapp.code = {
 \newif\ifmsu@plaintoc\msu@plaintoctrue % make this the default to see what the reaction is
 \newif\ifmsu@colonintoc\msu@colonintocfalse
 \newif\ifmsu@hyperloaded\msu@hyperloadedfalse
-<<<<<<< HEAD
 \newif\ifmsu@dualmajor\msu@dualmajorfalse
-\DeclareOption{PhD}{\gdef\msu@degree{Doctor of Philosophy}}
-\DeclareOption{DEd}{\gdef\msu@degree{Doctor of Education}}
-\DeclareOption{DMA}{\gdef\msu@degree{Doctor of Musical Arts}}
-\DeclareOption{DNP}{\gdef\msu@degree{Doctor of Nursing Practice}}
-\DeclareOption{MA}{\gdef\msu@degree{Master of Arts}\global\msu@dissertationfalse}
-\DeclareOption{MS}{\gdef\msu@degree{Master of Science}\global\msu@dissertationfalse}
-\DeclareOption{MAT}{\gdef\msu@degree{Master of Arts for Teachers}\global\msu@dissertationfalse}
-\DeclareOption{MBA}{\gdef\msu@degree{Master of Business Administration}\global\msu@dissertationfalse}
-\DeclareOption{MFA}{\gdef\msu@degree{Master of Fine Arts}\global\msu@dissertationfalse}
-\DeclareOption{MIPS}{\gdef\msu@degree{Master of International Planning Studies}\global\msu@dissertationfalse}
-\DeclareOption{MHRL}{\gdef\msu@degree{Master of Human Resources and Labor Relations}\global\msu@dissertationfalse}
-\DeclareOption{MMus}{\gdef\msu@degree{Master of Music}\global\msu@dissertationfalse}
-%\DeclareOption{MSN}{\gdef\msu@degree{Master of Science in Nursing}\global\msu@dissertationfalse}
-\DeclareOption{MPH}{\gdef\msu@degree{Master of Public Health}\global\msu@dissertationfalse}
-\DeclareOption{MPP}{\gdef\msu@degree{Master of Public Policy}\global\msu@dissertationfalse}
-\DeclareOption{MSW}{\gdef\msu@degree{Master of Social Work}\global\msu@dissertationfalse}
-\DeclareOption{MURP}{\gdef\msu@degree{Master in Urban and Regional Planning}\global\msu@dissertationfalse}
-\DeclareOption{lscape}{%
-\msu@lscapetrue
-\AtEndDocument{\ClassWarningNoLine{msu-thesis}{You have chosen the [lscape] option. You may need to run latex twice to get landscape page numbering to display correctly}}}
-\DeclareOption{boldtoc}{\msu@stupidtoctrue\msu@plaintocfalse\msu@mixedtocfalse}
-\DeclareOption{plaintoc}{\msu@plaintoctrue\msu@stupidtocfalse\msu@mixedtocfalse}
-\DeclareOption{mixedtoc}{\msu@mixedtoctrue\msu@stupidtocfalse\msu@plaintocfalse}
-\DeclareOption{chapterbib}{\global\msu@chapterbibtrue\def\msu@bibtype{CHAPBIB}} % per-chapter bibliographies added v3.0
-\newcommand*\msu@bibsection{chapter} % per-chapter bibliographies like chapters in TOC
-\DeclareOption{bibassection}{\def\msu@bibsection{section}} % per-chapter bibs as sections in TOC
-\DeclareOption{chapterapp}{
-    \global\msu@chapterapptrue
-	\def\msu@apptype{APPENDICES}
-	% per-chapter appendices added v3.0
-	\renewcommand\msuappendixnumformat{\ifmsu@singleappendix\else\Alph{chapter}\fi} % Appendix numbers per-chapter not permitted as of v4
-}
-\DeclareOption{12pt}{\def\msu@sizeoption{12pt}} % added v2.9
-\DeclareOption{11pt}{\def\msu@sizeoption{11pt}}
-\DeclareOption{10pt}{\def\msu@sizeoption{10pt}}
-\ExecuteOptions{PhD,12pt}
-=======
 \newcommand*\msu@bibsection{chapter} % per-chapter bibliographies like chapters in TOC
 \SetKeys[msu-thesis]{PhD,12pt}
 \ProcessKeyOptions[msu-thesis]
->>>>>>> development
 \DeclareOption*{
 \PassOptionsToClass{\CurrentOption}{memoir}
 }
