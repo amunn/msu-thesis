@@ -189,11 +189,11 @@
 % Version 4.1e 2023/07/24 Fixed per chapter appendices TOC bug; 
 % Version 4.1f 2023/07/28 Fixed title page spacing issue
 % Version 4.1g 2023/08/12 Per chapter appendices and bibliography TOC issue
-%
+% Version 4.1h 2023/10/07 Changed option processing code
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1g}
-\def\msu@date{2023/08/12}
+\def\msu@version{4.1h}
+\def\msu@date{2023/10/07}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \DeclareKeys[msu-thesis]

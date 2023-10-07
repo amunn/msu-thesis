@@ -264,7 +264,6 @@ table.pmatrix {width:100%;}
 span.bar-css {text-decoration:overline;}
 img.cdots{vertical-align:middle;}
 .partToc a, .partToc, .likepartToc a, .likepartToc {line-height: 200%; font-weight:bold; font-size:110%;}
-.chapterToc a, .chapterToc, .likechapterToc a, .likechapterToc, .appendixToc a, .appendixToc {line-height: 200%; font-weight:bold;}
 object.toc { float: left; width: 25%; height: 100%; border: 1px solid #888888; margin-left:0em; margin-top:0em; margin-bottom:1em; margin-right:1em; padding-right:1em; }
 body#jobname-toc{margin:0em;}
 body#jobname-toc .tableofcontents{ white-space: nowrap; }
