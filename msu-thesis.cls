@@ -1,6 +1,6 @@
 % MSU Thesis Class
 %
-% Copyright 2009-2023 by Alan Munn <amunn@msu.edu>
+% Copyright 2009-2024 by Alan Munn <amunn@msu.edu>
 %
 % This is a class file for producing dissertations and theses according to the
 % Michigan State University Graduate School Guidelines
@@ -190,10 +190,12 @@
 % Version 4.1f 2023/07/28 Fixed title page spacing issue
 % Version 4.1g 2023/08/12 Per chapter appendices and bibliography TOC issue
 % Version 4.1h 2023/10/07 Changed option processing code
+% Version 4.1i 2023/12/02 Fixed spurious blank page with biblatex bibliography
+% Version 4.2 2024/02/18 Changed spacing for sections to address complaints about adjacent sectioning commands
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.1h}
-\def\msu@date{2023/10/07}
+\def\msu@version{4.2}
+\def\msu@date{2024/02/18}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \DeclareKeys[msu-thesis]
@@ -359,10 +361,16 @@ chapterapp.code = {
 
 
 % set up the section styles
-
-\setsecheadstyle{\normalfont\SingleSpacing\bfseries} % made uniform size v4
-\setsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
-\setsubsubsecheadstyle{\normalfont\SingleSpacing\bfseries}
+% Added spacing command v4.2 due to complaints about extra space when two
+% sectioning commands are adjacent
+\newcommand*{\msu@SingleSpacing}{%
+  \setSpacing{\m@m@singlespace}%
+  \ifx\@nodocument\relax\vskip\onelineskip\fi% correction for coming into single spacing
+}
+%
+\setsecheadstyle{\normalfont\msu@SingleSpacing\bfseries} % made uniform size v4
+\setsubsecheadstyle{\normalfont\msu@SingleSpacing\bfseries}
+\setsubsubsecheadstyle{\normalfont\msu@SingleSpacing\bfseries}
 % 2023 requirements seem to want "uniform" spacing even after headings, even though this
 % is not stated explicitly anywhere. After skips must be positive not zero to avoid runin formatting
 % Before skips can be 0
@@ -811,11 +819,13 @@ chapterapp.code = {
 % as chapters or as sections in the bibliography. Thesis office isn't consistent in this.
 % \clearpage added 7/19/2023 because page numbers were off in the TOC.
 % This code probably needs to be revisited since it’s a unholy amalgam of old and new code
+% Removed clearpage from the document level code in response to issue #26.
+% Problem seems to only arise with biblatex so more testing is needed
 \newcommand\msu@addbibheadtotoc{%
     \ifmsu@chapterbib
         \clearpage\phantomsection\addcontentsline{toc}{\msu@bibsection}{\bibtocname}
     \else
-    	\clearpage\phantomsection\addcontentsline{toc}{chapter}{\bibtocname}
+    	\phantomsection\addcontentsline{toc}{chapter}{\bibtocname}
 	\fi
 	}
 % Since the bibliography page is the TOC entry we remove the bib in the TOC

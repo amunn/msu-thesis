@@ -1,5 +1,9 @@
 # MSU Thesis Class Documentation
 
+## News February 18, 2024
+
+The thesis office continues its insane fetish for “uniformity” by rejecting uniform spacing that doesn’t match their idea of what spacing is. The latest version “fixes” this. 
+
 ## News Aug 21, 2023
 
  - Changes in the `memoir` code temporarily produced an incompatibility with the `float` package.  If you are loading `float` and encounter problems you should update your TeX distribution to make sure you have the most recent version of `memoir` installed.

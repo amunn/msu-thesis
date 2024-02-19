@@ -12,19 +12,18 @@
 </p><!-- l. 254 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='Thepkgmicrotypepackageandcontentslists.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ListofAbbreviations.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ListofAbbreviations.html#tailListofAbbreviations.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='#tailAlgorithmpackageslabelalgorithms.html'><span class='ec-lmr-10'>tail</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#Algorithmpackageslabelalgorithms.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
 <h4 class='subsectionHead' id='algorithm-packages'><span class='titlemark'><span class='ec-lmr-10'>5.8   </span></span> <a id='x20-240005.8'></a><span class='ec-lmr-10'>Algorithm packages</span></h4>
 <!-- l. 255 --><p class='noindent'><span class='ec-lmr-10'>Because the various algorithm formatting packages such as </span><span class='ec-lmtt-10'>algorithm2e</span><span class='ec-lmr-10'> and </span><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> (or its related
-packages) sometimes create incompatibilities with the </span><span class='ec-lmtt-10'>memoir</span><span class='ec-lmr-10'> float methods, the class provides you with floating
-</span><span class='verb'><span class='ec-lmtt-10'>{algorithm}</span></span> 
-<span class='ec-lmr-10'>environment and the corresponding list of algorithms, so you do not have to create your own list of
+packages) sometimes create incompatibilities with the </span><span class='ec-lmtt-10'>memoir</span><span class='ec-lmr-10'> float methods, the class provides you with floating</span>
+<code class='verb'>{algorithm}</code> <span class='ec-lmr-10'>environment and the corresponding list of algorithms, so you do not have to create your own list of
 algorithms. Here are some specific important points about using </span><span class='ec-lmtt-10'>algorithm2e</span><span class='ec-lmr-10'> and </span><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'>.</span>
 </p>     
 <ul class='itemize1'>
 <li class='itemize'><span class='ec-lmr-10'>Do </span><span class='ec-lmri-10'>not </span><span class='ec-lmr-10'>load the </span><span class='ec-lmtt-10'>algorithm</span><span class='ec-lmr-10'> package.</span>
 </li>
-<li class='itemize'><span class='ec-lmr-10'>If you use the </span><span class='ec-lmtt-10'>algorithm2e</span><span class='ec-lmr-10'> package you </span><span class='ec-lmri-10'>must </span><span class='ec-lmr-10'>load it with the </span><span class='verb'><span class='ec-lmtt-10'>[algo2e]</span></span> <span class='ec-lmr-10'>option (along with any
+<li class='itemize'><span class='ec-lmr-10'>If you use the </span><span class='ec-lmtt-10'>algorithm2e</span><span class='ec-lmr-10'> package you </span><span class='ec-lmri-10'>must </span><span class='ec-lmr-10'>load it with the </span><code class='verb'>[algo2e]</code> <span class='ec-lmr-10'>option (along with any
 other options you need).</span></li></ul>
 <!-- l. 260 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='-algorithmicx-package'><span class='titlemark'><span class='ec-lmr-10'>5.8.1   </span></span> <a id='x20-250005.8.1'></a><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> package</span></h5>
+<h5 class='subsubsectionHead' id='-algorithmicxpackage'><span class='titlemark'><span class='ec-lmr-10'>5.8.1   </span></span> <a id='x20-250005.8.1'></a><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> package</span></h5>
 <!-- l. 260 --><p class='noindent'><span class='ec-lmr-10'>If you are using the </span><span class='ec-lmtt-10'>algorithmicx</span><span class='ec-lmr-10'> package, any of its related packages (including its older predecessor
 </span><span class='ec-lmtt-10'>algorithmic</span><span class='ec-lmr-10'>) which suggest that you use the </span><span class='ec-lmtt-10'>algorithm</span><span class='ec-lmr-10'> package to create floating algorithms,
 you can load the </span><span class='ec-lmtt-10'>float</span><span class='ec-lmr-10'> package to use the its float styling capabilities instead of loading the
@@ -50,7 +49,7 @@ compile.</span>
 <!-- l. 271 --><p class='noindent'>
 </p>        
 <h5 class='subsubsectionHead' id='algorithm-caption-delimiter'><span class='titlemark'><span class='ec-lmr-10'>5.8.2   </span></span> <a id='x20-260005.8.2'></a><span class='ec-lmr-10'>Algorithm caption delimiter</span></h5>
-<!-- l. 272 --><p class='noindent'><span class='ec-lmr-10'>If you have changed the </span><span class='verb'><span class='ec-lmtt-10'>\msucaptiondelimeter</span></span> <span class='ec-lmr-10'>to use a colon (see </span><a href='Captions.html#caption-delimiter'><span class='ec-lmr-10'>5.6.1</span><!-- tex4ht:ref: captiondelim  --></a><span class='ec-lmr-10'>) then depending on the particular
+<!-- l. 272 --><p class='noindent'><span class='ec-lmr-10'>If you have changed the </span><code class='verb'>\msucaptiondelimeter</code> <span class='ec-lmr-10'>to use a colon (see </span><a href='Captions.html#caption-delimiter'><span class='ec-lmr-10'>5.6.1</span><!-- tex4ht:ref: captiondelim  --></a><span class='ec-lmr-10'>) then depending on the particular
 algorithm package you are using, there may be a mismatch between the format of the caption in the algorithm
 itself and in the List of Algorithms. The Graduate School thinks the presence or absence of a colon in captions
 and lists is of vital importance, and they may complain about this. Here are two options to use if they

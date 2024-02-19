@@ -18,7 +18,7 @@
 in a caption to also appear in the contents lists. Since they don’t care about the colon itself, but
 just consistency I’ve removed colons from the captions entirely, since leaving it in makes the
 contents lists look really stupid. But in case you or your advisor want the colon in captions, you
-can add the colon back in by adding </span><span class='verb'><span class='ec-lmtt-10'>\renewcommand{\msucaptiondelim}{:\space}</span></span> <span class='ec-lmr-10'>to your
+can add the colon back in by adding </span><code class='verb'>\renewcommand{\msucaptiondelim}{:\space}</code> <span class='ec-lmr-10'>to your
 preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If
 you have other floating objects with captions (e.g., algorithms, listings) you may need to change
 their delimiter too (see below). How you do this may depend on the particular packages you are
@@ -37,7 +37,7 @@ preamble:</span>
 <!-- l. 199 --><p class='indent'>
 </p>     
 <blockquote class='quote'>
-<!-- l. 200 --><p class='noindent'><span class='verb'><span class='ec-lmtt-10'>\setcounter{msutocdepth}{0}</span></span></p></blockquote>
+<!-- l. 200 --><p class='noindent'><code class='verb'>\setcounter{msutocdepth}{0}</code></p></blockquote>
 <!-- l. 203 --><p class='noindent'>
 </p>        
 <h5 class='subsubsectionHead' id='new-lists-and-floats'><span class='titlemark'><span class='ec-lmr-10'>5.6.3   </span></span> <a id='x18-210005.6.3'></a><span class='ec-lmr-10'>New lists and floats</span></h5>
@@ -46,8 +46,8 @@ is another odd decision on their part. If do include a List of Tables and List o
 lists, you can follow the directions here. Note that lists of algorithms require special treatment. See
 §</span><a href='Algorithmpackageslabelalgorithms.html#algorithm-packages'><span class='ec-lmr-10'>5.8</span><!-- tex4ht:ref: algorithms  --></a><span class='ec-lmr-10'>.</span>
 </p>     
-<!-- l. 206 --><p class='indent'>     <span class='ec-lmr-10'>If you are using other kinds of floats such as listings, you should use the Memoir </span><span class='verb'><span class='ec-lmtt-10'>\newlistof</span></span> <span class='ec-lmr-10'>command to
-make the relevant list. The class provides a macro </span><span class='verb'><span class='ec-lmtt-10'>\msucaptiondelim</span></span> <span class='ec-lmr-10'>which can be used to make sure the
+<!-- l. 206 --><p class='indent'>     <span class='ec-lmr-10'>If you are using other kinds of floats such as listings, you should use the Memoir </span><code class='verb'>\newlistof</code> <span class='ec-lmr-10'>command to
+make the relevant list. The class provides a macro </span><code class='verb'>\msucaptiondelim</code> <span class='ec-lmr-10'>which can be used to make sure the
 formatting of the captions in the list-of-X match the setting you have for Figures and Tables. Here is an example
 of how you would add a listings list. For lists of algorithms, see section </span><a href='Algorithmpackageslabelalgorithms.html#algorithm-packages'><span class='ec-lmr-10'>5.8</span><!-- tex4ht:ref: algorithms  --></a> <span class='ec-lmr-10'>below. The following code goes in
 your preamble:</span>
@@ -64,9 +64,8 @@ your preamble:</span>
 <span class='label'><a id='x18-21005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftlistingaftersnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msucaptiondelim</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote> 
-<!-- l. 217 --><p class='indent'>   <span class='ec-lmr-10'>Then in your front matter you include a </span><span class='verb'><span class='ec-lmtt-10'>\listoflistings</span></span> <span class='ec-lmr-10'>in the same way you would add the
-</span><span class='verb'><span class='ec-lmtt-10'>\listoffigures</span></span> 
-<span class='ec-lmr-10'>or </span><span class='verb'><span class='ec-lmtt-10'>\listoftables</span></span> <span class='ec-lmr-10'>(preceded by a </span><span class='verb'><span class='ec-lmtt-10'>\clearpage</span></span><span class='ec-lmr-10'>). In your actual document you would use. (Note
+<!-- l. 217 --><p class='indent'>   <span class='ec-lmr-10'>Then in your front matter you include a </span><code class='verb'>\listoflistings</code> <span class='ec-lmr-10'>in the same way you would add the</span>
+<code class='verb'>\listoffigures</code> <span class='ec-lmr-10'>or </span><code class='verb'>\listoftables</code> <span class='ec-lmr-10'>(preceded by a </span><code class='verb'>\clearpage</code><span class='ec-lmr-10'>). In your actual document you would use. (Note
 that this code doesn’t actually format a listing as code; you would further embed your favourite code listing
 environment inside this environment.)</span>
 </p>     
