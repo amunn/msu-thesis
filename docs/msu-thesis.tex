@@ -200,6 +200,15 @@ The thesis guide suggests that you use a simplified table of contents that lists
 |\setcounter{msutocdepth}{0}|
 \end{quote}
 
+If your chapter titles are very long, they sometimes fail to put any leader dots before the page number in the Table of Contents. The thesis office requires a minimum of three dots of leaders for any TOC line. You can solve this problem by putting a line break  into the TOC entry title. To do this, use the optional argument of the corresponding |\chapter| or |\section| etc. command. Note that the line break needs to be preceded by |\protect|. 
+
+%\begin{quote}
+\begin{lstlisting}[frame=none,xleftmargin=2.5em]
+\chapter[Long chapter title that will\protect\\ break at this point]
+        {Long chapter title that will break at this point}
+\end{lstlisting}
+%\end{quote}
+
 \subsubsection{New lists and floats}
 Note that the thesis office no longer seems to \emph{require} lists of anything other than the main table of contents. This is another odd decision on their part. If do include a List of Tables and List of Figures and need to add other lists, you can follow the directions here. Note that lists of algorithms require special treatment. See §\ref{algorithms}.
 
