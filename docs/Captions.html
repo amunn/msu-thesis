@@ -9,12 +9,15 @@
 <link href='msu-thesis-style.css' rel='stylesheet' type='text/css' /> 
 </head><body>
 <p><object class='toc' data='msu-thesis-toc.html'> <span class='ec-lmr-10'>[</span><a href='msu-thesis-toc.html'><span class='ec-lmr-10'>table of contents</span></a><span class='ec-lmr-10'>] </span></object>
-</p><!-- l. 192 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='ListofAbbreviations.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='#tailCaptions.html'><span class='ec-lmr-10'>tail</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#Captions.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
-<h4 class='subsectionHead' id='captions'><span class='titlemark'><span class='ec-lmr-10'>5.6   </span></span> <a id='x18-180005.6'></a><span class='ec-lmr-10'>Captions</span></h4>
-<!-- l. 193 --><p class='noindent'>
+</p><!-- l. 208 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='ListofAbbreviations.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='TableofContentsissues.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='TableofContentsissues.html#tailTableofContentsissues.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='#tailCaptions.html'><span class='ec-lmr-10'>tail</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#Captions.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
+<h4 class='subsectionHead' id='captions'><span class='titlemark'><span class='ec-lmr-10'>5.7   </span></span> <a id='x19-210005.7'></a><span class='ec-lmr-10'>Captions</span></h4>
+                                                                                                
+                                                                                                
+     
+<!-- l. 209 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='caption-delimiter'><span class='titlemark'><span class='ec-lmr-10'>5.6.1   </span></span> <a id='x18-190005.6.1'></a><span class='ec-lmr-10'>Caption delimiter</span></h5>
-<!-- l. 194 --><p class='noindent'><span class='ec-lmr-10'>Because the thesis office doesn’t understand anything about punctuation, it requires the colon that would appear
+<h5 class='subsubsectionHead' id='caption-delimiter'><span class='titlemark'><span class='ec-lmr-10'>5.7.1   </span></span> <a id='x19-220005.7.1'></a><span class='ec-lmr-10'>Caption delimiter</span></h5>
+<!-- l. 210 --><p class='noindent'><span class='ec-lmr-10'>Because the thesis office doesn’t understand anything about punctuation, it requires the colon that would appear
 in a caption to also appear in the contents lists. Since they don’t care about the colon itself, but
 just consistency I’ve removed colons from the captions entirely, since leaving it in makes the
 contents lists look really stupid. But in case you or your advisor want the colon in captions, you
@@ -24,53 +27,27 @@ you have other floating objects with captions (e.g., algorithms, listings) you m
 their delimiter too (see below). How you do this may depend on the particular packages you are
 using.</span>
 </p>     
-<!-- l. 196 --><p class='noindent'>
-</p>        
-<h5 class='subsubsectionHead' id='simplified-vs-full-contents'><span class='titlemark'><span class='ec-lmr-10'>5.6.2   </span></span> <a id='x18-200005.6.2'></a><span class='ec-lmr-10'>Simplified vs. full contents</span></h5>
-<!-- l. 197 --><p class='noindent'><span class='ec-lmr-10'>The thesis guide suggests that you use a simplified table of contents that lists only chapter levels, but that you
-are welcome to use a more detailed table of contents if you wish. As with most, if not all of the
-“design” decisions made by the thesis office, this one makes very little typographic sense, and so I
-have left the default TOC level to be 1, i.e., chapters and sections will be listed in the TOC. If
-you wish to use the simplified contents format that just lists chapters, add the following to your
-preamble:</span>
-</p>     
-<!-- l. 199 --><p class='indent'>
-</p>     
-<blockquote class='quote'>
-<!-- l. 200 --><p class='noindent'><code class='verb'>\setcounter{msutocdepth}{0}</code></p></blockquote>
-<!-- l. 203 --><p class='indent'>   <span class='ec-lmr-10'>If your chapter titles are very long, they sometimes fail to put any leader dots before the page number in the
-Table of Contents. The thesis office requires a minimum of three dots of leaders for any TOC line. You can solve
-this problem by putting a line break into the TOC entry title. To do this, use the optional argument of the
-corresponding </span><code class='verb'>\chapter</code> <span class='ec-lmr-10'>or </span><code class='verb'>\section</code> <span class='ec-lmr-10'>etc. command. Note that the line break needs to be preceded by</span>
-<code class='verb'>\protect</code><span class='ec-lmr-10'>.</span>
-</p>        
-<!-- l. 206 -->
-<pre class='lstlisting' id='listing-1'><span class='label'><a id='x18-20001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Long</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>chapter title that will\protect\\ break at this point]</span> 
-</span><span class='label'><a id='x18-20002r2'></a></span><span class='ec-lmtt-10'>        </span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Long</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>chapter title that will break at this point}</span></span></pre>
-                                                                                                
-                                                                                                
-     
 <!-- l. 212 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='new-lists-and-floats'><span class='titlemark'><span class='ec-lmr-10'>5.6.3   </span></span> <a id='x18-210005.6.3'></a><span class='ec-lmr-10'>New lists and floats</span></h5>
+<h5 class='subsubsectionHead' id='new-lists-and-floats'><span class='titlemark'><span class='ec-lmr-10'>5.7.2   </span></span> <a id='x19-230005.7.2'></a><span class='ec-lmr-10'>New lists and floats</span></h5>
 <!-- l. 213 --><p class='noindent'><span class='ec-lmr-10'>Note that the thesis office no longer seems to </span><span class='ec-lmri-10'>require </span><span class='ec-lmr-10'>lists of anything other than the main table of contents. This
 is another odd decision on their part. If do include a List of Tables and List of Figures and need to add other
 lists, you can follow the directions here. Note that lists of algorithms require special treatment. See
-§</span><a href='Algorithmpackageslabelalgorithms.html#algorithm-packages'><span class='ec-lmr-10'>5.8</span><!-- tex4ht:ref: algorithms  --></a><span class='ec-lmr-10'>.</span>
+§</span><a href='Algorithmpackageslabelalgorithms.html#algorithm-packages'><span class='ec-lmr-10'>5.9</span><!-- tex4ht:ref: algorithms  --></a><span class='ec-lmr-10'>.</span>
 </p>     
 <!-- l. 215 --><p class='indent'>     <span class='ec-lmr-10'>If you are using other kinds of floats such as listings, you should use the Memoir </span><code class='verb'>\newlistof</code> <span class='ec-lmr-10'>command to
 make the relevant list. The class provides a macro </span><code class='verb'>\msucaptiondelim</code> <span class='ec-lmr-10'>which can be used to make sure the
 formatting of the captions in the list-of-X match the setting you have for Figures and Tables. Here is an example
-of how you would add a listings list. For lists of algorithms, see section </span><a href='Algorithmpackageslabelalgorithms.html#algorithm-packages'><span class='ec-lmr-10'>5.8</span><!-- tex4ht:ref: algorithms  --></a> <span class='ec-lmr-10'>below. The following code goes in
+of how you would add a listings list. For lists of algorithms, see section </span><a href='Algorithmpackageslabelalgorithms.html#algorithm-packages'><span class='ec-lmr-10'>5.9</span><!-- tex4ht:ref: algorithms  --></a> <span class='ec-lmr-10'>below. The following code goes in
 your preamble:</span>
 </p>     
 <blockquote class='quote'>
 <!-- l. 217 -->
-<pre class='lstlisting' id='listing-2'><span class='label'><a id='x18-21001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newlistof</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoflistings</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>List</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>of Listings}</span> 
-</span><span class='label'><a id='x18-21002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newfloat</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>]{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x18-21003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newlistentry</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{0}</span></span> 
-<span class='label'><a id='x18-21004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftlistingname</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtk-10'>space</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x18-21005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftlistingaftersnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msucaptiondelim</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<pre class='lstlisting' id='listing-2'><span class='label'><a id='x19-23001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newlistof</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listoflistings</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>List</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>of Listings}</span> 
+</span><span class='label'><a id='x19-23002r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newfloat</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>]{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x19-23003r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>newlistentry</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>lol</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{0}</span></span> 
+<span class='label'><a id='x19-23004r4'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftlistingname</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtk-10'>space</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x19-23005r5'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>renewcommand</span></span><span style='color:#000000'><span class='ec-lmtt-10'>*{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>cftlistingaftersnum</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}{\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>msucaptiondelim</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote> 
 <!-- l. 226 --><p class='indent'>   <span class='ec-lmr-10'>Then in your front matter you include a </span><code class='verb'>\listoflistings</code> <span class='ec-lmr-10'>in the same way you would add the</span>
@@ -82,12 +59,12 @@ environment inside this environment.)</span>
 </p>     
 <blockquote class='quote'>
 <!-- l. 229 -->
-<pre class='lstlisting' id='listing-3'><span class='label'><a id='x18-21006r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
-<span class='label'><a id='x18-21007r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>listing code here</span> 
-</span><span class='label'><a id='x18-21008r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtk-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
+<pre class='lstlisting' id='listing-3'><span class='label'><a id='x19-23006r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>begin</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span> 
+<span class='label'><a id='x19-23007r2'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>Your</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>listing code here</span> 
+</span><span class='label'><a id='x19-23008r3'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtk-10'>end</span></span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>listing</span></span><span style='color:#000000'><span class='ec-lmtt-10'>}</span></span></pre>
      
 </blockquote>   
-<!-- l. 236 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='ListofAbbreviations.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='Captions.html'><span class='ec-lmr-10'>front</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#Captions.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
+<!-- l. 236 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='ListofAbbreviations.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='TableofContentsissues.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='TableofContentsissues.html#tailTableofContentsissues.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='Captions.html'><span class='ec-lmr-10'>front</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#Captions.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
 <!-- l. 236 --><p class='indent'>   <a id='tailCaptions.html'></a>  </p> 
 </body> 
 </html>

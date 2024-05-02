@@ -189,17 +189,14 @@ The \pkg{memoir}\ class provides commands for single and double spacing (|\Singl
 The \pkg{memoir}\ class replicates the functionality of many independent packages, so if you are transferring \LaTeX\ source from other documents using the \pkg{article}\ class, you may encounter some warnings or errors.  The \pkg{memoir}\ documentation has substantial information about the packages it emulates, and the packages for which it provides equivalent functionality.  See Chap. 18 Sec. 24 of the \pkg{memoir}\ manual for details.  Quoting from the manual:
 \begin{quote} At the time of writing the emulated packages are: {\sffamily abstract, appendix, booktabs, ccaption, chngcntr, crop, enumerate, epigraph, ifmtarg, ifpdf, index, makeidx, moreverb, needspace, newfile, nextpage, pagenote, patchcmd, parskip, setspace, shortvrb, showidx, titleref, tocbibind, tocloft, verbatim, and verse.} As well as the emulated packages memoir provides functions equivalent to those in the following packages, although the class does not prevent you from using them: {\sffamily fancyhdr, framed, geometry, sidecap, subfigure, and titlesec.}\\\hfill{\normalfont\emph{The Memoir Class} 10th impression, 2015, p.345}
 \end{quote}
-\subsection{Captions}
-\subsubsection{Caption delimiter}\label{captiondelim}
-Because the thesis office doesn't understand anything about punctuation, it requires the colon that would appear in a caption to also appear in the contents lists. Since they don't care about the colon itself, but just consistency I've removed colons from the captions entirely, since leaving it in makes the contents lists look really stupid. But in case you or your advisor want the colon in captions, you can add the colon back in by adding   |\renewcommand{\msucaptiondelim}{:\space}| to your preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If you have other floating objects with captions (e.g., algorithms, listings) you may need to change their delimiter too (see below). How you do this may depend on the particular packages you are using.
-
+\subsection{Table of Contents issues}
 \subsubsection{Simplified vs. full contents}
 The thesis guide suggests that you use a simplified table of contents that lists only chapter levels, but that you are welcome to use a more detailed table of contents if you wish. As with most, if not all of the “design” decisions made by the thesis office, this one makes very little typographic sense, and so I have left the default TOC level to be 1, i.e., chapters and sections will be listed in the TOC. If you wish to use the simplified contents format that just lists chapters, add the following to your preamble:
 
 \begin{quote}
 |\setcounter{msutocdepth}{0}|
 \end{quote}
-
+\subsubsection{Ensuring the minimum number of leader dots}
 If your chapter titles are very long, they sometimes fail to put any leader dots before the page number in the Table of Contents. The thesis office requires a minimum of three dots of leaders for any TOC line. You can solve this problem by putting a line break  into the TOC entry title. To do this, use the optional argument of the corresponding |\chapter| or |\section| etc. command. Note that the line break needs to be preceded by |\protect|. 
 
 %\begin{quote}
@@ -208,6 +205,9 @@ If your chapter titles are very long, they sometimes fail to put any leader dots
         {Long chapter title that will break at this point}
 \end{lstlisting}
 %\end{quote}
+\subsection{Captions}
+\subsubsection{Caption delimiter}\label{captiondelim}
+Because the thesis office doesn't understand anything about punctuation, it requires the colon that would appear in a caption to also appear in the contents lists. Since they don't care about the colon itself, but just consistency I've removed colons from the captions entirely, since leaving it in makes the contents lists look really stupid. But in case you or your advisor want the colon in captions, you can add the colon back in by adding   |\renewcommand{\msucaptiondelim}{:\space}| to your preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If you have other floating objects with captions (e.g., algorithms, listings) you may need to change their delimiter too (see below). How you do this may depend on the particular packages you are using.
 
 \subsubsection{New lists and floats}
 Note that the thesis office no longer seems to \emph{require} lists of anything other than the main table of contents. This is another odd decision on their part. If do include a List of Tables and List of Figures and need to add other lists, you can follow the directions here. Note that lists of algorithms require special treatment. See §\ref{algorithms}.
