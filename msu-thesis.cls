@@ -192,12 +192,26 @@
 % Version 4.1h 2023/10/07 Changed option processing code
 % Version 4.1i 2023/12/02 Fixed spurious blank page with biblatex bibliography
 % Version 4.2 2024/02/18 Changed spacing for sections to address complaints about adjacent sectioning commands
+% Version 4.2b 2024/05/16 Added version check for l3kernel. 
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.2}
-\def\msu@date{2024/02/18}
+\def\msu@version{4.2b}
+\def\msu@date{2024/05/16}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
+\@ifundefined{ExplLoaderFileDate}
+  {\RequirePackage{expl3}}
+  {}
+\@ifl@t@r\ExplLoaderFileDate{2022-06-01}
+  {}
+  {%
+    \ClassError{msu-thesis}{Support package expl3 too old}
+      {%
+        You need to update your TeX distribution: 'l3kernel' of 2022-06-01 or later is required.\MessageBreak
+        Loading msu-thesis will abort!%
+      }%
+    \endinput
+  }%
 \DeclareKeys[msu-thesis]
 {
 PhD.code = {\gdef\msu@degree{Doctor of Philosophy}},

@@ -1,4 +1,4 @@
-# MSU Thesis Class Version 4.2 2024/02/18
+# MSU Thesis Class Version 4.2b 2024/05/16
 
 Copyright 2011-2024 by Alan Munn <amunn@msu.edu>
 
@@ -9,6 +9,13 @@ Submission of Master's Theses and Dissertations (January 2023).
 The class is based on the `memoir` document class, and therefore inherits
 all of the functionality of that class.
 
+# TeX distribution requirements
+
+The `msu-thesis` class requires an up-to-date TeX distribution, 2022 release or later. 
+
+# Engine requirements
+
+The `msu-thesis` class works with all LaTeX engines (pdfLaTeX, XeLaTeX, LuaLaTeX).
 
 # Update on new formatting requirements (Fall 2022)
 
@@ -30,7 +37,7 @@ Please [read the documentation!](https://amunn.github.io/msu-thesis/)
 
 ## Installation:
 
-The `msu-thesis` class is part of both TeXLive and MikTeX, so you should either already have it or should be able to install it with your package manager.
+The `msu-thesis` class is part of both TeXLive and MikTeX, so you should either already have it or should be able to install it with your package manager if you have an up-to-date distribution.
 
 If you wish to install it locally, follow the directions below:
 
@@ -42,8 +49,15 @@ Put `msu-thesis.tex`, `msu-thesis.pdf` and the `samples` folder into
 
 `<local texmf>/doc/latex/msu-thesis`
 
+Alternatively, you can simply put a copy of `msu-thesis.cls` in the same folder as your thesis source file.
+
 The samples folder contains two thesis test-files and
 a template.
+
+## Overleaf users
+
+If you are using Overleaf, you should upload a copy of `msu-thesis.cls` to your project. It *must* have exactly this name to be found.  Click on the Menu icon and make sure to choose the latest version of TeX Live for compilation.
+
 
 This package may be distributed and/or modified under the conditions of
 the LaTeX Project Public License, either version 1.3 of this license or

@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{4.2}
-\def\msudate{2024/02/18}
+\def\msuversion{4.2b}
+\def\msudate{2024/05/16}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -59,8 +59,12 @@
 \abstract{\noindent\begin{quote} This is a class file for MSU theses and dissertations.  It is based on the \pkg{memoir}\ class, and therefore supports all of the functionality of that class.  It should generate a document which meets all the basic formatting requirements laid out by the \href{https://grad.msu.edu/etd/formatting-guide}{Formatting Guide For Submission of Master’s Theses and Doctoral Dissertations}\ (January, 2023) produced by the Graduate School, including requirements for margins, titlepage, page numbering, section titles, sub- and superscript sizes etc.\end{quote}}
 \section{Introduction}
 Formatting a dissertation according to a University's thesis requirements is not always a simple task in \LaTeX, especially since the requirements are generally aimed at MSWord users.  Furthermore, most of the work of formatting a document is supposed to be done by the document class itself, and not by the individual user.  Fortunately, Michigan State University's thesis requirements are for the most part sane, (even if the thesis office itself isn’t) and fairly straightforward.  The present class file is designed to further make the process easier for \LaTeX\ users, by doing all the heavy lifting for you, so that you can focus on the content and not the formatting. 
-\section{Background}
+\section{Background and requirements}
 The MSU Thesis Class is based on the \pkg{memoir}\ document class.  The \pkg{memoir}\ class is an extensive class that incorporates the functionality of many other packages into it. The class is extensively documented, and the documentation (\pkg{memman.pdf}) should be available with any \TeX\ distribution.  I strongly recommend that you familiarize yourself with \pkg{memoir}\ as you use the present class.
+\subsection{TeX distribution requirements}
+The \pkg{msu-thesis}\ class requires a reasonably up-to-date TeX distribution, 2022 or later.
+\subsection{Engine requirements}
+The class may be used with any LaTeX engine: pdfLaTeX, XeLaTeX, or LuaLaTeX.
 \section{Class Options}
 In addition to any options passed to the \pkg{memoir}\ class (e.g. |oldfontcommands|; see Section \ref{sec:fonts}, font size), the \pkg{msu-thesis}\ class takes six options: one to specify the type of degree, (see Table~\ref{degrees}), one to enable landscape page numbering, two to enable per-chapter bibliographies and appendices, two to make small adjustments to  Table of Contents.  If no degree option is specified, a Ph.D. dissertation is assumed.
 \begin{table}[htpb]
@@ -282,11 +286,13 @@ If you have changed the |\msucaptiondelimeter| to use a colon (see \ref{captiond
 
 The first method removes the colon from the word Algorithm in the List of Algorithms:
 \begin{quote}
+\begin{minipage}{\linewidth}
 \begin{lstlisting}
 % Use this code after loading any algorithm package and the float package
 % This removes the colon after the word Algorithm in the List of Algorithms
 \renewcommand*{\cftalgorithmaftersnum}{}
 \end{lstlisting}
+\end{minipage}
 \end{quote}
 
 The second method adds a colon to the word Algorithm in the captions of the algorithms
@@ -455,11 +461,11 @@ to Wolfgang Sternefeld for supplying the \pkg{linguex}\ spacing fix code, Leo Li
 landscape page numbering code, which greatly simplified my original version. Thanks to 
 Florent Chervet for early \pkg{hyperref} code (up until v.3.6), and Ulrike Fischer for the 
 current \pkg{hyperref} code.  Thanks to David Carlisle for helping me understand a ridiculous spacing problem. 
-Thanks also to the following students who have reported 
+Thanks also to the following people who have reported 
 problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, 
 Nathan Brugnone, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk 
 Jung, Claire Kopenhafer, Adam Liter, Vanessa Maldonado, Andriana Manousidaki, Ben Miller, William Muir, Eureka 
-Pai, Alicia Parrish, Neil ver Planck, Taha Posos, Nick Rekuski, Giacomo Romanini, William Sands, Adam 
+Pai, Alicia Parrish, Victoria Parrish, Neil ver Planck, Taha Posos, Nick Rekuski, Giacomo Romanini, William Sands, Adam 
 Soliman, Mookyong Son, Erik Stitt, Fanurs C.E. Teh,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Atacan Yücesoy, Ali 
 Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy 
 of his entire thesis which allowed me to debug some especially subtle spacing 
