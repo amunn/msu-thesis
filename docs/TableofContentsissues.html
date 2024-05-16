@@ -9,36 +9,39 @@
 <link href='msu-thesis-style.css' rel='stylesheet' type='text/css' /> 
 </head><body>
 <p><object class='toc' data='msu-thesis-toc.html'> <span class='ec-lmr-10'>[</span><a href='msu-thesis-toc.html'><span class='ec-lmr-10'>table of contents</span></a><span class='ec-lmr-10'>] </span></object>
-</p><!-- l. 192 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='Captions.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='#tailTableofContentsissues.html'><span class='ec-lmr-10'>tail</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#TableofContentsissues.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
-<h4 class='subsectionHead' id='table-of-contents-issues'><span class='titlemark'><span class='ec-lmr-10'>5.6   </span></span> <a id='x18-180005.6'></a><span class='ec-lmr-10'>Table of Contents issues</span></h4>
-<!-- l. 193 --><p class='noindent'>
+</p><!-- l. 196 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='Captions.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='#tailTableofContentsissues.html'><span class='ec-lmr-10'>tail</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#TableofContentsissues.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
+<h4 class='subsectionHead' id='table-of-contents-issues'><span class='titlemark'><span class='ec-lmr-10'>5.6   </span></span> <a id='x20-200005.6'></a><span class='ec-lmr-10'>Table of Contents issues</span></h4>
+<!-- l. 197 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='simplified-vs-full-contents'><span class='titlemark'><span class='ec-lmr-10'>5.6.1   </span></span> <a id='x18-190005.6.1'></a><span class='ec-lmr-10'>Simplified vs. full contents</span></h5>
-<!-- l. 194 --><p class='noindent'><span class='ec-lmr-10'>The thesis guide suggests that you use a simplified table of contents that lists only chapter levels, but that you
+<h5 class='subsubsectionHead' id='simplified-vs-full-contents'><span class='titlemark'><span class='ec-lmr-10'>5.6.1   </span></span> <a id='x20-210005.6.1'></a><span class='ec-lmr-10'>Simplified vs. full contents</span></h5>
+<!-- l. 198 --><p class='noindent'><span class='ec-lmr-10'>The thesis guide suggests that you use a simplified table of contents that lists only chapter levels, but that you
 are welcome to use a more detailed table of contents if you wish. As with most, if not all of the
 “design” decisions made by the thesis office, this one makes very little typographic sense, and so I
 have left the default TOC level to be 1, i.e., chapters and sections will be listed in the TOC. If
 you wish to use the simplified contents format that just lists chapters, add the following to your
+                                                                                                
+                                                                                                
+     
 preamble:</span>
 </p>     
-<!-- l. 196 --><p class='indent'>
+<!-- l. 200 --><p class='indent'>
 </p>     
 <blockquote class='quote'>
-<!-- l. 197 --><p class='noindent'><code class='verb'>\setcounter{msutocdepth}{0}</code></p></blockquote>
-<!-- l. 199 --><p class='noindent'>
+<!-- l. 201 --><p class='noindent'><code class='verb'>\setcounter{msutocdepth}{0}</code></p></blockquote>
+<!-- l. 203 --><p class='noindent'>
 </p>        
-<h5 class='subsubsectionHead' id='ensuring-the-minimum-number-of-leader-dots'><span class='titlemark'><span class='ec-lmr-10'>5.6.2   </span></span> <a id='x18-200005.6.2'></a><span class='ec-lmr-10'>Ensuring the minimum number of leader dots</span></h5>
-<!-- l. 200 --><p class='noindent'><span class='ec-lmr-10'>If your chapter titles are very long, they sometimes fail to put any leader dots before the page number in the
+<h5 class='subsubsectionHead' id='ensuring-the-minimum-number-of-leader-dots'><span class='titlemark'><span class='ec-lmr-10'>5.6.2   </span></span> <a id='x20-220005.6.2'></a><span class='ec-lmr-10'>Ensuring the minimum number of leader dots</span></h5>
+<!-- l. 204 --><p class='noindent'><span class='ec-lmr-10'>If your chapter titles are very long, they sometimes fail to put any leader dots before the page number in the
 Table of Contents. The thesis office requires a minimum of three dots of leaders for any TOC line. You can solve
 this problem by putting a line break into the TOC entry title. To do this, use the optional argument of the
 corresponding </span><code class='verb'>\chapter</code> <span class='ec-lmr-10'>or </span><code class='verb'>\section</code> <span class='ec-lmr-10'>etc. command. Note that the line break needs to be preceded by</span>
 <code class='verb'>\protect</code><span class='ec-lmr-10'>.</span>
 </p>        
-<!-- l. 203 -->
-<pre class='lstlisting' id='listing-1'><span class='label'><a id='x18-20001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Long</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>chapter title that will\protect\\ break at this point]</span> 
-</span><span class='label'><a id='x18-20002r2'></a></span><span class='ec-lmtt-10'>        </span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Long</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>chapter title that will break at this point}</span></span></pre>
+<!-- l. 207 -->
+<pre class='lstlisting' id='listing-1'><span class='label'><a id='x20-22001r1'></a></span><span style='color:#000000'><span class='ec-lmtt-10'>\</span></span><span style='color:#000000'><span class='ec-lmtt-10'>chapter</span></span><span style='color:#000000'><span class='ec-lmtt-10'>[</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Long</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>chapter title that will\protect\\ break at this point]</span> 
+</span><span class='label'><a id='x20-22002r2'></a></span><span class='ec-lmtt-10'>        </span><span style='color:#000000'><span class='ec-lmtt-10'>{</span></span><span style='color:#000000'><span class='ec-lmtt-10'>Long</span></span><span style='color:#000000'> <span class='ec-lmtt-10'>chapter title that will break at this point}</span></span></pre>
         
-<!-- l. 208 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='Captions.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='TableofContentsissues.html'><span class='ec-lmr-10'>front</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#TableofContentsissues.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
-<!-- l. 208 --><p class='indent'>   <a id='tailTableofContentsissues.html'></a>  </p> 
+<!-- l. 212 --><div class='crosslinks'><p class='noindent'><span class='ec-lmr-10'>[</span><a href='Captions.html'><span class='ec-lmr-10'>next</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html'><span class='ec-lmr-10'>prev</span></a><span class='ec-lmr-10'>] [</span><a href='ExtraPackages.html#tailExtraPackages.html'><span class='ec-lmr-10'>prev-tail</span></a><span class='ec-lmr-10'>] [</span><a href='TableofContentsissues.html'><span class='ec-lmr-10'>front</span></a><span class='ec-lmr-10'>] [</span><a href='Usingtheclass.html#TableofContentsissues.html'><span class='ec-lmr-10'>up</span></a><span class='ec-lmr-10'>] </span></p></div>
+<!-- l. 212 --><p class='indent'>   <a id='tailTableofContentsissues.html'></a>  </p> 
 </body> 
 </html>
