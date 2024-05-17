@@ -1,5 +1,5 @@
 % This is a template for use with the MSU Thesis class
-% Version 4.1b 2023/05/25
+% Version 4.2b 2024/05/15
 %
 % Class options: 
 %[PhD]	Doctor of Philosophy (default) 
@@ -61,10 +61,6 @@
 %
 %\dedication{This thesis is dedicated to someone.}
 %
-% The default TOC format for the class lists both chapters and sections
-% The thesis office suggests only listing chapters. If you prefer that format
-% uncomment the next line:
-%\setcounter{msutocdepth}{0} % sets TOC to list chapters only
 %
 \begin{document}
 
@@ -100,9 +96,21 @@
 Your acknowledgements here.
 %
 \clearpage
+% The default TOC format for the class lists both chapters and sections
+% The thesis office suggests only listing chapters. If you prefer that format
+% uncomment the next line:
+%
+%\setcounter{msutocdepth}{0} % sets TOC to list chapters only
+%
 % We need to turn single spacing back on for the contents/figures/tables lists
+
 \SingleSpacing
 \tableofcontents* % table of contents will not be listed in the TOC
+%
+% The thesis office now seems to discourage the use of lists of tables/figures etc. 
+% Again, this is a very dubious suggestion, since it makes it harder for the people who actually
+% read your thesis, so I would recommend keeping these lists unless the thesis office forces you to 
+% remove them or finds other problems with them.
 %\clearpage
 %\listoftables % comment this out if you have no tables
 %\clearpage
@@ -131,6 +139,11 @@ Your acknowledgements here.
 % If you are using it for an MA/MS thesis you still need to have chapters, even if they are very small.
 
 \chapter{Your first chapter}
+% The \chapter command supports an optional argument for the entry in the Table of Contents. The thesis
+% office sometimes complains about hyphenation in the TOC or entries with too few dots! If they do, you 
+% can use the optional argument of \chapter (or \section etc.) to add explicit linebreaks in the TOC entries:
+%\chapter[Long title that will \protect\\ break before the word ‘break’]{Long title that will break before the word ‘break’}
+%
 %
 % If you have pages that must appear in landscape mode, use the [lscape] documentclass option
 % and enclose the pages in a {landscape} environment.

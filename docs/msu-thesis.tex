@@ -200,8 +200,8 @@ The thesis guide suggests that you use a simplified table of contents that lists
 \begin{quote}
 |\setcounter{msutocdepth}{0}|
 \end{quote}
-\subsubsection{Ensuring the minimum number of leader dots}
-If your chapter titles are very long, they sometimes fail to put any leader dots before the page number in the Table of Contents. The thesis office requires a minimum of three dots of leaders for any TOC line. You can solve this problem by putting a line break  into the TOC entry title. To do this, use the optional argument of the corresponding |\chapter| or |\section| etc. command. Note that the line break needs to be preceded by |\protect|. 
+\subsubsection{Adding line breaks to TOC entries}
+If your chapter titles are very long, they sometimes fail to put any leader dots before the page number in the Table of Contents or they hyphenate a word in the title. The thesis office requires a minimum of three dots of leaders for any TOC line, and they don't seem to like hyphenation inside TOC entries.  You can solve both of these problems by putting a line break  into the TOC entry title. To do this, use the optional argument of the corresponding |\chapter| or |\section| etc. command. Note that the line break needs to be preceded by |\protect|. 
 
 %\begin{quote}
 \begin{lstlisting}[frame=none,xleftmargin=2.5em]
