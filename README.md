@@ -58,6 +58,7 @@ a template.
 
 If you are using Overleaf, you should upload a copy of `msu-thesis.cls` to your project. It *must* have exactly this name to be found.  Click on the Menu icon and make sure to choose the latest version of TeX Live for compilation.
 
+## Licence
 
 This package may be distributed and/or modified under the conditions of
 the LaTeX Project Public License, either version 1.3 of this license or
