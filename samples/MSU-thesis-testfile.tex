@@ -1,5 +1,5 @@
 % !TEX TS-program = pdflatexmk
-% v4.1c Testfile
+% v4.3 Testfile
 \listfiles
 
 \documentclass[lscape]{msu-thesis}
@@ -26,6 +26,7 @@
 \usepackage{lipsum}
 \usepackage{xcolor}
 \usepackage{enumitem}
+\usepackage{calc}
 \usepackage[unit=in]{fgruler}
 \usepackage{gb4e}
 \counterwithin{exx}{chapter}
@@ -41,6 +42,7 @@
 \newlistentry{listing}{lol}{0}
 \renewcommand*{\cftlistingname}{Listing\space}
 \renewcommand*{\cftlistingaftersnum}{\msucaptiondelim}
+\renewcommand*{\msuappendixdelim}{:}
 
 \usepackage[bookmarksopenlevel=2,bookmarks=true]{hyperref} % not needed but here for testing
 \setcounter{msutocdepth}{1} % default is 1; this puts only chapters in the TOC
@@ -269,6 +271,7 @@ A & B & C & D & E & F & G \\
 % use this if you have more than one appendix
 \clearpage
 %\backmatter
+
 \bibliography{MSU-thesis-testfile}
 %\begin{appendix} ... \end{appendix}   % use this if you have only one appendix
 %\begin{appendix}
@@ -284,8 +287,7 @@ A & B & C & D & E & F & G \\
 \section{An appendix section}
 \lipsum[16-17]
 \end{appendices}
-% This command creates the cover page for the bibliography
-%\makebibliographypage
+
 
 \end{document}
 

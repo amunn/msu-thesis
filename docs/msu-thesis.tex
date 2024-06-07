@@ -2,8 +2,8 @@
 
 \documentclass[11pt]{article}
 
-\def\msuversion{4.2b}
-\def\msudate{2024/05/16}
+\def\msuversion{4.3}
+\def\msudate{2024/06/07}
 \title{\textbf{Using the MSU Thesis Class}}
 \author{\textbf{Alan Munn}\\Department of Linguistics, Languages, and Cultures\\Michigan State University\\\texttt{\href{mailto:amunn@msu.edu}{amunn@msu.edu}}}
 \date{Version \msuversion\\\msudate}
@@ -137,6 +137,7 @@ In addition to all the user functionality defined by \pkg{memoir}, the \pkg{msu-
 \toprule
 {\bs msucaptiondelim} &  Delimiter for floating elements (see section \ref{captiondelim}).\\
 {\bs msutocdelim} &  Delimiter for table of contents chapter/section titles.\\
+{\bs msuappendixdelim} & Delimiter for table of contents appendix titles.\\
 %{\bs setabstractnamespace} &  Changes spacing after the name in the abstract (see section \ref{abstractspacing}).\\
 \bottomrule
 \end{tabularx}
@@ -211,7 +212,9 @@ If your chapter titles are very long, they sometimes fail to put any leader dots
 %\end{quote}
 \subsection{Captions}
 \subsubsection{Caption delimiter}\label{captiondelim}
-Because the thesis office doesn't understand anything about punctuation, it requires the colon that would appear in a caption to also appear in the contents lists. Since they don't care about the colon itself, but just consistency I've removed colons from the captions entirely, since leaving it in makes the contents lists look really stupid. But in case you or your advisor want the colon in captions, you can add the colon back in by adding   |\renewcommand{\msucaptiondelim}{:\space}| to your preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If you have other floating objects with captions (e.g., algorithms, listings) you may need to change their delimiter too (see below). How you do this may depend on the particular packages you are using.
+Because the thesis office doesn't understand anything about punctuation, it requires the colon that would appear in a caption to also appear in the contents lists. Since they don't care about the colon itself, but just consistency I've removed colons from the captions entirely, since leaving it in makes the contents lists look really stupid. But in case you or your advisor want the colon in captions, you can add the colon back in by adding   |\renewcommand{\msucaptiondelim}{:}| to your preamble, and the class will make sure the Lists of Tables and Figures match in formatting. If you have other floating objects with captions (e.g., algorithms, listings) you may need to change their delimiter too (see below). How you do this may depend on the particular packages you are using.
+\subsection{Colons after Appendix titles}\label{appendixdelim}
+I have also received reports that sometimes the thesis office requires a colon after appendix titles in the table of contents. To add this colon you can add |\renewcommand{\msuappendixdelim}{:}| to your preamble.
 
 \subsubsection{New lists and floats}
 Note that the thesis office no longer seems to \emph{require} lists of anything other than the main table of contents. This is another odd decision on their part. If do include a List of Tables and List of Figures and need to add other lists, you can follow the directions here. Note that lists of algorithms require special treatment. See §\ref{algorithms}.
@@ -452,7 +455,8 @@ Version 3.7 added improved support for \pkg{hyperref}.
 Version 4.0 implements the new requirements as of September 2022, including adding a |\dualmajor| command.
 Various spacing changes have been made which will make your document look like you used Word, but this is what the thesis office seems to care about.
 Version 4.1 added the |msutocdepth| counter to allow for the chapters-only format that the thesis office recommends.
-Version 4.2 changed the spacing parameters for subsections to appease the thesis office yet again.
+Version 4.2 changed the spacing parameters for subsections to appease the thesis office yet again and added an explicit check for an up-to-date kernel.
+Version 4.3 added a |\msuappendixdelim| command to appease the thesis office's thirst for colons.
 
 \section{Acknowledgements}
 Thanks to Lars Madsen, Ulrike Fischer and Peter Wilson for help with setting up parts of 
@@ -464,7 +468,7 @@ current \pkg{hyperref} code.  Thanks to David Carlisle for helping me understand
 Thanks also to the following people who have reported 
 problems over the years: Irina Agafonova, Ali Al-jiboory, Abubakr Ayesh, Julian Blank, 
 Nathan Brugnone, Dmitriy Bryndin, Greg Christian, Kyle Crayne, Ciaron Hamilton, Matt Husband, Changkuk 
-Jung, Claire Kopenhafer, Adam Liter, Vanessa Maldonado, Andriana Manousidaki, Ben Miller, William Muir, Eureka 
+Jung, Minkyu Kim, Claire Kopenhafer, Adam Liter, Vanessa Maldonado, Andriana Manousidaki, Ben Miller, William Muir, Eureka 
 Pai, Alicia Parrish, Victoria Parrish, Neil ver Planck, Taha Posos, Nick Rekuski, Giacomo Romanini, William Sands, Adam 
 Soliman, Mookyong Son, Erik Stitt, Fanurs C.E. Teh,  Eremey Valetov, Matthew Vincent, Michael Wojcik, Stephen Yowono, Atacan Yücesoy, Ali 
 Zare, and Yisu Zhou. A special thank you to Non Thongprong who graciously provided a copy 

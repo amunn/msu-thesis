@@ -192,11 +192,12 @@
 % Version 4.1h 2023/10/07 Changed option processing code
 % Version 4.1i 2023/12/02 Fixed spurious blank page with biblatex bibliography
 % Version 4.2 2024/02/18 Changed spacing for sections to address complaints about adjacent sectioning commands
-% Version 4.2b 2024/05/16 Added version check for l3kernel. 
+% Version 4.2b 2024/05/16 Added version check for l3kernel.
+% Version 4.3  2024/06/07 Fixed bug with TOCs when calc package was loaded; added \msuappendixdelim
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.2b}
-\def\msu@date{2024/05/16}
+\def\msu@version{4.3}
+\def\msu@date{2024/06/07}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \@ifundefined{ExplLoaderFileDate}
@@ -332,7 +333,6 @@ chapterapp.code = {
 \newcounter{msu@hchap} % global counter for chapters used by hyperref
 % This may also be solved by using \hypersetup{hypertexnames=false}
 % hard to tell whether this is a better solution.
-
 
 % make title 2in from top of page
 % This value is crazy because the grad school doesn’t know how to measure
@@ -499,6 +499,7 @@ chapterapp.code = {
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
+   \renewcommand*\cftchapteraftersnum{\msuappendixdelim}
 }
 
 \cftinsertcode{SINGAPP}{\renewcommand{\cftchapteraftersnum}{}}
@@ -517,7 +518,7 @@ chapterapp.code = {
 % chapters in the source
 
 \newlength\apptoclen
-\settowidth{\apptoclen}{APPENDIX M}
+\settowidth{\apptoclen}{APPENDIX: M}
 \cftinsertcode{APPENDICES}{
   \setlength\cftchapterindent{\cftsectionindent}
   \setlength\cftsectionnumwidth{\apptoclen} % add the extra space
@@ -525,7 +526,7 @@ chapterapp.code = {
   \renewcommand\cftsectionfont{\msu@tocfont} % fixed 12/13/17
   \renewcommand\cftchapterpagefont{\msu@tocfont}
   \renewcommand*{\cftappendixname}{APPENDIX\space}
-  \renewcommand\cftchapteraftersnum{\msutocdelim}
+  \renewcommand\cftchapteraftersnum{\msuappendixdelim}
   %\ifthenelse{\value{msutocdepth}=0}{\addtocounter{tocdepth}{-1}}{} % removed 8/12/2023
 }
 
@@ -538,7 +539,7 @@ chapterapp.code = {
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
   \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
-  \setcounter{tocdepth}{\value{msutocdepth}}
+  \protect\setcounter{tocdepth}{\value{msutocdepth}}
 }
 % This code resets the changes made in the APP code back to normal
 % so that the bibliography will appear correctly in the TOC
@@ -547,7 +548,7 @@ chapterapp.code = {
 \setlength{\cftbeforechapterskip}{1.0em \@plus\p@}
   \renewcommand\cftchapterfont{\msu@chapfont\MakeUppercase}
   \renewcommand\cftchapterpagefont{\msu@chapfont}
-  \setcounter{tocdepth}{\value{msutocdepth}}
+  \protect\setcounter{tocdepth}{\value{msutocdepth}}
 }
 
 \cftinsertcode{CHAPBIB}{
@@ -679,6 +680,7 @@ chapterapp.code = {
 % contents lists don't look so stupid.  Can be changed if necessary.
 \newcommand*\msucaptiondelim{\space}
 \newcommand*\msutocdelim{} % removed idiotic colon 5/25/23
+\newcommand*\msuappendixdelim{} % added 6/7/24
 \captiondelim{\msucaptiondelim}
 
 \pagestyle{plain}
@@ -773,11 +775,11 @@ chapterapp.code = {
 %   \ifmsu@chapterapp\else
    \msu@singleappendixtrue
 % \fi% make sure single appendix doesn't have a number if global 3.1b (always 3.2)
-   \msu@apppage\cftinserthook{toc}{SINGAPP}\setcounter{tocdepth}{0}\@resets@pp\anappendixtrue}%
+   \msu@apppage\cftinserthook{toc}{SINGAPP}\protect\setcounter{tocdepth}{0}\@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset aded 2022/04/16
 
 \renewenvironment{appendices}%
-  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\addtocontents{toc}{\setcounter{tocdepth}{0}}
+  {\msu@singleappendixfalse\msu@apppage\ifmsu@chapterapp\cftinserthook{toc}{APPENDICES}\fi\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
    \@resets@pp\anappendixtrue}%
   {\@ppsaveapp\@pprestoresec\anappendixfalse\cftinserthook{toc}{CHAPAPPR}} % reset added 2022/04/16
 
