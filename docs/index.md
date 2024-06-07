@@ -1,5 +1,9 @@
 # MSU Thesis Class Documentation
 
+## News June 7, 2024
+
+The thesis office is thirsty for colons. Version 4.3 helps with this. If they want a colon after your appendix names in the table of contents add `\renewcommand{\msuappendixdelim}{:}` to your preamble. 
+
 ## News February 18, 2024
 
 The thesis office continues its insane fetish for “uniformity” by rejecting uniform spacing that doesn’t match their idea of what spacing is. The latest version “fixes” this. 
