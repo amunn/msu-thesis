@@ -194,10 +194,11 @@
 % Version 4.2 2024/02/18 Changed spacing for sections to address complaints about adjacent sectioning commands
 % Version 4.2b 2024/05/16 Added version check for l3kernel.
 % Version 4.3  2024/06/07 Fixed bug with TOCs when calc package was loaded; added \msuappendixdelim
+% Version 4.3b 2024/07/08 Fixed spurious page break with biblatex per chapter bibliographies
 % Report bugs/problems/questions to <amunn@msu.edu>
 %
-\def\msu@version{4.3}
-\def\msu@date{2024/06/07}
+\def\msu@version{4.3b}
+\def\msu@date{2024/07/08}
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{msu-thesis}[\msu@date\space  Michigan State University Thesis Class version \msu@version]
 \@ifundefined{ExplLoaderFileDate}
@@ -837,9 +838,10 @@ chapterapp.code = {
 % This code probably needs to be revisited since it’s a unholy amalgam of old and new code
 % Removed clearpage from the document level code in response to issue #26.
 % Problem seems to only arise with biblatex so more testing is needed
+% Added test for natbib here 7/8/2024 because biblatex produces extra page 
 \newcommand\msu@addbibheadtotoc{%
     \ifmsu@chapterbib
-        \clearpage\phantomsection\addcontentsline{toc}{\msu@bibsection}{\bibtocname}
+        \@ifpackageloaded{natbib}{\clearpage}{}\phantomsection\addcontentsline{toc}{\msu@bibsection}{\bibtocname}
     \else
     	\phantomsection\addcontentsline{toc}{chapter}{\bibtocname}
 	\fi
